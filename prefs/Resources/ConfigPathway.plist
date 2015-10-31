@@ -5,16 +5,12 @@
 	<key>items</key>
 	<array>
 		<dict>
-		    <key>cell</key>
-		    <string>PSGroupCell</string>
-		    <key>headerCellClass</key>
-		    <string>HBPackageNameHeaderCell</string>
-		    <key>packageIdentifier</key>
-		    <string>ws.hbang.typestatusplus</string>
-		    <key>showVersion</key>
-		    <false/>
-		    <key>packageNameOverride</key>
-		    <string>TypeStatus+</string>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>detail</key>
+			<string>HBTSPlusConfigurationGeneralListController</string>
+			<key>label</key>
+			<string>General</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -24,28 +20,28 @@
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>detail</key>
-			<string>HBTSPlusConfigurationPathwayListController</string>
+			<string>HBTSPlusConfigurationWhatsappListController</string>
 			<key>label</key>
-			<string>Configuration</string>
+			<string>Whatsapp</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>detail</key>
-			<string>HBTSPlusCreditsListController</string>
+			<string>HBTSPlusConfigurationSkypeListController</string>
 			<key>label</key>
-			<string>Credits</string>
+			<string>Skype</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>detail</key>
-			<string>HBTSPlusAboutListController</string>
+			<string>HBTSPlusConfigurationMessengerListController</string>
 			<key>label</key>
-			<string>About</string>
+			<string>Messenger</string>
 		</dict>
 	</array>
 	<key>title</key>
-	<string>TypeStatus Plus</string>
+	<string>Configuration</string>
 </dict>
 </plist>

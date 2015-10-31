@@ -1,9 +1,6 @@
 #include "HBTSPlusRootListController.h"
 
-@implementation HBTSPlusRootListController {
-	UIStatusBarStyle _statusBarStyle;
-	UIBarStyle _navigationBarStyle;
-}
+@implementation HBTSPlusRootListController
 
 + (NSString *)hb_shareText {
 	return @"Couldn't be more happy I purchased TypeStatus+, the most advanced way to see who is typing. Available at BigBoss today for only 99 cents!";
@@ -18,24 +15,22 @@
 }
 
 + (UIColor *)hb_tintColor {
-	return [UIColor whiteColor];
+	return [UIColor colorWithRed:0.169f green:0.169f blue:0.169f alpha:1.00f];
+}
+
++ (BOOL)hb_invertedColors {
+	return YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-
-	_statusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
-	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-	self.realNavigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.226f green:0.157f blue:0.251f alpha:1.00f];
-	_navigationBarStyle = self.realNavigationController.navigationBar.barStyle;
-	self.realNavigationController.navigationBar.barStyle = UIBarStyleBlack;
+	UIImage *icon = [[UIImage alloc] initWithContentsOfFile:[[NSBundle bundleWithPath:@"/Library/PreferenceBundles/TypeStatusPlus.bundle"] pathForResource:@"icon" ofType:@"png"]];
+	self.navigationItem.titleView = [[UIImageView alloc] initWithImage:icon];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-	[[UIApplication sharedApplication] setStatusBarStyle:_statusBarStyle];
-	self.realNavigationController.navigationBar.barTintColor = nil;
-	self.realNavigationController.navigationBar.barStyle = _navigationBarStyle;
+	[super viewWillDisappear:animated];
+	self.navigationItem.titleView = nil;
 }
 
 @end

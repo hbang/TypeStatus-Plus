@@ -1,7 +1,7 @@
 include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = TypeStatusPlus
-TypeStatusPlus_FILES = HBTSPlusRootListController.m
+TypeStatusPlus_FILES = $(wildcard *.m)
 TypeStatusPlus_INSTALL_PATH = /Library/PreferenceBundles
 TypeStatusPlus_FRAMEWORKS = UIKit
 TypeStatusPlus_PRIVATE_FRAMEWORKS = Preferences
