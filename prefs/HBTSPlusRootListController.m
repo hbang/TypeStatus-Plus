@@ -22,15 +22,11 @@
 	return YES;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
+- (void)viewDidLoad {
+	[super viewDidLoad];
+
 	UIImage *icon = [[UIImage alloc] initWithContentsOfFile:[[NSBundle bundleWithPath:@"/Library/PreferenceBundles/TypeStatusPlus.bundle"] pathForResource:@"icon" ofType:@"png"]];
 	self.navigationItem.titleView = [[UIImageView alloc] initWithImage:icon];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-	self.navigationItem.titleView = nil;
 }
 
 @end
