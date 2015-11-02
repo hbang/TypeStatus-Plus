@@ -10,7 +10,7 @@
 	return [UIColor colorWithRed:0.902f green:0.722f blue:0.000f alpha:1.00f];
 }
 
-+ (BOOL)hb_invertedColors {
++ (BOOL)hb_invertedNavigationBar {
 	return YES;
 }
 
