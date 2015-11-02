@@ -3,6 +3,7 @@
 #import <BulletinBoard/BBBulletinRequest.h>
 #import <BulletinBoard/BBSectionInfo.h>
 #import <BulletinBoard/BBServer.h>
+#import <BulletinBoard/BBDataProviderIdentity.h>
 
 @implementation HBTSBulletinProvider
 
@@ -18,7 +19,6 @@
 
 - (void)showBulletinOfType:(HBTSStatusBarType)type contactName:(NSString *)contactName {
 	BBDataProviderWithdrawBulletinsWithRecordID(self, @"ws.hbang.typestatusplus.notification");
-
 	if (!contactName) {
 		return;
 	}
@@ -53,6 +53,8 @@
 	bulletinRequest.defaultAction = [BBAction actionWithLaunchBundleID:@"com.apple.MobileSMS" callblock:nil];
 
 	BBDataProviderAddBulletin(self, bulletinRequest);
+	HBLogDebug(@"Thebulletinwasadded");
+
 }
 
 #pragma mark - BBDataProvider
@@ -77,6 +79,14 @@
 
 - (NSArray *)sortDescriptors {
 	return @[ [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO] ];
+}
+
+- (BOOL)canPerformMigration {
+	return YES;
+}
+
+- (id)defaultSubsectionInfos {
+	return nil;
 }
 
 @end
