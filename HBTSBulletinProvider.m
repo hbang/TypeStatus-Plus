@@ -28,7 +28,7 @@
 	dispatch_once(&onceToken, ^{
 		bulletinRequest = [[BBBulletinRequest alloc] init];
 		bulletinRequest.bulletinID = @"ws.hbang.typestatusplus.notification";
-		bulletinRequest.sectionID = @"ws.hbang.typestatus";
+		bulletinRequest.sectionID = @"ws.hbang.typestatusplus.app";
 		bulletinRequest.publisherBulletinID = @"ws.hbang.typestatusplus.notification";
 		bulletinRequest.recordID = @"ws.hbang.typestatusplus.notification";
 		bulletinRequest.showsUnreadIndicator = NO;
@@ -36,11 +36,11 @@
 
 	switch (type) {
 		case HBTSStatusBarTypeTyping:
-			bulletinRequest.title = [freeBundle localizedStringForKey:@"TYPING" value:nil table:@"Localizable"];
+			bulletinRequest.message = [[freeBundle localizedStringForKey:@"TYPING" value:nil table:@"Localizable"] stringByAppendingString:contactName];
 			break;
 
 		case HBTSStatusBarTypeRead:
-			bulletinRequest.title = [freeBundle localizedStringForKey:@"READ" value:nil table:@"Localizable"];
+			bulletinRequest.message = [[freeBundle localizedStringForKey:@"READ" value:nil table:@"Localizable"] stringByAppendingString:contactName];
 			break;
 
 		case HBTSStatusBarTypeTypingEnded:
@@ -53,7 +53,6 @@
 	bulletinRequest.defaultAction = [BBAction actionWithLaunchBundleID:@"com.apple.MobileSMS" callblock:nil];
 
 	BBDataProviderAddBulletin(self, bulletinRequest);
-	HBLogDebug(@"Thebulletinwasadded");
 
 }
 
