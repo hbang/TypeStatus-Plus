@@ -47,7 +47,6 @@
 			break;
 	}
 
-	bulletinRequest.message = contactName;
 	bulletinRequest.date = [NSDate date];
 	bulletinRequest.lastInterruptDate = [NSDate date];
 	bulletinRequest.defaultAction = [BBAction actionWithLaunchBundleID:@"com.apple.MobileSMS" callblock:nil];
