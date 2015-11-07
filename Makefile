@@ -12,5 +12,5 @@ after-install::
 	install.exec "killall -9 SpringBoard"
 
 SUBPROJECTS += app prefs
-SUBPROJECTS += typestatusplusmessages
+SUBPROJECTS += messages
 include $(THEOS_MAKE_PATH)/aggregate.mk

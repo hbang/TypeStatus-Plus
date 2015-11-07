@@ -24,7 +24,6 @@
 %hook BBDataProvider
 
 - (id)defaultSubsectionInfos {
-	HBLogDebug(@"%@", %orig);
 	return %orig;
 }
 

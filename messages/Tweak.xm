@@ -1,34 +1,89 @@
-/* How to Hook with Logos
-Hooks are written with syntax similar to that of an Objective-C @implementation.
-You don't need to #include <substrate.h>, it will be done automatically, as will
-the generation of a class list and an automatic constructor.
+#import <IMFoundation/FZMessage.h>
+#import "../Global.h"
+#import <Foundation/NSDistributedNotificationCenter.h>
+#import <ChatKit/CKEntity.h>
+#import <IMCore/IMHandle.h>
 
-%hook ClassName
-
-// Hooking a class method
-+ (id)sharedInstance {
-	return %orig;
+@interface CKConversationListCell : UITableViewCell {
+	UILabel *_summaryLabel;
 }
 
-// Hooking an instance method with an argument.
-- (void)messageName:(int)argument {
-	%log; // Write a message about this call, including its class, name and arguments, to the system log.
+@end
 
-	%orig; // Call through to the original function with its original arguments.
-	%orig(nil); // Call through to the original function with a custom argument.
+@interface CKConversation
 
-	// If you use %orig(), you MUST supply all arguments (except for self and _cmd, the automatically generated ones.)
+@property (nonatomic, readonly, retain) NSString *name;
+
+@end
+
+@interface CKConversationList : NSObject {
+	NSMutableArray *_trackedConversations;
 }
 
-// Hooking an instance method with no arguments.
-- (id)noArguments {
-	%log;
-	id awesome = %orig;
-	[awesome doSomethingElse];
+@end
 
-	return awesome;
+@interface CKConversationListController : UITableViewController
+
+@property (nonatomic, assign) CKConversationList *conversationList;
+
+@end
+
+@interface CKTranscriptTypingIndicatorCell : UIView
+
+- (void)startPulseAnimation;
+- (void)stopPulseAnimation;
+
+@end
+
+NSString *HBTSPlusNameForHandle(NSString *handle) {
+	CKEntity *entity = [[%c(CKEntity) copyEntityForAddressString:handle] autorelease];
+	return entity.name;
 }
 
-// Always make sure you clean up after yourself; Not doing so could have grave consequences!
+%hook CKConversationListController
+
+- (id)init {
+	if ((self = %orig)) {
+		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(typeStatusPlus_addInlineBubbles:) name:HBTSSpringBoardReceivedMessageNotification object:nil];
+	}
+	return self;
+}
+
+%new - (void)typeStatusPlus_addInlineBubbles:(NSNotification *)notification {
+	NSString *senderName = notification.userInfo[kHBTSMessageSenderKey];
+	NSArray *conversations = MSHookIvar<NSMutableArray *>(self.conversationList, "_trackedConversations");
+	NSInteger integerInDataSource;
+	for (CKConversation *conversation in conversations) {
+		if ([conversation.name isEqualToString:HBTSPlusNameForHandle(senderName)]) {
+			integerInDataSource = [conversations indexOfObject:conversation];
+			break;
+		}
+	}
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:integerInDataSource inSection:2];
+	CKConversationListCell *cell = (CKConversationListCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+	CKTranscriptTypingIndicatorCell *typingIndicator = [cell viewWithTag:38523];
+	UILabel *summaryLabel = MSHookIvar<UILabel *>(cell, "_summaryLabel");
+	if (typingIndicator) {
+		[UIView animateWithDuration:1 animations:^{
+			typingIndicator.alpha = 0.0;
+			[typingIndicator stopPulseAnimation];
+			[typingIndicator removeFromSuperview];
+			summaryLabel.alpha = 1.0;
+		}];
+	} else {
+		[UIView animateWithDuration:0.5 animations:^{
+			summaryLabel.alpha = 0.0;
+		}];
+		typingIndicator = [[%c(CKTranscriptTypingIndicatorCell) alloc] init];
+		typingIndicator.alpha = 0.0;
+		typingIndicator.tag = 38523;
+		typingIndicator.frame = CGRectMake(summaryLabel.frame.origin.x, summaryLabel.frame.origin.y+10, summaryLabel.frame.size.width, summaryLabel.frame.size.height);
+		[typingIndicator startPulseAnimation];
+		[cell.contentView addSubview:typingIndicator];
+		[UIView animateWithDuration:0.5 animations:^{
+			typingIndicator.alpha = 1.0;
+		}];
+	}
+}
+
 %end
-*/
