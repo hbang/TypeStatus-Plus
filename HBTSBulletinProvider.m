@@ -35,18 +35,21 @@
 	});
 
 	switch (type) {
-		case HBTSStatusBarTypeTyping:
-			bulletinRequest.message = [[freeBundle localizedStringForKey:@"TYPING" value:nil table:@"Localizable"] stringByAppendingString:contactName];
+		case HBTSStatusBarTypeTyping: {
+			NSString *typingString = [freeBundle localizedStringForKey:@"TYPING" value:nil table:@"Localizable"];
+			bulletinRequest.title = [typingString substringToIndex:typingString.length-(typingString.length>0)];
 			break;
-
-		case HBTSStatusBarTypeRead:
-			bulletinRequest.message = [[freeBundle localizedStringForKey:@"READ" value:nil table:@"Localizable"] stringByAppendingString:contactName];
+		}
+		case HBTSStatusBarTypeRead: {
+			NSString *readString = [freeBundle localizedStringForKey:@"READ" value:nil table:@"Localizable"];
+			bulletinRequest.title = [readString substringToIndex:readString.length-(readString.length>0)];
 			break;
-
+		}
 		case HBTSStatusBarTypeTypingEnded:
 			break;
 	}
 
+	bulletinRequest.message = contactName;
 	bulletinRequest.date = [NSDate date];
 	bulletinRequest.lastInterruptDate = [NSDate date];
 	bulletinRequest.defaultAction = [BBAction actionWithLaunchBundleID:@"com.apple.MobileSMS" callblock:nil];
