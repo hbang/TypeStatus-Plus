@@ -21,14 +21,6 @@
 
 %end
 
-%hook BBDataProvider
-
-- (id)defaultSubsectionInfos {
-	return %orig;
-}
-
-%end
-
 #pragma mark - Constructor
 
 %ctor {
@@ -37,4 +29,14 @@
 		NSString *sender = notification.userInfo[kHBTSMessageSenderKey];
 		[[HBTSBulletinProvider sharedInstance] showBulletinOfType:type contactName:sender];
 	}];
+
+	NSString *providerPath = @"/Library/TypeStatus/Providers";
+	NSDirectoryEnumerator *dirEnum = [[NSFileManager defaultManager] enumeratorAtPath:providerPath];
+	 
+	NSString *file;
+	while ((file = [dirEnum nextObject])) {
+	    if ([[file pathExtension] isEqualToString: @"bundle"]) {
+	    	[[NSBundle bundleWithPath:[providerPath stringByAppendingPathComponent:file]] retain];
+	    }
+	}
 }
