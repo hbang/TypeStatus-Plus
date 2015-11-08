@@ -2,14 +2,6 @@
 #import <Foundation/NSDistributedNotificationCenter.h>
 #import <BulletinBoard/BBLocalDataProviderStore.h>
 
-%hook SBApplication
-
-- (void)setApplicationState:(unsigned)state {
-	%orig;
-}
-
-%end
-
 #pragma mark - Notification Center
 
 %hook BBLocalDataProviderStore
@@ -29,14 +21,4 @@
 		NSString *sender = notification.userInfo[kHBTSMessageSenderKey];
 		[[HBTSBulletinProvider sharedInstance] showBulletinOfType:type contactName:sender];
 	}];
-
-	NSString *providerPath = @"/Library/TypeStatus/Providers";
-	NSDirectoryEnumerator *dirEnum = [[NSFileManager defaultManager] enumeratorAtPath:providerPath];
-	 
-	NSString *file;
-	while ((file = [dirEnum nextObject])) {
-	    if ([[file pathExtension] isEqualToString: @"bundle"]) {
-	    	[[NSBundle bundleWithPath:[providerPath stringByAppendingPathComponent:file]] retain];
-	    }
-	}
 }
