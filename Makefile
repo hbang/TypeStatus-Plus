@@ -1,6 +1,6 @@
 include $(THEOS)/makefiles/common.mk
 
-SUBPROJECTS = api messages prefs springboard
+SUBPROJECTS = api app messages prefs springboard
 
 include $(THEOS_MAKE_PATH)/aggregate.mk
 
