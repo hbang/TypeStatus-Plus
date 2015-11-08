@@ -63,14 +63,14 @@ NSString *HBTSPlusNameForHandle(NSString *handle) {
 	CKConversationListCell *cell = (CKConversationListCell *)[self.tableView cellForRowAtIndexPath:indexPath];
 	CKTranscriptTypingIndicatorCell *typingIndicator = [cell viewWithTag:38523];
 	UILabel *summaryLabel = MSHookIvar<UILabel *>(cell, "_summaryLabel");
-	if (typingIndicator) {
+	if ([notification.userInfo[kHBTSMessageIsTypingKey] integerValue] == HBTSStatusBarTypeTyping) {
 		[UIView animateWithDuration:1 animations:^{
 			typingIndicator.alpha = 0.0;
 			[typingIndicator stopPulseAnimation];
 			[typingIndicator removeFromSuperview];
 			summaryLabel.alpha = 1.0;
 		}];
-	} else {
+	} else if ([notification.userInfo[kHBTSMessageIsTypingKey] integerValue] == HBTSStatusBarTypeTypingEnded) {
 		[UIView animateWithDuration:0.5 animations:^{
 			summaryLabel.alpha = 0.0;
 		}];
