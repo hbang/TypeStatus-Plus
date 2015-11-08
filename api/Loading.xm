@@ -43,6 +43,8 @@ NSArray *identifiers;
 
 		NSBundle *bundle = [NSBundle bundleWithURL:directory];
 
+		HBLogInfo(@"The bundle info is %@", bundle.infoDictionary);
+
 		if (!bundle) {
 			HBLogError(@"failed to load bundle for handler %@", baseName);
 			return;
