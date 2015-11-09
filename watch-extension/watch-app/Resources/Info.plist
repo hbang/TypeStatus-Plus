@@ -9,13 +9,13 @@
 	<key>CFBundleDisplayName</key>
 	<string>hkfjgdkghdg</string>
 	<key>CFBundleExecutable</key>
-	<string>hkfjgdkghdg WatchKit 1 App</string>
+	<string>TypeStatus Plus WatchKit 1 App</string>
 	<key>CFBundleIdentifier</key>
-	<string>ws.hbang.hkfjgdkghdg.watchkitapp</string>
+	<string>ws.hbang.typestatusplus.app</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>hkfjgdkghdg WatchKit 1 App</string>
+	<string>TypeStatus Plus WatchKit 1 App</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -57,7 +57,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>ws.hbang.hkfjgdkghdg</string>
+	<string>ws.hbang.typestatusplus.app</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

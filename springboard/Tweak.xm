@@ -1,6 +1,7 @@
 #import "HBTSBulletinProvider.h"
 #import <Foundation/NSDistributedNotificationCenter.h>
 #import <BulletinBoard/BBLocalDataProviderStore.h>
+#import "UIView+Helpers.h"
 
 @interface SBIconViewMap : NSObject
 
