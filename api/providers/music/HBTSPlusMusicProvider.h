@@ -1,4 +1,4 @@
-#import "../../HBTSPlusProvider.h"
+#import <TypeStatusProviderFramework/HBTSPlusProvider.h>
 
 @interface HBTSPlusMusicProvider : HBTSPlusProvider
 

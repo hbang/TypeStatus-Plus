@@ -40,6 +40,8 @@
 	for (HBTSPlusProvider *provider in _providers) {
 		PSSpecifier *specifier = [PSSpecifier preferenceSpecifierNamed:provider.name target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:Nil cell:PSLinkCell edit:Nil];
 
+		HBLogDebug(@"The preference bundle is %@, preference class is %@", provider.preferencesBundle, provider.preferencesClass);
+
 		if (!provider.preferencesBundle ||  !provider.preferencesClass || !provider.appIdentifier) {
 			HBLogError(@"Necessary details not provided for %@", provider.name);
 			continue;

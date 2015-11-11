@@ -2,12 +2,24 @@
 
 @implementation HBTSPlusMusicRootListController
 
-- (NSArray *)specifiers {
-	if (!_specifiers) {
-		_specifiers = [[self loadSpecifiersFromPlistName:@"Root" target:self] retain];
-	}
++ (NSString *)hb_shareText {
+	return @"The TypeStatus Plus Provider API allows me to see songs changing at a glance. Available now on the BigBoss repo.";
+}
 
-	return _specifiers;
++ (NSURL *)hb_shareURL {
+	return [NSURL URLWithString:@"https://typestatus.com"];
+}
+
++ (NSString *)hb_specifierPlist {
+	return @"Root";
+}
+
++ (UIColor *)hb_tintColor {
+	return [UIColor colorWithRed:0.635f green:0.314f blue:0.682f alpha:1.00f];
+}
+
++ (BOOL)hb_invertedNavigationBar {
+	return YES;
 }
 
 @end
