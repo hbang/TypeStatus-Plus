@@ -25,6 +25,8 @@ NSArray *identifiers;
 %end
 
 %ctor {
+	HBLogInfo(@"The constructor method for Loading.xm!");
+
 	NSString *providerPath = @"/Library/TypeStatus/Providers";
 	NSError *error = nil;
 	NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL URLWithString:providerPath] includingPropertiesForKeys:nil options:kNilOptions error:&error];

@@ -27,10 +27,10 @@
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		bulletinRequest = [[BBBulletinRequest alloc] init];
-		bulletinRequest.bulletinID = @"ws.hbang.typestatusplus.notification";
+		bulletinRequest.bulletinID = @"ws.hbang.typestatusplus.app";
 		bulletinRequest.sectionID = @"ws.hbang.typestatusplus.app";
-		bulletinRequest.publisherBulletinID = @"ws.hbang.typestatusplus.notification";
-		bulletinRequest.recordID = @"ws.hbang.typestatusplus.notification";
+		bulletinRequest.publisherBulletinID = @"ws.hbang.typestatusplus.app";
+		bulletinRequest.recordID = @"ws.hbang.typestatusplus.app";
 		bulletinRequest.showsUnreadIndicator = NO;
 	});
 

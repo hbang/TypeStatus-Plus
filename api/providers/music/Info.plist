@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-	<array>
+	<dict>
 		<key>HBPackageIdentifier</key>
 		<string>ws.hbang.typestatusplusmusicprovider</string>
 		<key>HBTSApplicationBundleIdentifier</key>
@@ -10,5 +10,5 @@
 		<false/>
 		<key>NSPrincipalClass</key>
 		<string>HBTSPlusMusicProvider</string>
-	</array>
+	</dict>
 </plist>
