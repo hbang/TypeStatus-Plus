@@ -8,6 +8,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, retain, nullable) NSString *preferencesClass;
 
+@property (nonatomic, retain) UIColor *preferencesColor;
+
 - (void)showNotification:(NSString *)text;
 
 @end

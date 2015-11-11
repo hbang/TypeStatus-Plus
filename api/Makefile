@@ -5,7 +5,7 @@ DOCS_OUTPUT_PATH = docs
 include $(THEOS)/makefiles/common.mk
 
 FRAMEWORK_NAME = TypeStatusPlusProvider
-TypeStatusPlusProvider_FILES = Loading.xm HBTSPlusProvider.m
+TypeStatusPlusProvider_FILES = Loading.xm HBTSPlusProviderController.m HBTSPlusProvider.m
 TypeStatusPlusProvider_PUBLIC_HEADERS = HBTSPlusProvider.h
 TypeStatusPlusProvider_EXTRA_FRAMEWORKS = Cephei
 TypeStatusPlusProvider_LIBRARIES = substrate
