@@ -22,10 +22,14 @@
 		NSDictionary *dictionary = (__bridge NSDictionary *)result;
 		NSString *songName = dictionary[(NSString *)kMRMediaRemoteNowPlayingInfoTitle];
 		NSString *artistName = dictionary[(NSString *)kMRMediaRemoteNowPlayingInfoArtist];
-		if (_lastUsedSongName && artistName && ![_lastUsedSongName isEqualToString:songName] && ![_lastUsedArtistName isEqualToString:artistName]) {
-			_lastUsedSongName = songName;
-			_lastUsedArtistName = artistName;
-			[self showNotificationWithIconName:@"" title:artistName content:songName];
+		if (_lastUsedSongName && artistName && ![songName isEqualToString:_lastUsedSongName] && ![artistName isEqualToString:_lastUsedArtistName]) {
+			[_lastUsedSongName release];
+			[_lastUsedArtistName release];
+
+			_lastUsedSongName = [songName copy];
+			_lastUsedArtistName = [artistName copy];
+
+			[self showNotificationWithIconName:@"TypeStatusPlusMusic" title:artistName content:songName];
 		}
 	});
 }
