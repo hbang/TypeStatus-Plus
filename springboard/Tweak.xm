@@ -2,6 +2,7 @@
 #import <Foundation/NSDistributedNotificationCenter.h>
 #import <BulletinBoard/BBLocalDataProviderStore.h>
 #import "UIView+Helpers.h"
+#import <version.h>
 
 @interface SBIconViewMap : NSObject
 
@@ -25,10 +26,19 @@
 
 %hook BBLocalDataProviderStore
 
-- (void)loadAllDataProvidersAndPerformMigration:(BOOL)arg1 {
+%group EddyCue
+- (void)loadAllDataProvidersAndPerformMigration:(BOOL)performMigration {
 	%orig;
-	[self addDataProvider:[HBTSBulletinProvider sharedInstance] performMigration:YES];
+	[self addDataProvider:[HBTSBulletinProvider sharedInstance] performMigration:performMigration];
 }
+%end
+
+%group CraigFederighi
+- (void)loadAllDataProviders {
+	%orig;
+	[self addDataProvider:[HBTSBulletinProvider sharedInstance]];
+}
+%end
 
 %end
 
@@ -52,6 +62,14 @@
 #pragma mark - Constructor
 
 %ctor {
+	%init;
+
+	if (IS_IOS_OR_NEWER(iOS_9_0)) {
+		%init(EddyCue);
+	} else {
+		%init(CraigFederighi);
+	}
+
 	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
 		HBTSStatusBarType type = (HBTSStatusBarType)((NSNumber *)notification.userInfo[kHBTSMessageTypeKey]).intValue;
 		NSString *sender = notification.userInfo[kHBTSMessageSenderKey];
