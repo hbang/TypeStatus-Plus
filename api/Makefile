@@ -18,7 +18,7 @@ after-TypeStatusPlusProvider-all::
 	mkdir -p $(THEOS_OBJ_DIR)/TypeStatusPlusProvider.framework/Headers
 
 	# copy headers
-	rsync -ra *.h $(THEOS_OBJ_DIR)/TypeStatusPlusProvider.framework/Headers --exclude Global.h
+	rsync -ra $(TypeStatusPlusProvider_PUBLIC_HEADERS) $(THEOS_OBJ_DIR)/TypeStatusPlusProvider.framework/Headers --exclude Global.h
 
 	# copy to theos lib dir
 	rsync -ra $(THEOS_OBJ_DIR)/TypeStatusPlusProvider.framework $(THEOS)/lib
