@@ -22,7 +22,7 @@
 		NSDictionary *dictionary = (__bridge NSDictionary *)result;
 		NSString *songName = dictionary[(NSString *)kMRMediaRemoteNowPlayingInfoTitle];
 		NSString *artistName = dictionary[(NSString *)kMRMediaRemoteNowPlayingInfoArtist];
-		if (_lastUsedSongName && artistName && ![songName isEqualToString:_lastUsedSongName] && ![artistName isEqualToString:_lastUsedArtistName]) {
+		if (songName && artistName && ![songName isEqualToString:_lastUsedSongName] && ![artistName isEqualToString:_lastUsedArtistName]) {
 			[_lastUsedSongName release];
 			[_lastUsedArtistName release];
 
