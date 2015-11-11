@@ -25,10 +25,9 @@
 		if (_lastUsedSongName && artistName && ![_lastUsedSongName isEqualToString:songName] && ![_lastUsedArtistName isEqualToString:artistName]) {
 			_lastUsedSongName = songName;
 			_lastUsedArtistName = artistName;
-			[self showNotification:[NSString stringWithFormat:@"The song %@ by %@ is now playing!", songName, artistName]];
+			[self showNotificationWithIconName:@"" title:artistName content:songName];
 		}
 	});
-
 }
 
 @end
