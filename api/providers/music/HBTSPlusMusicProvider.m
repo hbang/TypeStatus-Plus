@@ -3,10 +3,10 @@
 #import <MediaRemote/MediaRemote.h>
 
 @implementation HBTSPlusMusicProvider {
-	NSString *_lastUsedSongName, *_lastUsedArtistName;
+	NSString *_lastSongIdentifier;
 }
 
-- (id)init {
+- (instancetype)init {
 	if (self = [super init]) {
 		self.name = @"Music";
 		self.preferencesBundle = [[NSBundle bundleWithPath:@"/Library/PreferenceBundles/TypeStatusPlusMusicPrefs.bundle/"] retain];
@@ -22,12 +22,13 @@
 		NSDictionary *dictionary = (__bridge NSDictionary *)result;
 		NSString *songName = dictionary[(NSString *)kMRMediaRemoteNowPlayingInfoTitle];
 		NSString *artistName = dictionary[(NSString *)kMRMediaRemoteNowPlayingInfoArtist];
-		if (songName && artistName && ![songName isEqualToString:_lastUsedSongName] && ![artistName isEqualToString:_lastUsedArtistName]) {
-			[_lastUsedSongName release];
-			[_lastUsedArtistName release];
+		NSString *albumName = dictionary[(NSString *)kMRMediaRemoteNowPlayingInfoAlbum];
 
-			_lastUsedSongName = [songName copy];
-			_lastUsedArtistName = [artistName copy];
+		NSString *identifier = [NSString stringWithFormat:@"title = %@, artist = %@, album = %@", songName, artistName, albumName];
+
+		if (![_lastSongIdentifier isEqualToString:identifier]) {
+			[_lastSongIdentifier release];
+			_lastSongIdentifier = [identifier retain];
 
 			[self showNotificationWithIconName:@"TypeStatusPlusMusic" title:artistName content:songName];
 		}
