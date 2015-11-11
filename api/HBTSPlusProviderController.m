@@ -30,7 +30,7 @@
 		return;
 	}
 
-	HBLogInfo(@"loading handlers");
+	HBLogInfo(@"loading providers");
 
 	_hasLoadedProviders = YES;
 
@@ -66,10 +66,15 @@
 
 		if (bundle.infoDictionary[kTypeStatusPlusIdentifierString] && [bundle.infoDictionary[kTypeStatusPlusBackgroundingString] boolValue]) {
 			[_appsRequiringBackgroundSupport addObject:bundle.infoDictionary[kTypeStatusPlusIdentifierString]];
+			continue;
 		}
 
+		HBLogInfo(@"The info dictionary of the bundle just loaded is %@", bundle.infoDictionary);
+
 		HBTSPlusProvider *provider = [[[bundle.principalClass alloc] init] autorelease];
-		[_appsRequiringBackgroundSupport addObject:provider];
+		provider.appIdentifier = bundle.infoDictionary[kTypeStatusPlusIdentifierString];
+		[_providers addObject:provider];
+		[_appsRequiringBackgroundSupport addObject:provider.appIdentifier];
 
 		if (!provider) {
 			HBLogError(@"TypeStatusPlusProvider: failed to initialise principal class for %@", baseName);
