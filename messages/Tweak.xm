@@ -61,7 +61,7 @@ NSString *HBTSPlusNameForHandle(NSString *handle) {
 	}
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:integerInDataSource inSection:2];
 	CKConversationListCell *cell = (CKConversationListCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-	CKTranscriptTypingIndicatorCell *typingIndicator = [cell viewWithTag:38523];
+	CKTranscriptTypingIndicatorCell *typingIndicator = (CKTranscriptTypingIndicatorCell *)[cell viewWithTag:38523];
 	UILabel *summaryLabel = MSHookIvar<UILabel *>(cell, "_summaryLabel");
 	if ([notification.userInfo[kHBTSMessageIsTypingKey] integerValue] == HBTSStatusBarTypeTyping) {
 		[UIView animateWithDuration:1 animations:^{
