@@ -1,7 +1,5 @@
 #import "HBTSPlusProviderController.h"
 
-NSArray *identifiers;
-
 @interface SBApplication : UIApplication
 
 - (NSString *)bundleIdentifier;
@@ -11,7 +9,7 @@ NSArray *identifiers;
 %hook SBApplication
 
 - (BOOL)supportsContinuousBackgroundMode {
-	for (NSString *identifier in identifiers) {
+	for (NSString *identifier in [HBTSPlusProviderController sharedInstance].appsRequiringBackgroundSupport) {
 		if ([[self bundleIdentifier] isEqualToString:identifier]) {
 			return YES;
 		}
