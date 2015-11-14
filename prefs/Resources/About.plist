@@ -5,6 +5,12 @@
 <key>items</key>
 	<array>
 		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Check our website to see our latest creations.</string>
+		</dict>
+		<dict>
 			<key>action</key>
 			<string>hb_openWebsite</string>
 			<key>cell</key>
@@ -19,10 +25,6 @@
 			<string>PSGroupCell</string>
 			<key>footerText</key>
 			<string>Experiencing issues? Send us an email and we’ll help you.</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
 		</dict>
 		<dict>
 			<key>action</key>
@@ -41,10 +43,6 @@
 			<string>If you like this tweak, please consider a donation.</string>
 		</dict>
 		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-		</dict>
-		<dict>
 			<key>action</key>
 			<string>hb_openDonate</string>
 			<key>cell</key>
@@ -53,6 +51,68 @@
 			<string>HBTintedTableCell</string>
 			<key>label</key>
 			<string>Donate</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Credits</string>
+		</dict>
+		<dict>
+		    <key>big</key>
+		    <true/>
+		    <key>cellClass</key>
+		    <string>HBTwitterCell</string>
+		    <key>height</key>
+		    <integer>56</integer>
+		    <key>label</key>
+		    <string>HASHBANG Productions</string>
+		    <key>user</key>
+		    <string>hbangws</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Developers</string>
+		</dict>
+		<dict>
+		    <key>cellClass</key>
+		    <string>HBTwitterCell</string>
+		    <key>label</key>
+		    <string>Adam Demasi (kirb)</string>
+		    <key>user</key>
+		    <string>hbkirb</string>
+		</dict>
+		<dict>
+		    <key>cellClass</key>
+		    <string>HBTwitterCell</string>
+		    <key>label</key>
+		    <string>Ben Rosen</string>
+		    <key>user</key>
+		    <string>benr9500</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Designers</string>
+		</dict>
+		<dict>
+		    <key>cellClass</key>
+		    <string>HBTwitterCell</string>
+		    <key>label</key>
+		    <string>Timon Olsthoorn</string>
+		    <key>user</key>
+		    <string>tmnlsthrn</string>
+		</dict>
+		<dict>
+		    <key>cellClass</key>
+		    <string>HBTwitterCell</string>
+		    <key>label</key>
+		    <string>Kyle Lee</string>
+		    <key>user</key>
+		    <string>krevony</string>
 		</dict>
 	</array>
 	<key>title</key>
