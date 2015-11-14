@@ -19,19 +19,8 @@
 	return @"Root";
 }
 
-/*+ (UIColor *)hb_tintColor {
-	return [UIColor colorWithRed:0.345f green:0.337f blue:0.839f alpha:1.00f];
-}
-
-+ (BOOL)hb_invertedNavigationBar {
-	return YES;
-}*/
-
-- (void)viewDidLoad {
-	[super viewDidLoad];
-
-	UIImage *icon = [[UIImage alloc] initWithContentsOfFile:[[NSBundle bundleWithPath:@"/Library/PreferenceBundles/TypeStatusPlus.bundle"] pathForResource:@"icon" ofType:@"png"]];
-	self.navigationItem.titleView = [[UIImageView alloc] initWithImage:icon];
++ (UIColor *)hb_tintColor {
+	return [UIColor colorWithRed:0.212f green:0.635f blue:0.835f alpha:1.00f];
 }
 
 - (NSArray *)specifiers {

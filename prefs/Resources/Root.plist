@@ -27,16 +27,26 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Configuration</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>detail</key>
 			<string>HBTSPlusConfigurationGeneralListController</string>
+			<key>icon</key>
+			<string>general</string>
 			<key>label</key>
 			<string>General</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>detail</key>
+			<string>HBTSPlusAboutListController</string>
+			<key>icon</key>
+			<string>about</string>
+			<key>label</key>
+			<string>About</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -58,16 +68,8 @@
 			<key>footerText</key>
 			<string>View Cydia or the HASHBANG website to find and install providers for TypeStatus Plus!</string>
 		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSLinkCell</string>
-			<key>detail</key>
-			<string>HBTSPlusAboutListController</string>
-			<key>label</key>
-			<string>About</string>
-		</dict>
 	</array>
 	<key>title</key>
-	<string>TypeStatus Plus</string>
+	<string>Plus</string>
 </dict>
 </plist>
