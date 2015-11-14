@@ -13,8 +13,6 @@
 		    <string>ws.hbang.typestatusplus</string>
 		    <key>showVersion</key>
 		    <false/>
-		    <key>packageNameOverride</key>
-		    <string>TypeStatus+</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -24,25 +22,37 @@
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>detail</key>
-			<string>HBTSPlusConfigurationPathwayListController</string>
-			<key>label</key>
-			<string>Configuration</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSLinkCell</string>
-			<key>detail</key>
-			<string>HBTSPlusCreditsListController</string>
-			<key>label</key>
-			<string>Credits</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSLinkCell</string>
-			<key>detail</key>
 			<string>HBTSPlusAboutListController</string>
 			<key>label</key>
 			<string>About</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>detail</key>
+			<string>HBTSPlusConfigurationGeneralListController</string>
+			<key>label</key>
+			<string>General</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>id</key>
+			<string>ProvidersGroupCell</string>
+			<key>label</key>
+			<string>Providers</string>
+			<key>footerText</key>
+			<string>These providers allow developers (including HASHBANG) to add support to TypeStatus Plus.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>id</key>
+			<string>ProvidersNoneInstalledGroupCell</string>
+			<key>label</key>
+			<string>Providers</string>
+			<key>footerText</key>
+			<string>View Cydia or the HASHBANG website to find and install providers for TypeStatus Plus!</string>
 		</dict>
 	</array>
 	<key>title</key>
