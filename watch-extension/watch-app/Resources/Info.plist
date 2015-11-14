@@ -7,15 +7,15 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>hkfjgdkghdg</string>
+	<string>TypeStatus</string>
 	<key>CFBundleExecutable</key>
-	<string>TypeStatus Plus WatchKit 1 App</string>
+	<string>TypeStatusWatchApp</string>
 	<key>CFBundleIdentifier</key>
-	<string>ws.hbang.typestatusplus.app</string>
+	<string>ws.hbang.typestatusplus.app.watchapp</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>TypeStatus Plus WatchKit 1 App</string>
+	<string>TypeStatusWatchApp</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
