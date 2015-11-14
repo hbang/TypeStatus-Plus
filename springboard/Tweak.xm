@@ -2,6 +2,9 @@
 #import <Foundation/NSDistributedNotificationCenter.h>
 #import <BulletinBoard/BBLocalDataProviderStore.h>
 #import <version.h>
+#import <AudioToolbox/AudioToolbox.h>
+
+extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoundID, id unknown, NSDictionary *options);
 
 @interface SBIconViewMap : NSObject
 
@@ -73,5 +76,10 @@
 		HBTSStatusBarType type = (HBTSStatusBarType)((NSNumber *)notification.userInfo[kHBTSMessageTypeKey]).intValue;
 		NSString *sender = notification.userInfo[kHBTSMessageSenderKey];
 		[[HBTSBulletinProvider sharedInstance] showBulletinOfType:type contactName:sender];
+
+		AudioServicesPlaySystemSoundWithVibration(4095, nil, @{
+			@"VibePattern": @[ @YES, @(50) ],
+			@"Intensity": @1
+		});
 	}];
 }
