@@ -13,18 +13,22 @@
 		    <string>ws.hbang.typestatusplus</string>
 		    <key>showVersion</key>
 		    <false/>
+		    <key>bigBeautifulBanner</key>
+		    <true/>
+		    <key>firstColor</key>
+		    <string>#67bde2</string>
+		    <key>secondColor</key>
+		    <string>#51b4de</string>
+		    <key>thirdColor</key>
+		    <string>#28a1d4</string>
+		    <key>fourthColor</key>
+		    <string>#2491bf</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSLinkCell</string>
-			<key>detail</key>
-			<string>HBTSPlusAboutListController</string>
 			<key>label</key>
-			<string>About</string>
+			<string>Configuration</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -53,6 +57,14 @@
 			<string>Providers</string>
 			<key>footerText</key>
 			<string>View Cydia or the HASHBANG website to find and install providers for TypeStatus Plus!</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>detail</key>
+			<string>HBTSPlusAboutListController</string>
+			<key>label</key>
+			<string>About</string>
 		</dict>
 	</array>
 	<key>title</key>
