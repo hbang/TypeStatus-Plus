@@ -1,12 +1,10 @@
-/*%hook NSNotificationCenter
+#import <TypeStatusPlusProvider/HBTSPlusProvider.h>
 
-- (void)postNotificationName:(NSString *)notificationName
-                      object:(id)notificationSender
-                    userInfo:(NSDictionary *)userInfo {
-                    	if ([notificationName rangeOfString:@"UI"].location == NSNotFound && [notificationName rangeOfString:@"NS"].location == NSNotFound) {
-                    		
-                    	HBLogDebug(@"%@", notificationName);
-                    
-                    }}
+#define SLKUserTyping @"SLKUserTyping"
 
-%end*/
+%ctor {
+	[[NSNotificationCenter defaultCenter] addObserverForName:SLKUserTyping object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
+		NSDictionary *userInfo = notification.userInfo;
+		HBLogDebug(@"The user info is %@", userInfo);
+	}];
+}
