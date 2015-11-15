@@ -7,18 +7,6 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>condensed</key>
-			<true/>
-			<key>headerCellClass</key>
-			<string>HBPackageNameHeaderCell</string>
-			<key>icon</key>
-			<string>icon.png</string>
-			<key>packageIdentifier</key>
-			<string>ws.hbang.typestatusplus</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
 		</dict>
 		<dict>
 			<key>big</key>
@@ -31,6 +19,44 @@
 			<string>HASHBANG Productions</string>
 			<key>user</key>
 			<string>hbangws</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>EMAIL_SUPPORT_HEADER</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>hb_sendSupportEmail</string>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>cellClass</key>
+			<string>HBTintedTableCell</string>
+			<key>label</key>
+			<string>EMAIL_SUPPORT</string>
+			<key>appIDForLazyIcon</key>
+			<string>com.apple.mobilemail</string>	
+			<key>useLazyIcons</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>hb_openWebsite</string>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>cellClass</key>
+			<string>HBTintedTableCell</string>
+			<key>label</key>
+			<string>VISIT_WEBSITE</string>
+			<key>appIDForLazyIcon</key>
+			<string>com.apple.mobilesafari</string>	
+			<key>useLazyIcons</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -71,32 +97,20 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>EMAIL_SUPPORT_HEADER</string>
 		</dict>
 		<dict>
 			<key>action</key>
-			<string>hb_sendSupportEmail</string>
+			<string>openTranslations</string>
 			<key>cell</key>
 			<string>PSLinkCell</string>
-			<key>cellClass</key>
+			<key>cellClass</key>	
 			<string>HBTintedTableCell</string>
 			<key>label</key>
-			<string>EMAIL_SUPPORT</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>hb_openWebsite</string>
-			<key>cell</key>
-			<string>PSLinkCell</string>
-			<key>cellClass</key>
-			<string>HBTintedTableCell</string>
-			<key>label</key>
-			<string>VISIT_WEBSITE</string>
+			<string>TRANSLATORS</string>
+			<key>appIDForLazyIcon</key>
+			<string>com.apple.mobilesafari</string>	
+			<key>useLazyIcons</key>
+			<true/>
 		</dict>
 	</array>
 	<key>title</key>

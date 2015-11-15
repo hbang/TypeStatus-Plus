@@ -30,7 +30,7 @@
 			[_lastSongIdentifier release];
 			_lastSongIdentifier = [identifier retain];
 
-			[self showNotificationWithIconName:@"TypeStatusPlusMusic" title:artistName content:songName];
+			[HBTSPlusMusicProvider showNotificationWithIconName:@"TypeStatusPlusMusic" title:artistName content:songName];
 		}
 	});
 }
