@@ -1,14 +1,16 @@
 #import "HBTSPlusProvider.h"
-#import "../typestatus-private/HBTSStatusBarAlertController.h"
+#import "../typestatus-private/HBTSStatusBarAlertServer.h"
 
 @implementation HBTSPlusProvider
 
-- (void)showNotificationWithIconName:(NSString *)iconName title:(NSString *)title content:(NSString *)content {
-	[[%c(HBTSStatusBarAlertController) sharedInstance] showWithIconName:iconName title:title content:content];
++ (void)showNotificationWithIconName:(NSString *)iconName title:(NSString *)title content:(NSString *)content {
+	HBLogDebug(@"About to show notification %@ %@", title, content);
+	[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:iconName title:title content:content];
 }
 
-- (void)hideNotification {
-	[[%c(HBTSStatusBarAlertController) sharedInstance] hide];
++ (void)hideNotification {
+	HBLogDebug(@"About to hide notification");
+	[%c(HBTSStatusBarAlertServer) hide];
 }
 
 @end
