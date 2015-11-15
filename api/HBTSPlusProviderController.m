@@ -1,9 +1,7 @@
 #import "HBTSPlusProviderController.h"
 #import "HBTSPlusProvider.h"
 
-@implementation HBTSPlusProviderController {
-	BOOL _hasLoadedProviders;
-}
+@implementation HBTSPlusProviderController
 
 + (instancetype)sharedInstance {
 	static HBTSPlusProviderController *sharedInstance = nil;
@@ -24,63 +22,59 @@
 }
 
 - (void)loadProviders {
+	static dispatch_once_t predicate;
+	   dispatch_once(&predicate, ^{
 
-	if (_hasLoadedProviders) {
-		HBLogDebug(@"you only load handlers once (YOLHO)");
-		return;
-	}
+		HBLogInfo(@"loading providers");
 
-	HBLogInfo(@"loading providers");
+		NSString *providerPath = @"/Library/TypeStatus/Providers";
+		NSError *error = nil;
+		NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL URLWithString:providerPath] includingPropertiesForKeys:nil options:kNilOptions error:&error];
 
-	_hasLoadedProviders = YES;
-
-	NSString *providerPath = @"/Library/TypeStatus/Providers";
-	NSError *error = nil;
-	NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL URLWithString:providerPath] includingPropertiesForKeys:nil options:kNilOptions error:&error];
-
-	if (error) {
-		HBLogError(@"failed to access handler directory %@: %@", providerPath, error.localizedDescription);
-		return;
-	}
-
-	for (NSURL *directory in contents) {
-		NSString *baseName = directory.pathComponents.lastObject;
-
-		HBLogInfo(@"loading %@", baseName);
-
-		NSBundle *bundle = [NSBundle bundleWithURL:directory];
-
-		HBLogInfo(@"The bundle info is %@", bundle.infoDictionary);
-
-		if (!bundle) {
-			HBLogError(@"failed to load bundle for provider %@", baseName);
-			continue;
+		if (error) {
+			HBLogError(@"failed to access handler directory %@: %@", providerPath, error.localizedDescription);
+			return;
 		}
 
-		[bundle load];
+		for (NSURL *directory in contents) {
+			NSString *baseName = directory.pathComponents.lastObject;
 
-		if (!bundle.principalClass) {
-			HBLogError(@"no principal class for provider %@", baseName);
-			continue;
+			HBLogInfo(@"loading %@", baseName);
+
+			NSBundle *bundle = [NSBundle bundleWithURL:directory];
+
+			HBLogInfo(@"The bundle info is %@", bundle.infoDictionary);
+
+			if (!bundle) {
+				HBLogError(@"failed to load bundle for provider %@", baseName);
+				continue;
+			}
+
+			[bundle load];
+
+			if (!bundle.principalClass) {
+				HBLogError(@"no principal class for provider %@", baseName);
+				continue;
+			}
+
+			if (bundle.infoDictionary[kTypeStatusPlusIdentifierString] && [bundle.infoDictionary[kTypeStatusPlusBackgroundingString] boolValue]) {
+				[_appsRequiringBackgroundSupport addObject:bundle.infoDictionary[kTypeStatusPlusIdentifierString]];
+				continue;
+			}
+
+			HBLogInfo(@"The info dictionary of the bundle just loaded is %@", bundle.infoDictionary);
+
+			HBTSPlusProvider *provider = [[[bundle.principalClass alloc] init] autorelease];
+			provider.appIdentifier = bundle.infoDictionary[kTypeStatusPlusIdentifierString];
+			[_providers addObject:provider];
+			[_appsRequiringBackgroundSupport addObject:provider.appIdentifier];
+
+			if (!provider) {
+				HBLogError(@"TypeStatusPlusProvider: failed to initialise principal class for %@", baseName);
+				continue;
+			}
 		}
-
-		if (bundle.infoDictionary[kTypeStatusPlusIdentifierString] && [bundle.infoDictionary[kTypeStatusPlusBackgroundingString] boolValue]) {
-			[_appsRequiringBackgroundSupport addObject:bundle.infoDictionary[kTypeStatusPlusIdentifierString]];
-			continue;
-		}
-
-		HBLogInfo(@"The info dictionary of the bundle just loaded is %@", bundle.infoDictionary);
-
-		HBTSPlusProvider *provider = [[[bundle.principalClass alloc] init] autorelease];
-		provider.appIdentifier = bundle.infoDictionary[kTypeStatusPlusIdentifierString];
-		[_providers addObject:provider];
-		[_appsRequiringBackgroundSupport addObject:provider.appIdentifier];
-
-		if (!provider) {
-			HBLogError(@"TypeStatusPlusProvider: failed to initialise principal class for %@", baseName);
-			continue;
-		}
-	}
+	});
 }
 
 @end

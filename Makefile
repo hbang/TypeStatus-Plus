@@ -1,6 +1,6 @@
 include $(THEOS)/makefiles/common.mk
 
-SUBPROJECTS = api app messages prefs springboard watch-app $(wildcard api/providers/*)
+SUBPROJECTS = api app client messages prefs springboard watch-app $(wildcard api/providers/*)
 
 include $(THEOS_MAKE_PATH)/aggregate.mk
 
@@ -9,4 +9,4 @@ after-stage::
 	cp Resources/*.png $(THEOS_STAGING_DIR)/System/Library/Frameworks/UIKit.framework
 
 after-install::
-	install.exec "killall -9 Preferences"
+	install.exec "killall -9 SpringBoard"

@@ -23,10 +23,14 @@
 	return [UIColor colorWithRed:0.212f green:0.635f blue:0.835f alpha:1.00f];
 }
 
-- (NSArray *)specifiers {
-    NSArray *specifiers = [super specifiers];
-    [self _updateHandlers];
-    return specifiers;
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	[self _updateHandlers];
+}
+
+- (void)reloadSpecifiers {
+	[super reloadSpecifiers];
+	//[self _updateHandlers];
 }
 
 #pragma mark - Update state
@@ -60,10 +64,12 @@
 			PSLazyIconLoading: @YES
 		} mutableCopy];
 
+		specifier.controllerLoadAction = @selector(lazyLoadBundle:);
+
 		[newSpecifiers addObject:specifier];
 	}
 
-	HBLogInfo(@"The specificers loaded into preference are: %@", newSpecifiers);
+	HBLogInfo(@"The specifiers loaded into preference are: %@", newSpecifiers);
 
 	if (newSpecifiers.count > 0) {
 		[self removeSpecifierID:@"ProvidersNoneInstalledGroupCell"];
@@ -71,6 +77,8 @@
 	} else {
 		[self removeSpecifierID:@"ProvidersGroupCell"];
 	}
+
+	HBLogDebug(@"This is a log to test out if something is run or if this is where it crashes ");
 }
 
 #pragma mark - Memory management
