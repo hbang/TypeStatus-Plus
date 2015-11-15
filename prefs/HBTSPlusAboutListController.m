@@ -7,7 +7,7 @@
 }
 
 + (UIColor *)hb_tintColor {
-	return [UIColor colorWithRed:0.902f green:0.722f blue:0.000f alpha:1.00f];//[UIColor colorWithRed:0.196f green:0.831f blue:0.306f alpha:1.00f];
+	return [UIColor colorWithRed:0.235f green:0.671f blue:0.855f alpha:1.00f];
 }
 
 + (BOOL)hb_invertedNavigationBar {
