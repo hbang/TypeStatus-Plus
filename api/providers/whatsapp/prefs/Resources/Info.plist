@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>TypeStatusPlusMusicPrefs</string>
+	<string>TypeStatusPlusWhatsappPrefs</string>
 	<key>CFBundleIdentifier</key>
 	<string>ws.hbang.typestatusplus.whatsappprefs</string>
 	<key>CFBundleInfoDictionaryVersion</key>

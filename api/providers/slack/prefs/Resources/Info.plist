@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>TypeStatusPlusSkypePrefs</string>
+	<string>TypeStatusPlusSlackPrefs</string>
 	<key>CFBundleIdentifier</key>
 	<string>ws.hbang.typestatusplus.slackprefs</string>
 	<key>CFBundleInfoDictionaryVersion</key>
