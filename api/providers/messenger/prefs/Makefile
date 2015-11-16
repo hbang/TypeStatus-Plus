@@ -5,5 +5,6 @@ TypeStatusPlusMessengerPrefs_FILES = HBTSPlusMessengerRootListController.m
 TypeStatusPlusMessengerPrefs_INSTALL_PATH = /Library/PreferenceBundles
 TypeStatusPlusMessengerPrefs_FRAMEWORKS = UIKit
 TypeStatusPlusMessengerPrefs_PRIVATE_FRAMEWORKS = Preferences
+TypeStatusPlusMessengerPrefs_EXTRA_FRAMEWORKS = CepheiPrefs
 
 include $(THEOS_MAKE_PATH)/bundle.mk

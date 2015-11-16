@@ -2,12 +2,8 @@
 
 @implementation HBTSPlusTelegramRootListController
 
-- (NSArray *)specifiers {
-	if (!_specifiers) {
-		_specifiers = [[self loadSpecifiersFromPlistName:@"Root" target:self] retain];
-	}
-
-	return _specifiers;
++ (NSString *)hb_specifierPlist {
+	return @"Root";
 }
 
 @end

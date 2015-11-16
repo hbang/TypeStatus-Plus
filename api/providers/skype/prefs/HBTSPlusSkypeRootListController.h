@@ -1,5 +1,5 @@
-#import <Preferences/PSListController.h>
+#import <CepheiPrefs/HBRootListController.h>
 
-@interface HBTSPlusSkypeRootListController : PSListController
+@interface HBTSPlusSkypeRootListController : HBRootListController
 
 @end

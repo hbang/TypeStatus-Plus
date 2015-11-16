@@ -5,5 +5,6 @@ TypeStatusPlusTelegramPrefs_FILES = HBTSPlusTelegramRootListController.m
 TypeStatusPlusTelegramPrefs_INSTALL_PATH = /Library/PreferenceBundles
 TypeStatusPlusTelegramPrefs_FRAMEWORKS = UIKit
 TypeStatusPlusTelegramPrefs_PRIVATE_FRAMEWORKS = Preferences
+TypeStatusPlusTelegramPrefs_EXTRA_FRAMEWORKS = CepheiPrefs
 
 include $(THEOS_MAKE_PATH)/bundle.mk
