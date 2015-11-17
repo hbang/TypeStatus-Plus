@@ -6,24 +6,20 @@
 	<array>
 		<dict>
 			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>TypeStatusPlusMusicPrefs First Page</string>
-		</dict>
-		<dict>
-			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>ws.hbang.typesttatusplus.musicprefs</string>
+			<string>ws.hbang.typestatusplus.messengerprovider</string>
 			<key>key</key>
-			<string>AwesomeSwitch1</string>
+			<string>Enabled</string>
 			<key>label</key>
-			<string>Awesome Switch 1</string>
+			<string>ENABLED</string>
+			<key>PostNotification</key>
+			<string>ws.hbang.typestatusplus.messengerprefs/ReloadPrefs</string>
 		</dict>
 	</array>
 	<key>title</key>
-	<string>TypeStatusPlusMusicPrefs</string>
+	<string>Messenger</string>
 </dict>
 </plist>
