@@ -1,4 +1,4 @@
-@interface HBTSStatusBarTitleItemView : UIView
+@interface HBTSStatusBarContentItemView : UIView
 
 @property (nonatomic, retain) NSString *text;
 
@@ -8,7 +8,11 @@
 
 @property (nonatomic, retain) UIView *containerView;
 
-@property (nonatomic, retain) HBTSStatusBarTitleItemView *titleItemView;
+@property (nonatomic, retain) HBTSStatusBarContentItemView *contentItemView;
+
+@end
+
+@interface UIStatusBar: UIView
 
 @end
 
@@ -23,7 +27,8 @@
 %new
 
 - (void)typeStatusPlus_openConversation:(UIGestureRecognizer *)gestureRecognizer {
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://open?address=%@", self.titleItemView.text]]];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://open?address=%@", self.contentItemView.text]]];
+	HBLogDebug(@"The address is %@", [NSString stringWithFormat:@"sms://open?address=%@", self.contentItemView.originalContactNumber]);
 }
 
 %end
@@ -33,6 +38,8 @@
 	if ([bundleIdentifier isEqualToString:@"com.apple.accessibility.AccessibilityUIServer"] || [bundleIdentifier isEqualToString:@"com.apple.SafariViewService"]) {
 	 	return;
 	}
+
+	[[NSNotification defaul]]
 
 	%init;
 
