@@ -39,8 +39,5 @@
 	 	return;
 	}
 
-	[[NSNotification defaul]]
-
 	%init;
-
 }
