@@ -28,7 +28,6 @@
 
 - (void)typeStatusPlus_openConversation:(UIGestureRecognizer *)gestureRecognizer {
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://open?address=%@", self.contentItemView.text]]];
-	HBLogDebug(@"The address is %@", [NSString stringWithFormat:@"sms://open?address=%@", self.contentItemView.originalContactNumber]);
 }
 
 %end
