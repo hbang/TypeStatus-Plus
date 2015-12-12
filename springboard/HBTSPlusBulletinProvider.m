@@ -1,14 +1,14 @@
-#import "HBTSBulletinProvider.h"
+#import "HBTSPlusBulletinProvider.h"
 #import <BulletinBoard/BBAction.h>
 #import <BulletinBoard/BBBulletinRequest.h>
 #import <BulletinBoard/BBSectionInfo.h>
 #import <BulletinBoard/BBServer.h>
 #import <BulletinBoard/BBDataProviderIdentity.h>
 
-@implementation HBTSBulletinProvider
+@implementation HBTSPlusBulletinProvider
 
 + (instancetype)sharedInstance {
-	static HBTSBulletinProvider *sharedInstance = nil;
+	static HBTSPlusBulletinProvider *sharedInstance = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		sharedInstance = [[self alloc] init];
@@ -33,7 +33,7 @@
 		bulletinRequest.recordID = @"ws.hbang.typestatusplus.app";
 		bulletinRequest.showsUnreadIndicator = NO;
 	});
-
+/*
 	switch (type) {
 		case HBTSStatusBarTypeTyping: {
 			NSString *typingString = [freeBundle localizedStringForKey:@"TYPING" value:nil table:@"Localizable"];
@@ -48,7 +48,7 @@
 		case HBTSStatusBarTypeTypingEnded:
 			break;
 	}
-
+*/
 	bulletinRequest.message = contactName;
 	bulletinRequest.date = [NSDate date];
 	bulletinRequest.lastInterruptDate = [NSDate date];

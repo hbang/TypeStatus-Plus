@@ -1,3 +1,5 @@
+#import <rocketbootstrap/rocketbootstrap.h>
+
 @interface HBTSStatusBarContentItemView : UIView
 
 @property (nonatomic, retain) NSString *text;

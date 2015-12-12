@@ -1,7 +1,7 @@
 #import "../Global.h"
 #import <BulletinBoard/BBDataProvider.h>
 
-@interface HBTSBulletinProvider : NSObject <BBDataProvider>
+@interface HBTSPlusBulletinProvider : NSObject <BBDataProvider>
 
 + (instancetype)sharedInstance;
 

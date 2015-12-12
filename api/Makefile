@@ -7,8 +7,9 @@ include $(THEOS)/makefiles/common.mk
 FRAMEWORK_NAME = TypeStatusPlusProvider
 TypeStatusPlusProvider_FILES = Loading.xm HBTSPlusProviderController.m HBTSPlusProvider.x
 TypeStatusPlusProvider_PUBLIC_HEADERS = HBTSPlusProvider.h HBTSPlusProviderController.h
+TypeStatusPlusProvider_PRIVATE_FRAMEWORKS = AppSupport
 TypeStatusPlusProvider_EXTRA_FRAMEWORKS = Cephei
-TypeStatusPlusProvider_LIBRARIES = substrate
+TypeStatusPlusProvider_LIBRARIES = substrate rocketbootstrap
 TypeStatusPlusProvider_CFLAGS = -include ../Global.h
 
 include $(THEOS)/makefiles/framework.mk

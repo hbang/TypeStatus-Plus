@@ -1,8 +1,9 @@
-#import "HBTSBulletinProvider.h"
+#import "HBTSPlusBulletinProvider.h"
 #import <Foundation/NSDistributedNotificationCenter.h>
 #import <BulletinBoard/BBLocalDataProviderStore.h>
 #import <version.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "HBTSPlusServer.h"
 
 extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoundID, id unknown, NSDictionary *options);
 
@@ -31,14 +32,14 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 %group EddyCue
 - (void)loadAllDataProvidersAndPerformMigration:(BOOL)performMigration {
 	%orig;
-	[self addDataProvider:[HBTSBulletinProvider sharedInstance] performMigration:performMigration];
+	[self addDataProvider:[HBTSPlusBulletinProvider sharedInstance] performMigration:performMigration];
 }
 %end
 
 %group CraigFederighi
 - (void)loadAllDataProviders {
 	%orig;
-	[self addDataProvider:[HBTSBulletinProvider sharedInstance]];
+	[self addDataProvider:[HBTSPlusBulletinProvider sharedInstance]];
 }
 %end
 
@@ -72,10 +73,12 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 		%init(CraigFederighi);
 	}
 
+	[HBTSPlusServer sharedInstance];
+
 	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
 		HBTSStatusBarType type = (HBTSStatusBarType)((NSNumber *)notification.userInfo[kHBTSMessageTypeKey]).intValue;
 		NSString *sender = notification.userInfo[kHBTSMessageSenderKey];
-		[[HBTSBulletinProvider sharedInstance] showBulletinOfType:type contactName:sender];
+		[[HBTSPlusBulletinProvider sharedInstance] showBulletinOfType:type contactName:sender];
 
 		AudioServicesPlaySystemSoundWithVibration(4095, nil, @{
 			@"VibePattern": @[ @YES, @(50) ],
