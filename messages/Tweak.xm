@@ -1,48 +1,87 @@
 #import <IMFoundation/FZMessage.h>
 #import "../Global.h"
 #import <Foundation/NSDistributedNotificationCenter.h>
-#import <ChatKit/CKEntity.h>
-#import <IMCore/IMHandle.h>
+#import "HBTSPlusMessagesTypingManager.h"
+#import <ChatKit/CKConversation.h>
+#import <Cephei/CompactConstraint.h>
+#import <ChatKit/CKConversationListCell.h>
+#import <ChatKit/CKConversationList.h>
+#import <ChatKit/CKConversationListController.h>
+#import <ChatKit/CKTranscriptTypingIndicatorCell.h>
 
-static CGFloat const kHBTSPlusInlineTypingIndicatorViewTag = 38523;
+@interface CKConversationListCell ()
 
-@interface CKConversation
+@property (nonatomic, retain) CKTranscriptTypingIndicatorCell *_typeStatusPlus_typingIndicatorCell;
 
-@property (nonatomic, readonly, retain) NSString *name;
+@property (nonatomic, setter=_typeStatusPlus_setTypingIndicatorVisible:) BOOL _typeStatusPlus_typingIndicatorVisible;
+
+- (void)_typeStatusPlus_setTypingIndicatorVisible:(BOOL)visible animated:(BOOL)animated;
 
 @end
 
-@interface CKConversationListCell : UITableViewCell {
-	UILabel *_summaryLabel;
+%hook CKConversationListCell
+
+%property (nonatomic, retain) CKTranscriptTypingIndicatorCell *_typeStatusPlus_typingIndicatorCell;
+
+- (void)updateContentsForConversation:(CKConversation *)conversation {
+	%orig;
+
+	// in some situations, summaryLabel may be removed. don't do anything if that's the case
+	UILabel *summaryLabel = [self valueForKey:@"_summaryLabel"];
+	if (!summaryLabel.superview) {
+		return;
+	}
+
+	if (!self._typeStatusPlus_typingIndicatorCell) {
+		self._typeStatusPlus_typingIndicatorCell = [[CKTranscriptTypingIndicatorCell alloc] init];
+		self._typeStatusPlus_typingIndicatorCell.hidden = YES;
+		self._typeStatusPlus_typingIndicatorCell.translatesAutoresizingMaskIntoConstraints = NO;
+		[self.contentView addSubview:self._typeStatusPlus_typingIndicatorCell];
+		[self.contentView hb_addCompactConstraints:@[
+			@"typingIndicatorCell.left = summaryLabel.left-4",
+			@"typingIndicatorCell.top = summaryLabel.top+12"
+		] metrics:nil views:@{
+			@"typingIndicatorCell": self._typeStatusPlus_typingIndicatorCell,
+			@"summaryLabel": summaryLabel
+		}];
+	}
 }
 
-@property (nonatomic, retain) CKConversation *conversation;
-
-@end
-
-@interface CKConversationList : NSObject {
-	NSMutableArray *_trackedConversations;
+%new - (BOOL)_typeStatusPlus_typingIndicatorVisible {
+	return !self._typeStatusPlus_typingIndicatorCell.hidden;
 }
 
-@end
-
-@interface CKConversationListController : UITableViewController
-
-@property (nonatomic, assign) CKConversationList *conversationList;
-
-@end
-
-@interface CKTranscriptTypingIndicatorCell : UIView
-
-- (void)startPulseAnimation;
-- (void)stopPulseAnimation;
-
-@end
-
-NSString *HBTSPlusNameForHandle(NSString *handle) {
-	CKEntity *entity = [[%c(CKEntity) copyEntityForAddressString:handle] autorelease];
-	return entity.name;
+%new - (void)_typeStatusPlus_setTypingIndicatorVisible:(BOOL)visible {
+	[self _typeStatusPlus_setTypingIndicatorVisible:visible animated:YES];
 }
+
+%new - (void)_typeStatusPlus_setTypingIndicatorVisible:(BOOL)visible animated:(BOOL)animated {
+	void (^completion)() = ^{
+		UILabel *summaryLabel = [self valueForKey:@"_summaryLabel"];
+		summaryLabel.hidden = visible;
+		self._typeStatusPlus_typingIndicatorCell.hidden = !visible;
+	};
+
+	if (animated) {
+		if (visible) {
+			completion();
+			[self._typeStatusPlus_typingIndicatorCell startGrowAnimation];
+			[self._typeStatusPlus_typingIndicatorCell startPulseAnimation];
+		} else {
+			[self._typeStatusPlus_typingIndicatorCell startShrinkAnimation];
+			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.20 * NSEC_PER_SEC)), dispatch_get_main_queue(), completion);
+		}
+	} else {
+		completion();
+	}
+}
+
+- (void)prepareForReuse {
+	%orig;
+	[self _typeStatusPlus_setTypingIndicatorVisible:NO animated:NO];
+}
+
+%end
 
 %hook CKConversationListController
 
@@ -53,67 +92,47 @@ NSString *HBTSPlusNameForHandle(NSString *handle) {
 	return self;
 }
 
-/* TODO: make it so that the indicator does not appear on other cells while scrolling
 - (CKConversationListCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	CKConversationListCell *cell = %orig;
+
+	cell._typeStatusPlus_typingIndicatorVisible = [[HBTSPlusMessagesTypingManager sharedInstance] conversationIsTyping:cell.conversation];
+
 	return cell;
 }
-*/
 
 %new - (void)typeStatusPlus_addInlineBubble:(NSNotification *)notification {
 	NSString *senderName = notification.userInfo[kHBTSMessageSenderKey];
 	BOOL isTyping = [notification.userInfo[kHBTSMessageIsTypingKey] boolValue];
 
-	CKConversationListCell *cell;
-	for (CKConversationListCell *conversationCell in [self.tableView visibleCells]) {
-		if (conversationCell.conversation && conversationCell.conversation.name && [conversationCell.conversation.name isEqualToString:HBTSPlusNameForHandle(senderName)]) {
-			cell = conversationCell;
-			break;
-		}
-	}
+	NSArray *trackedConversations = [self.conversationList valueForKey:@"_trackedConversations"];
+	for (int i = 0; i < trackedConversations.count; i++) {
+		CKConversation *conversation = trackedConversations[i];
+		if (conversation && [conversation.name isEqualToString:[[HBTSPlusMessagesTypingManager sharedInstance] nameForHandle:senderName]]) {
+			if (isTyping) {
+				[[HBTSPlusMessagesTypingManager sharedInstance] addConversation:conversation];
+			} else {
+				[[HBTSPlusMessagesTypingManager sharedInstance] removeConversation:conversation];
+			}
 
-	if (cell) {
-		if (isTyping) {
-			UILabel *summaryLabel = [cell valueForKey:@"_summaryLabel"];
+			NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:2];
 
-			CKTranscriptTypingIndicatorCell *typingIndicator = [[%c(CKTranscriptTypingIndicatorCell) alloc] init];
-			typingIndicator.alpha = 0.0;
-			typingIndicator.tag = kHBTSPlusInlineTypingIndicatorViewTag;
-			typingIndicator.frame = CGRectMake(summaryLabel.frame.origin.x-4, summaryLabel.frame.origin.y+12, summaryLabel.frame.size.width, summaryLabel.frame.size.height);
-			[typingIndicator startPulseAnimation];
-			[cell.contentView addSubview:typingIndicator];
+			CKConversationListCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+			cell._typeStatusPlus_typingIndicatorVisible = [[HBTSPlusMessagesTypingManager sharedInstance] conversationIsTyping:cell.conversation];
 
-			[UIView animateWithDuration:0.5 animations:^{
-				summaryLabel.alpha = 0.0;
-				typingIndicator.alpha = 1.0;
-			}];
-
-			[self performSelector:@selector(typeStatusPlus_removeInlineBubbleForCell:) withObject:cell afterDelay:5];
-		} else {
-			[self performSelector:@selector(typeStatusPlus_removeInlineBubbleForCell:) withObject:cell];
+			[self performSelector:@selector(typeStatusPlus_removeConversation:) withObject:conversation afterDelay:5.0];
 		}
 	}
 }
 
-%new
+%new - (void)typeStatusPlus_removeConversation:(CKConversation *)conversation {
+	NSArray *trackedConversations = [self.conversationList valueForKey:@"_trackedConversations"];
 
-- (void)typeStatusPlus_removeInlineBubbleForCell:(CKConversationListCell *)cell {
-	if (cell) {
-		CKTranscriptTypingIndicatorCell *indicatorCell = [cell viewWithTag:kHBTSPlusInlineTypingIndicatorViewTag];
-		if (indicatorCell) {
-			UILabel *summaryLabel = [cell valueForKey:@"_summaryLabel"];
+	[[HBTSPlusMessagesTypingManager sharedInstance] removeConversation:conversation];
 
-			[UIView animateWithDuration:0.5 animations:^{
-				[indicatorCell stopPulseAnimation];
-				indicatorCell.alpha = 0.0;
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[trackedConversations indexOfObject:conversation] inSection:2];
 
-				summaryLabel.alpha = 1.0;
-			} completion:^(BOOL completion) {
-				[indicatorCell removeFromSuperview];
-				[indicatorCell release];
-			}];
-		}
-	}
+	CKConversationListCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+	cell._typeStatusPlus_typingIndicatorVisible = [[HBTSPlusMessagesTypingManager sharedInstance] conversationIsTyping:cell.conversation];
 }
 
 %end

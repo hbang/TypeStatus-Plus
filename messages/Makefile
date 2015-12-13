@@ -1,7 +1,9 @@
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = TypeStatusPlusMessages
-TypeStatusPlusMessages_FILES = Tweak.xm
+TypeStatusPlusMessages_FILES = Tweak.xm HBTSPlusMessagesTypingManager.x
+TypeStatusPlusMessages_PRIVATE_FRAMEWORKS = ChatKit
+TypeStatusPlusMessages_EXTRA_FRAMEWORKS = Cephei
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
