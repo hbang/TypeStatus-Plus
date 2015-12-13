@@ -10,16 +10,16 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>ws.hbang.typestatusplus.whatsappprovider</string>
+			<string>ws.hbang.typestatusplusprovider.music</string>
 			<key>key</key>
 			<string>Enabled</string>
 			<key>label</key>
 			<string>ENABLED</string>
 			<key>PostNotification</key>
-			<string>ws.hbang.typestatusplus.whatsappprefs/ReloadPrefs</string>
+			<string>ws.hbang.typestatusplusprovider.music/ReloadPrefs</string>
 		</dict>
 	</array>
 	<key>title</key>
-	<string>Whatsapp</string>
+	<string>Music</string>
 </dict>
 </plist>

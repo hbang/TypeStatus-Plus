@@ -3,7 +3,7 @@
 @implementation HBTSPlusMessengerRootListController
 
 + (NSString *)hb_specifierPlist {
-	return @"Root";
+	return @"Messenger";
 }
 
 + (UIColor *)hb_tintColor {

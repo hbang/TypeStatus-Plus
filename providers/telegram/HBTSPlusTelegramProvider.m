@@ -5,7 +5,7 @@
 - (id)init {
 	if (self = [super init]) {
 		self.name = @"Telegram";
-		self.preferencesBundle = [[NSBundle bundleWithPath:@"/Library/PreferenceBundles/TypeStatusPlusTelegramPrefs.bundle/"] retain];
+		self.preferencesBundle = [[NSBundle bundleWithPath:@"/Library/PreferenceBundles/TypeStatusPlusProvider.bundle/"] retain];
 		self.preferencesClass = @"HBTSPlusTelegramRootListController";
 	}
 	return self;

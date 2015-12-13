@@ -3,7 +3,7 @@
 @implementation HBTSPlusSkypeRootListController
 
 + (NSString *)hb_specifierPlist {
-	return @"Root";
+	return @"Skype";
 }
 
 + (UIColor *)hb_tintColor {

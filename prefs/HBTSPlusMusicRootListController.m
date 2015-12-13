@@ -3,15 +3,15 @@
 @implementation HBTSPlusMusicRootListController
 
 + (NSString *)hb_shareText {
-	return @"The TypeStatus Plus Provider API allows me to see songs changing at a glance. Available now on the BigBoss repo.";
+	return @"TypeStatus Plus allows me to see songs changing at a glance. Available now on the BigBoss repo.";
 }
 
 + (NSURL *)hb_shareURL {
-	return [NSURL URLWithString:@"https://typestatus.com"];
+	return [NSURL URLWithString:@"https://typestatus.com/"];
 }
 
 + (NSString *)hb_specifierPlist {
-	return @"Root";
+	return @"Music";
 }
 
 + (UIColor *)hb_tintColor {

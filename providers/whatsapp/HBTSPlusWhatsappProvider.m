@@ -1,12 +1,12 @@
-#import "HBTSPlusWhatsappProvider.h"
+#import "HBTSPlusWhatsAppProvider.h"
 
-@implementation HBTSPlusWhatsappProvider
+@implementation HBTSPlusWhatsAppProvider
 
 - (id)init {
 	if (self = [super init]) {
-		self.name = @"Whatsapp";
-		self.preferencesBundle = [[NSBundle bundleWithPath:@"/Library/PreferenceBundles/TypeStatusPlusWhatsappPrefs.bundle/"] retain];
-		self.preferencesClass = @"HBTSPlusWhatsappRootListController";
+		self.name = @"WhatsApp";
+		self.preferencesBundle = [[NSBundle bundleWithPath:@"/Library/PreferenceBundles/TypeStatusPlusProvider.bundle/"] retain];
+		self.preferencesClass = @"HBTSPlusWhatsAppRootListController";
 	}
 	return self;
 }

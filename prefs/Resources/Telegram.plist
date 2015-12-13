@@ -10,16 +10,16 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>ws.hbang.typestatusplus.skypeprovider</string>
+			<string>ws.hbang.typestatusplusprovider.telegram</string>
 			<key>key</key>
 			<string>Enabled</string>
 			<key>label</key>
 			<string>ENABLED</string>
 			<key>PostNotification</key>
-			<string>ws.hbang.typestatusplus.skypeprefs/ReloadPrefs</string>
+			<string>ws.hbang.typestatusplusprovider.telegram/ReloadPrefs</string>
 		</dict>
 	</array>
 	<key>title</key>
-	<string>Skype</string>
+	<string>Telegram</string>
 </dict>
 </plist>

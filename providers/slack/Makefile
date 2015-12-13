@@ -11,5 +11,3 @@ TypeStatusPlusSlack_EXTRA_FRAMEWORKS = TypeStatusPlusProvider
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 include $(THEOS_MAKE_PATH)/tweak.mk
-SUBPROJECTS += prefs
-include $(THEOS_MAKE_PATH)/aggregate.mk

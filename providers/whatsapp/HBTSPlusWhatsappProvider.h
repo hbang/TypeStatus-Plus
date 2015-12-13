@@ -1,5 +1,5 @@
 #import <TypeStatusPlusProvider/HBTSPlusProvider.h>
 
-@interface HBTSPlusWhatsappProvider : HBTSPlusProvider
+@interface HBTSPlusWhatsAppProvider : HBTSPlusProvider
 
 @end

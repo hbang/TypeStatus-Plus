@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>TypeStatusPlusTelegramPrefs</string>
+	<string>TypeStatusPlusProvider</string>
 	<key>CFBundleIdentifier</key>
-	<string>ws.hbang.typestatusplus.telegramprefs</string>
+	<string>ws.hbang.typestatusplusproviderprefs</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -18,7 +18,5 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
-	<key>NSPrincipalClass</key>
-	<string>HBTSPlusTelegramRootListController</string>
 </dict>
 </plist>

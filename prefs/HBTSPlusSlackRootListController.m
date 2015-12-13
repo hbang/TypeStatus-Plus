@@ -3,7 +3,7 @@
 @implementation HBTSPlusSlackRootListController
 
 + (NSString *)hb_specifierPlist {
-	return @"Root";
+	return @"Slack";
 }
 
 + (UIColor *)hb_tintColor {

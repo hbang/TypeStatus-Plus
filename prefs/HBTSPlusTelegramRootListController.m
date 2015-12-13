@@ -3,7 +3,7 @@
 @implementation HBTSPlusTelegramRootListController
 
 + (NSString *)hb_specifierPlist {
-	return @"Root";
+	return @"Telegram";
 }
 
 + (UIColor *)hb_tintColor {

@@ -3,7 +3,7 @@
 @implementation HBTSPlusSnapchatRootListController
 
 + (NSString *)hb_specifierPlist {
-	return @"Root";
+	return @"Snapchat";
 }
 
 + (UIColor *)hb_tintColor {

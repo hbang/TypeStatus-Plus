@@ -1,9 +1,9 @@
-#include "HBTSPlusWhatsappRootListController.h"
+#include "HBTSPlusWhatsAppRootListController.h"
 
-@implementation HBTSPlusWhatsappRootListController
+@implementation HBTSPlusWhatsAppRootListController
 
 + (NSString *)hb_specifierPlist {
-	return @"Root";
+	return @"WhatsApp";
 }
 
 + (UIColor *)hb_tintColor {

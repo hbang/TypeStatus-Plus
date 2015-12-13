@@ -10,16 +10,16 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>ws.hbang.typestatusplus.slackprovider</string>
+			<string>ws.hbang.typestatusplusprovider.snapchat</string>
 			<key>key</key>
 			<string>Enabled</string>
 			<key>label</key>
 			<string>ENABLED</string>
 			<key>PostNotification</key>
-			<string>ws.hbang.typestatusplus.slackprefs/ReloadPrefs</string>
+			<string>ws.hbang.typestatusplusprovider.snapchat/ReloadPrefs</string>
 		</dict>
 	</array>
 	<key>title</key>
-	<string>Slack</string>
+	<string>Snapchat</string>
 </dict>
 </plist>

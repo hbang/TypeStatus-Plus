@@ -3,12 +3,12 @@
 <plist version="1.0">
 	<dict>
 		<key>HBPackageIdentifier</key>
-		<string>ws.hbang.typestatuspluswhatsappprovider</string>
+		<string>ws.hbang.typestatusplusproviders</string>
 		<key>HBTSApplicationBundleIdentifier</key>
 		<string>net.whatsapp.WhatsApp</string>
 		<key>HBTSKeepApplicationAlive</key>
 		<false/>
 		<key>NSPrincipalClass</key>
-		<string>HBTSPlusWhatsappProvider</string>
+		<string>HBTSPlusWhatsAppProvider</string>
 	</dict>
 </plist>

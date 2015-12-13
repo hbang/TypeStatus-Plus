@@ -7,5 +7,3 @@ Music_EXTRA_FRAMEWORKS = TypeStatusPlusProvider
 Music_INSTALL_PATH = /Library/TypeStatus/Providers
 
 include $(THEOS_MAKE_PATH)/bundle.mk
-SUBPROJECTS += prefs
-include $(THEOS_MAKE_PATH)/aggregate.mk

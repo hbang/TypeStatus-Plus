@@ -7,7 +7,7 @@
 		NSDictionary *userInfo = notification.userInfo;
 		NSInteger state = ((NSNumber *)userInfo[@"State"]).integerValue;
 		if (state == 1) {
-			[HBTSPlusProvider showNotificationWithIconName:@"WhatsappIcon" title:@"Typing:" content:userInfo[@"JID"]];
+			[HBTSPlusProvider showNotificationWithIconName:@"WhatsAppIcon" title:@"Typing:" content:userInfo[@"JID"]];
 		} else if (state == 0) {
 			[HBTSPlusProvider hideNotification];
 		}
