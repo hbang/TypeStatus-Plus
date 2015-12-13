@@ -4,6 +4,7 @@
 #import <version.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "HBTSPlusServer.h"
+#import "HBTSPlusTapToOpenController.h"
 
 extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoundID, id unknown, NSDictionary *options);
 
@@ -66,6 +67,7 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 
 %ctor {
 	[HBTSPlusServer sharedInstance];
+	[HBTSPlusTapToOpenController sharedInstance];
 
 	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
 		HBTSStatusBarType type = (HBTSStatusBarType)((NSNumber *)notification.userInfo[kHBTSMessageTypeKey]).intValue;

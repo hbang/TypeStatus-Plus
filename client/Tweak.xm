@@ -1,22 +1,6 @@
 #import <rocketbootstrap/rocketbootstrap.h>
-
-@interface HBTSStatusBarContentItemView : UIView
-
-@property (nonatomic, retain) NSString *text;
-
-@end
-
-@interface HBTSStatusBarForegroundView : UIView
-
-@property (nonatomic, retain) UIView *containerView;
-
-@property (nonatomic, retain) HBTSStatusBarContentItemView *contentItemView;
-
-@end
-
-@interface UIStatusBar: UIView
-
-@end
+#import <AppSupport/CPDistributedMessagingCenter.h>
+#import "../typestatus-private/HBTSStatusBarForegroundView.h"
 
 %hook HBTSStatusBarForegroundView
 
@@ -29,7 +13,11 @@
 %new
 
 - (void)typeStatusPlus_openConversation:(UIGestureRecognizer *)gestureRecognizer {
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://open?address=%@", self.contentItemView.text]]];
+	HBLogDebug(@"Status bar tapped—sending notification");
+
+	CPDistributedMessagingCenter *distributedCenter = [CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName];
+	rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
+	[distributedCenter sendMessageName:kHBTSPlusServerStatusBarTappedNotificationName userInfo:nil];
 }
 
 %end
