@@ -11,12 +11,16 @@
 		kHBTSPlusMessageIconNameKey: iconName ?: @""
 	};
 
+	HBLogDebug(@"Posting message on client side.");
+
 	CPDistributedMessagingCenter *distributedCenter = [CPDistributedMessagingCenter centerNamed:HBTSPlusServerName];
 	rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
 	NSError *error = nil;
 	[distributedCenter sendMessageAndReceiveReplyName:HBTSPlusServerSetStatusBarNotificationName userInfo:userInfo error:&error];
 
-	HBLogError(@"%@", error);
+	if (error) {
+		HBLogError(@"%@", error);
+	}
 }
 
 + (void)hideNotification {

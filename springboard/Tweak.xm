@@ -65,14 +65,6 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 #pragma mark - Constructor
 
 %ctor {
-	%init;
-
-	if (IS_IOS_OR_NEWER(iOS_9_0)) {
-		%init(EddyCue);
-	} else {
-		%init(CraigFederighi);
-	}
-
 	[HBTSPlusServer sharedInstance];
 
 	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
@@ -85,4 +77,12 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 			@"Intensity": @1
 		});
 	}];
+
+	%init;
+
+	if (IS_IOS_OR_NEWER(iOS_9_0)) {
+		%init(EddyCue);
+	} else {
+		%init(CraigFederighi);
+	}
 }
