@@ -20,13 +20,15 @@
 		CPDistributedMessagingCenter *distributedCenter = [CPDistributedMessagingCenter centerNamed:HBTSPlusServerName];
 		rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
 		[distributedCenter runServerOnCurrentThread];
-		[distributedCenter registerForMessageName:HBTSPlusServerSetStatusBarNotificationName target:self selector:@selector(receivedMessage:withUserInfo:)];
+
+		[distributedCenter registerForMessageName:HBTSPlusServerSetStatusBarNotificationName target:self selector:@selector(receivedSetStatusBarMessage:withUserInfo:)];
+		[distributedCenter registerForMessageName:HBTSPlusServerHideStatusBarNotificationName target:self selector:@selector(receivedHideStatusBarMessage:withUserInfo:)];
 	}
 	return self;
 }
 
-- (NSDictionary *)receivedMessage:(NSString *)message withUserInfo:(NSDictionary *)userInfo {
-	HBLogDebug(@"Recieved message on server side.");
+- (NSDictionary *)receivedSetStatusBarMessage:(NSString *)message withUserInfo:(NSDictionary *)userInfo {
+	HBLogDebug(@"Recieved set message on server side.");
 
 	NSString *title = userInfo[kHBTSPlusMessageTitleKey];
 	NSString *content = userInfo[kHBTSPlusMessageContentKey];
@@ -34,7 +36,15 @@
 
 	[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:iconName title:title content:content];
 
-	return @{};
+	return nil;
+}
+
+- (NSDictionary *)receivedHideStatusBarMessage:(NSString *)message withUserInfo:(NSDictionary *)userInfo {
+	HBLogDebug(@"Recieved hide message on server side.");
+
+	[%c(HBTSStatusBarAlertServer) hide];
+
+	return nil;
 }
 
 @end

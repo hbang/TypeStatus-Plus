@@ -29,6 +29,7 @@ static NSString *const HBTSSpringBoardReceivedMessageNotification = @"HBTSSpring
 
 static NSString *const HBTSPlusServerName = @"ws.hbang.typestatusplus";
 static NSString *const HBTSPlusServerSetStatusBarNotificationName = @"HBTSPlusServerSetStatusBarNotificationName";
+static NSString *const HBTSPlusServerHideStatusBarNotificationName = @"HBTSPlusServerHideStatusBarNotificationName";
 
 static NSString *const kHBTSPlusMessageTitleKey = @"Title";
 static NSString *const kHBTSPlusMessageContentKey = @"Content";
