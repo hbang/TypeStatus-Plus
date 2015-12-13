@@ -17,12 +17,12 @@
 
 - (instancetype)init {
 	if (self = [super init]) {
-		CPDistributedMessagingCenter *distributedCenter = [CPDistributedMessagingCenter centerNamed:HBTSPlusServerName];
+		CPDistributedMessagingCenter *distributedCenter = [CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName];
 		rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
 		[distributedCenter runServerOnCurrentThread];
 
-		[distributedCenter registerForMessageName:HBTSPlusServerSetStatusBarNotificationName target:self selector:@selector(receivedSetStatusBarMessage:withUserInfo:)];
-		[distributedCenter registerForMessageName:HBTSPlusServerHideStatusBarNotificationName target:self selector:@selector(receivedHideStatusBarMessage:withUserInfo:)];
+		[distributedCenter registerForMessageName:kHBTSPlusServerSetStatusBarNotificationName target:self selector:@selector(receivedSetStatusBarMessage:withUserInfo:)];
+		[distributedCenter registerForMessageName:kHBTSPlusServerHideStatusBarNotificationName target:self selector:@selector(receivedHideStatusBarMessage:withUserInfo:)];
 	}
 	return self;
 }

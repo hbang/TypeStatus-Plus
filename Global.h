@@ -27,9 +27,10 @@ static NSTimeInterval const kHBTSTypingTimeout = 60.0;
 static NSString *const HBTSClientSetStatusBarNotification = @"HBTSClientSetStatusBar";
 static NSString *const HBTSSpringBoardReceivedMessageNotification = @"HBTSSpringBoardReceivedMessageNotification";
 
-static NSString *const HBTSPlusServerName = @"ws.hbang.typestatusplus";
-static NSString *const HBTSPlusServerSetStatusBarNotificationName = @"HBTSPlusServerSetStatusBarNotificationName";
-static NSString *const HBTSPlusServerHideStatusBarNotificationName = @"HBTSPlusServerHideStatusBarNotificationName";
+static NSString *const kHBTSPlusServerName = @"ws.hbang.typestatusplus";
+static NSString *const kHBTSPlusServerSetStatusBarNotificationName = @"HBTSPlusServerSetStatusBarNotificationName";
+static NSString *const kHBTSPlusServerHideStatusBarNotificationName = @"HBTSPlusServerHideStatusBarNotificationName";
+static NSString *const kHBTSPlusServerStatusBarTappedNotificationName = @"HBTSPlusServerHideStatusBarNotificationName";
 
 static NSString *const kHBTSPlusMessageTitleKey = @"Title";
 static NSString *const kHBTSPlusMessageContentKey = @"Content";
