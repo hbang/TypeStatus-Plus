@@ -32,8 +32,8 @@
 		NSString *userDisplayName = [user displayName];
 		NSString *channelDisplayName = [channel displayTitle];
 
-		NSString *contentString = [NSString stringWithFormat:@"%@ is typing%@", userDisplayName, channel ? [NSString stringWithFormat:@" in %@",channelDisplayName] : @""];
+		NSString *contentString = [NSString stringWithFormat:@"is typing%@", channel ? [NSString stringWithFormat:@" in %@",channelDisplayName] : @""];
 
-		[HBTSPlusProvider showNotificationWithIconName:@"Slack" title:@"Slack:" content:contentString];
+		[HBTSPlusProvider showNotificationWithIconName:@"TypeStatusPlusSlack" title:userDisplayName content:contentString];
 	}];
 }
