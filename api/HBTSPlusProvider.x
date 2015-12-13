@@ -15,12 +15,7 @@
 
 	CPDistributedMessagingCenter *distributedCenter = [CPDistributedMessagingCenter centerNamed:HBTSPlusServerName];
 	rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
-	NSError *error = nil;
-	[distributedCenter sendMessageAndReceiveReplyName:HBTSPlusServerSetStatusBarNotificationName userInfo:userInfo error:&error];
-
-	if (error) {
-		HBLogError(@"hideNotification—%@", error);
-	}
+	[distributedCenter sendMessageName:HBTSPlusServerSetStatusBarNotificationName userInfo:userInfo];
 }
 
 + (void)hideNotification {
@@ -28,12 +23,7 @@
 
 	CPDistributedMessagingCenter *distributedCenter = [CPDistributedMessagingCenter centerNamed:HBTSPlusServerName];
 	rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
-	NSError *error = nil;
-	[distributedCenter sendMessageAndReceiveReplyName:HBTSPlusServerHideStatusBarNotificationName userInfo:nil error:&error];
-
-	if (error) {
-		HBLogError(@"showNotification—%@", error);
-	}
+	[distributedCenter sendMessageName:HBTSPlusServerHideStatusBarNotificationName userInfo:nil];
 }
 
 @end
