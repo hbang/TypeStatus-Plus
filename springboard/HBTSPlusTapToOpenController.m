@@ -26,7 +26,14 @@
 
 - (void)newMessageRecieved:(NSNotification *)notification {
 	[_currentSender release];
-	_currentSender = [[notification.userInfo[kHBTSMessageSenderKey] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]] copy];
+
+	NSString *rawSender = notification.userInfo[kHBTSMessageSenderKey];
+
+	if (!rawSender) {
+		return;
+	}
+
+	_currentSender = [[rawSender stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]] copy];
 }
 
 - (NSDictionary *)receivedStatusBarTappedMessage:(NSString *)message withUserInfo:(NSDictionary *)userInfo {
@@ -39,6 +46,7 @@
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://open?address=%@", _currentSender]]];
 
 	[_currentSender release];
+	_currentSender = nil;
 
 	return nil;
 }
