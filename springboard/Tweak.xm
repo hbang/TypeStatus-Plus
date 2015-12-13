@@ -53,11 +53,13 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 - (void)applicationDidFinishLaunching:(id)application {
 	%orig;
 
-	/*SBIconViewMap *map = [%c(SBIconViewMap) homescreenMap];
+	SBIconViewMap *map = [%c(SBIconViewMap) homescreenMap];
 	SBIconModel *iconModel = MSHookIvar<SBIconModel *>(map, "_model");
 	SBIcon *icon = iconModel.leafIconsByIdentifier[@"com.apple.MobileSMS"];
 	long badgeCount = [icon badgeValue];
-	HBLogDebug(@"The badge count is: %li", badgeCount);*/
+	HBLogDebug(@"The badge count is: %li", badgeCount);
+
+
 
 }
 
@@ -66,6 +68,8 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 #pragma mark - Constructor
 
 %ctor {
+	dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
+
 	[HBTSPlusServer sharedInstance];
 	[HBTSPlusTapToOpenController sharedInstance];
 
