@@ -11,9 +11,12 @@
 		kHBTSPlusMessageIconNameKey: iconName ?: @""
 	};
 
-	CPDistributedMessagingCenter *distributedCenter = [CPDistributedMessagingCenter centerNamed:HBTSPluskern_return_tServerName];
+	CPDistributedMessagingCenter *distributedCenter = [CPDistributedMessagingCenter centerNamed:HBTSPlusServerName];
 	rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
-	[distributedCenter sendMessageAndReceiveReplyName:HBTSPlusServerSetStatusBarNotificationName userInfo:userInfo];
+	NSError *error = nil;
+	[distributedCenter sendMessageAndReceiveReplyName:HBTSPlusServerSetStatusBarNotificationName userInfo:userInfo error:&error];
+
+	HBLogError(@"%@", error);
 }
 
 + (void)hideNotification {
