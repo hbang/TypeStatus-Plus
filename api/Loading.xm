@@ -8,7 +8,7 @@
 
 %hook SBApplication
 
-- (BOOL)supportsContinuousBackgroundMode {
+- (BOOL)supportsVOIPBackgroundMode {
 	for (NSString *identifier in [HBTSPlusProviderController sharedInstance].appsRequiringBackgroundSupport) {
 		if ([[self bundleIdentifier] isEqualToString:identifier]) {
 			return YES;
