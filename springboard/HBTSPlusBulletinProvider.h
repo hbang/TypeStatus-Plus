@@ -5,6 +5,6 @@
 
 + (instancetype)sharedInstance;
 
-- (void)showBulletinOfType:(HBTSStatusBarType)type contactName:(NSString *)contactName;
+- (void)showBulletinWithTitle:(NSString *)title content:(NSString *)content;
 
 @end

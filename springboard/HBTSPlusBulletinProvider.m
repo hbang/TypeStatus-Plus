@@ -17,11 +17,8 @@
 	return sharedInstance;
 }
 
-- (void)showBulletinOfType:(HBTSStatusBarType)type contactName:(NSString *)contactName {
+- (void)showBulletinWithTitle:(NSString *)title content:(NSString *)content {
 	BBDataProviderWithdrawBulletinsWithRecordID(self, @"ws.hbang.typestatusplus.notification");
-	if (!contactName) {
-		return;
-	}
 
 	static BBBulletinRequest *bulletinRequest = nil;
 	static dispatch_once_t onceToken;
@@ -33,23 +30,9 @@
 		bulletinRequest.recordID = @"ws.hbang.typestatusplus.app";
 		bulletinRequest.showsUnreadIndicator = NO;
 	});
-/*
-	switch (type) {
-		case HBTSStatusBarTypeTyping: {
-			NSString *typingString = [freeBundle localizedStringForKey:@"TYPING" value:nil table:@"Localizable"];
-			bulletinRequest.title = [typingString substringToIndex:typingString.length-(typingString.length>0)];
-			break;
-		}
-		case HBTSStatusBarTypeRead: {
-			NSString *readString = [freeBundle localizedStringForKey:@"READ" value:nil table:@"Localizable"];
-			bulletinRequest.title = [readString substringToIndex:readString.length-(readString.length>0)];
-			break;
-		}
-		case HBTSStatusBarTypeTypingEnded:
-			break;
-	}
-*/
-	bulletinRequest.message = contactName;
+
+	bulletinRequest.title = title;
+	bulletinRequest.message = content;
 	bulletinRequest.date = [NSDate date];
 	bulletinRequest.lastInterruptDate = [NSDate date];
 	bulletinRequest.defaultAction = [BBAction actionWithLaunchBundleID:@"com.apple.MobileSMS" callblock:nil];

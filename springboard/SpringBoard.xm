@@ -90,9 +90,10 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 	[HBTSPlusTapToOpenController sharedInstance];
 
 	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
-		HBTSStatusBarType type = (HBTSStatusBarType)((NSNumber *)notification.userInfo[kHBTSMessageTypeKey]).intValue;
-		NSString *sender = notification.userInfo[kHBTSMessageSenderKey];
-		[[HBTSPlusBulletinProvider sharedInstance] showBulletinOfType:type contactName:sender];
+
+		NSString *titleKey = notification.userInfo[kHBTSPlusMessageTitleKey];
+		NSString *content = notification.userInfo[kHBTSPlusMessageContentKey];
+		[[HBTSPlusBulletinProvider sharedInstance] showBulletinWithTitle:titleKey content:content];
 
 		AudioServicesPlaySystemSoundWithVibration(4095, nil, @{
 			@"VibePattern": @[ @YES, @(50) ],
@@ -100,11 +101,11 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 		});
 	}];
 
-	%init;
-
 	if (IS_IOS_OR_NEWER(iOS_9_0)) {
 		%init(EddyCue);
 	} else {
 		%init(CraigFederighi);
 	}
+
+	%init;
 }
