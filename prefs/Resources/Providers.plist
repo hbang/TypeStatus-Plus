@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>id</key>
+			<string>ProvidersGroupCell</string>
+			<key>label</key>
+			<string>Providers</string>
+			<key>footerText</key>
+			<string>Providers allow HASHBANG Productions and other developers to support TypeStatus Plus with any app.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>id</key>
+			<string>ProvidersNoneInstalledGroupCell</string>
+			<key>label</key>
+			<string>Providers</string>
+			<key>footerText</key>
+			<string>Visit Cydia to find and install providers for TypeStatus Plus!</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>General</string>
+</dict>
+</plist>

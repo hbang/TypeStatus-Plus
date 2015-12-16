@@ -1,7 +1,4 @@
 #include "HBTSPlusRootListController.h"
-#import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
-#import <TypeStatusPlusProvider/HBTSPlusProvider.h>
-#import <Preferences/PSSpecifier.h>
 #import <UIKit/UIImage+Private.h>
 #import <CepheiPrefs/HBSupportController.h>
 
