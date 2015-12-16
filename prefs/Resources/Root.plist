@@ -5,38 +5,54 @@
 	<key>items</key>
 	<array>
 		<dict>
-		    <key>cell</key>
-		    <string>PSGroupCell</string>
-		    <key>headerCellClass</key>
-		    <string>HBPackageNameHeaderCell</string>
-		    <key>packageIdentifier</key>
-		    <string>ws.hbang.typestatusplus</string>
-		    <key>showVersion</key>
-		    <false/>
-		    <key>bigBeautifulBanner</key>
-		    <true/>
-		    <key>firstColor</key>
-		    <string>#67bde2</string>
-		    <key>secondColor</key>
-		    <string>#51b4de</string>
-		    <key>thirdColor</key>
-		    <string>#28a1d4</string>
-		    <key>fourthColor</key>
-		    <string>#2491bf</string>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>headerCellClass</key>
+			<string>HBImageTableCell</string>
+			<key>height</key>
+			<integer>175</integer>
+			<key>icon</key>
+			<string>header.png</string>
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSGroupCell</string>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>ws.hbang.typestatusplus</string>
+			<key>key</key>
+			<string>Enabled</string>
+			<key>label</key>
+			<string>Enabled</string>
+			<key>icon</key>
+			<string>enable.png</string>
+			<key>PostNotification</key>
+			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>detail</key>
-			<string>HBTSPlusConfigurationGeneralListController</string>
+			<string>HBTSPlusSettingsListController</string>
 			<key>icon</key>
-			<string>general</string>
+			<string>advanced</string>
 			<key>label</key>
-			<string>General</string>
+			<string>Settings</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>detail</key>
+			<string>HBTSPlusSettingsListController</string>
+			<key>icon</key>
+			<string>providers</string>
+			<key>label</key>
+			<string>Providers</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -44,32 +60,48 @@
 			<key>detail</key>
 			<string>HBTSPlusAboutListController</string>
 			<key>icon</key>
-			<string>about</string>
+			<string>makers</string>
 			<key>label</key>
 			<string>About</string>
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>id</key>
-			<string>ProvidersGroupCell</string>
+			<string>PSLinkCell</string>
 			<key>label</key>
-			<string>Providers</string>
-			<key>footerText</key>
-			<string>These providers allow developers (including HASHBANG) to add support to TypeStatus Plus.</string>
+			<string>Support</string>
+			<key>icon</key>
+			<string>support.png</string>
+			<key>action</key>
+			<string>showSupportEmailController</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>id</key>
-			<string>ProvidersNoneInstalledGroupCell</string>
-			<key>label</key>
-			<string>Providers</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>headerCellClass</key>
+			<string>HBImageTableCell</string>
+			<key>height</key>
+			<integer>100</integer>
+			<key>icon</key>
+			<string>footerlogo.png</string>
 			<key>footerText</key>
-			<string>View Cydia or the HASHBANG website to find and install providers for TypeStatus Plus!</string>
+			<string>Copyright &#169; 2015-2016 HASHBANG Productions</string>
+			<key>footerAlignment</key>
+			<integer>1</integer>
 		</dict>
 	</array>
 	<key>title</key>
-	<string>Plus</string>
+	<string>TypeStatus Plus</string>
 </dict>
 </plist>
