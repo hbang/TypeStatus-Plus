@@ -25,8 +25,6 @@
 	static dispatch_once_t predicate;
 	   dispatch_once(&predicate, ^{
 
-		HBLogInfo(@"loading providers");
-
 		NSString *providerPath = @"/Library/TypeStatus/Providers";
 		NSError *error = nil;
 		NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL URLWithString:providerPath] includingPropertiesForKeys:nil options:kNilOptions error:&error];
@@ -39,16 +37,16 @@
 		for (NSURL *directory in contents) {
 			NSString *baseName = directory.pathComponents.lastObject;
 
-			HBLogInfo(@"loading %@", baseName);
-
 			NSBundle *bundle = [NSBundle bundleWithURL:directory];
-
-			HBLogInfo(@"The bundle info is %@", bundle.infoDictionary);
 
 			if (!bundle) {
 				HBLogError(@"failed to load bundle for provider %@", baseName);
 				continue;
 			}
+
+			/*if (![[NSBundle mainBundle].bundleIdentifier isEqualToString:bundle.infoDictionary[kTypeStatusPlusIdentifierString]]) {
+				continue;
+			}*/
 
 			[bundle load];
 
@@ -59,20 +57,19 @@
 
 			if (bundle.infoDictionary[kTypeStatusPlusIdentifierString] && [bundle.infoDictionary[kTypeStatusPlusBackgroundingString] boolValue]) {
 				[_appsRequiringBackgroundSupport addObject:bundle.infoDictionary[kTypeStatusPlusIdentifierString]];
-				continue;
+				HBLogInfo(@"The bundle %@ requires backgrounding support", baseName);
 			}
-
-			HBLogInfo(@"The info dictionary of the bundle just loaded is %@", bundle.infoDictionary);
 
 			HBTSPlusProvider *provider = [[[bundle.principalClass alloc] init] autorelease];
 			provider.appIdentifier = bundle.infoDictionary[kTypeStatusPlusIdentifierString];
 			[_providers addObject:provider];
-			[_appsRequiringBackgroundSupport addObject:provider.appIdentifier];
 
 			if (!provider) {
 				HBLogError(@"TypeStatusPlusProvider: failed to initialise principal class for %@", baseName);
 				continue;
 			}
+
+			HBLogInfo(@"The bundle %@ was successfully and completely loaded", baseName);
 		}
 	});
 }

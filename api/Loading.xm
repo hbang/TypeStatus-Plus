@@ -9,6 +9,7 @@
 %hook SBApplication
 
 - (BOOL)supportsVOIPBackgroundMode {
+	HBLogDebug(@"The appsRequiringBackgroundSupport = %@", [HBTSPlusProviderController sharedInstance].appsRequiringBackgroundSupport);
 	for (NSString *identifier in [HBTSPlusProviderController sharedInstance].appsRequiringBackgroundSupport) {
 		if ([[self bundleIdentifier] isEqualToString:identifier]) {
 			return YES;
@@ -20,5 +21,11 @@
 %end
 
 %ctor {
+	if (!IN_SPRINGBOARD) {
+		return;
+	}
+
 	[[HBTSPlusProviderController sharedInstance] loadProviders];
+
+	%init;
 }
