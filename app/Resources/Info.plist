@@ -61,5 +61,7 @@
 	<array>
 		<string>watch-companion</string>
 	</array>
+	<key>HBAppRequiresContainer</key>
+	<true/>
 </dict>
 </plist>
