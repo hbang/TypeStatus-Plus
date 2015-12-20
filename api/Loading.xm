@@ -18,6 +18,16 @@
 	return %orig;
 }
 
+- (BOOL)_shouldAutoLaunchForVoIP {
+	HBLogDebug(@"The appsRequiringBackgroundSupport = %@", [HBTSPlusProviderController sharedInstance].appsRequiringBackgroundSupport);
+	for (NSString *identifier in [HBTSPlusProviderController sharedInstance].appsRequiringBackgroundSupport) {
+		if ([[self bundleIdentifier] isEqualToString:identifier]) {
+			return YES;
+		}
+	}
+	return %orig;
+}
+
 %end
 
 %ctor {
