@@ -44,9 +44,9 @@
 				continue;
 			}
 
-			/*if (![[NSBundle mainBundle].bundleIdentifier isEqualToString:bundle.infoDictionary[kTypeStatusPlusIdentifierString]]) {
+			if (![[NSBundle mainBundle].bundleIdentifier isEqualToString:bundle.infoDictionary[kTypeStatusPlusIdentifierString]] || !IN_SPRINGBOARD) {
 				continue;
-			}*/
+			}
 
 			[bundle load];
 

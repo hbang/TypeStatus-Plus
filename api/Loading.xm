@@ -8,17 +8,7 @@
 
 %hook SBApplication
 
-- (BOOL)supportsVOIPBackgroundMode {
-	HBLogDebug(@"The appsRequiringBackgroundSupport = %@", [HBTSPlusProviderController sharedInstance].appsRequiringBackgroundSupport);
-	for (NSString *identifier in [HBTSPlusProviderController sharedInstance].appsRequiringBackgroundSupport) {
-		if ([[self bundleIdentifier] isEqualToString:identifier]) {
-			return YES;
-		}
-	}
-	return %orig;
-}
-
-- (BOOL)_shouldAutoLaunchForVoIP {
+- (BOOL)_shouldAutoLaunchOnBootOrInstall {
 	HBLogDebug(@"The appsRequiringBackgroundSupport = %@", [HBTSPlusProviderController sharedInstance].appsRequiringBackgroundSupport);
 	for (NSString *identifier in [HBTSPlusProviderController sharedInstance].appsRequiringBackgroundSupport) {
 		if ([[self bundleIdentifier] isEqualToString:identifier]) {
