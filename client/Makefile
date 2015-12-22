@@ -1,7 +1,7 @@
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = TypeStatusPlusClient
-TypeStatusPlusClient_FILES = Client.xm
+TypeStatusPlusClient_FILES = $(wildcard *.xm) $(wildcard *.x)
 TypeStatusPlusClient_CFLAGS = -include ../Global.h
 TypeStatusPlusClient_PRIVATE_FRAMEWORKS = AppSupport
 TypeStatusPlusClient_LIBRARIES = rocketbootstrap

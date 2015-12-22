@@ -6,26 +6,17 @@
 #import "HBTSPlusServer.h"
 #import "HBTSPlusTapToOpenController.h"
 #import <libstatusbar/LSStatusBarItem.h>
+#import <UIKit/UIStatusBarItemView.h>
+#import <SpringBoard/SBApplicationController.h>
+#import <SpringBoard/SBApplication.h>
+#import <libstatusbar/UIStatusBarCustomItem.h>
+#import <libstatusbar/UIStatusBarCustomItemView.h>
+#import <SpringBoard/SBApplication.h>
+#import <SpringBoard/SBApplicationController.h>
+
+LSStatusBarItem *typingStatusBarItem;
 
 extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoundID, id unknown, NSDictionary *options);
-
-@interface SBIconViewMap : NSObject
-
-+ (instancetype)homescreenMap;
-
-@end
-
-@interface SBIconModel : NSObject
-
-@property (retain, nonatomic) NSDictionary *leafIconsByIdentifier;
-
-@end
-
-@interface SBIcon : NSObject
-
-- (long long)badgeValue;
-
-@end
 
 #pragma mark - Notification Center
 
@@ -54,29 +45,30 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 - (void)applicationDidFinishLaunching:(id)application {
 	%orig;
 
-	SBIconViewMap *map = [%c(SBIconViewMap) homescreenMap];
-	SBIconModel *iconModel = MSHookIvar<SBIconModel *>(map, "_model");
-	SBIcon *icon = iconModel.leafIconsByIdentifier[@"com.apple.MobileSMS"];
-	long badgeCount = [icon badgeValue];
-	HBLogDebug(@"The badge count is: %li", badgeCount);
-
 	// is libstatusbar loaded? if not, let's try dlopening it
-		if (!%c(LSStatusBarItem)) {
-			dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
-		}
+	if (!%c(LSStatusBarItem)) {
+		dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
+	}
 
-		// still not loaded? probably not installed. just bail out
-		if (!%c(LSStatusBarItem)) {
-			HBLogWarn(@"attempting to display a status bar icon, but libstatusbar isn’t installed");
-			return;
-		}
+	// still not loaded? probably not installed. just bail out
+	if (!%c(LSStatusBarItem)) {
+		return;
+	}
 
+	typingStatusBarItem = [[[%c(LSStatusBarItem) alloc] initWithIdentifier:@"ws.hbang.typestatusplus.messageicon" alignment:StatusBarAlignmentRight] retain];
+	typingStatusBarItem.imageName = @"TypeStatusPlus";
+	typingStatusBarItem.visible = YES;
+}
 
-			LSStatusBarItem *typingStatusBarItem = [[%c(LSStatusBarItem) alloc] initWithIdentifier:@"ws.hbang.typestatusplus.messageicon" alignment:StatusBarAlignmentRight];
-			typingStatusBarItem.customViewClass = @"HBTSPlusStatusBarUnreadCountView";
-			typingStatusBarItem.visible = YES;
+%end
 
+%hook SBApplication
 
+- (void)setBadge:(id)arg1 {
+	if ([self.bundleIdentifier isEqualToString:@"com.apple.MobileSMS"]) {
+		[typingStatusBarItem update];
+	}
+	%orig;
 }
 
 %end

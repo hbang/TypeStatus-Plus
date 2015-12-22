@@ -3,6 +3,8 @@
 #import <AppSupport/CPDistributedMessagingCenter.h>
 #import "../typestatus-private/HBTSStatusBarAlertServer.h"
 #import "HBTSPlusTapToOpenController.h"
+#import <SpringBoard/SBApplicationController.h>
+#import <SpringBoard/SBApplication.h>
 
 @implementation HBTSPlusServer
 
@@ -24,6 +26,7 @@
 		[distributedCenter registerForMessageName:kHBTSPlusServerSetStatusBarNotificationName target:self selector:@selector(receivedSetStatusBarMessage:withUserInfo:)];
 		[distributedCenter registerForMessageName:kHBTSPlusServerHideStatusBarNotificationName target:self selector:@selector(receivedHideStatusBarMessage:withUserInfo:)];
 		[distributedCenter registerForMessageName:kHBTSPlusServerStatusBarTappedNotificationName target:[HBTSPlusTapToOpenController sharedInstance] selector:@selector(receivedStatusBarTappedMessage:withUserInfo:)];
+		[distributedCenter registerForMessageName:kHBTSPlusServerGetUnreadCountNotificationName target:self selector:@selector(receivedGetUnreadCountMessage:withUserInfo:)];
 	}
 	return self;
 }
@@ -46,6 +49,11 @@
 	[%c(HBTSStatusBarAlertServer) hide];
 
 	return nil;
+}
+
+- (NSDictionary *)receivedGetUnreadCountMessage:(NSString *)message withUserInfo:(NSDictionary *)userInfo {
+	SBApplication *messagesApplication = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:@"com.apple.MobileSMS"];
+	return @{kHBTSPlusBadgeCountKey: @([messagesApplication badgeNumberOrString].integerValue)};
 }
 
 @end

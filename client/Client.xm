@@ -1,6 +1,10 @@
 #import <rocketbootstrap/rocketbootstrap.h>
 #import <AppSupport/CPDistributedMessagingCenter.h>
 #import "../typestatus-private/HBTSStatusBarForegroundView.h"
+#import <libstatusbar/UIStatusBarCustomItem.h>
+#import <libstatusbar/UIStatusBarCustomItemView.h>
+
+CPDistributedMessagingCenter *distributedCenter;
 
 %hook HBTSStatusBarForegroundView
 
@@ -15,9 +19,21 @@
 - (void)typeStatusPlus_openConversation:(UIGestureRecognizer *)gestureRecognizer {
 	HBLogDebug(@"Status bar tapped—sending notification");
 
-	CPDistributedMessagingCenter *distributedCenter = [CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName];
-	rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
 	[distributedCenter sendMessageName:kHBTSPlusServerStatusBarTappedNotificationName userInfo:nil];
+}
+
+%end
+
+%hook UIStatusBarCustomItemView
+
+- (_UILegibilityImageSet *)contentsImage {
+	if ([self.item.indicatorName isEqualToString:@"TypeStatusPlus"]) {
+		NSDictionary *result = [distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerGetUnreadCountNotificationName userInfo:nil];
+		NSInteger badgeCount = ((NSNumber *)result[kHBTSPlusBadgeCountKey]).longValue;
+
+		return [self imageWithText:[NSString stringWithFormat:@"%li", (long)badgeCount]];
+	}
+	return %orig;
 }
 
 %end
@@ -28,6 +44,11 @@
 	NSString *bundleIdentifier = [NSBundle mainBundle].bundleIdentifier;
 	if ([bundleIdentifier isEqualToString:@"com.apple.accessibility.AccessibilityUIServer"] || [bundleIdentifier isEqualToString:@"com.apple.SafariViewService"]) {
 	 	return;
+	}
+
+	if (!IN_SPRINGBOARD) {
+		distributedCenter = [CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName];
+		rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
 	}
 
 	%init;
