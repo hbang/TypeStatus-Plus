@@ -12,13 +12,17 @@
 			<key>big</key>
 			<true/>
 			<key>cellClass</key>
-			<string>HBTwitterCell</string>
+			<string>HBLinkTableCell</string>
 			<key>height</key>
 			<integer>64</integer>
+			<key>icon</key>
+			<string>hbang.png</string>
 			<key>label</key>
 			<string>HASHBANG Productions</string>
-			<key>user</key>
-			<string>hbangws</string>
+			<key>subtitle</key>
+			<string>VISIT_WEBSITE</string>
+			<key>url</key>
+			<string>https://www.hbang.ws/</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -43,20 +47,6 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>hb_openWebsite</string>
-			<key>cell</key>
-			<string>PSLinkCell</string>
-			<key>cellClass</key>
-			<string>HBTintedTableCell</string>
-			<key>label</key>
-			<string>VISIT_WEBSITE</string>
-			<key>appIDForLazyIcon</key>
-			<string>com.apple.mobilesafari</string>	
-			<key>useLazyIcons</key>
-			<true/>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -113,18 +103,14 @@
 			<string>PSGroupCell</string>
 		</dict>
 		<dict>
-			<key>action</key>
-			<string>openTranslations</string>
 			<key>cell</key>
-			<string>PSLinkCell</string>
-			<key>cellClass</key>	
-			<string>HBTintedTableCell</string>
+			<string>PSButtonCell</string>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
 			<key>label</key>
 			<string>TRANSLATORS</string>
-			<key>appIDForLazyIcon</key>
-			<string>com.apple.mobilesafari</string>	
-			<key>useLazyIcons</key>
-			<true/>
+			<key>url</key>
+			<string>https://www.hbang.ws/translations/</string>
 		</dict>
 	</array>
 	<key>title</key>
