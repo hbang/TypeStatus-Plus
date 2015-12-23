@@ -6,6 +6,7 @@
 #import "../springboard/HBTSPlusServer.h"
 #import <SpringBoard/SBApplication.h>
 #import <SpringBoard/SBApplicationController.h>
+#import "../HBTSPlusPreferences.h"
 
 CPDistributedMessagingCenter *distributedCenter;
 
@@ -33,7 +34,7 @@ CPDistributedMessagingCenter *distributedCenter;
 	if ([self.item.indicatorName isEqualToString:@"TypeStatusPlus"]) {
 		NSInteger badgeCount = 0;
 		if (IN_SPRINGBOARD) {
-			SBApplication *messagesApplication = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:@"com.apple.MobileSMS"];
+			SBApplication *messagesApplication = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:[[%c(HBTSPlusClientPreferences) sharedInstance] applicationUsingUnreadCount]];
 			badgeCount = [messagesApplication badgeNumberOrString].longValue;
 		} else {
 			NSDictionary *result = [distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerGetUnreadCountNotificationName userInfo:nil];

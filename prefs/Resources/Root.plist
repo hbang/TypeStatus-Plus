@@ -34,11 +34,11 @@
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>detail</key>
-			<string>HBTSPlusSettingsListController</string>
+			<string>HBTSPlusGeneralListController</string>
 			<key>icon</key>
 			<string>advanced</string>
 			<key>label</key>
-			<string>Settings</string>
+			<string>General</string>
 		</dict>
 		<dict>
 			<key>cell</key>

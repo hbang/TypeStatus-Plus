@@ -13,6 +13,8 @@
 #import <libstatusbar/UIStatusBarCustomItemView.h>
 #import <SpringBoard/SBApplication.h>
 #import <SpringBoard/SBApplicationController.h>
+#import <SpringBoard/SBLockScreenManager.h>
+#import "../HBTSPlusPreferences.h"
 
 LSStatusBarItem *typingStatusBarItem;
 
@@ -83,14 +85,22 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 
 	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
 
-		NSString *titleKey = notification.userInfo[kHBTSPlusMessageTitleKey];
+		NSString *title = notification.userInfo[kHBTSPlusMessageTitleKey];
 		NSString *content = notification.userInfo[kHBTSPlusMessageContentKey];
-		[[HBTSPlusBulletinProvider sharedInstance] showBulletinWithTitle:titleKey content:content];
 
-		AudioServicesPlaySystemSoundWithVibration(4095, nil, @{
-			@"VibePattern": @[ @YES, @(50) ],
-			@"Intensity": @1
-		});
+		SBLockScreenManager *lockScreenManager = [%c(SBLockScreenManager) sharedInstance];
+		BOOL onLockscreen = [HBTSPlusPreferences sharedInstance].showNotificationsEverywhere ? YES : lockScreenManager.isUILocked;
+
+		// to show the notification, we want to make sure title and content are not nil, and that they are on lock screen
+		// TODO: make this a setting
+		if (title && ![title isEqualToString:@""] && content && ![content isEqualToString:@""] && onLockscreen) {
+			[[HBTSPlusBulletinProvider sharedInstance] showBulletinWithTitle:title content:content];
+
+			AudioServicesPlaySystemSoundWithVibration(4095, nil, @{
+				@"VibePattern": @[ @YES, @(50) ],
+				@"Intensity": @1
+			});
+		}
 	}];
 
 	if (IS_IOS_OR_NEWER(iOS_9_0)) {

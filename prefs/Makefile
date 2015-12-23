@@ -6,6 +6,7 @@ TypeStatusPlus_INSTALL_PATH = /Library/PreferenceBundles
 TypeStatusPlus_FRAMEWORKS = UIKit
 TypeStatusPlus_PRIVATE_FRAMEWORKS = Preferences
 TypeStatusPlus_EXTRA_FRAMEWORKS = Cephei CepheiPrefs TypeStatusPlusProvider TechSupport
+TypeStatusPlus_LIBRARIES = applist
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 

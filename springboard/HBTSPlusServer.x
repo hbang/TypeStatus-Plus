@@ -5,6 +5,7 @@
 #import "HBTSPlusTapToOpenController.h"
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBApplication.h>
+#import "../HBTSPlusClientPreferences.h"
 
 @implementation HBTSPlusServer
 
@@ -53,7 +54,8 @@
 }
 
 - (NSDictionary *)receivedGetUnreadCountMessage:(NSString *)message {
-	SBApplication *messagesApplication = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:@"com.apple.MobileSMS"];
+	NSString *appIdentifier = [[%c(HBTSPlusClientPreferences) sharedInstance] applicationUsingUnreadCount] ?: @"com.apple.MobileSMS";
+	SBApplication *messagesApplication = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:appIdentifier];
 	return @{kHBTSPlusBadgeCountKey: [messagesApplication badgeNumberOrString] ?: @0};
 }
 
