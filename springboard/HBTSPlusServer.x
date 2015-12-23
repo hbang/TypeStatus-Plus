@@ -20,13 +20,14 @@
 
 - (instancetype)init {
 	if (self = [super init]) {
-		CPDistributedMessagingCenter *distributedCenter = [CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName];
-		rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
-		[distributedCenter runServerOnCurrentThread];
-		[distributedCenter registerForMessageName:kHBTSPlusServerSetStatusBarNotificationName target:self selector:@selector(receivedSetStatusBarMessage:withUserInfo:)];
-		[distributedCenter registerForMessageName:kHBTSPlusServerHideStatusBarNotificationName target:self selector:@selector(receivedHideStatusBarMessage:withUserInfo:)];
-		[distributedCenter registerForMessageName:kHBTSPlusServerStatusBarTappedNotificationName target:[HBTSPlusTapToOpenController sharedInstance] selector:@selector(receivedStatusBarTappedMessage:withUserInfo:)];
-		[distributedCenter registerForMessageName:kHBTSPlusServerGetUnreadCountNotificationName target:self selector:@selector(receivedGetUnreadCountMessage:withUserInfo:)];
+		self._distributedCenter = [[CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName] retain];
+		rocketbootstrap_distributedmessagingcenter_apply(self._distributedCenter);
+		[self._distributedCenter runServerOnCurrentThread];
+
+		[self._distributedCenter registerForMessageName:kHBTSPlusServerSetStatusBarNotificationName target:self selector:@selector(receivedSetStatusBarMessage:withUserInfo:)];
+		[self._distributedCenter registerForMessageName:kHBTSPlusServerHideStatusBarNotificationName target:self selector:@selector(receivedHideStatusBarMessage :)];
+		[self._distributedCenter registerForMessageName:kHBTSPlusServerStatusBarTappedNotificationName target:[HBTSPlusTapToOpenController sharedInstance] selector:@selector(receivedStatusBarTappedMessage:)];
+		[self._distributedCenter registerForMessageName:kHBTSPlusServerGetUnreadCountNotificationName target:self selector:@selector(receivedGetUnreadCountMessage:)];
 	}
 	return self;
 }
@@ -43,7 +44,7 @@
 	return nil;
 }
 
-- (NSDictionary *)receivedHideStatusBarMessage:(NSString *)message withUserInfo:(NSDictionary *)userInfo {
+- (NSDictionary *)receivedHideStatusBarMessage:(NSString *)message {
 	HBLogDebug(@"Recieved hide message on server side.");
 
 	[%c(HBTSStatusBarAlertServer) hide];
@@ -51,7 +52,7 @@
 	return nil;
 }
 
-- (NSDictionary *)receivedGetUnreadCountMessage:(NSString *)message withUserInfo:(NSDictionary *)userInfo {
+- (NSDictionary *)receivedGetUnreadCountMessage:(NSString *)message {
 	SBApplication *messagesApplication = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:@"com.apple.MobileSMS"];
 	return @{kHBTSPlusBadgeCountKey: @([messagesApplication badgeNumberOrString].integerValue)};
 }
