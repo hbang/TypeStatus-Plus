@@ -5,7 +5,7 @@ TypeStatusPlus_FILES = $(wildcard *.m)
 TypeStatusPlus_INSTALL_PATH = /Library/PreferenceBundles
 TypeStatusPlus_FRAMEWORKS = UIKit
 TypeStatusPlus_PRIVATE_FRAMEWORKS = Preferences
-TypeStatusPlus_EXTRA_FRAMEWORKS = Cephei CepheiPrefs TypeStatusPlusProvider
+TypeStatusPlus_EXTRA_FRAMEWORKS = Cephei CepheiPrefs TypeStatusPlusProvider TechSupport
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 

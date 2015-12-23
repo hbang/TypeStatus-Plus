@@ -70,6 +70,22 @@
 			<key>developer</key>
 			<false />
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>headerCellClass</key>
+			<string>HBImageTableCell</string>
+			<key>height</key>
+			<integer>100</integer>
+			<key>icon</key>
+			<string>headerlogo.png</string>
+			<key>footerAlignment</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>title</key>
 	<string>ABOUT</string>
