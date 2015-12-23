@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>CONFIGURATION</string>
+			<key>footerText</key>
+			<string>TypeStatus Plus adds the option to put the unread notification count of any app in your status bar. You can choose the app by clicking above and choosing your app. If the app has no unread notifications, nothing will show in your status bar.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>bundle</key>
+			<string>AppList</string>
+			<key>isController</key>
+			<true/>
+			<key>icon</key>
+			<string>advanced</string>
+			<key>label</key>
+			<string>Unread notifications count app</string>
+			<key>ALChangeNotification</key>
+			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
+			<key>ALSettingsDefaultValue</key>
+			<string>com.apple.MobileSMS</string>
+			<key>ALSingleEnabledMode</key>
+			<true/>
+			<key>ALSettingsKey</key>
+			<string>UnreadNotificationAppBundleIdentifier</string>
+			<key>ALSettingsPath</key>
+			<string>/var/mobile/Library/Preferences/ws.hbang.typestatusplus.plist</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>If this setting is on, TypeStatus Plus will show notifications everywhere, instead of just on the lock screen.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>ws.hbang.typestatusplus</string>
+			<key>key</key>
+			<string>ShowNotificationsEverywhere</string>
+			<key>label</key>
+			<string>Show notifications everywhere</string>
+			<key>icon</key>
+			<string>enable.png</string>
+			<key>PostNotification</key>
+			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>General</string>
+</dict>
+</plist>
