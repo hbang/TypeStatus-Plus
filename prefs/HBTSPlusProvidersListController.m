@@ -69,13 +69,13 @@
 
 	if (!providerBundle) {
 		HBLogError(@"Bundle %@ does not exist", providerBundle);
-		[self _showBundleLoadError];
+		[self _showBundleLoadErrorForProviderName:specifier.name];
 		return;
 	}
 
 	if (![providerBundle load]) {
 		HBLogError(@"Bundle %@ failed to load", providerBundle);
-		[self _showBundleLoadError];
+		[self _showBundleLoadErrorForProviderName:specifier.name];
 		return;
 	}
 
@@ -83,7 +83,7 @@
 
 	if (!providerClass) {
 		HBLogError(@"Bundle %@ failed to load: Class %@ doesn't exist", providerBundle, providerClassName);
-		[self _showBundleLoadError];
+		[self _showBundleLoadErrorForProviderName:specifier.name];
 		return;
 	}
 
@@ -91,8 +91,11 @@
 	[self pushController:listController animate:YES];
 }
 
-- (void)_showBundleLoadError {
-	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:LOCALIZE(@"BUNDLE_LOAD_FAILED", @"")]
+- (void)_showBundleLoadErrorForProviderName:(NSString *)name {
+	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Couldn’t load the settings for %@ because an error occurred.", name] message:@"Check for updates to TypeStatus Plus and your providers. Contact the developer if this issue persists." preferredStyle:UIAlertControllerStyleAlert];
+	[alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+	[self presentViewController:alertController animated:YES completion:nil];
+
 }
 
 #pragma mark - Memory management
