@@ -2,6 +2,7 @@
 #import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
 #import <TypeStatusPlusProvider/HBTSPlusProvider.h>
 #import <Preferences/PSSpecifier.h>
+#import <Preferences/PSViewController.h>
 
 @implementation HBTSPlusProvidersListController {
 	NSArray *_providers;
@@ -42,15 +43,14 @@
 		}
 
 		specifier.properties = [@{
-			PSIDKey: provider.appIdentifier,
-			PSBundleIsControllerKey: @YES,
-			PSLazilyLoadedBundleKey: provider.preferencesBundle.bundlePath,
 			PSDetailControllerClassKey: provider.preferencesClass,
+			PSLazilyLoadedBundleKey: provider.preferencesBundle.bundlePath,
+			PSIDKey: provider.appIdentifier,
 			PSLazyIconAppID: provider.appIdentifier,
-			PSLazyIconLoading: @YES
+			PSLazyIconLoading: @YES,
 		} mutableCopy];
 
-		specifier.controllerLoadAction = @selector(lazyLoadBundle:);
+		specifier->action = @selector(specifierCellTapped:);
 
 		[newSpecifiers addObject:specifier];
 	}
@@ -61,6 +61,21 @@
 	} else {
 		[self removeSpecifierID:@"ProvidersGroupCell"];
 	}
+}
+
+- (void)specifierCellTapped:(PSSpecifier *)specifier {
+	NSString *providerClass = [specifier propertyForKey:PSDetailControllerClassKey];
+	NSBundle *providerBundle = [NSBundle bundleWithPath:[specifier propertyForKey:PSLazilyLoadedBundleKey]];
+	if (!providerBundle.loaded) {
+		[providerBundle load];
+	}
+
+	if (!providerBundle) {
+		return;
+	}
+
+	PSListController *listController = [[NSClassFromString(providerClass) alloc] init];
+	[self pushController:listController animate:YES];
 }
 
 #pragma mark - Memory management
