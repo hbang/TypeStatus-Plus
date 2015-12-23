@@ -3,6 +3,7 @@
 #import "../typestatus-private/HBTSStatusBarForegroundView.h"
 #import <libstatusbar/UIStatusBarCustomItem.h>
 #import <libstatusbar/UIStatusBarCustomItemView.h>
+#import "../springboard/HBTSPlusServer.h"
 
 CPDistributedMessagingCenter *distributedCenter;
 
@@ -46,8 +47,11 @@ CPDistributedMessagingCenter *distributedCenter;
 	 	return;
 	}
 
-	if (!IN_SPRINGBOARD) {
-		distributedCenter = [CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName];
+	if (IN_SPRINGBOARD) {
+		distributedCenter = [[CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName] retain];
+		rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
+	} else {
+		distributedCenter = [[CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName] retain];
 		rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
 	}
 
