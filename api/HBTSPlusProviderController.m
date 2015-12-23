@@ -60,7 +60,11 @@
 				continue;
 			}
 
-			if (bundle.infoDictionary[kTypeStatusPlusIdentifierString] && [bundle.infoDictionary[kTypeStatusPlusBackgroundingString] boolValue]) {
+			if (!bundle.infoDictionary[kTypeStatusPlusIdentifierString]) {
+				HBLogError(@"no app identifier set for provider %@", baseName);
+			}
+
+			if ([bundle.infoDictionary[kTypeStatusPlusBackgroundingString] boolValue]) {
 				[_appsRequiringBackgroundSupport addObject:bundle.infoDictionary[kTypeStatusPlusIdentifierString]];
 				HBLogInfo(@"The bundle %@ requires backgrounding support", baseName);
 			}

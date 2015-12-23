@@ -35,22 +35,30 @@
 	NSMutableArray *newSpecifiers = [NSMutableArray array];
 
 	for (HBTSPlusProvider *provider in _providers) {
-		PSSpecifier *specifier = [PSSpecifier preferenceSpecifierNamed:provider.name target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:Nil cell:PSLinkCell edit:Nil];
+		BOOL isLink = provider.preferencesBundle && provider.preferencesClass;
 
-		if (!provider.preferencesBundle ||  !provider.preferencesClass || !provider.appIdentifier) {
-			HBLogError(@"Necessary details not provided for %@", provider.name);
-			continue;
+		PSSpecifier *specifier = [PSSpecifier preferenceSpecifierNamed:provider.name target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:Nil cell:isLink ? PSLinkCell : PSSwitchCell edit:Nil];
+
+		if (isLink) {
+			specifier.properties = [@{
+				PSIDKey: provider.appIdentifier,
+				PSDetailControllerClassKey: provider.preferencesClass,
+				PSLazilyLoadedBundleKey: provider.preferencesBundle.bundlePath,
+				PSIDKey: provider.appIdentifier,
+				PSLazyIconAppID: provider.appIdentifier,
+				PSLazyIconLoading: @YES,
+			} mutableCopy];
+
+			specifier->action = @selector(specifierCellTapped:);
+		} else {
+			specifier.properties = [@{
+				PSIDKey: provider.appIdentifier,
+				PSDefaultValueKey: @YES,
+				PSDefaultsKey: @"ws.hbang.typestatusplus",
+				PSKeyNameKey: provider.appIdentifier,
+				PSValueChangedNotificationKey: @"ws.hbang.typestatusplus/ReloadPrefs"
+			} mutableCopy];
 		}
-
-		specifier.properties = [@{
-			PSDetailControllerClassKey: provider.preferencesClass,
-			PSLazilyLoadedBundleKey: provider.preferencesBundle.bundlePath,
-			PSIDKey: provider.appIdentifier,
-			PSLazyIconAppID: provider.appIdentifier,
-			PSLazyIconLoading: @YES,
-		} mutableCopy];
-
-		specifier->action = @selector(specifierCellTapped:);
 
 		[newSpecifiers addObject:specifier];
 	}
