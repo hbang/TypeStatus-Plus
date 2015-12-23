@@ -44,6 +44,11 @@
 				continue;
 			}
 
+			// check:
+			// - not in preference app
+			// - not in provider app
+			// - not in springboard
+
 			if (![[NSBundle mainBundle].bundleIdentifier isEqualToString:@"com.apple.Preferences"] && ![[NSBundle mainBundle].bundleIdentifier isEqualToString:bundle.infoDictionary[kTypeStatusPlusIdentifierString]] && !IN_SPRINGBOARD) {
 				continue;
 			}
