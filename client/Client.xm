@@ -4,6 +4,8 @@
 #import <libstatusbar/UIStatusBarCustomItem.h>
 #import <libstatusbar/UIStatusBarCustomItemView.h>
 #import "../springboard/HBTSPlusServer.h"
+#import <SpringBoard/SBApplication.h>
+#import <SpringBoard/SBApplicationController.h>
 
 CPDistributedMessagingCenter *distributedCenter;
 
@@ -29,12 +31,18 @@ CPDistributedMessagingCenter *distributedCenter;
 
 - (_UILegibilityImageSet *)contentsImage {
 	if ([self.item.indicatorName isEqualToString:@"TypeStatusPlus"]) {
-		[distributedCenter stopServer];
-		NSDictionary *result = [distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerGetUnreadCountNotificationName userInfo:nil];
-		[distributedCenter runServerOnCurrentThread];
+		NSInteger badgeCount = 0;
+		if (IN_SPRINGBOARD) {
+			SBApplication *messagesApplication = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:@"com.apple.MobileSMS"];
+			badgeCount = [messagesApplication badgeNumberOrString].longValue;
+		} else {
+			NSDictionary *result = [distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerGetUnreadCountNotificationName userInfo:nil];
+			badgeCount = ((NSNumber *)result[kHBTSPlusBadgeCountKey]).integerValue;
+		}
 
-		NSInteger badgeCount = ((NSNumber *)result[kHBTSPlusBadgeCountKey]).longValue;
-
+		if (badgeCount == 0) {
+			return nil;
+		}
 		return [self imageWithText:[NSString stringWithFormat:@"%li", (long)badgeCount]];
 	}
 	return %orig;
@@ -50,10 +58,7 @@ CPDistributedMessagingCenter *distributedCenter;
 	 	return;
 	}
 
-	if (IN_SPRINGBOARD) {
-		distributedCenter = [[CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName] retain];
-		rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
-	} else {
+	if (!IN_SPRINGBOARD) {
 		distributedCenter = [[CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName] retain];
 		rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
 	}

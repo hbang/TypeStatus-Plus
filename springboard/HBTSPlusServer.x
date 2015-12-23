@@ -25,7 +25,7 @@
 		[self._distributedCenter runServerOnCurrentThread];
 
 		[self._distributedCenter registerForMessageName:kHBTSPlusServerSetStatusBarNotificationName target:self selector:@selector(receivedSetStatusBarMessage:withUserInfo:)];
-		[self._distributedCenter registerForMessageName:kHBTSPlusServerHideStatusBarNotificationName target:self selector:@selector(receivedHideStatusBarMessage :)];
+		[self._distributedCenter registerForMessageName:kHBTSPlusServerHideStatusBarNotificationName target:self selector:@selector(receivedHideStatusBarMessage:)];
 		[self._distributedCenter registerForMessageName:kHBTSPlusServerStatusBarTappedNotificationName target:[HBTSPlusTapToOpenController sharedInstance] selector:@selector(receivedStatusBarTappedMessage:)];
 		[self._distributedCenter registerForMessageName:kHBTSPlusServerGetUnreadCountNotificationName target:self selector:@selector(receivedGetUnreadCountMessage:)];
 	}
@@ -54,7 +54,7 @@
 
 - (NSDictionary *)receivedGetUnreadCountMessage:(NSString *)message {
 	SBApplication *messagesApplication = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:@"com.apple.MobileSMS"];
-	return @{kHBTSPlusBadgeCountKey: @([messagesApplication badgeNumberOrString].integerValue)};
+	return @{kHBTSPlusBadgeCountKey: [messagesApplication badgeNumberOrString] ?: @0};
 }
 
 @end
