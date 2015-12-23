@@ -44,7 +44,7 @@
 				continue;
 			}
 
-			if (![[NSBundle mainBundle].bundleIdentifier isEqualToString:bundle.infoDictionary[kTypeStatusPlusIdentifierString]] || !IN_SPRINGBOARD) {
+			if (![[NSBundle mainBundle].bundleIdentifier isEqualToString:@"com.apple.Preferences"] && ![[NSBundle mainBundle].bundleIdentifier isEqualToString:bundle.infoDictionary[kTypeStatusPlusIdentifierString]] && !IN_SPRINGBOARD) {
 				continue;
 			}
 
