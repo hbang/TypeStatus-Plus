@@ -95,7 +95,6 @@
 	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Couldn’t load the settings for %@ because an error occurred.", name] message:@"Check for updates to TypeStatus Plus and your providers. Contact the developer if this issue persists." preferredStyle:UIAlertControllerStyleAlert];
 	[alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
 	[self presentViewController:alertController animated:YES completion:nil];
-
 }
 
 #pragma mark - Memory management
