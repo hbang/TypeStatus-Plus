@@ -64,18 +64,35 @@
 }
 
 - (void)specifierCellTapped:(PSSpecifier *)specifier {
-	NSString *providerClass = [specifier propertyForKey:PSDetailControllerClassKey];
+	NSString *providerClassName = [specifier propertyForKey:PSDetailControllerClassKey];
 	NSBundle *providerBundle = [NSBundle bundleWithPath:[specifier propertyForKey:PSLazilyLoadedBundleKey]];
-	if (!providerBundle.loaded) {
-		[providerBundle load];
-	}
 
 	if (!providerBundle) {
+		HBLogError(@"Bundle %@ does not exist", providerBundle);
+		[self _showBundleLoadError];
 		return;
 	}
 
-	PSListController *listController = [[NSClassFromString(providerClass) alloc] init];
+	if (![providerBundle load]) {
+		HBLogError(@"Bundle %@ failed to load", providerBundle);
+		[self _showBundleLoadError];
+		return;
+	}
+
+	Class providerClass = NSClassFromString(providerClassName);
+
+	if (!providerClass) {
+		HBLogError(@"Bundle %@ failed to load: Class %@ doesn't exist", providerBundle, providerClassName);
+		[self _showBundleLoadError];
+		return;
+	}
+
+	PSListController *listController = [[providerClass alloc] init];
 	[self pushController:listController animate:YES];
+}
+
+- (void)_showBundleLoadError {
+	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:LOCALIZE(@"BUNDLE_LOAD_FAILED", @"")]
 }
 
 #pragma mark - Memory management
