@@ -7,110 +7,68 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+			<key>headerCellClass</key>
+			<string>HBImageTableCell</string>
+			<key>height</key>
+			<integer>175</integer>
+			<key>icon</key>
+			<string>hbangheader.png</string>
 		</dict>
 		<dict>
-			<key>big</key>
-			<true/>
 			<key>cellClass</key>
-			<string>HBLinkTableCell</string>
-			<key>height</key>
-			<integer>64</integer>
-			<key>icon</key>
-			<string>hbang.png</string>
+			<string>HBTSPlusTwitterCell</string>
 			<key>label</key>
 			<string>HASHBANG Productions</string>
-			<key>subtitle</key>
-			<string>VISIT_WEBSITE</string>
-			<key>url</key>
-			<string>https://www.hbang.ws/</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>EMAIL_SUPPORT_HEADER</string>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>hb_sendSupportEmail</string>
-			<key>cell</key>
-			<string>PSLinkCell</string>
-			<key>cellClass</key>
-			<string>HBTintedTableCell</string>
-			<key>label</key>
-			<string>EMAIL_SUPPORT</string>
-			<key>appIDForLazyIcon</key>
-			<string>com.apple.mobilemail</string>	
-			<key>useLazyIcons</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>DEVELOPERS</string>
-		</dict>
-		<dict>
-			<key>cellClass</key>
-			<string>HBTwitterCell</string>
-			<key>label</key>
-			<string>Adam Demasi</string>
 			<key>user</key>
-			<string>hbkirb</string>
+			<string>hbangws</string>
+			<key>height</key>
+			<integer>45</integer>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
 		</dict>
 		<dict>
 			<key>cellClass</key>
-			<string>HBTwitterCell</string>
+			<string>HBTSPlusTwitterCell</string>
 			<key>label</key>
 			<string>Ben Rosen</string>
 			<key>user</key>
 			<string>benr9500</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>DESIGNER</string>
+			<key>big</key>
+			<true/>
+			<key>height</key>
+			<integer>60</integer>
+			<key>developer</key>
+			<true />
 		</dict>
 		<dict>
 			<key>cellClass</key>
-			<string>HBTwitterCell</string>
+			<string>HBTSPlusTwitterCell</string>
 			<key>label</key>
-			<string>Timon Olsthoorn</string>
+			<string>Adam Demasi (kirb)</string>
 			<key>user</key>
-			<string>tmnlsthrn</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>ICON</string>
+			<string>hbkirb</string>
+			<key>big</key>
+			<true/>
+			<key>height</key>
+			<integer>60</integer>
+			<key>developer</key>
+			<true />
 		</dict>
 		<dict>
 			<key>cellClass</key>
-			<string>HBTwitterCell</string>
+			<string>HBTSPlusTwitterCell</string>
 			<key>label</key>
-			<string>Kyle Revony</string>
+			<string>Veerklempt</string>
 			<key>user</key>
-			<string>krevony</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>HBLinkTableCell</string>
-			<key>label</key>
-			<string>TRANSLATORS</string>
-			<key>url</key>
-			<string>https://www.hbang.ws/translations/</string>
+			<string>veerklempt</string>
+			<key>big</key>
+			<true/>
+			<key>height</key>
+			<integer>60</integer>
+			<key>developer</key>
+			<false />
 		</dict>
 	</array>
 	<key>title</key>
