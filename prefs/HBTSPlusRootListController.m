@@ -5,11 +5,11 @@
 @implementation HBTSPlusRootListController
 
 + (NSString *)hb_shareText {
-	return @"Couldn't be more happy I purchased TypeStatus+, the most advanced way to see who is typing. Available at BigBoss today for only 99 cents!";
+	return @"I couldn't be more happy I joined the TypeStatus Plus beta. You can join too! Gain access to the exclusive Slack group and much, much more.";
 }
 
 + (NSURL *)hb_shareURL {
-	return [NSURL URLWithString:@"https://typestatus.com"];
+	return [NSURL URLWithString:@"https://typestatus.com/plus"];
 }
 
 + (NSString *)hb_specifierPlist {
