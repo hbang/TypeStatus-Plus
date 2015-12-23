@@ -29,7 +29,10 @@ CPDistributedMessagingCenter *distributedCenter;
 
 - (_UILegibilityImageSet *)contentsImage {
 	if ([self.item.indicatorName isEqualToString:@"TypeStatusPlus"]) {
+		[distributedCenter stopServer];
 		NSDictionary *result = [distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerGetUnreadCountNotificationName userInfo:nil];
+		[distributedCenter runServerOnCurrentThread];
+
 		NSInteger badgeCount = ((NSNumber *)result[kHBTSPlusBadgeCountKey]).longValue;
 
 		return [self imageWithText:[NSString stringWithFormat:@"%li", (long)badgeCount]];
