@@ -5,7 +5,7 @@
 #import "HBTSPlusTapToOpenController.h"
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBApplication.h>
-#import "../HBTSPlusClientPreferences.h"
+#import "../HBTSPlusPreferences.h"
 
 @implementation HBTSPlusServer
 
