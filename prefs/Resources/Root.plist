@@ -24,7 +24,7 @@
 			<key>key</key>
 			<string>Enabled</string>
 			<key>label</key>
-			<string>Enabled</string>
+			<string>ENABLED</string>
 			<key>icon</key>
 			<string>enable.png</string>
 			<key>PostNotification</key>
@@ -38,7 +38,7 @@
 			<key>icon</key>
 			<string>advanced</string>
 			<key>label</key>
-			<string>General</string>
+			<string>GENERAL</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -48,7 +48,7 @@
 			<key>icon</key>
 			<string>providers</string>
 			<key>label</key>
-			<string>Providers</string>
+			<string>PROVIDERS</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -62,13 +62,13 @@
 			<key>icon</key>
 			<string>makers</string>
 			<key>label</key>
-			<string>About</string>
+			<string>ABOUT</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>label</key>
-			<string>Support</string>
+			<string>SUPPORT</string>
 			<key>icon</key>
 			<string>support.png</string>
 			<key>action</key>
