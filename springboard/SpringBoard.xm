@@ -89,7 +89,7 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 		NSString *content = notification.userInfo[kHBTSPlusMessageContentKey];
 
 		SBLockScreenManager *lockScreenManager = [%c(SBLockScreenManager) sharedInstance];
-		BOOL onLockscreen = [HBTSPlusPreferences sharedInstance].showNotificationsEverywhere ? YES : lockScreenManager.isUILocked;
+		BOOL onLockscreen = [[%c(HBTSPlusPreferences) sharedInstance] showNotificationsEverywhere] ? YES : lockScreenManager.isUILocked;
 
 		// to show the notification, we want to make sure title and content are not nil, and that they are on lock screen
 		// TODO: make this a setting
