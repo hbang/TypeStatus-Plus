@@ -1,6 +1,6 @@
 Package: ws.hbang.typestatusplus
 Name: TypeStatus Plus
-Depends: firmware (>= 8.0), mobilesubstrate, ws.hbang.typestatus2 (>> 2.0.1), ws.hbang.typestatusplusproviders, com.rpetrich.rocketbootstrap (>= 1.0.4)
+Depends: firmware (>= 8.0), mobilesubstrate, ws.hbang.typestatus2 (>> 2.0.1), ws.hbang.typestatusplusproviders, com.rpetrich.rocketbootstrap (>= 1.0.4) com.rpetrich.applist
 Version: 1.0
 Architecture: iphoneos-arm
 Description: Lots of messaging-related features
