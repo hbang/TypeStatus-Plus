@@ -12,7 +12,11 @@ TypeStatusPlusProvider_EXTRA_FRAMEWORKS = Cephei
 TypeStatusPlusProvider_LIBRARIES = rocketbootstrap substrate
 TypeStatusPlusProvider_CFLAGS = -include ../Global.h
 
+TWEAK_NAME = TypeStatusPlusBackgrounding
+TypeStatusPlusBackgrounding_FILES = Backgrounding.xm
+
 include $(THEOS)/makefiles/framework.mk
+include $(THEOS)/makefiles/tweak.mk
 
 after-TypeStatusPlusProvider-all::
 	# create directories

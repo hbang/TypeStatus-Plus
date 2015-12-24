@@ -5,6 +5,8 @@ static NSString *const kTypeStatusPlusBackgroundingString = @"HBTSKeepApplicatio
 
 @property (nonatomic, retain) NSMutableArray *providers, *appsRequiringBackgroundSupport;
 
+- (BOOL)applicationWithIdentifierRequiresBackgrounding:(NSString *)identifier;
+
 + (instancetype)sharedInstance;
 
 - (void)loadProviders;

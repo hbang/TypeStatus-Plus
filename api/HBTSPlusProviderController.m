@@ -1,5 +1,6 @@
 #import "HBTSPlusProviderController.h"
 #import "HBTSPlusProvider.h"
+#import <SpringBoard/SpringBoard.h>
 
 @implementation HBTSPlusProviderController
 
@@ -81,6 +82,15 @@
 			HBLogInfo(@"The bundle %@ was successfully and completely loaded", baseName);
 		}
 	});
+}
+
+- (BOOL)applicationWithIdentifierRequiresBackgrounding:(NSString *)appIdentifier {
+	for (NSString *identifier in self.appsRequiringBackgroundSupport) {
+		if ([identifier isEqualToString:appIdentifier]) {
+			return YES;
+		}
+	}
+	return NO;
 }
 
 @end
