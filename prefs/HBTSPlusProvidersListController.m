@@ -56,7 +56,9 @@
 				PSDefaultValueKey: @YES,
 				PSDefaultsKey: @"ws.hbang.typestatusplus",
 				PSKeyNameKey: provider.appIdentifier,
-				PSValueChangedNotificationKey: @"ws.hbang.typestatusplus/ReloadPrefs"
+				PSValueChangedNotificationKey: @"ws.hbang.typestatusplus/ReloadPrefs",
+				PSLazyIconAppID: provider.appIdentifier,
+				PSLazyIconLoading: @YES
 			} mutableCopy];
 		}
 
