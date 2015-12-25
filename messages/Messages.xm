@@ -118,8 +118,6 @@
 
 			CKConversationListCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
 			cell._typeStatusPlus_typingIndicatorVisible = [[HBTSPlusMessagesTypingManager sharedInstance] conversationIsTyping:cell.conversation];
-
-			[self performSelector:@selector(typeStatusPlus_removeConversation:) withObject:conversation afterDelay:5.0];
 		}
 	}
 }
