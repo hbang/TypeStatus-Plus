@@ -2,7 +2,7 @@
 
 @implementation HBTSPlusMessengerProvider
 
-- (id)init {
+- (instancetype)init {
 	if (self = [super init]) {
 		self.name = @"Messenger";
 	}
