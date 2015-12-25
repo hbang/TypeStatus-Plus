@@ -9,9 +9,6 @@
 - (instancetype)init {
 	if (self = [super init]) {
 		self.name = @"Music";
-		self.preferencesBundle = [[NSBundle bundleWithPath:@"/Library/PreferenceBundles/TypeStatusPlusProvider.bundle/"] retain];
-		self.preferencesClass = @"HBTSPlusMusicRootListController";
-
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(typeStatusPlusMusic_mediaInfoDidChange:) name:(NSString *)kMRMediaRemoteNowPlayingInfoDidChangeNotification object:nil];
 	}
 	return self;
