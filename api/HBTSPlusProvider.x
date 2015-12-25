@@ -2,6 +2,7 @@
 #import <rocketbootstrap/rocketbootstrap.h>
 #import <AppSupport/CPDistributedMessagingCenter.h>
 #import <Cephei/HBPreferences.h>
+#import "../HBTSPlusPreferences.h"
 
 @implementation HBTSPlusProvider {
 	HBPreferences *_preferences;
@@ -50,6 +51,9 @@
 }
 
 - (BOOL)providerIsEnabled:(HBTSPlusProvider *)provider {
+	if (![[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
+		return NO;
+	}
 	if (provider.preferencesBundle && provider.preferencesClass) {
 		return YES;
 	} else {

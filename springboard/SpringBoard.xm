@@ -47,6 +47,10 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 - (void)applicationDidFinishLaunching:(id)application {
 	%orig;
 
+	if (![[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
+		return;
+	}
+
 	// is libstatusbar loaded? if not, let's try dlopening it
 	if (!%c(LSStatusBarItem)) {
 		dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
@@ -67,7 +71,8 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 %hook SBApplication
 
 - (void)setBadge:(id)arg1 {
-	if ([self.bundleIdentifier isEqualToString:@"com.apple.MobileSMS"]) {
+
+	if ([[%c(HBTSPlusPreferences) sharedInstance] enabled] && [self.bundleIdentifier isEqualToString:@"com.apple.MobileSMS"]) {
 		[typingStatusBarItem update];
 	}
 	%orig;
@@ -84,6 +89,10 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 	[HBTSPlusTapToOpenController sharedInstance];
 
 	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
+
+		if (![[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
+			return;
+		}
 
 		NSString *title = notification.userInfo[kHBTSPlusMessageTitleKey];
 		NSString *content = notification.userInfo[kHBTSPlusMessageContentKey];

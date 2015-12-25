@@ -3,6 +3,7 @@
 #import <SpringBoard/SpringBoard.h>
 #import <AssertionServices/BKSProcessAssertion.h>
 #import <FrontBoard/FBProcessManager.h>
+#import "../HBTSPlusPreferences.h"
 
 @interface FBProcessManager (Backgrounding)
 
@@ -16,6 +17,10 @@
 
 - (void)noteProcessDidExit:(FBProcess *)process {
 	%orig;
+
+	if (![[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
+		return;
+	}
 
 	NSString *bundleIdentifier = process.bundleIdentifier;
 	HBLogDebug(@"Process identifier just shut is %@", bundleIdentifier);

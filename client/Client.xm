@@ -23,6 +23,10 @@ CPDistributedMessagingCenter *distributedCenter;
 - (void)typeStatusPlus_openConversation:(UIGestureRecognizer *)gestureRecognizer {
 	HBLogDebug(@"Status bar tapped—sending notification");
 
+	if (![[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
+		return;
+	}
+
 	[distributedCenter sendMessageName:kHBTSPlusServerStatusBarTappedNotificationName userInfo:nil];
 }
 
@@ -31,7 +35,7 @@ CPDistributedMessagingCenter *distributedCenter;
 %hook UIStatusBarCustomItemView
 
 - (_UILegibilityImageSet *)contentsImage {
-	if ([self.item.indicatorName isEqualToString:@"TypeStatusPlus"]) {
+	if ([[%c(HBTSPlusPreferences) sharedInstance] enabled] && [self.item.indicatorName isEqualToString:@"TypeStatusPlus"]) {
 		NSInteger badgeCount = 0;
 		if (IN_SPRINGBOARD) {
 			SBApplication *messagesApplication = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier: [[%c(HBTSPlusPreferences) sharedInstance] applicationUsingUnreadCount]];
