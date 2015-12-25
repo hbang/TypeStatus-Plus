@@ -36,7 +36,7 @@
 	_currentSender = [[rawSender stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]] copy];
 }
 
-- (NSDictionary *)receivedStatusBarTappedMessage:(NSString *)message withUserInfo:(NSDictionary *)userInfo {
+- (NSDictionary *)receivedStatusBarTappedMessage:(NSString *)message {
 	HBLogDebug(@"Status bar tapped—recieved notification");
 
 	if (!_currentSender) {
