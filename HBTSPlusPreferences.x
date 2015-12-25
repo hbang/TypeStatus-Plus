@@ -22,7 +22,7 @@ static NSString *const kHBTSPlusPreferencesShowNotificationsEverywhereKey = @"Sh
 		_preferences = [[HBPreferences alloc] initWithIdentifier:@"ws.hbang.typestatusplus"];
 
 		[_preferences registerBool:&_enabled default:YES forKey:kHBTSPlusPreferencesEnabledKey];
-		[_preferences registerBool:&_showNotificationsEverywhere default:YES forKey:kHBTSPlusPreferencesShowNotificationsEverywhereKey];
+		[_preferences registerBool:&_showNotificationsEverywhere default:NO forKey:kHBTSPlusPreferencesShowNotificationsEverywhereKey];
 	}
 	return self;
 }
