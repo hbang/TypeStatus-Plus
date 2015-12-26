@@ -117,7 +117,10 @@
 			NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:2];
 
 			CKConversationListCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-			cell._typeStatusPlus_typingIndicatorVisible = [[HBTSPlusMessagesTypingManager sharedInstance] conversationIsTyping:cell.conversation];
+			// for some reason someone was getting a crash that it was an unknown selector, so make sure that "conversation" exists
+			if ([cell respondsToSelector:@selector(conversation)]) {
+				cell._typeStatusPlus_typingIndicatorVisible = [[HBTSPlusMessagesTypingManager sharedInstance] conversationIsTyping:cell.conversation];
+			}
 		}
 	}
 }
