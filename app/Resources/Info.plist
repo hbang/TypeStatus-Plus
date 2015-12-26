@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleExecutable</key>
-	<string>TypeStatus Plus</string>
+	<string>TypeStatusPlus</string>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>
@@ -30,7 +30,6 @@
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
-			<string>hidden</string>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
@@ -61,6 +60,7 @@
 	<key>SBAppTags</key>
 	<array>
 		<string>watch-companion</string>
+		<string>hidden</string>
 	</array>
 	<key>HBAppRequiresContainer</key>
 	<true/>
