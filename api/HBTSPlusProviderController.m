@@ -63,6 +63,7 @@
 
 			if (!bundle.infoDictionary[kTypeStatusPlusIdentifierString]) {
 				HBLogError(@"no app identifier set for provider %@", baseName);
+				continue;
 			}
 
 			if ([bundle.infoDictionary[kTypeStatusPlusBackgroundingString] boolValue]) {
@@ -85,12 +86,7 @@
 }
 
 - (BOOL)applicationWithIdentifierRequiresBackgrounding:(NSString *)appIdentifier {
-	for (NSString *identifier in self.appsRequiringBackgroundSupport) {
-		if ([identifier isEqualToString:appIdentifier]) {
-			return YES;
-		}
-	}
-	return NO;
+	return [_appsRequiringBackgroundSupport containsObject:appIdentifier];
 }
 
 @end

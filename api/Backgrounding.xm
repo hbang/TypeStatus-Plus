@@ -4,36 +4,88 @@
 #import <AssertionServices/BKSProcessAssertion.h>
 #import <FrontBoard/FBProcessManager.h>
 #import "../HBTSPlusPreferences.h"
+#import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
 
-@interface FBProcessManager (Backgrounding)
+/* [[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier]*/
 
-@property (nonatomic, retain) BKSProcessAssertion *processAssertion;
+@interface FBApplicationProcess : NSObject
+
+@property (nonatomic, retain) NSString *bundleIdentifier;
 
 @end
 
-%hook FBProcessManager
+%hook FBApplicationProcess
 
-%property (nonatomic, retain) BKSProcessAssertion *processAssertion;
+- (BOOL)isPendingExit {
+	return %orig;//return ![[%c(HBTSPlusProviderController) sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier];
+}
 
-- (void)noteProcessDidExit:(FBProcess *)process {
-	%orig;
-
-	if (![[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
+- (void)_queue_watchdogTerminateWithReason:(int)arg1 format:(id)arg2 {
+	if ([[%c(HBTSPlusProviderController) sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier]) {
 		return;
 	}
+	%orig;
+}
 
-	NSString *bundleIdentifier = process.bundleIdentifier;
-	HBLogDebug(@"Process identifier just shut is %@", bundleIdentifier);
+- (void)killForReason:(int)arg1 andReport:(BOOL)arg2 withDescription:(id)arg3 {
+	if ([[%c(HBTSPlusProviderController) sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier]) {
+		return;
+	}
+	%orig;
+}
 
-	dispatch_async(dispatch_get_main_queue(), ^{
-			[(SpringBoard *)[UIApplication sharedApplication] launchApplicationWithIdentifier:bundleIdentifier suspended:YES];
-	});
+- (void)killForReason:(int)arg1 andReport:(BOOL)arg2 withDescription:(id)arg3 completion:(id /* block */)arg4 {
+	if ([[%c(HBTSPlusProviderController) sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier]) {
+		return;
+	}
+	%orig;
+}
 
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(NSEC_PER_SEC * 2)), dispatch_get_main_queue(), ^{
-		self.processAssertion = [[%c(BKSProcessAssertion) alloc] initWithBundleIdentifier:bundleIdentifier flags:39 reason:(7 | 11 | 12 | 10000 | 10003 | 10005 | 10006) name:@"TypeStatus Plus" withHandler:^{
-			HBLogDebug(@"kept alive: %@", [self.processAssertion valid] ? @"TRUE" : @"FALSE");
-		}];
-	});
+%end
+
+%hook FBProcessWatchdog
+
+- (void)_watchdogTimerFired {
+	if ([[%c(HBTSPlusProviderController) sharedInstance] applicationWithIdentifierRequiresBackgrounding:[self valueForKey:@"_processBundleID"]]) {
+		return;
+	}
+	%orig;
+}
+
+- (id)initWithProcess:(id)arg1 event:(int)arg2 timeout:(double)arg3 completion:(id /* block */)arg4 {
+	if ([[%c(HBTSPlusProviderController) sharedInstance] applicationWithIdentifierRequiresBackgrounding:[self valueForKey:@"_processBundleID"]]) {
+		return nil;
+	}
+	return %orig;
+}
+
+- (id)initWithTimeout:(double)arg1 queue:(id)arg2 completion:(id /* block */)arg3 {
+	if ([[%c(HBTSPlusProviderController) sharedInstance] applicationWithIdentifierRequiresBackgrounding:[self valueForKey:@"_processBundleID"]]) {
+		return nil;
+	}
+	return %orig;
+}
+
+%end
+
+%hook FBUIApplicationService
+
+- (void)handleSuspendApplicationProcess:(id)arg1 {
+	if ([[%c(HBTSPlusProviderController) sharedInstance] applicationWithIdentifierRequiresBackgrounding:[self valueForKey:@"_processBundleID"]]) {
+		return;
+	}
+	%orig;
+}
+
+%end
+
+%hook FBSystemAppProxyServiceServer
+
+- (void)_handleSuspendApplication:(id)arg1 forClient:(id)arg2 {
+	if ([[%c(HBTSPlusProviderController) sharedInstance] applicationWithIdentifierRequiresBackgrounding:[self valueForKey:@"_processBundleID"]]) {
+		return;
+	}
+	%orig;
 }
 
 %end
