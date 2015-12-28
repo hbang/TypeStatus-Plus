@@ -7,38 +7,8 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>CONFIGURATION</string>
 			<key>footerText</key>
-			<string>TypeStatus Plus adds the option to put the unread notification count of any app in your status bar. You can choose the app by clicking above and choosing your app. If the app has no unread notifications, nothing will show in your status bar.</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSLinkCell</string>
-			<key>bundle</key>
-			<string>AppList</string>
-			<key>isController</key>
-			<true/>
-			<key>icon</key>
-			<string>count</string>
-			<key>label</key>
-			<string>Unread notifications count app</string>
-			<key>ALChangeNotification</key>
-			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
-			<key>ALSettingsDefaultValue</key>
-			<string>com.apple.MobileSMS</string>
-			<key>ALSingleEnabledMode</key>
-			<true/>
-			<key>ALSettingsKey</key>
-			<string>UnreadNotificationAppBundleIdentifier</string>
-			<key>ALSettingsPath</key>
-			<string>/var/mobile/Library/Preferences/ws.hbang.typestatusplus.plist</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>If this setting is on, TypeStatus Plus will show notifications everywhere, instead of just on the lock screen.</string>
+			<string>NOTIFICATIONS_EVERYWHERE_EXPLANATION</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -50,11 +20,41 @@
 			<key>key</key>
 			<string>ShowNotificationsEverywhere</string>
 			<key>label</key>
-			<string>Show notifications everywhere</string>
+			<string>NOTIFICATIONS_EVERYWHERE</string>
 			<key>icon</key>
 			<string>notif.png</string>
 			<key>PostNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>CONFIGURATION</string>
+			<key>footerText</key>
+			<string>UNREAD_COUNT_EXPLANATION</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>bundle</key>
+			<string>AppList</string>
+			<key>isController</key>
+			<true/>
+			<key>icon</key>
+			<string>count</string>
+			<key>label</key>
+			<string>UNREAD_COUNT</string>
+			<key>ALChangeNotification</key>
+			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
+			<key>ALSettingsDefaultValue</key>
+			<string>com.apple.MobileSMS</string>
+			<key>ALSingleEnabledMode</key>
+			<true/>
+			<key>ALSettingsKey</key>
+			<string>UnreadNotificationAppBundleIdentifier</string>
+			<key>ALSettingsPath</key>
+			<string>/var/mobile/Library/Preferences/ws.hbang.typestatusplus.plist</string>
 		</dict>
 	</array>
 	<key>title</key>

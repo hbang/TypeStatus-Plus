@@ -10,9 +10,9 @@
 			<key>id</key>
 			<string>ProvidersGroupCell</string>
 			<key>label</key>
-			<string>Providers</string>
+			<string>PROVIDERS</string>
 			<key>footerText</key>
-			<string>Providers allow HASHBANG Productions and other developers to support TypeStatus Plus with any app.</string>
+			<string>PROVIDERS_EXPLANATION</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -20,9 +20,9 @@
 			<key>id</key>
 			<string>ProvidersNoneInstalledGroupCell</string>
 			<key>label</key>
-			<string>Providers</string>
+			<string>PROVIDERS</string>
 			<key>footerText</key>
-			<string>Visit Cydia to find and install providers for TypeStatus Plus!</string>
+			<string>NO_PROVIDERS_EXPLANATION</string>
 		</dict>
 	</array>
 	<key>title</key>
