@@ -1,4 +1,5 @@
 #import <TypeStatusPlusProvider/HBTSPlusProvider.h>
+#import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
 
 #define XMPPConnectionChatStateDidChange @"XMPPConnectionChatStateDidChange"
 
@@ -28,19 +29,18 @@
 
 %ctor {
 	[[NSNotificationCenter defaultCenter] addObserverForName:XMPPConnectionChatStateDidChange object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
-		HBLogDebug(@"the user info is %@", notification.userInfo);
 		NSDictionary *userInfo = notification.userInfo;
 		NSInteger state = ((NSNumber *)userInfo[@"State"]).integerValue;
+		HBTSPlusProvider *whatsAppProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"net.whatsapp.WhatsApp"];
 		if (state == 1) {
 			WAChatStorage *storage = [%c(WASharedAppData) chatStorage];
 			WAChatSession *chatSession = [storage newOrExistingChatSessionForJID:userInfo[@"JID"]];
 			WAContactInfo *contactInfo = [[%c(WAContactInfo) alloc] initWithChatSession:chatSession];
-			NSString *fullName = contactInfo.fullName;
+			NSString *contentString = [NSString stringWithFormat:@"%@ is typing", contactInfo.fullName];
 
-			[HBTSPlusProvider showNotificationWithIconName:@"WhatsAppIcon" title:@"WhatsApp:" content:fullName];
+			[whatsAppProvider showNotificationWithIconName:@"TypeStatusPlusWhatsApp" title:@"WhatsApp:" content:contentString];
 		} else if (state == 0) {
-			[HBTSPlusProvider hideNotification];
+			[whatsAppProvider hideNotification];
 		}
-		HBLogDebug(@"userInfo = %@, state is %li", userInfo, (long)state);
 	}];
 }

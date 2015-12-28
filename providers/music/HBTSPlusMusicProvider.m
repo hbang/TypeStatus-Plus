@@ -27,7 +27,7 @@
 			[_lastSongIdentifier release];
 			_lastSongIdentifier = [identifier retain];
 
-			[HBTSPlusMusicProvider showNotificationWithIconName:@"TypeStatusPlusMusic" title:artistName content:songName];
+			[self showNotificationWithIconName:@"TypeStatusPlusMusic" title:artistName content:songName];
 		}
 	});
 }

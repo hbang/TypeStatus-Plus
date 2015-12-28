@@ -1,4 +1,5 @@
 #import <TypeStatusPlusProvider/HBTSPlusProvider.h>
+#import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
 
 #define SLKUserTyping @"SLKUserTyping"
 #define kSLKUserKey @"user"
@@ -34,6 +35,6 @@
 
 		NSString *contentString = [NSString stringWithFormat:@"is typing%@", channel ? [NSString stringWithFormat:@" in %@",channelDisplayName] : @""];
 
-		[HBTSPlusProvider showNotificationWithIconName:@"TypeStatusPlusSlack" title:userDisplayName content:contentString];
+		[[[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.tinyspeck.chatlyio"] showNotificationWithIconName:@"TypeStatusPlusSlack" title:userDisplayName content:contentString];
 	}];
 }
