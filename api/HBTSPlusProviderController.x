@@ -1,6 +1,7 @@
 #import "HBTSPlusProviderController.h"
 #import "HBTSPlusProvider.h"
 #import <SpringBoard/SpringBoard.h>
+#import "HBTSPlusProviderBackgroundingManager.h"
 
 @implementation HBTSPlusProviderController
 
@@ -66,13 +67,15 @@
 				continue;
 			}
 
+			NSString *identifier = bundle.infoDictionary[kTypeStatusPlusIdentifierString];
+
 			if ([bundle.infoDictionary[kTypeStatusPlusBackgroundingString] boolValue]) {
-				[_appsRequiringBackgroundSupport addObject:bundle.infoDictionary[kTypeStatusPlusIdentifierString]];
-				HBLogInfo(@"The bundle %@ requires backgrounding support", baseName);
+				[_appsRequiringBackgroundSupport addObject:identifier];
+				HBLogInfo(@"The bundle %@ requires backgrounding support.", baseName);
 			}
 
 			HBTSPlusProvider *provider = [[[bundle.principalClass alloc] init] autorelease];
-			provider.appIdentifier = bundle.infoDictionary[kTypeStatusPlusIdentifierString];
+			provider.appIdentifier = identifier;
 			[_providers addObject:provider];
 
 			if (!provider) {

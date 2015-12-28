@@ -5,19 +5,14 @@ DOCS_OUTPUT_PATH = docs
 include $(THEOS)/makefiles/common.mk
 
 FRAMEWORK_NAME = TypeStatusPlusProvider
-TypeStatusPlusProvider_FILES = HBTSPlusProviderController.m HBTSPlusProvider.x Loading.xm
+TypeStatusPlusProvider_FILES = Loading.xm $(wildcard *.x)
 TypeStatusPlusProvider_PUBLIC_HEADERS = HBTSPlusProvider.h HBTSPlusProviderController.h
 TypeStatusPlusProvider_PRIVATE_FRAMEWORKS = AppSupport
 TypeStatusPlusProvider_EXTRA_FRAMEWORKS = Cephei
 TypeStatusPlusProvider_LIBRARIES = rocketbootstrap substrate
 TypeStatusPlusProvider_CFLAGS = -include ../Global.h
 
-TWEAK_NAME = TypeStatusPlusBackgrounding
-TypeStatusPlusBackgrounding_FILES = Backgrounding.xm ../HBTSPlusPreferences.x
-TypeStatusPlusBackgrounding_EXTRA_FRAMEWORKS = Cephei
-
 include $(THEOS)/makefiles/framework.mk
-include $(THEOS)/makefiles/tweak.mk
 
 after-TypeStatusPlusProvider-all::
 	# create directories
