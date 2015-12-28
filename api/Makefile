@@ -8,7 +8,6 @@ FRAMEWORK_NAME = TypeStatusPlusProvider
 TypeStatusPlusProvider_FILES = Loading.xm $(wildcard *.x)
 TypeStatusPlusProvider_PUBLIC_HEADERS = HBTSPlusProvider.h HBTSPlusProviderController.h
 TypeStatusPlusProvider_PRIVATE_FRAMEWORKS = AppSupport
-TypeStatusPlusProvider_EXTRA_FRAMEWORKS = Cephei
 TypeStatusPlusProvider_LIBRARIES = rocketbootstrap substrate
 TypeStatusPlusProvider_CFLAGS = -include ../Global.h
 

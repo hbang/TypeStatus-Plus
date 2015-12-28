@@ -1,26 +1,14 @@
 #import "HBTSPlusProvider.h"
 #import <rocketbootstrap/rocketbootstrap.h>
 #import <AppSupport/CPDistributedMessagingCenter.h>
-#import <Cephei/HBPreferences.h>
 #import "../HBTSPlusPreferences.h"
 
-@implementation HBTSPlusProvider {
-	HBPreferences *_preferences;
-}
+@implementation HBTSPlusProvider
 
 + (CPDistributedMessagingCenter *)_messagingCenter {
 	CPDistributedMessagingCenter *distributedCenter = [CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName];
 	rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
 	return distributedCenter;
-}
-
-#pragma mark - Initialization
-
-- (instancetype)init {
-	if (self = [super init]) {
-		_preferences = [[HBPreferences alloc] initWithIdentifier:@"ws.hbang.typestatusplus"];
-	}
-	return self;
 }
 
 #pragma mark - Messaging methods
@@ -46,7 +34,7 @@
 #pragma mark - Preferences
 
 - (BOOL)providerIdentifierIsEnabled:(NSString *)identifier {
-	NSNumber *enabled = [_preferences objectForKey:identifier];
+	NSNumber *enabled = [%c(HBTSPlusPreferences) sharedInstance][identifier];
 	return enabled ? enabled.boolValue : YES;
 }
 
