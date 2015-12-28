@@ -56,56 +56,37 @@
 			// - not in provider app
 			// - not in springboard
 
-			HBLogDebug(@"");
-
 			if (![[NSBundle mainBundle].bundleIdentifier isEqualToString:@"com.apple.Preferences"] && ![[NSBundle mainBundle].bundleIdentifier isEqualToString:bundle.infoDictionary[kTypeStatusPlusIdentifierString]] && !IN_SPRINGBOARD) {
 				continue;
 			}
 
-			HBLogDebug(@"");
-
-
 			[bundle load];
-
-			HBLogDebug(@"");
 
 			if (!bundle.principalClass) {
 				HBLogError(@"no principal class for provider %@", baseName);
 				continue;
 			}
-			HBLogDebug(@"");
-
 
 			if (!bundle.infoDictionary[kTypeStatusPlusIdentifierString]) {
 				HBLogError(@"no app identifier set for provider %@", baseName);
 				continue;
 			}
 
-			HBLogDebug(@"");
-
 			NSString *identifier = bundle.infoDictionary[kTypeStatusPlusIdentifierString];
-
-			HBLogDebug(@"");
 
 			if ([bundle.infoDictionary[kTypeStatusPlusBackgroundingString] boolValue]) {
 				[_appsRequiringBackgroundSupport addObject:identifier];
 				HBLogInfo(@"The bundle %@ requires backgrounding support.", baseName);
 			}
 
-			HBLogDebug(@"");
-
 			HBTSPlusProvider *provider = [[[bundle.principalClass alloc] init] autorelease];
 			provider.appIdentifier = identifier;
 			[_providers addObject:provider];
-
-			HBLogDebug(@"");
 
 			if (!provider) {
 				HBLogError(@"TypeStatusPlusProvider: failed to initialise principal class for %@", baseName);
 				continue;
 			}
-			HBLogDebug(@"");
-
 
 			HBLogInfo(@"The bundle %@ was successfully and completely loaded", baseName);
 		}
