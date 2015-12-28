@@ -20,7 +20,7 @@
 			<key>isController</key>
 			<true/>
 			<key>icon</key>
-			<string>advanced</string>
+			<string>count</string>
 			<key>label</key>
 			<string>Unread notifications count app</string>
 			<key>ALChangeNotification</key>
@@ -52,7 +52,7 @@
 			<key>label</key>
 			<string>Show notifications everywhere</string>
 			<key>icon</key>
-			<string>enable.png</string>
+			<string>notif.png</string>
 			<key>PostNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
 		</dict>
