@@ -18,7 +18,7 @@
 	FBScene *scene = [application mainScene];
 	if (!scene || !scene.settings || !scene.mutableSettings) {
 		return;
-	}	HBLogDebug(@"");
+	}
 
 	FBSMutableSceneSettings *sceneSettings = scene.mutableSettings;
 	sceneSettings.backgrounded = backgrounded;
