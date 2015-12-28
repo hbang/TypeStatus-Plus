@@ -53,11 +53,11 @@
 %end
 
 %ctor {
+	[[HBTSPlusProviderController sharedInstance] loadProviders];
+
 	if (!IN_SPRINGBOARD) {
 		return;
 	}
-
-	[[HBTSPlusProviderController sharedInstance] loadProviders];
 
 	%init;
 }

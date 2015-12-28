@@ -31,4 +31,8 @@ static NSString *const kHBTSPlusPreferencesShowNotificationsEverywhereKey = @"Sh
 	return _preferences[@"UnreadNotificationAppBundleIdentifier"] ?: @"com.apple.MobileSMS";
 }
 
+- (BOOL)providerIsEnabled:(NSString *)appIdentifier {
+	return _preferences[appIdentifier] ? [_preferences[appIdentifier] boolValue] : YES;
+}
+
 @end

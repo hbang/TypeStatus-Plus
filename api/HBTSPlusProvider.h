@@ -7,9 +7,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain, nullable) NSBundle *preferencesBundle;
 @property (nonatomic, retain, nullable) NSString *preferencesClass;
 
-+ (void)showNotificationWithIconName:(NSString *)iconName title:(NSString *)title content:(NSString *)content;
+- (void)showNotificationWithIconName:(NSString *)iconName title:(NSString *)title content:(NSString *)content;
 
-+ (void)hideNotification;
+- (void)hideNotification;
 
 @end
 

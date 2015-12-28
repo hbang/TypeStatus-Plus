@@ -8,4 +8,6 @@
 
 - (NSString *)applicationUsingUnreadCount;
 
+- (BOOL)providerIsEnabled:(NSString *)appIdentifier;
+
 @end

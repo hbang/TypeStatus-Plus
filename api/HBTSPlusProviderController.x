@@ -2,6 +2,7 @@
 #import "HBTSPlusProvider.h"
 #import <SpringBoard/SpringBoard.h>
 #import "HBTSPlusProviderBackgroundingManager.h"
+#import "../HBTSPlusPreferences.h"
 
 @implementation HBTSPlusProviderController
 
@@ -15,6 +16,8 @@
 	return sharedInstance;
 }
 
+#pragma mark - Initialization
+
 - (instancetype)init {
 	if (self = [super init]) {
 		_providers = [[NSMutableArray alloc] init];
@@ -22,6 +25,8 @@
 	}
 	return self;
 }
+
+#pragma mark - Loading providers
 
 - (void)loadProviders {
 	static dispatch_once_t predicate;
@@ -51,45 +56,88 @@
 			// - not in provider app
 			// - not in springboard
 
+			HBLogDebug(@"");
+
 			if (![[NSBundle mainBundle].bundleIdentifier isEqualToString:@"com.apple.Preferences"] && ![[NSBundle mainBundle].bundleIdentifier isEqualToString:bundle.infoDictionary[kTypeStatusPlusIdentifierString]] && !IN_SPRINGBOARD) {
 				continue;
 			}
 
+			HBLogDebug(@"");
+
+
 			[bundle load];
+
+			HBLogDebug(@"");
 
 			if (!bundle.principalClass) {
 				HBLogError(@"no principal class for provider %@", baseName);
 				continue;
 			}
+			HBLogDebug(@"");
+
 
 			if (!bundle.infoDictionary[kTypeStatusPlusIdentifierString]) {
 				HBLogError(@"no app identifier set for provider %@", baseName);
 				continue;
 			}
 
+			HBLogDebug(@"");
+
 			NSString *identifier = bundle.infoDictionary[kTypeStatusPlusIdentifierString];
+
+			HBLogDebug(@"");
 
 			if ([bundle.infoDictionary[kTypeStatusPlusBackgroundingString] boolValue]) {
 				[_appsRequiringBackgroundSupport addObject:identifier];
 				HBLogInfo(@"The bundle %@ requires backgrounding support.", baseName);
 			}
 
+			HBLogDebug(@"");
+
 			HBTSPlusProvider *provider = [[[bundle.principalClass alloc] init] autorelease];
 			provider.appIdentifier = identifier;
 			[_providers addObject:provider];
+
+			HBLogDebug(@"");
 
 			if (!provider) {
 				HBLogError(@"TypeStatusPlusProvider: failed to initialise principal class for %@", baseName);
 				continue;
 			}
+			HBLogDebug(@"");
+
 
 			HBLogInfo(@"The bundle %@ was successfully and completely loaded", baseName);
 		}
 	});
 }
 
+#pragma mark - backgrounding
+
 - (BOOL)applicationWithIdentifierRequiresBackgrounding:(NSString *)appIdentifier {
 	return [_appsRequiringBackgroundSupport containsObject:appIdentifier];
+}
+
+#pragma mark - Preferences
+
+- (HBTSPlusProvider *)providerWithAppIdentifier:(NSString *)appIdentifier {
+	for (HBTSPlusProvider *provider in _providers) {
+		if ([provider.appIdentifier isEqualToString:appIdentifier]) {
+			return provider;
+		}
+	}
+	return nil;
+}
+
+- (BOOL)providerIsEnabled:(HBTSPlusProvider *)provider {
+	if (![[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
+		return NO;
+	}
+	if (provider.preferencesBundle && provider.preferencesClass) {
+		return YES;
+	} else {
+		return [(HBTSPlusPreferences *)[%c(HBTSPlusPreferences) sharedInstance] providerIsEnabled:provider.appIdentifier];
+	}
 }
 
 @end
