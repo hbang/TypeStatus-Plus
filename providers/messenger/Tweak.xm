@@ -69,7 +69,6 @@ typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(NSString *display
 }
 
 - (void)fetcher:(FBMUserFetcher *)fetcher didFetchUser:(FBMUser *)user {
-	HBLogDebug(@"user.name.displayName = %@", user.name.displayName);
 	_completionBlock(user.name.displayName);
 }
 
@@ -86,7 +85,6 @@ typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(NSString *display
 		NSString *senderID = userInfo[kMessengerSenderFBIDKey];
 		BOOL state = [userInfo[kMessengerStateKey] boolValue];
 
-		HBTSPlusProvider *messengerProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.facebook.Messenger"];
 		if (state) {
 			HBTSPlusMessengerProviderHelper *helper = [[HBTSPlusMessengerProviderHelper alloc] init];
 			[helper _userDisplayNameForId:senderID completionBlock:^(NSString *displayName) {
@@ -94,8 +92,7 @@ typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(NSString *display
 				[messengerProvider showNotificationWithIconName:@"TypeStatusPlusMessenger" title:displayName content:@"is typing"];
 			}];
 		} else {
-			HBLogDebug(@"messengerProvider %@", messengerProvider);
-
+			HBTSPlusProvider *messengerProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.facebook.Messenger"];
 			[messengerProvider hideNotification];
 		}
 	}];
