@@ -1,121 +1,102 @@
+#import <TypeStatusPlusProvider/HBTSPlusProvider.h>
+#import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
+
 #define OrcaAppReceivedTyping @"OrcaAppReceivedTyping"
 #define kMessengerSenderFBIDKey @"sender_fbid"
 #define kMessengerStateKey @"state"
 
-@interface FBMUser : NSObject
+@interface FBMUserName : NSObject
+
+@property (nonatomic, copy, readonly) NSString *firstName;
+@property (nonatomic, copy, readonly) NSString *lastName;
+@property (nonatomic, copy, readonly) NSString *displayName;
 
 @end
 
-@protocol FBSyncPersonLoadedListener <NSObject>
+@interface FBMUser : NSObject
+
+@property (nonatomic, copy, readonly) FBMUserName *name;
+
+@end
+
+@interface FBProviderMap : NSObject
+
+@end
+
+@interface FBMUserFetcher
+
+- (instancetype)initWithProviderMapData:(FBProviderMap *)providerMap;
+
+- (void)configureAndFetchUserWithWithUserId:(NSString *)userId delegate:(id)delegate;
+
+@end
+
+@protocol FBMUserFetcherDelegate <NSObject>
 
 @required
 
-- (void)didLoadPeople:(id)arg1;
+- (void)fetcher:(FBMUserFetcher *)fetcher didFetchUser:(FBMUser *)user;
 
-@end
-
-@interface FBAnalytics : NSObject
-
-@end
-
-@interface FBFileHandler : NSObject
-
-@end
-
-@interface MNMessengerAppKeysConfigurationProvider : NSObject
-
-@end
-
-@interface FBUserSession : NSObject
-
-@end
-
-@interface MNMessengerAppProperties : NSObject
-
-- (instancetype)initWithSession:(FBUserSession *)session;
-
-@end
-
-@interface FBSessionController : NSObject
-
-@property (nonatomic, readonly) FBUserSession *session;
-
-@end
-
-@interface FBSyncStore
-
-- (instancetype)initWithSession:(FBUserSession *)userSession appProperties:(MNMessengerAppProperties *)appProperties analytics:(FBAnalytics *)analytics keysConfigurationProvider:(MNMessengerAppKeysConfigurationProvider *)keysConfigurationProvider fileHandler:(FBFileHandler *)fileHandler;
-
-- (id)userWithId:(id)arg1 ;
+- (void)fetcher:(FBMUserFetcher *)fetcher couldNotFetchUser:(NSError *)error;
 
 @end
 
 @interface MNAppDelegate : NSObject
 
-@property (nonatomic,retain) FBSessionController *sessionController;
-
-- (MNMessengerAppKeysConfigurationProvider *)keysConfigurationProvider;
+@property (nonatomic, retain) FBProviderMap *providerMap;
 
 @end
 
-@interface FBSyncStorePersonSearchOperation : NSObject
+typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(NSString *displayName);
 
-@property (nonatomic, retain) id<FBSyncPersonLoadedListener> listener;
-
-@property (retain) NSDictionary *dbStatements, *parameters;
-
-- (void)executePersonStatement:(NSDictionary *)statement parameters:(NSDictionary *)parameters;
-
-@end
-
-typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(FBMUser *user);
-
-@interface HBTSPlusMessengerProviderHelper : NSObject <FBSyncPersonLoadedListener>
+@interface HBTSPlusMessengerProviderHelper : NSObject <FBMUserFetcherDelegate>
 
 @property (nonatomic, copy) HBTSPlusMessengerProviderHelperCompletionBlock completionBlock;
+
+- (void)_userDisplayNameForId:(NSString *)userId completionBlock:(HBTSPlusMessengerProviderHelperCompletionBlock)completionBlock;
 
 @end
 
 @implementation HBTSPlusMessengerProviderHelper
 
-- (void)_userForId:(NSString *)userId completionBlock:(HBTSPlusMessengerProviderHelperCompletionBlock)completionBlock {
-
-	_completionBlock = completionBlock;
+- (void)_userDisplayNameForId:(NSString *)userId completionBlock:(HBTSPlusMessengerProviderHelperCompletionBlock)completionBlock {
+	_completionBlock = [completionBlock retain];
 
 	MNAppDelegate *appDelegate = (MNAppDelegate *)[[UIApplication sharedApplication] delegate];
 
-	FBSyncStore *store = [[%c(FBSyncStore) alloc] initWithSession:appDelegate.sessionController.session appProperties:[[%c(MNMessengerAppProperties) alloc] initWithSession:appDelegate.sessionController.session] analytics:nil keysConfigurationProvider:appDelegate.keysConfigurationProvider fileHandler:nil];
-	FBSyncStorePersonSearchOperation *operation = [store userWithId:userId];
-	operation.listener = self;
-	[operation executePersonStatement:operation.dbStatements parameters:operation.parameters];
-	HBLogDebug(@"sdugjxhkfhlesfdi %@", [operation performSelector:@selector(people)]);
+	FBMUserFetcher *fetcher = [[%c(FBMUserFetcher) alloc] initWithProviderMapData:appDelegate.providerMap];
+	[fetcher configureAndFetchUserWithWithUserId:userId delegate:self];
 }
 
-- (void)didLoadPeople:(id)people {
-	HBLogDebug(@"The people are %@", people);
+- (void)fetcher:(FBMUserFetcher *)fetcher didFetchUser:(FBMUser *)user {
+	HBLogDebug(@"user.name.displayName = %@", user.name.displayName);
+	_completionBlock(user.name.displayName);
+}
+
+- (void)fetcher:(FBMUserFetcher *)fetcher couldNotFetchUser:(NSError *)error {
+	HBLogError(@"The error trying to retrieve the display name is %@", error);
 }
 
 @end
-
-%hook FBSyncStore
-
--(id)userWithId:(id)arg1  {
-	%log;
-	return %orig;
-}
-
-%end
 
 %ctor {
 	[[NSNotificationCenter defaultCenter] addObserverForName:OrcaAppReceivedTyping object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
 
 		NSDictionary *userInfo = notification.userInfo;
 		NSString *senderID = userInfo[kMessengerSenderFBIDKey];
+		BOOL state = [userInfo[kMessengerStateKey] boolValue];
 
+		HBTSPlusProvider *messengerProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.facebook.Messenger"];
+		if (state) {
+			HBTSPlusMessengerProviderHelper *helper = [[HBTSPlusMessengerProviderHelper alloc] init];
+			[helper _userDisplayNameForId:senderID completionBlock:^(NSString *displayName) {
+				HBTSPlusProvider *messengerProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.facebook.Messenger"];
+				[messengerProvider showNotificationWithIconName:@"TypeStatusPlusMessenger" title:displayName content:@"is typing"];
+			}];
+		} else {
+			HBLogDebug(@"messengerProvider %@", messengerProvider);
 
-		HBTSPlusMessengerProviderHelper *helper = [[HBTSPlusMessengerProviderHelper alloc] init];
-		[helper _userForId:senderID completionBlock:nil];
-
-//		[HBTSPlusProvider showNotificationWithIconName:@"TypeStatusPlusSlack" title:userDisplayName content:contentString];
+			[messengerProvider hideNotification];
+		}
 	}];
 }

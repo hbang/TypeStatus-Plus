@@ -7,7 +7,7 @@
 		<key>HBTSApplicationBundleIdentifier</key>
 		<string>com.facebook.Messenger</string>
 		<key>HBTSKeepApplicationAlive</key>
-		<false/>
+		<true/>
 		<key>NSPrincipalClass</key>
 		<string>HBTSPlusMessengerProvider</string>
 	</dict>
