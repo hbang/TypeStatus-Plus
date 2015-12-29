@@ -95,6 +95,11 @@
 - (CKConversationListCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	CKConversationListCell *cell = %orig;
 
+	// for some reason someone was getting a crash that it was an unknown selector, so make sure that "conversation" exists
+	if (![cell respondsToSelector:@selector(conversation)]) {
+		return %orig;
+	}
+
 	cell._typeStatusPlus_typingIndicatorVisible = [[HBTSPlusMessagesTypingManager sharedInstance] conversationIsTyping:cell.conversation];
 
 	return cell;
