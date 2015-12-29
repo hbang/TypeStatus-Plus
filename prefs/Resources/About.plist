@@ -71,6 +71,20 @@
 			<false />
 		</dict>
 		<dict>
+			<key>cellClass</key>
+			<string>HBTSPlusTwitterCell</string>
+			<key>label</key>
+			<string>Timon Olsthoorn</string>
+			<key>user</key>
+			<string>TimonOlsthoorn</string>
+			<key>big</key>
+			<true/>
+			<key>height</key>
+			<integer>60</integer>
+			<key>developer</key>
+			<false />
+		</dict>
+		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 		</dict>
