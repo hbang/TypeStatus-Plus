@@ -94,6 +94,11 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 			return;
 		}
 
+		AudioServicesPlaySystemSoundWithVibration(4095, nil, @{
+			@"VibePattern": @[ @YES, @(50) ],
+			@"Intensity": @1
+		});
+
 		NSString *title = notification.userInfo[kHBTSPlusMessageTitleKey];
 		NSString *content = notification.userInfo[kHBTSPlusMessageContentKey];
 
@@ -104,11 +109,6 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 		// TODO: make this a setting
 		if (title && ![title isEqualToString:@""] && content && ![content isEqualToString:@""] && onLockscreen) {
 			[[HBTSPlusBulletinProvider sharedInstance] showBulletinWithTitle:title content:content];
-
-			AudioServicesPlaySystemSoundWithVibration(4095, nil, @{
-				@"VibePattern": @[ @YES, @(50) ],
-				@"Intensity": @1
-			});
 		}
 	}];
 
