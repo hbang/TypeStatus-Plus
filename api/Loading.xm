@@ -14,6 +14,17 @@
 #import <FrontBoard/FBApplicationProcess.h>
 #import "HBTSPlusProviderBackgroundingManager.h"
 
+%hook FBWorkspaceScene
+
+- (void)host:(id)host didUpdateSettings:(FBSSceneSettings *)settings withDiff:(id)diff transitionContext:(id)transitionContext completion:(id)completionBlock {
+	if (settings.isBackgrounded && [[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[self identifier]]) {
+		return;
+	}
+	%orig;
+}
+
+%end
+
 %hook FBApplicationProcess
 
 - (void)killForReason:(NSInteger)integer andReport:(BOOL)report withDescription:(NSString *)description completion:(id)completionBlock {
