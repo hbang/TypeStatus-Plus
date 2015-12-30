@@ -21,13 +21,17 @@
 		NSString *artistName = dictionary[(NSString *)kMRMediaRemoteNowPlayingInfoArtist];
 		NSString *albumName = dictionary[(NSString *)kMRMediaRemoteNowPlayingInfoAlbum];
 
+		if (!songName) {
+			return;
+		}
+
 		NSString *identifier = [NSString stringWithFormat:@"title = %@, artist = %@, album = %@", songName, artistName, albumName];
 
 		if (![_lastSongIdentifier isEqualToString:identifier]) {
 			[_lastSongIdentifier release];
 			_lastSongIdentifier = [identifier retain];
 
-			[self showNotificationWithIconName:@"TypeStatusPlusMusic" title:artistName content:songName];
+			[self showNotificationWithIconName:@"TypeStatusPlusMusic" title:artistName?:songName content:songName];
 		}
 	});
 }
