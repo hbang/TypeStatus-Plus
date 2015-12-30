@@ -48,10 +48,6 @@
 	return [[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier] ?: %orig;
 }
 
-%end
-
-%hook SBApplication
-
 - (void)processDidLaunch:(FBApplicationProcess *)process {
 	%orig;
 
