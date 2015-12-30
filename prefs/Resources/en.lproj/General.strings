@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<!-- Switch to toggle showing banner notifications everywhere. -->
-	<key>NOTIFICATIONS_EVERYWHERE</key>
+	<key>BANNERS_EVERYWHERE</key>
 	<string>Banners Everywhere</string>
 
 	<!-- Explanation of the banners everywhere switch. -->
-	<key>NOTIFICATIONS_EVERYWHERE_EXPLANATION</key>
+	<key>BANNERS_EVERYWHERE_EXPLANATION</key>
 	<string>If this setting is on, banners will be shown everywhere, instead of just on the lock screen.</string>
 
 	<!-- Button for choosing from which app the unread notifications count will be shown in the status bar. -->

@@ -8,7 +8,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>footerText</key>
-			<string>NOTIFICATIONS_EVERYWHERE_EXPLANATION</string>
+			<string>BANNERS_EVERYWHERE_EXPLANATION</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -20,7 +20,7 @@
 			<key>key</key>
 			<string>ShowNotificationsEverywhere</string>
 			<key>label</key>
-			<string>NOTIFICATIONS_EVERYWHERE</string>
+			<string>BANNERS_EVERYWHERE</string>
 			<key>icon</key>
 			<string>notif.png</string>
 			<key>PostNotification</key>
