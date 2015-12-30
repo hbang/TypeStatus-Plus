@@ -36,9 +36,8 @@
 			WAChatStorage *storage = [%c(WASharedAppData) chatStorage];
 			WAChatSession *chatSession = [storage newOrExistingChatSessionForJID:userInfo[@"JID"]];
 			WAContactInfo *contactInfo = [[%c(WAContactInfo) alloc] initWithChatSession:chatSession];
-			NSString *contentString = [NSString stringWithFormat:@"%@ is typing", contactInfo.fullName];
 
-			[whatsAppProvider showNotificationWithIconName:@"TypeStatusPlusWhatsApp" title:@"WhatsApp:" content:contentString];
+			[whatsAppProvider showNotificationWithIconName:@"TypeStatusPlusWhatsApp" title:contactInfo.fullName content:@"is typing"];
 		} else if (state == 0) {
 			[whatsAppProvider hideNotification];
 		}
