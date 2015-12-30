@@ -4,11 +4,11 @@
 <dict>
 	<!-- Switch to toggle showing notifications everywhere. -->
 	<key>NOTIFICATIONS_EVERYWHERE</key>
-	<string>Notifications Everywhere</string>
+	<string>Banners Everywhere</string>
 
 	<!-- Explanation of the notifications everywhere switch. -->
 	<key>NOTIFICATIONS_EVERYWHERE_EXPLANATION</key>
-	<string>If this setting is on, notifications will be shown everywhere, instead of just on the lock screen.</string>
+	<string>If this setting is on, banners will be shown everywhere, instead of just on the lock screen.</string>
 
 	<!-- Button for choosing from which app the unread notifications count will be shown in the status bar. -->
 	<key>UNREAD_COUNT</key>
