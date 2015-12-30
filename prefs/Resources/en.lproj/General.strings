@@ -2,11 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<!-- Switch to toggle showing notifications everywhere. -->
+	<!-- Switch to toggle showing banner notifications everywhere. -->
 	<key>NOTIFICATIONS_EVERYWHERE</key>
 	<string>Banners Everywhere</string>
 
-	<!-- Explanation of the notifications everywhere switch. -->
+	<!-- Explanation of the banners everywhere switch. -->
 	<key>NOTIFICATIONS_EVERYWHERE_EXPLANATION</key>
 	<string>If this setting is on, banners will be shown everywhere, instead of just on the lock screen.</string>
 
