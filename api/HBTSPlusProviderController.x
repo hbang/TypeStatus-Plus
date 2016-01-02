@@ -63,6 +63,7 @@
 			// - not in preference app
 			// - not in provider app
 			// - not in springboard
+			// or
 			// - not installed on device
 
 			LSApplicationProxy *proxy = [LSApplicationProxy applicationProxyForIdentifier:identifier];
