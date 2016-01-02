@@ -54,7 +54,7 @@
 }
 
 - (NSDictionary *)receivedGetUnreadCountMessage:(NSString *)message {
-	NSString *appIdentifier = [[%c(HBTSPlusPreferences) sharedInstance] applicationUsingUnreadCount] ?: @"com.apple.MobileSMS";
+	NSString *appIdentifier = [[%c(HBTSPlusPreferences) sharedInstance] applicationUsingUnreadCount];
 	SBApplication *messagesApplication = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:appIdentifier];
 	return @{kHBTSPlusBadgeCountKey: [messagesApplication badgeNumberOrString]};
 }

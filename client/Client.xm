@@ -38,7 +38,7 @@ CPDistributedMessagingCenter *distributedCenter;
 	if ([[%c(HBTSPlusPreferences) sharedInstance] enabled] && [self.item.indicatorName isEqualToString:@"TypeStatusPlus"]) {
 		id badgeNumberOrString = nil;
 		if (IN_SPRINGBOARD) {
-			NSString *bundleIdentifier = [[%c(HBTSPlusPreferences) sharedInstance] applicationUsingUnreadCount] ?: @"com.apple.MobileSMS";
+			NSString *bundleIdentifier = [[%c(HBTSPlusPreferences) sharedInstance] applicationUsingUnreadCount];
 			SBApplication *messagesApplication = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:bundleIdentifier];
 			badgeNumberOrString = [messagesApplication badgeNumberOrString];
 		} else {
