@@ -7,6 +7,7 @@ include $(THEOS)/makefiles/common.mk
 FRAMEWORK_NAME = TypeStatusPlusProvider
 TypeStatusPlusProvider_FILES = Loading.xm $(wildcard *.x)
 TypeStatusPlusProvider_PUBLIC_HEADERS = HBTSPlusProvider.h HBTSPlusProviderController.h
+TypeStatusPlusProvider_FRAMEWORKS = MobileCoreServices
 TypeStatusPlusProvider_PRIVATE_FRAMEWORKS = AppSupport
 TypeStatusPlusProvider_LIBRARIES = rocketbootstrap substrate
 TypeStatusPlusProvider_CFLAGS = -include ../Global.h

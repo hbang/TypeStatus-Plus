@@ -3,6 +3,7 @@
 #import <SpringBoard/SpringBoard.h>
 #import "HBTSPlusProviderBackgroundingManager.h"
 #import "../HBTSPlusPreferences.h"
+#import <MobileCoreServices/LSApplicationProxy.h>
 
 @implementation HBTSPlusProviderController
 
@@ -51,12 +52,23 @@
 				continue;
 			}
 
+			if (!bundle.infoDictionary[kTypeStatusPlusIdentifierString]) {
+				HBLogError(@"no app identifier set for provider %@", baseName);
+				continue;
+			}
+
+			NSString *identifier = bundle.infoDictionary[kTypeStatusPlusIdentifierString];
+
 			// check:
 			// - not in preference app
 			// - not in provider app
 			// - not in springboard
+			// - not installed on device
 
-			if (![[NSBundle mainBundle].bundleIdentifier isEqualToString:@"com.apple.Preferences"] && ![[NSBundle mainBundle].bundleIdentifier isEqualToString:bundle.infoDictionary[kTypeStatusPlusIdentifierString]] && !IN_SPRINGBOARD) {
+			LSApplicationProxy *proxy = [LSApplicationProxy applicationProxyForIdentifier:identifier];
+			BOOL installed = [proxy isInstalled];
+
+			if (!installed || (![[NSBundle mainBundle].bundleIdentifier isEqualToString:@"com.apple.Preferences"] && ![[NSBundle mainBundle].bundleIdentifier isEqualToString:identifier] && !IN_SPRINGBOARD)) {
 				continue;
 			}
 
@@ -66,13 +78,6 @@
 				HBLogError(@"no principal class for provider %@", baseName);
 				continue;
 			}
-
-			if (!bundle.infoDictionary[kTypeStatusPlusIdentifierString]) {
-				HBLogError(@"no app identifier set for provider %@", baseName);
-				continue;
-			}
-
-			NSString *identifier = bundle.infoDictionary[kTypeStatusPlusIdentifierString];
 
 			if ([bundle.infoDictionary[kTypeStatusPlusBackgroundingString] boolValue]) {
 				[_appsRequiringBackgroundSupport addObject:identifier];
