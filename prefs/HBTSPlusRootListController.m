@@ -28,6 +28,10 @@
 	return YES;
 }
 
++ (BOOL)hb_translucentNavigationBar {
+	return YES;
+}
+
 + (UIColor *)hb_tableViewCellTextColor {
 	return [UIColor whiteColor];
 }
