@@ -36,20 +36,18 @@ CPDistributedMessagingCenter *distributedCenter;
 
 - (_UILegibilityImageSet *)contentsImage {
 	if ([[%c(HBTSPlusPreferences) sharedInstance] enabled] && [self.item.indicatorName isEqualToString:@"TypeStatusPlus"]) {
-		NSInteger badgeCount = 0;
+		id badgeNumberOrString = nil;
 		if (IN_SPRINGBOARD) {
 			NSString *bundleIdentifier = [[%c(HBTSPlusPreferences) sharedInstance] applicationUsingUnreadCount] ?: @"com.apple.MobileSMS";
 			SBApplication *messagesApplication = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:bundleIdentifier];
-			badgeCount = [messagesApplication badgeNumberOrString].longValue;
+			badgeNumberOrString = [messagesApplication badgeNumberOrString];
 		} else {
 			NSDictionary *result = [distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerGetUnreadCountNotificationName userInfo:nil];
-			badgeCount = ((NSNumber *)result[kHBTSPlusBadgeCountKey]).integerValue;
+			badgeNumberOrString = result[kHBTSPlusBadgeCountKey];
 		}
+		NSString *badgeCount = [badgeNumberOrString isKindOfClass:NSNumber.class] ? [badgeNumberOrString stringValue] : badgeNumberOrString;
 
-		if (badgeCount == 0) {
-			return nil;
-		}
-		return [self imageWithText:[NSString stringWithFormat:@"%li", (long)badgeCount]];
+		return badgeCount ? [self imageWithText:badgeCount] : nil;
 	}
 	return %orig;
 }
