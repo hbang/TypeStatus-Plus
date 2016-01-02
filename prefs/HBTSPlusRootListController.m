@@ -29,7 +29,7 @@
 }
 
 + (BOOL)hb_translucentNavigationBar {
-	return YES;
+	return NO;
 }
 
 + (UIColor *)hb_tableViewCellTextColor {
