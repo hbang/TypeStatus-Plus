@@ -21,14 +21,10 @@
 }
 
 + (UIColor *)hb_navigationBarTintColor {
-	return [UIColor colorWithRed:0.059 green:0.059 blue:0.059 alpha:1.00];
+	return [UIColor colorWithRed:0.055 green:0.055 blue:0.055 alpha:1.00];
 }
 
 + (BOOL)hb_invertedNavigationBar {
-	return YES;
-}
-
-+ (BOOL)hb_translucentNavigationBar {
 	return YES;
 }
 
@@ -41,11 +37,11 @@
 }
 
 + (UIColor *)hb_tableViewCellSeparatorColor {
-	return [UIColor colorWithRed:0.047 green:0.047 blue:0.047 alpha:1.00];
+	return [UIColor colorWithRed:0.120 green:0.120 blue:0.120 alpha:1.00];
 }
 
 + (UIColor *)hb_tableViewBackgroundColor {
-	return [UIColor colorWithRed:0.075 green:0.075 blue:0.075 alpha:1.00];
+	return [UIColor colorWithRed:0.089 green:0.089 blue:0.089 alpha:1.00];
 }
 
 - (void)viewDidLoad {
