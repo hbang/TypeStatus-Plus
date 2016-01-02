@@ -30,7 +30,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>footerText</key>
-			<string>UNREAD_COUNT_EXPLANATION</string>
+			<string>SHOW_COUNT_FOR_EXPLANATION</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -42,7 +42,7 @@
 			<key>icon</key>
 			<string>count</string>
 			<key>label</key>
-			<string>UNREAD_COUNT</string>
+			<string>SHOW_COUNT_FOR</string>
 			<key>ALChangeNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
 			<key>ALSettingsDefaultValue</key>

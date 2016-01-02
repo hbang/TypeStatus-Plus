@@ -11,11 +11,11 @@
 	<string>If this setting is on, banners will be shown everywhere, instead of just on the lock screen.</string>
 
 	<!-- Button for choosing from which app the unread notifications count will be shown in the status bar. -->
-	<key>UNREAD_COUNT</key>
-	<string>Unread Notifications Count</string>
+	<key>SHOW_COUNT_FOR</key>
+	<string>Show Count For</string>
 
 	<!-- Explanation of the unread notifications count button. -->
-	<key>UNREAD_COUNT_EXPLANATION</key>
+	<key>SHOW_COUNT_FOR_EXPLANATION</key>
 	<string>If you select an app, the unread notification count of the app will show in your status bar. If there are no unread notifications, nothing will show in your status bar.</string>
 </dict>
 </plist>
