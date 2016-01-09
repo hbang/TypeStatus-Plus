@@ -35,7 +35,7 @@
 }
 
 - (NSDictionary *)receivedSetStatusBarMessage:(NSString *)message withUserInfo:(NSDictionary *)userInfo {
-	HBLogDebug(@"Recieved set message on server side.");
+	HBLogInfo(@"Recieved set message on server side.");
 
 	NSString *title = userInfo[kHBTSPlusMessageTitleKey];
 	NSString *content = userInfo[kHBTSPlusMessageContentKey];
@@ -54,7 +54,7 @@
 }
 
 - (NSDictionary *)receivedHideStatusBarMessage:(NSString *)message {
-	HBLogDebug(@"Recieved hide message on server side.");
+	HBLogInfo(@"Recieved hide message on server side.");
 
 	[%c(HBTSStatusBarAlertServer) hide];
 

@@ -37,7 +37,7 @@
 }
 
 - (NSDictionary *)receivedStatusBarTappedMessage:(NSString *)message {
-	HBLogDebug(@"Status bar tapped—recieved notification");
+	HBLogInfo(@"Status bar tapped—recieved notification");
 
 	if (!_currentSender) {
 		return nil;
