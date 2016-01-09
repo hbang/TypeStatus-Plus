@@ -10,12 +10,26 @@
 
 CPDistributedMessagingCenter *distributedCenter;
 
+@interface HBTSStatusBarForegroundView (TapToOpen)
+
+@property (nonatomic, retain) UITapGestureRecognizer *tapToOpenConvoRecognizer;
+
+@end
+
 %hook HBTSStatusBarForegroundView
+
+%property (nonatomic, retain) UITapGestureRecognizer *tapToOpenConvoRecognizer;
 
 - (void)_typeStatus_init {
 	%orig;
-	UITapGestureRecognizer *tapToOpenConvoRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(typeStatusPlus_openConversation:)];
-	[self addGestureRecognizer:tapToOpenConvoRecognizer];
+	self.tapToOpenConvoRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(typeStatusPlus_openConversation:)];
+	[self addGestureRecognizer:self.tapToOpenConvoRecognizer];
+}
+
+- (void)dealloc {
+	[self.tapToOpenConvoRecognizer release];
+
+	%orig;
 }
 
 %new
@@ -47,7 +61,7 @@ CPDistributedMessagingCenter *distributedCenter;
 		}
 		NSString *badgeCount = [badgeNumberOrString isKindOfClass:NSNumber.class] ? [badgeNumberOrString stringValue] : badgeNumberOrString;
 
-		return badgeCount ? [self imageWithText:badgeCount] : nil;
+		return badgeCount ? [[self imageWithText:badgeCount] autorelease] : nil;
 	}
 	return %orig;
 }

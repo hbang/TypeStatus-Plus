@@ -52,4 +52,10 @@
 
 }
 
+- (void)dealloc {
+	[super dealloc];
+
+	[_conversations release];
+}
+
 @end
