@@ -23,7 +23,7 @@
 
 %hook FBUIApplicationWorkspaceScene
 
-- (void)host:(FBScene *)scene didUpdateSettings:(FBSSceneSettings *)sceneSettings withDiff:(FBSSceneSettingsDiff *)diff transitionContext:(id)transitionContext completion:(id)completionBlock {
+- (void)host:(FBScene *)scene didUpdateSettings:(FBSSceneSettings *)sceneSettings withDiff:(FBSSceneSettingsDiff *)settingsDiff transitionContext:(id)transitionContext completion:(id)completionBlock {
 	// we check that all of these things exist to avoid crashes
 	if (scene && scene.identifier && scene.clientProcess && sceneSettings && [sceneSettings isKindOfClass:%c(FBSSceneSettings)]) {
 		// check:
@@ -36,11 +36,10 @@
 
 			UIApplicationSceneSettings *settings = [[[%c(UIApplicationSceneSettings) alloc] initWithSettings:mutableSettings] autorelease];
 
-			%orig(scene, settings, arg3, arg4, arg5);
+			%orig(scene, settings, settingsDiff, transitionContext, completionBlock);
 			return;
 		}
 	}
-
 	%orig;
 }
 
