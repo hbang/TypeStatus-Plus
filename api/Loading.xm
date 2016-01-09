@@ -13,13 +13,34 @@
 #import <UIKit/UIMutableApplicationSceneSettings.h>
 #import <FrontBoard/FBApplicationProcess.h>
 #import "HBTSPlusProviderBackgroundingManager.h"
+#import <UIKit/UIApplicationSceneSettings.h>
 
-%hook FBWorkspaceScene
+@interface FBUIApplicationWorkspaceScene : NSObject
 
-- (void)host:(id)host didUpdateSettings:(FBSSceneSettings *)settings withDiff:(id)diff transitionContext:(id)transitionContext completion:(id)completionBlock {
-	if (settings.isBackgrounded && [[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[self identifier]]) {
-		return;
+- (NSString *)identifier;
+
+@end
+
+%hook FBUIApplicationWorkspaceScene
+
+- (void)host:(FBScene *)scene didUpdateSettings:(FBSSceneSettings *)sceneSettings withDiff:(FBSSceneSettingsDiff *)diff transitionContext:(id)transitionContext completion:(id)completionBlock {
+	// we check that all of these things exist to avoid crashes
+	if (scene && scene.identifier && scene.clientProcess && sceneSettings && [sceneSettings isKindOfClass:%c(FBSSceneSettings)]) {
+		// check:
+		// - app requires backgrounding
+		// - the settings that are about to be applied have the app in the background
+		// if both of those things are true, we need to take it out of the background
+		if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:scene.identifier] && [sceneSettings isBackgrounded]) {
+			UIMutableApplicationSceneSettings *mutableSettings = [[sceneSettings mutableCopy] autorelease];
+			mutableSettings.backgrounded = NO;
+
+			UIApplicationSceneSettings *settings = [[[%c(UIApplicationSceneSettings) alloc] initWithSettings:mutableSettings] autorelease];
+
+			%orig(scene, settings, arg3, arg4, arg5);
+			return;
+		}
 	}
+
 	%orig;
 }
 
@@ -28,7 +49,6 @@
 %hook FBApplicationProcess
 
 - (void)killForReason:(NSInteger)integer andReport:(BOOL)report withDescription:(NSString *)description completion:(id)completionBlock {
-	%log;
 	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier]) {
 		[HBTSPlusProviderBackgroundingManager putAppWithIdentifier:self.bundleIdentifier intoBackground:NO];
 		return;

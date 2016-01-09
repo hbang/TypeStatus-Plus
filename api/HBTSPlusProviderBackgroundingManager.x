@@ -7,22 +7,27 @@
 #import <FrontBoard/FBScene.h>
 #import <FrontBoard/FBSceneManager.h>
 #import <FrontBoard/FBApplicationProcess.h>
-#import <SpringBoard/SBApplicationController.h>
-#import <SpringBoard/SBApplication.h>
 
 @implementation HBTSPlusProviderBackgroundingManager
 
 + (void)putAppWithIdentifier:(NSString *)appIdentifier intoBackground:(BOOL)backgrounded {
-	SBApplication *application = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:appIdentifier];
+	FBScene *scene = [[%c(FBSceneManager) sharedInstance] sceneWithIdentifier:appIdentifier];
 
-	FBScene *scene = [application mainScene];
-	if (!scene || !scene.settings || !scene.mutableSettings) {
+	id<FBSceneClientProvider> clientProvider = [scene clientProvider];
+	id<FBSceneClient> client = [scene client];
+
+	FBSMutableSceneSettings *sceneSettings = [scene.settings mutableCopy];
+	sceneSettings.backgrounded = backgrounded;
+
+	if (!sceneSettings) {
 		return;
 	}
 
-	FBSMutableSceneSettings *sceneSettings = scene.mutableSettings;
-	sceneSettings.backgrounded = backgrounded;
-	[scene _applyMutableSettings:sceneSettings withTransitionContext:nil completion:nil];
+	FBSSceneSettingsDiff *sceneSettingsDiff = [%c(FBSSceneSettingsDiff) diffFromSettings:scene.settings toSettings:sceneSettings];
+
+	[clientProvider beginTransaction];
+	[client host:scene didUpdateSettings:sceneSettings withDiff:sceneSettingsDiff transitionContext:0 completion:nil];
+	[clientProvider endTransaction];
 }
 
 @end
