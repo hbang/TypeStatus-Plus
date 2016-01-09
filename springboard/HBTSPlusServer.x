@@ -6,6 +6,7 @@
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBApplication.h>
 #import "../HBTSPlusPreferences.h"
+#import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
 
 @implementation HBTSPlusServer
 
@@ -39,6 +40,13 @@
 	NSString *title = userInfo[kHBTSPlusMessageTitleKey];
 	NSString *content = userInfo[kHBTSPlusMessageContentKey];
 	NSString *iconName = userInfo[kHBTSPlusMessageIconNameKey];
+	NSString *appIdentifier = userInfo[kHBTSPlusAppIdentifierKey];
+
+	HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:appIdentifier];
+	BOOL enabled = [[HBTSPlusProviderController sharedInstance] providerIsEnabled:provider];
+	if (!enabled) {
+		return nil;
+	}
 
 	[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:iconName title:title content:content];
 

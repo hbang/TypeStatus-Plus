@@ -38,6 +38,7 @@ static NSString *const kHBTSPlusBadgeCountKey = @"BadgeCount";
 static NSString *const kHBTSPlusMessageTitleKey = @"Title";
 static NSString *const kHBTSPlusMessageContentKey = @"Content";
 static NSString *const kHBTSPlusMessageIconNameKey = @"IconName";
+static NSString *const kHBTSPlusAppIdentifierKey = @"AppIdentifier";
 
 static NSString *const kHBTSMessageTypeKey = @"Type";
 static NSString *const kHBTSMessageSenderKey = @"Name";

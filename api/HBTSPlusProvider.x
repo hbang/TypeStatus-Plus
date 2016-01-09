@@ -15,15 +15,11 @@
 #pragma mark - Messaging methods
 
 - (void)showNotificationWithIconName:(NSString *)iconName title:(NSString *)title content:(NSString *)content {
-	BOOL enabled = [[HBTSPlusProviderController sharedInstance] providerIsEnabled:self];
-	if (!enabled) {
-		return;
-	}
-
 	NSDictionary *userInfo = @{
 		kHBTSPlusMessageTitleKey: title ?: @"",
 		kHBTSPlusMessageContentKey: content ?: @"",
-		kHBTSPlusMessageIconNameKey: iconName ?: @""
+		kHBTSPlusMessageIconNameKey: iconName ?: @"",
+		kHBTSPlusAppIdentifierKey: self.appIdentifier
 	};
 
 	HBLogDebug(@"Posting showNotification message on client side.");
