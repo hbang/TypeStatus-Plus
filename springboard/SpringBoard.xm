@@ -94,10 +94,12 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 			return;
 		}
 
-		AudioServicesPlaySystemSoundWithVibration(4095, nil, @{
-			@"VibePattern": @[ @YES, @(50) ],
-			@"Intensity": @1
-		});
+		if ([[%c(HBTSPlusPreferences) sharedInstance] hapticFeedback]) {
+			AudioServicesPlaySystemSoundWithVibration(4095, nil, @{
+				@"VibePattern": @[ @YES, @(50) ],
+				@"Intensity": @1
+			});
+		}
 
 		NSString *title = notification.userInfo[kHBTSPlusMessageTitleKey];
 		NSString *content = notification.userInfo[kHBTSPlusMessageContentKey];

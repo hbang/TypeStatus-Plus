@@ -17,5 +17,13 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>SHOW_COUNT_FOR_EXPLANATION</key>
 	<string>If you select an app, the unread notification count of the app will show in your status bar. If there are no unread notifications, nothing will show in your status bar.</string>
+
+	<!-- Switch to toggle haptic feedback. -->
+	<key>HAPTIC_FEEDBACK</key>
+	<string>Haptic Feedback</string>
+
+	<!-- Explanation of the haptic feedback switch. -->
+	<key>HAPTIC_FEEDBACK_EXPLANATION</key>
+	<string>If you toggle this on, you will recieve haptic feedback (vibrations), whenever you get a typing notification on your device.</string>
 </dict>
 </plist>

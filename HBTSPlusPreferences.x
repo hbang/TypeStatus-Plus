@@ -3,6 +3,7 @@
 
 static NSString *const kHBTSPlusPreferencesEnabledKey = @"Enabled";
 static NSString *const kHBTSPlusPreferencesShowNotificationsEverywhereKey = @"ShowNotificationsEverywhere";
+static NSString *const kHBTSPlusPreferencesHapticFeedback = @"HapticFeedback";
 
 @implementation HBTSPlusPreferences {
 	HBPreferences *_preferences;
@@ -23,6 +24,7 @@ static NSString *const kHBTSPlusPreferencesShowNotificationsEverywhereKey = @"Sh
 
 		[_preferences registerBool:&_enabled default:YES forKey:kHBTSPlusPreferencesEnabledKey];
 		[_preferences registerBool:&_showNotificationsEverywhere default:NO forKey:kHBTSPlusPreferencesShowNotificationsEverywhereKey];
+		[_preferences registerBool:&_hapticFeedback default:YES forKey:kHBTSPlusPreferencesHapticFeedback];
 	}
 	return self;
 }
