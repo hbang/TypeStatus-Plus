@@ -58,10 +58,11 @@ CPDistributedMessagingCenter *distributedCenter;
 		} else {
 			NSDictionary *result = [distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerGetUnreadCountNotificationName userInfo:nil];
 			badgeNumberOrString = result[kHBTSPlusBadgeCountKey];
+			[result release];
 		}
 		NSString *badgeCount = [badgeNumberOrString isKindOfClass:NSNumber.class] ? [badgeNumberOrString stringValue] : badgeNumberOrString;
-
-		return badgeCount ? [[self imageWithText:badgeCount] autorelease] : nil;
+		[badgeNumberOrString release];
+		return badgeCount ? [self imageWithText:badgeCount] : nil;
 	}
 	return %orig;
 }
