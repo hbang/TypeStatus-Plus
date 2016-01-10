@@ -61,8 +61,8 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 		return;
 	}
 
-	typingStatusBarItem = [[[%c(LSStatusBarItem) alloc] initWithIdentifier:@"ws.hbang.typestatusplus.messageicon" alignment:StatusBarAlignmentRight] retain];
-	typingStatusBarItem.imageName = @"TypeStatusPlus";
+	typingStatusBarItem = [[%c(LSStatusBarItem) alloc] initWithIdentifier:@"ws.hbang.typestatusplus.unreadcount" alignment:StatusBarAlignmentRight];
+	typingStatusBarItem.imageName = @"TypeStatusPlusUnreadCount";
 	typingStatusBarItem.visible = YES;
 }
 
