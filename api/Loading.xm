@@ -21,16 +21,18 @@ static BKSProcessAssertion *processAssertion;
 
 %hook FBUIApplicationWorkspaceScene
 
-- (void)host:(FBScene *)scene didUpdateSettings:(FBSSceneSettings *)sceneSettings withDiff:(FBSSceneSettingsDiff *)settingsDiff transitionContext:(id)transitionContext completion:(id)completionBlock {
+- (void)host:(FBScene *)scene didUpdateSettings:(UIApplicationSceneSettings *)sceneSettings withDiff:(FBSSceneSettingsDiff *)settingsDiff transitionContext:(id)transitionContext completion:(id)completionBlock {
 	// we check that all of these things exist to avoid crashes
-	if (scene && scene.identifier && scene.clientProcess && sceneSettings && [sceneSettings isKindOfClass:%c(FBSSceneSettings)]) {
+	if (scene && scene.settings && settingsDiff && scene.identifier && scene.clientProcess && sceneSettings && [sceneSettings isKindOfClass:%c(UIApplicationSceneSettings)]) {
 		// check:
 		// - app requires backgrounding
 		// - the settings that are about to be applied have the app in the background
 		// if both of those things are true, we need to take it out of the background
 		if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:scene.identifier] && [sceneSettings isBackgrounded]) {
+
 			UIMutableApplicationSceneSettings *mutableSettings = [sceneSettings mutableCopy];
 			mutableSettings.backgrounded = NO;
+			mutableSettings.idleModeEnabled = NO;
 
 			UIApplicationSceneSettings *settings = [[%c(UIApplicationSceneSettings) alloc] initWithSettings:mutableSettings];
 			[mutableSettings release];
