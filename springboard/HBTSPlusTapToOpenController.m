@@ -2,6 +2,7 @@
 #import "rocketbootstrap/rocketbootstrap.h"
 #import <AppSupport/CPDistributedMessagingCenter.h>
 #import <Foundation/NSDistributedNotificationCenter.h>
+#import <SpringBoard/SpringBoard.h>
 
 @implementation HBTSPlusTapToOpenController {
 	NSString *_currentSender;
@@ -39,20 +40,25 @@
 - (NSDictionary *)receivedStatusBarTappedMessage:(NSString *)message {
 	HBLogInfo(@"Status bar tapped—recieved notification");
 
-	if (!_currentSender) {
-		return nil;
+	if (_currentSender) {
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://open?address=%@", _currentSender]]];
+
+		[_currentSender release];
+		_currentSender = nil;
+	} else if (_appIdentifier) {
+		HBLogDebug(@"Yo coolstar");
+		[(SpringBoard *)[UIApplication sharedApplication] launchApplicationWithIdentifier:_appIdentifier suspended:NO];
+
+		[_appIdentifier release];
+		_appIdentifier = nil;
 	}
-
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://open?address=%@", _currentSender]]];
-
-	[_currentSender release];
-	_currentSender = nil;
 
 	return nil;
 }
 
 - (void)dealloc {
 	[_currentSender release];
+	[_appIdentifier release];
 
 	[super dealloc];
 }

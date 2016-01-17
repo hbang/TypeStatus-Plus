@@ -6,4 +6,6 @@
 
 + (instancetype)sharedInstance;
 
+- (NSDictionary *)receivedGetUnreadCountMessage:(NSString *)message;
+
 @end

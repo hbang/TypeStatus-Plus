@@ -7,6 +7,7 @@
 #import <SpringBoard/SBApplication.h>
 #import <SpringBoard/SBApplicationController.h>
 #import "../HBTSPlusPreferences.h"
+#import "../springboard/HBTSPlusTapToOpenController.h"
 
 CPDistributedMessagingCenter *distributedCenter;
 
@@ -41,7 +42,11 @@ CPDistributedMessagingCenter *distributedCenter;
 		return;
 	}
 
-	[distributedCenter sendMessageName:kHBTSPlusServerStatusBarTappedNotificationName userInfo:nil];
+	if (IN_SPRINGBOARD) {
+		[[%c(HBTSPlusTapToOpenController) sharedInstance] receivedStatusBarTappedMessage:nil];
+	} else {
+		[distributedCenter sendMessageName:kHBTSPlusServerStatusBarTappedNotificationName userInfo:nil];
+	}
 }
 
 %end

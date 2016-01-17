@@ -43,6 +43,9 @@
 	NSString *iconName = userInfo[kHBTSPlusMessageIconNameKey];
 	NSString *appIdentifier = userInfo[kHBTSPlusAppIdentifierKey];
 
+	// tap to open controller needs this info
+	[HBTSPlusTapToOpenController sharedInstance].appIdentifier = appIdentifier;
+
 	HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:appIdentifier];
 	BOOL enabled = [[HBTSPlusProviderController sharedInstance] providerIsEnabled:provider];
 
