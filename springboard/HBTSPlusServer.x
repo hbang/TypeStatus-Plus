@@ -7,6 +7,7 @@
 #import <SpringBoard/SBApplication.h>
 #import "../HBTSPlusPreferences.h"
 #import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
+#import <SpringBoard/SpringBoard.h>
 
 @implementation HBTSPlusServer
 
@@ -44,7 +45,11 @@
 
 	HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:appIdentifier];
 	BOOL enabled = [[HBTSPlusProviderController sharedInstance] providerIsEnabled:provider];
-	if (!enabled) {
+
+	SpringBoard *app = (SpringBoard *)[UIApplication sharedApplication];
+	BOOL inForeground = [app._accessibilityFrontMostApplication.bundleIdentifier isEqualToString:appIdentifier];
+
+	if (!enabled || (![[%c(HBTSPlusPreferences) sharedInstance] showWhenInForeground] && inForeground)) {
 		return nil;
 	}
 

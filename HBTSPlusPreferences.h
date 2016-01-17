@@ -6,6 +6,8 @@
 
 @property (nonatomic, readonly) BOOL hapticFeedback;
 
+@property (nonatomic, readonly) BOOL showWhenInForeground;
+
 + (instancetype)sharedInstance;
 
 - (NSString *)applicationUsingUnreadCount;

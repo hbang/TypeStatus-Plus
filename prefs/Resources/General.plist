@@ -76,6 +76,28 @@
 			<key>PostNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>SHOW_IN_FOREGROUND_EXPLANATION</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>ws.hbang.typestatusplus</string>
+			<key>key</key>
+			<string>ShowInForeground</string>
+			<key>label</key>
+			<string>SHOW_IN_FOREGROUND</string>
+			<key>icon</key>
+			<string>foregroundnc.png</string>
+			<key>PostNotification</key>
+			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
+		</dict>
 	</array>
 	<key>title</key>
 	<string>GENERAL</string>

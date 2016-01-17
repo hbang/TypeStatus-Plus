@@ -25,5 +25,13 @@
 	<!-- Explanation of the haptic feedback switch. -->
 	<key>HAPTIC_FEEDBACK_EXPLANATION</key>
 	<string>If you toggle this on, you will recieve haptic feedback (vibrations), whenever you get a typing notification on your device.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Show in Foreground</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>If you toggle this on, you will recieve typing notifications from an app even if it is in the foreground.</string>
 </dict>
 </plist>
