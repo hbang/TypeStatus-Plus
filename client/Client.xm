@@ -55,16 +55,10 @@ CPDistributedMessagingCenter *distributedCenter;
 
 - (_UILegibilityImageSet *)contentsImage {
 	if ([[%c(HBTSPlusPreferences) sharedInstance] enabled] && [self.item.indicatorName isEqualToString:@"TypeStatusPlus"]) {
-		id badgeNumberOrString = nil;
-		if (IN_SPRINGBOARD) {
-			NSString *bundleIdentifier = [[%c(HBTSPlusPreferences) sharedInstance] applicationUsingUnreadCount];
-			SBApplication *messagesApplication = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:bundleIdentifier];
-			badgeNumberOrString = [messagesApplication badgeNumberOrString];
-		} else {
-			NSDictionary *result = [distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerGetUnreadCountNotificationName userInfo:nil];
-			badgeNumberOrString = result[kHBTSPlusBadgeCountKey];
-			[result release];
-		}
+		// if it's in springboard, then call through, if not, message through
+		NSDictionary *result = IN_SPRINGBOARD ? [[%c(HBTSPlusServer) sharedInstance] receivedGetUnreadCountMessage:nil] : [distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerGetUnreadCountNotificationName userInfo:nil];
+		id badgeNumberOrString = result[kHBTSPlusBadgeCountKey];
+		[result release];
 		NSString *badgeCount = [badgeNumberOrString isKindOfClass:NSNumber.class] ? [badgeNumberOrString stringValue] : badgeNumberOrString;
 		[badgeNumberOrString release];
 		return badgeCount ? [self imageWithText:badgeCount] : nil;
