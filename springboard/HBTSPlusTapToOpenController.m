@@ -46,7 +46,6 @@
 		[_currentSender release];
 		_currentSender = nil;
 	} else if (_appIdentifier) {
-		HBLogDebug(@"Yo coolstar");
 		[(SpringBoard *)[UIApplication sharedApplication] launchApplicationWithIdentifier:_appIdentifier suspended:NO];
 
 		[_appIdentifier release];
