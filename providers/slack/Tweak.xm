@@ -33,8 +33,10 @@
 		NSString *userDisplayName = [user displayName];
 		NSString *channelDisplayName = [channel displayTitle];
 
-		NSString *contentString = [NSString stringWithFormat:@"is typing%@", channel ? [NSString stringWithFormat:@" in %@",channelDisplayName] : @""];
+		// Typing: Ben Rosen in #general
 
-		[[[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.tinyspeck.chatlyio"] showNotificationWithIconName:@"TypeStatusPlusSlack" title:userDisplayName content:contentString];
+		NSString *contentString = [NSString stringWithFormat:@"%@%@", userDisplayName, channel ? [NSString stringWithFormat:@" in %@", channelDisplayName] : @""];
+
+		[[[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.tinyspeck.chatlyio"] showNotificationWithIconName:@"TypeStatusPlusSlack" title:@"Typing:" content:contentString];
 	}];
 }

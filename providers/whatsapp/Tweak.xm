@@ -37,7 +37,7 @@
 			WAChatSession *chatSession = [storage newOrExistingChatSessionForJID:userInfo[@"JID"]];
 			WAContactInfo *contactInfo = [[%c(WAContactInfo) alloc] initWithChatSession:chatSession];
 
-			[whatsAppProvider showNotificationWithIconName:@"TypeStatusPlusWhatsApp" title:contactInfo.fullName content:@"is typing"];
+			[whatsAppProvider showNotificationWithIconName:@"TypeStatusPlusWhatsApp" title:@"Typing:" content:contactInfo.fullName];
 		} else if (state == 0) {
 			[whatsAppProvider hideNotification];
 		}

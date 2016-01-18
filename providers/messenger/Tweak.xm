@@ -89,7 +89,7 @@ typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(NSString *display
 			HBTSPlusMessengerProviderHelper *helper = [[HBTSPlusMessengerProviderHelper alloc] init];
 			[helper _userDisplayNameForId:senderID completionBlock:^(NSString *displayName) {
 				HBTSPlusProvider *messengerProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.facebook.Messenger"];
-				[messengerProvider showNotificationWithIconName:@"TypeStatusPlusMessenger" title:displayName content:@"is typing"];
+				[messengerProvider showNotificationWithIconName:@"TypeStatusPlusMessenger" title:@"Typing:" content:displayName];
 			}];
 		} else {
 			HBTSPlusProvider *messengerProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.facebook.Messenger"];

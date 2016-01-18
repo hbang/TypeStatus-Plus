@@ -49,7 +49,7 @@
 	TGUser *user = [userController valueForKey:@"_user"];
 	NSString *userDisplayName = [user displayName];
 
-	[[[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"ph.telegra.Telegraph"] showNotificationWithIconName:@"TypeStatusPlusTelegram" title:userDisplayName content:@"is typing"];
+		[[[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"ph.telegra.Telegraph"] showNotificationWithIconName:@"TypeStatusPlusTelegram" title:@"Typing:" content:userDisplayName];
 
 	return updateShort;
 }
