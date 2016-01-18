@@ -29,29 +29,74 @@
 
 @end
 
+@interface TLUpdates$updates : TLUpdate
+
+@property (retain, nonatomic) NSArray *chats;
+
+@property (retain, nonatomic) NSArray *users;
+
+@property (retain, nonatomic) NSArray *updates;
+
+@end
+
+@interface TLPeer : NSObject
+
+@end
+
+@interface TLUpdate$updateReadHistoryOutbox : TLUpdate
+
+@property(retain, nonatomic) TLPeer *peer;
+
+@end
+
+@interface TLPeer$peerUser : TLPeer
+
+@property (nonatomic) NSInteger user_id;
+
+@end
+
 %hook TGTLSerialization
 
 - (id)parseMessage:(NSData *)message {
-	TLUpdates$updateShort *updateShort = %orig;
+	id original = %orig;
 
-	if (![updateShort isKindOfClass:%c(TLUpdates$updateShort)]) {
-		return updateShort;
-	}
+	if ([original isKindOfClass:%c(TLUpdates$updateShort)]) {
+		TLUpdates$updateShort *updateShort = (TLUpdates$updateShort *)original;
+		if (![updateShort.update isKindOfClass:%c(TLUpdate$updateUserTyping)] && ![updateShort.update isKindOfClass:%c(TLUpdate$updateChatUserTyping)]) {
+			return updateShort;
+		}
 
-	if (![updateShort.update isKindOfClass:%c(TLUpdate$updateUserTyping)] && ![updateShort.update isKindOfClass:%c(TLUpdate$updateChatUserTyping)]) {
-		return updateShort;
-	}
+		TLUpdate$updateUserTyping *userTypingUpdate = (TLUpdate$updateUserTyping *)updateShort.update;
+		NSInteger userId = userTypingUpdate.user_id;
 
-	TLUpdate$updateUserTyping *userTypingUpdate = (TLUpdate$updateUserTyping *)updateShort.update;
-	NSInteger userId = userTypingUpdate.user_id;
-
-	TGTelegraphUserInfoController *userController = [[%c(TGTelegraphUserInfoController) alloc] initWithUid:userId];
-	TGUser *user = [userController valueForKey:@"_user"];
-	NSString *userDisplayName = [user displayName];
+		TGTelegraphUserInfoController *userController = [[%c(TGTelegraphUserInfoController) alloc] initWithUid:userId];
+		TGUser *user = [userController valueForKey:@"_user"];
+		NSString *userDisplayName = [user displayName];
 
 		[[[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"ph.telegra.Telegraph"] showNotificationWithIconName:@"TypeStatusPlusTelegram" title:@"Typing:" content:userDisplayName];
+	} else if ([original isKindOfClass:%c(TLUpdates$updates)]) {
+		TLUpdates$updates *update = (TLUpdates$updates *)original;
+		for (TLUpdate *regularUpdate in update.updates) {
+			if ([regularUpdate isKindOfClass:%c(TLUpdate$updateReadHistoryOutbox)]) {
+				TLUpdate$updateReadHistoryOutbox *readUpdate = (TLUpdate$updateReadHistoryOutbox *)regularUpdate;
 
-	return updateShort;
+				TLPeer$peerUser *peer = (TLPeer$peerUser *)readUpdate.peer;
+				if (![peer isKindOfClass:%c(TLPeer$peerUser)]) {
+					break;
+				}
+
+				NSInteger userId = peer.user_id;
+
+				TGTelegraphUserInfoController *userController = [[%c(TGTelegraphUserInfoController) alloc] initWithUid:userId];
+				TGUser *user = [userController valueForKey:@"_user"];
+				NSString *userDisplayName = [user displayName];
+
+				[[[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"ph.telegra.Telegraph"] showNotificationWithIconName:@"TypeStatusPlusTelegram" title:@"Read:" content:userDisplayName];
+			}
+		}
+	}
+
+	return original;
 }
 
 %end
