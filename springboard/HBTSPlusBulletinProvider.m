@@ -17,7 +17,7 @@
 	return sharedInstance;
 }
 
-- (void)showBulletinWithTitle:(NSString *)title content:(NSString *)content {
+- (void)showBulletinWithTitle:(NSString *)title content:(NSString *)content appIdentifier:(NSString *)appIdentifier {
 	BBDataProviderWithdrawBulletinsWithRecordID(self, @"ws.hbang.typestatusplus.notification");
 
 	static BBBulletinRequest *bulletinRequest = nil;
@@ -35,7 +35,7 @@
 	bulletinRequest.message = content;
 	bulletinRequest.date = [NSDate date];
 	bulletinRequest.lastInterruptDate = [NSDate date];
-	bulletinRequest.defaultAction = [BBAction actionWithLaunchBundleID:@"com.apple.MobileSMS" callblock:nil];
+	bulletinRequest.defaultAction = [BBAction actionWithLaunchBundleID:appIdentifier callblock:nil];
 
 	BBDataProviderAddBulletin(self, bulletinRequest);
 
