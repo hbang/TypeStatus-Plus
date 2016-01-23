@@ -5,6 +5,7 @@ static NSString *const kHBTSPlusPreferencesEnabledKey = @"Enabled";
 static NSString *const kHBTSPlusPreferencesShowNotificationsEverywhereKey = @"ShowNotificationsEverywhere";
 static NSString *const kHBTSPlusPreferencesHapticFeedbackKey = @"HapticFeedback";
 static NSString *const kHBTSPlusPreferencesShowWhenInForegroundKey = @"ShowInForeground";
+static NSString *const kHBTSPlusPreferencesUseTSPIconKey = @"UseTSPIcon";
 
 @implementation HBTSPlusPreferences {
 	HBPreferences *_preferences;
@@ -27,6 +28,7 @@ static NSString *const kHBTSPlusPreferencesShowWhenInForegroundKey = @"ShowInFor
 		[_preferences registerBool:&_showNotificationsEverywhere default:NO forKey:kHBTSPlusPreferencesShowNotificationsEverywhereKey];
 		[_preferences registerBool:&_hapticFeedback default:YES forKey:kHBTSPlusPreferencesHapticFeedbackKey];
 		[_preferences registerBool:&_showWhenInForeground default:NO forKey:kHBTSPlusPreferencesShowWhenInForegroundKey];
+		[_preferences registerBool:&_useTSPIcon default:NO forKey:kHBTSPlusPreferencesUseTSPIconKey];
 	}
 	return self;
 }

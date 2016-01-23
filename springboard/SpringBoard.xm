@@ -27,7 +27,7 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 %group EddyCue
 - (void)loadAllDataProvidersAndPerformMigration:(BOOL)performMigration {
 	%orig;
-	[self addDataProvider:[HBTSPlusBulletinProvider sharedInstance] performMigration:performMigration];
+	[self addDataProvider:[HBTSPlusBulletinProvider sharedInstance] performMigration:NO];
 }
 %end
 

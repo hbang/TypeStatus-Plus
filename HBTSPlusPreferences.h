@@ -8,6 +8,8 @@
 
 @property (nonatomic, readonly) BOOL showWhenInForeground;
 
+@property (nonatomic, readonly) BOOL useTSPIcon;
+
 + (instancetype)sharedInstance;
 
 - (NSString *)applicationUsingUnreadCount;
