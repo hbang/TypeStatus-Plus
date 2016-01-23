@@ -26,6 +26,8 @@
 }
 
 - (void)newMessageRecieved:(NSNotification *)notification {
+	_appIdentifier = @"com.apple.MobileSMS";
+
 	[_currentSender release];
 
 	NSString *rawSender = notification.userInfo[kHBTSMessageSenderKey];
@@ -40,17 +42,19 @@
 - (NSDictionary *)receivedStatusBarTappedMessage:(NSString *)message {
 	HBLogInfo(@"Status bar tapped—recieved notification");
 
-	if (_currentSender) {
+	if ([_appIdentifier isEqualToString:@"com.apple.MobileSMS"]) {
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://open?address=%@", _currentSender]]];
 
 		[_currentSender release];
 		_currentSender = nil;
-	} else if (_appIdentifier) {
-		[(SpringBoard *)[UIApplication sharedApplication] launchApplicationWithIdentifier:_appIdentifier suspended:NO];
 
-		[_appIdentifier release];
-		_appIdentifier = nil;
+		return nil;
 	}
+
+	[(SpringBoard *)[UIApplication sharedApplication] launchApplicationWithIdentifier:_appIdentifier suspended:NO];
+
+	[_appIdentifier release];
+	_appIdentifier = nil;
 
 	return nil;
 }

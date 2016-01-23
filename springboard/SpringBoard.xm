@@ -110,7 +110,9 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 		// to show the notification, we want to make sure title and content are not nil, and that the settings want it to be shown
 		if (title && ![title isEqualToString:@""] && content && ![content isEqualToString:@""] && shouldShowNotification) {
 			// this is a hax, probably shouldn't be doing it... ¯\_(ツ)_/¯
-			NSString *appIdentifier = [[%c(HBTSPlusTapToOpenController) sharedInstance] appIdentifier];
+
+			NSString *appIdentifier = [[%c(HBTSPlusTapToOpenController) sharedInstance] appIdentifier] ?: @"com.apple.MobileSMS";
+
 			[[HBTSPlusBulletinProvider sharedInstance] showBulletinWithTitle:title content:content appIdentifier:appIdentifier];
 		}
 	}];
