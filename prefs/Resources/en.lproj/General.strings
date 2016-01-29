@@ -10,13 +10,13 @@
 	<key>BANNERS_EVERYWHERE_EXPLANATION</key>
 	<string>If this setting is on, banners will be shown everywhere, instead of just on the lock screen.</string>
 
-	<!-- Switch to use the TypeStatus Plus icon for banner notifications, instead of the respective app icon. -->
-	<key>USE_TSP_ICON</key>
-	<string>Use TypeStatus Plus icon</string>
+	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
+	<key>USE_APP_ICON</key>
+	<string>Use Respective App Icon</string>
 
-	<!-- Explanation of the use TypeStatus Plus icon switch. -->
-	<key>USE_TSP_ICON_EXPLANATION</key>
-	<string>If you toggle this on, banner notifications will use the TypeStatus Plus icon instead of the respective app icon.</string>
+	<!-- Explanation of the respective app icon switch. -->
+	<key>USE_APP_ICON_EXPLANATION</key>
+	<string>When enabled, banner notifications will use the respective app icon instead of the TypeStatus Plus icon.</string>
 
 	<!-- Button for choosing from which app the unread notifications count will be shown in the status bar. -->
 	<key>SHOW_COUNT_FOR</key>

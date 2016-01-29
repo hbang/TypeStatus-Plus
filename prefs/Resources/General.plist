@@ -30,7 +30,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>footerText</key>
-			<string>USE_TSP_ICON_EXPLANATION</string>
+			<string>USE_APP_ICON_EXPLANATION</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -42,9 +42,11 @@
 			<key>key</key>
 			<string>UseTSPIcon</string>
 			<key>label</key>
-			<string>USE_TSP_ICON</string>
+			<string>USE_APP_ICON</string>
 			<key>icon</key>
 			<string>bannericon.png</string>
+			<key>negate</key>
+			<true/>
 			<key>PostNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
 		</dict>
