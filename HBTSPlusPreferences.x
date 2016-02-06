@@ -1,11 +1,23 @@
 #import "HBTSPlusPreferences.h"
 #import <Cephei/HBPreferences.h>
 
+// enabled
 static NSString *const kHBTSPlusPreferencesEnabledKey = @"Enabled";
-static NSString *const kHBTSPlusPreferencesShowNotificationsEverywhereKey = @"ShowNotificationsEverywhere";
-static NSString *const kHBTSPlusPreferencesHapticFeedbackKey = @"HapticFeedback";
+
+// general
 static NSString *const kHBTSPlusPreferencesShowWhenInForegroundKey = @"ShowInForeground";
+
+// banners
 static NSString *const kHBTSPlusPreferencesUseTSPIconKey = @"UseTSPIcon";
+
+static NSString *const kHBTSPlusPreferencesShowBannersOnLockScreenKey = @"ShowBannersOnLockScreen";
+static NSString *const kHBTSPlusPreferencesShowBannersOnHomeScreenKey = @"ShowBannersOnHomeScreen";
+static NSString *const kHBTSPlusPreferencesShowBannersInAppsKey = @"ShowBannersInApps";
+
+// vibrations
+static NSString *const kHBTSPlusPreferencesVibrateOnLockScreenKey = @"VibrateOnLockScreen";
+static NSString *const kHBTSPlusPreferencesVibrateOnHomeScreenKey = @"VibrateOnHomeScreen";
+static NSString *const kHBTSPlusPreferencesVibrateInAppsKey = @"VibrateInApps";
 
 @implementation HBTSPlusPreferences {
 	HBPreferences *_preferences;
@@ -24,11 +36,23 @@ static NSString *const kHBTSPlusPreferencesUseTSPIconKey = @"UseTSPIcon";
 	if (self = [super init]) {
 		_preferences = [[HBPreferences alloc] initWithIdentifier:@"ws.hbang.typestatusplus"];
 
+		//enabled
 		[_preferences registerBool:&_enabled default:YES forKey:kHBTSPlusPreferencesEnabledKey];
-		[_preferences registerBool:&_showNotificationsEverywhere default:NO forKey:kHBTSPlusPreferencesShowNotificationsEverywhereKey];
-		[_preferences registerBool:&_hapticFeedback default:YES forKey:kHBTSPlusPreferencesHapticFeedbackKey];
+
+		// general
 		[_preferences registerBool:&_showWhenInForeground default:NO forKey:kHBTSPlusPreferencesShowWhenInForegroundKey];
+
+		// banners
 		[_preferences registerBool:&_useTSPIcon default:NO forKey:kHBTSPlusPreferencesUseTSPIconKey];
+
+		[_preferences registerBool:&_showBannersOnLockScreen default:YES forKey:kHBTSPlusPreferencesShowBannersOnLockScreenKey];
+		[_preferences registerBool:&_showBannersOnHomeScreen default:NO forKey:kHBTSPlusPreferencesShowBannersOnHomeScreenKey];
+		[_preferences registerBool:&_showBannersInApps default:NO forKey:kHBTSPlusPreferencesShowBannersInAppsKey];
+
+		// vibrations
+		[_preferences registerBool:&_vibrateOnLockScreen default:NO forKey:kHBTSPlusPreferencesVibrateOnLockScreenKey];
+		[_preferences registerBool:&_vibrateOnHomeScreen default:YES forKey:kHBTSPlusPreferencesVibrateOnHomeScreenKey];
+		[_preferences registerBool:&_vibrateInApps default:YES forKey:kHBTSPlusPreferencesVibrateInAppsKey];
 	}
 	return self;
 }
