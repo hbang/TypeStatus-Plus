@@ -41,7 +41,7 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 
 %end
 
-#pragma mark - Messages Count
+#pragma mark - Unread Count
 
 %hook SpringBoard
 
@@ -95,11 +95,10 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 			return;
 		}
 
-		NSString *title = notification.userInfo[kHBTSPlusMessageTitleKey];
-		NSString *content = notification.userInfo[kHBTSPlusMessageContentKey];
+		NSString *content = notification.userInfo[kHBTSMessageContentKey];
 
 		// right off the bat, if there's no title or content, stop right there.
-		if (!title || [title isEqualToString:@""] || !content || [content isEqualToString:@""]) {
+		if (!content || [content isEqualToString:@""]) {
 			return;
 		}
 
@@ -114,7 +113,7 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 			// this is a hax, probably shouldn't be doing it... ¯\_(ツ)_/¯
 			NSString *appIdentifier = [[%c(HBTSPlusTapToOpenController) sharedInstance] appIdentifier] ?: @"com.apple.MobileSMS";
 
-			[[HBTSPlusBulletinProvider sharedInstance] showBulletinWithTitle:title content:content appIdentifier:appIdentifier];
+			[[HBTSPlusBulletinProvider sharedInstance] showBulletinWithContent:content appIdentifier:appIdentifier];
 		}
 	}];
 

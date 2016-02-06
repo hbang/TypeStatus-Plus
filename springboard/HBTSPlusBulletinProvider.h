@@ -5,6 +5,6 @@
 
 + (instancetype)sharedInstance;
 
-- (void)showBulletinWithTitle:(NSString *)title content:(NSString *)content appIdentifier:(NSString *)appIdentifier;
+- (void)showBulletinWithContent:(NSString *)content appIdentifier:(NSString *)appIdentifier;
 
 @end

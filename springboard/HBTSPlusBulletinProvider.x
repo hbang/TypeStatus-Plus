@@ -26,7 +26,7 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 	return sharedInstance;
 }
 
-- (void)showBulletinWithTitle:(NSString *)title content:(NSString *)content appIdentifier:(NSString *)appIdentifier {
+- (void)showBulletinWithContent:(NSString *)content appIdentifier:(NSString *)appIdentifier {
 	BBDataProviderWithdrawBulletinsWithRecordID(self, @"ws.hbang.typestatusplus.notification");
 
 	static BBBulletinRequest *bulletinRequest = nil;
@@ -49,7 +49,7 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 	SBApplication *application = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:appIdentifier];
 	bulletinRequest.title = application.displayName;
 
-	bulletinRequest.message = [NSString stringWithFormat:@"%@ %@", title, content];
+	bulletinRequest.message = content;
 	bulletinRequest.date = [NSDate date];
 	bulletinRequest.lastInterruptDate = [NSDate date];
 	bulletinRequest.defaultAction = [BBAction actionWithLaunchBundleID:appIdentifier callblock:nil];
