@@ -17,8 +17,6 @@
 #import <FrontBoard/FBProcess.h>
 #import <AssertionServices/BKSProcessAssertion.h>
 
-static BKSProcessAssertion *processAssertion;
-
 %hook FBUIApplicationWorkspaceScene
 
 - (void)host:(FBScene *)scene didUpdateSettings:(UIApplicationSceneSettings *)sceneSettings withDiff:(FBSSceneSettingsDiff *)settingsDiff transitionContext:(id)transitionContext completion:(id)completionBlock {
@@ -28,32 +26,21 @@ static BKSProcessAssertion *processAssertion;
 		// - app requires backgrounding
 		// - the settings that are about to be applied have the app in the background
 		// if both of those things are true, we need to take it out of the background
-		if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:scene.identifier] && [sceneSettings isBackgrounded]) {
+		if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:scene.identifier]) {
 
 			UIMutableApplicationSceneSettings *mutableSettings = [sceneSettings mutableCopy];
 			mutableSettings.backgrounded = NO;
 			mutableSettings.idleModeEnabled = NO;
+			mutableSettings.canShowAlerts = YES;
 
 			UIApplicationSceneSettings *settings = [[%c(UIApplicationSceneSettings) alloc] initWithSettings:mutableSettings];
 			[mutableSettings release];
 
 			%orig(scene, settings, settingsDiff, transitionContext, completionBlock);
 
-			FBProcess *process = scene.clientProcess;
-			NSInteger pid = process.pid;
-
-		    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
-				// keep it alive, this fixes a bug where some stuff would breka after a while
-				processAssertion = [[%c(BKSProcessAssertion) alloc] initWithPID:pid
-				flags:(BKSProcessAssertionFlagPreventSuspend | BKSProcessAssertionFlagAllowIdleSleep | BKSProcessAssertionFlagPreventThrottleDownCPU | BKSProcessAssertionFlagWantsForegroundResourcePriority)
-	            reason:BKSProcessAssertionReasonBackgroundUI
-	            name:@"TypeStatusPlusBackgrounding" withHandler:^{
-	            	HBLogDebug(@"Kept %@ valid %d", scene.identifier, [processAssertion valid]);
-	            }];
-		    });
-
 			return;
 		}
+
 	}
 	%orig;
 }
