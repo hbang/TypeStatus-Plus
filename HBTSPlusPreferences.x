@@ -10,7 +10,7 @@ static NSString *const kHBTSPlusUnreadNotificationAppIdentifierKey = @"UnreadNot
 static NSString *const kHBTSPlusPreferencesShowWhenInForegroundKey = @"ShowInForeground";
 
 // banners
-static NSString *const kHBTSPlusPreferencesUseTSPIconKey = @"UseTSPIcon";
+static NSString *const kHBTSPlusPreferencesUseAppIconKey = @"UseAppIcon";
 
 static NSString *const kHBTSPlusPreferencesShowBannersOnLockScreenKey = @"ShowBannersOnLockScreen";
 static NSString *const kHBTSPlusPreferencesShowBannersOnHomeScreenKey = @"ShowBannersOnHomeScreen";
@@ -47,7 +47,7 @@ static NSString *const kHBTSPlusPreferencesVibrateInAppsKey = @"VibrateInApps";
 		[_preferences registerBool:&_showWhenInForeground default:NO forKey:kHBTSPlusPreferencesShowWhenInForegroundKey];
 
 		// banners
-		[_preferences registerBool:&_useTSPIcon default:NO forKey:kHBTSPlusPreferencesUseTSPIconKey];
+		[_preferences registerBool:&_useAppIcon default:YES forKey:kHBTSPlusPreferencesUseTSPIconKey];
 
 		[_preferences registerBool:&_showBannersOnLockScreen default:YES forKey:kHBTSPlusPreferencesShowBannersOnLockScreenKey];
 		[_preferences registerBool:&_showBannersOnHomeScreen default:NO forKey:kHBTSPlusPreferencesShowBannersOnHomeScreenKey];

@@ -4,7 +4,7 @@
 
 @property (nonatomic, readonly) BOOL showWhenInForeground;
 
-@property (nonatomic, readonly) BOOL useTSPIcon;
+@property (nonatomic, readonly) BOOL useAppIcon;
 
 @property (nonatomic, readonly) BOOL showBannersOnLockScreen, showBannersOnHomeScreen, showBannersInApps;
 

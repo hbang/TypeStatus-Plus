@@ -40,8 +40,8 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 		bulletinRequest.recordID = kHBTSPlusAppIdentifier;
 	});
 
-	BOOL useTSPIcon = [[%c(HBTSPlusPreferences) sharedInstance] useTSPIcon];
-	_correctAppIdentifier = useTSPIcon ? kHBTSPlusAppIdentifier : appIdentifier;
+	BOOL useAppIcon = [[%c(HBTSPlusPreferences) sharedInstance] useAppIcon];
+	_correctAppIdentifier = useAppIcon ? appIdentifier : kHBTSPlusAppIdentifier;
 
 	// the correct app identifier can change in settings, so we don't put that in the dispatch_once
 	bulletinRequest.sectionID = _correctAppIdentifier;

@@ -62,17 +62,15 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
-			<false/>
+			<true/>
 			<key>defaults</key>
 			<string>ws.hbang.typestatusplus</string>
 			<key>key</key>
-			<string>UseTSPIcon</string>
+			<string>UseAppIcon</string>
 			<key>label</key>
 			<string>USE_APP_ICON</string>
 			<key>icon</key>
 			<string>bannericon.png</string>
-			<key>negate</key>
-			<true/>
 			<key>PostNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
 		</dict>
