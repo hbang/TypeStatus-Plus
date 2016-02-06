@@ -54,14 +54,13 @@ CPDistributedMessagingCenter *distributedCenter;
 %hook UIStatusBarCustomItemView
 
 - (_UILegibilityImageSet *)contentsImage {
-	if ([[%c(HBTSPlusPreferences) sharedInstance] enabled] && [self.item.indicatorName isEqualToString:@"TypeStatusPlus"]) {
+	if ([[%c(HBTSPlusPreferences) sharedInstance] enabled] && [self.item.indicatorName isEqualToString:@"TypeStatusPlusUnreadCount"]) {
 		// if it's in springboard, then call through, if not, message through
 		NSDictionary *result = IN_SPRINGBOARD ? [[%c(HBTSPlusServer) sharedInstance] receivedGetUnreadCountMessage:nil] : [distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerGetUnreadCountNotificationName userInfo:nil];
 		id badgeNumberOrString = result[kHBTSPlusBadgeCountKey];
-		[result release];
-		NSString *badgeCount = [badgeNumberOrString isKindOfClass:NSNumber.class] ? [badgeNumberOrString stringValue] : badgeNumberOrString;
-		[badgeNumberOrString release];
-		return badgeCount ? [self imageWithText:badgeCount] : nil;
+
+		// this works because if it's a number it is converted to a string, if it's a string, it's converted to a string.
+		return [self imageWithText:[NSString stringWithFormat:@"%@", badgeNumberOrString]];
 	}
 	return %orig;
 }
