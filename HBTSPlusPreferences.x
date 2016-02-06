@@ -47,7 +47,7 @@ static NSString *const kHBTSPlusPreferencesVibrateInAppsKey = @"VibrateInApps";
 		[_preferences registerBool:&_showWhenInForeground default:NO forKey:kHBTSPlusPreferencesShowWhenInForegroundKey];
 
 		// banners
-		[_preferences registerBool:&_useAppIcon default:YES forKey:kHBTSPlusPreferencesUseTSPIconKey];
+		[_preferences registerBool:&_useAppIcon default:YES forKey:kHBTSPlusPreferencesUseAppIconKey];
 
 		[_preferences registerBool:&_showBannersOnLockScreen default:YES forKey:kHBTSPlusPreferencesShowBannersOnLockScreenKey];
 		[_preferences registerBool:&_showBannersOnHomeScreen default:NO forKey:kHBTSPlusPreferencesShowBannersOnHomeScreenKey];
