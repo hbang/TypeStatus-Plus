@@ -10,9 +10,9 @@
 
 @property (nonatomic, readonly) BOOL vibrateOnLockScreen, vibrateOnHomeScreen, vibrateInApps;
 
-+ (instancetype)sharedInstance;
+@property (nonatomic, readonly) NSString *applicationUsingUnreadCount;
 
-- (NSString *)applicationUsingUnreadCount;
++ (instancetype)sharedInstance;
 
 - (BOOL)providerIsEnabled:(NSString *)appIdentifier;
 

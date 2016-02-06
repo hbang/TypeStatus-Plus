@@ -5,6 +5,8 @@
 static NSString *const kHBTSPlusPreferencesEnabledKey = @"Enabled";
 
 // general
+static NSString *const kHBTSPlusUnreadNotificationAppIdentifierKey = @"UnreadNotificationAppBundleIdentifier";
+
 static NSString *const kHBTSPlusPreferencesShowWhenInForegroundKey = @"ShowInForeground";
 
 // banners
@@ -40,6 +42,8 @@ static NSString *const kHBTSPlusPreferencesVibrateInAppsKey = @"VibrateInApps";
 		[_preferences registerBool:&_enabled default:YES forKey:kHBTSPlusPreferencesEnabledKey];
 
 		// general
+		[_preferences registerObject:&_applicationUsingUnreadCount default:@"com.apple.MobileSMS" forKey:kHBTSPlusUnreadNotificationAppIdentifierKey];
+
 		[_preferences registerBool:&_showWhenInForeground default:NO forKey:kHBTSPlusPreferencesShowWhenInForegroundKey];
 
 		// banners
@@ -55,10 +59,6 @@ static NSString *const kHBTSPlusPreferencesVibrateInAppsKey = @"VibrateInApps";
 		[_preferences registerBool:&_vibrateInApps default:YES forKey:kHBTSPlusPreferencesVibrateInAppsKey];
 	}
 	return self;
-}
-
-- (NSString *)applicationUsingUnreadCount {
-	return _preferences[@"UnreadNotificationAppBundleIdentifier"] ?: @"com.apple.MobileSMS";
 }
 
 - (BOOL)providerIsEnabled:(NSString *)appIdentifier {
