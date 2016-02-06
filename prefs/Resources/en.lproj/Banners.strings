@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>BANNERS</key>
+	<string>Banners</string>
+
+	<!-- Header for banner show options. -->
+	<key>SHOW</key>
+	<string>Show...</string>
+
+	<!-- Option to show banners on lock screen -->
+	<key>ON_LOCK_SCREEN</key>
+	<string>On Lock Screen</string>
+
+	<!-- Option to show banners on lock screen -->
+	<key>ON_HOME_SCREEN</key>
+	<string>On Home Screen</string>
+
+	<!-- Option to show banners in apps -->
+	<key>IN_APPS</key>
+	<string>In Apps</string>
+
+	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
+	<key>USE_APP_ICON</key>
+	<string>Use Respective App Icon</string>
+
+	<!-- Explanation of the respective app icon switch. -->
+	<key>USE_APP_ICON_EXPLANATION</key>
+	<string>When enabled, banner notifications will use the respective app icon instead of the TypeStatus Plus icon.</string>
+</dict>
+</plist>
