@@ -34,6 +34,20 @@
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>detail</key>
+			<string>HBTSPlusProvidersListController</string>
+			<key>icon</key>
+			<string>providers</string>
+			<key>label</key>
+			<string>PROVIDERS</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>detail</key>
 			<string>HBTSPlusGeneralListController</string>
 			<key>icon</key>
 			<string>advanced</string>
@@ -44,11 +58,21 @@
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>detail</key>
-			<string>HBTSPlusProvidersListController</string>
+			<string>HBTSPlusBannersListController</string>
 			<key>icon</key>
-			<string>providers</string>
+			<string>notif.png</string>
 			<key>label</key>
-			<string>PROVIDERS</string>
+			<string>BANNERS</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>detail</key>
+			<string>HBTSPlusVibrationsListController</string>
+			<key>icon</key>
+			<string>haptic.png</string>
+			<key>label</key>
+			<string>VIBRATIONS</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -73,32 +97,6 @@
 			<string>support.png</string>
 			<key>action</key>
 			<string>showSupportEmailController</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>headerCellClass</key>
-			<string>HBImageTableCell</string>
-			<key>height</key>
-			<integer>100</integer>
-			<key>icon</key>
-			<string>footerlogo.png</string>
-			<key>footerText</key>
-			<string>Copyright &#169; 2015-2016 HASHBANG Productions</string>
-			<key>footerAlignment</key>
-			<integer>1</integer>
 		</dict>
 	</array>
 	<key>title</key>

@@ -8,52 +8,6 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>footerText</key>
-			<string>BANNERS_EVERYWHERE_EXPLANATION</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>ws.hbang.typestatusplus</string>
-			<key>key</key>
-			<string>ShowNotificationsEverywhere</string>
-			<key>label</key>
-			<string>BANNERS_EVERYWHERE</string>
-			<key>icon</key>
-			<string>notif.png</string>
-			<key>PostNotification</key>
-			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>USE_APP_ICON_EXPLANATION</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>ws.hbang.typestatusplus</string>
-			<key>key</key>
-			<string>UseTSPIcon</string>
-			<key>label</key>
-			<string>USE_APP_ICON</string>
-			<key>icon</key>
-			<string>bannericon.png</string>
-			<key>negate</key>
-			<true/>
-			<key>PostNotification</key>
-			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>footerText</key>
 			<string>SHOW_COUNT_FOR_EXPLANATION</string>
 		</dict>
 		<dict>
@@ -77,28 +31,6 @@
 			<string>UnreadNotificationAppBundleIdentifier</string>
 			<key>ALSettingsPath</key>
 			<string>/var/mobile/Library/Preferences/ws.hbang.typestatusplus.plist</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>HAPTIC_FEEDBACK_EXPLANATION</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<true/>
-			<key>defaults</key>
-			<string>ws.hbang.typestatusplus</string>
-			<key>key</key>
-			<string>HapticFeedback</string>
-			<key>label</key>
-			<string>HAPTIC_FEEDBACK</string>
-			<key>icon</key>
-			<string>haptic.png</string>
-			<key>PostNotification</key>
-			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>

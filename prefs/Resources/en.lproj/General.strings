@@ -2,22 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<!-- Switch to toggle showing banner notifications everywhere. -->
-	<key>BANNERS_EVERYWHERE</key>
-	<string>Banners Everywhere</string>
-
-	<!-- Explanation of the banners everywhere switch. -->
-	<key>BANNERS_EVERYWHERE_EXPLANATION</key>
-	<string>If this setting is on, banners will be shown everywhere, instead of just on the lock screen.</string>
-
-	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
-	<key>USE_APP_ICON</key>
-	<string>Use Respective App Icon</string>
-
-	<!-- Explanation of the respective app icon switch. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>When enabled, banner notifications will use the respective app icon instead of the TypeStatus Plus icon.</string>
-
 	<!-- Button for choosing from which app the unread notifications count will be shown in the status bar. -->
 	<key>SHOW_COUNT_FOR</key>
 	<string>Show Count For</string>
@@ -25,14 +9,6 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>SHOW_COUNT_FOR_EXPLANATION</key>
 	<string>If you select an app, the unread notification count of the app will show in your status bar. If there are no unread notifications, nothing will show in your status bar.</string>
-
-	<!-- Switch to toggle haptic feedback. -->
-	<key>HAPTIC_FEEDBACK</key>
-	<string>Haptic Feedback</string>
-
-	<!-- Explanation of the haptic feedback switch. -->
-	<key>HAPTIC_FEEDBACK_EXPLANATION</key>
-	<string>If you toggle this on, you will recieve haptic feedback (vibrations), whenever you get a typing notification on your device.</string>
 
 	<!-- Switch to toggle show in foreground. -->
 	<key>SHOW_IN_FOREGROUND</key>

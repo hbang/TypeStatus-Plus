@@ -5,5 +5,13 @@
 	<!-- Button leading to sub-section of the settings. -->
 	<key>PROVIDERS</key>
 	<string>Providers</string>
+
+	<!-- Button leading to sub-section of the settings. -->
+	<key>BANNERS</key>
+	<string>Banners</string>
+
+	<!-- Button leading to sub-section of the settings. -->
+	<key>VIBRATIONS</key>
+	<string>Vibrations</string>
 </dict>
 </plist>
