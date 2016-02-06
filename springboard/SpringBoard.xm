@@ -81,10 +81,25 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 
 %end
 
+#pragma mark - TypeStatus
+
+%hook HBTSStatusBarAlertController
+
+- (void)_receivedStatusNotification:(NSNotification *)notification {
+	// if we're showing a banner, we probably should not show the regular ts notification
+	if ([HBTSPlusHelper shouldShowBanner]) {
+		return;
+	}
+	%orig;
+}
+
+%end
+
 #pragma mark - Constructor
 
 %ctor {
 	dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
+	dlopen("/Library/MobileSubstrate/DynamicLibraries/TypeStatusClient.dylib", RTLD_LAZY);
 
 	[HBTSPlusServer sharedInstance];
 	[HBTSPlusTapToOpenController sharedInstance];
