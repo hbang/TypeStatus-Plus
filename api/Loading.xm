@@ -31,7 +31,6 @@
 			UIMutableApplicationSceneSettings *mutableSettings = [sceneSettings mutableCopy];
 			mutableSettings.backgrounded = NO;
 			mutableSettings.idleModeEnabled = NO;
-			mutableSettings.canShowAlerts = YES;
 
 			UIApplicationSceneSettings *settings = [[%c(UIApplicationSceneSettings) alloc] initWithSettings:mutableSettings];
 			[mutableSettings release];
