@@ -15,7 +15,7 @@
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBLockScreenManager.h>
 #import "../HBTSPlusPreferences.h"
-#import <SpringBoard/SpringBoard.h>
+#import "HBTSPlusHelper.h"
 
 LSStatusBarItem *typingStatusBarItem;
 
@@ -90,44 +90,27 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 	[HBTSPlusTapToOpenController sharedInstance];
 
 	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
-		// we use this a lot here, might as well save some typing
-		HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
 
-		/*		[_preferences registerBool:&_showBannersOnLockScreen default:YES forKey:kHBTSPlusPreferencesShowBannersOnLockScreenKey];
-		[_preferences registerBool:&_showBannersOnHomeScreen default:NO forKey:kHBTSPlusPreferencesShowBannersOnHomeScreenKey];
-		[_preferences registerBool:&_showBannersInApps default:NO forKey:kHBTSPlusPreferencesShowBannersInAppsKey];
-
-		// vibrations
-		[_preferences registerBool:&_vibrateOnLockScreen default:YES forKey:kHBTSPlusPreferencesVibrateOnLockScreenKey];
-		[_preferences registerBool:&_vibrateOnHomeScreen default:NO forKey:kHBTSPlusPreferencesVibrateOnHomeScreenKey];
-		[_preferences registerBool:&_vibrateInApps default:NO forKey:kHBTSPlusPreferencesVibrateInAppsKey];*/
-
-		if (![preferences enabled]) {
+		if (![[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
 			return;
 		}
 
-		SBLockScreenManager *lockScreenManager = [%c(SBLockScreenManager) sharedInstance];
-		BOOL onLockScreen = lockScreenManager.isUILocked;
+		NSString *title = notification.userInfo[kHBTSPlusMessageTitleKey];
+		NSString *content = notification.userInfo[kHBTSPlusMessageContentKey];
 
-		SpringBoard *app = (SpringBoard *)[UIApplication sharedApplication];
-		NSString *frontmostAppIdentifier = app._accessibilityFrontMostApplication.bundleIdentifier;
+		// right off the bat, if there's no title or content, stop right there.
+		if (!title || [title isEqualToString:@""] || !content || [content isEqualToString:@""]) {
+			return;
+		}
 
-		BOOL shouldVibrate = ([preferences vibrateOnLockScreen] && onLockScreen) || ([preferences vibrateOnHomeScreen] && !frontmostAppIdentifier && !onLockScreen) || ([preferences vibrateInApps] && frontmostAppIdentifier);
-
-		if (shouldVibrate) {
+		if ([HBTSPlusHelper shouldVibrate]) {
 			AudioServicesPlaySystemSoundWithVibration(4095, nil, @{
 				@"VibePattern": @[ @YES, @(50) ],
 				@"Intensity": @1
 			});
 		}
 
-		BOOL shouldShowBanner = ([preferences showBannersOnLockScreen] && onLockScreen) || ([preferences showBannersOnHomeScreen] && !frontmostAppIdentifier && !onLockScreen) || ([preferences showBannersInApps] && frontmostAppIdentifier);
-
-		NSString *title = notification.userInfo[kHBTSPlusMessageTitleKey];
-		NSString *content = notification.userInfo[kHBTSPlusMessageContentKey];
-
-		// to show the notification, we want to make sure title and content are not nil, and that the settings want it to be shown
-		if (title && ![title isEqualToString:@""] && content && ![content isEqualToString:@""] && shouldShowBanner) {
+		if ([HBTSPlusHelper shouldShowBanner]) {
 			// this is a hax, probably shouldn't be doing it... ¯\_(ツ)_/¯
 			NSString *appIdentifier = [[%c(HBTSPlusTapToOpenController) sharedInstance] appIdentifier] ?: @"com.apple.MobileSMS";
 
