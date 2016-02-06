@@ -18,7 +18,7 @@
 			<key>isController</key>
 			<true/>
 			<key>icon</key>
-			<string>count</string>
+			<string>count.png</string>
 			<key>label</key>
 			<string>SHOW_COUNT_FOR</string>
 			<key>ALChangeNotification</key>
