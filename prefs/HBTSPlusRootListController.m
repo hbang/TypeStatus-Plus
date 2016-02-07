@@ -44,6 +44,10 @@
 	return [UIColor colorWithRed:0.120 green:0.120 blue:0.120 alpha:1.00];
 }
 
++ (UIColor *)hb_tableViewCellSelectionColor {
+	return [UIColor colorWithRed:0.149 green:0.149 blue:0.149 alpha:1.00];
+}
+
 + (UIColor *)hb_tableViewBackgroundColor {
 	return [UIColor colorWithRed:0.089 green:0.089 blue:0.089 alpha:1.00];
 }
