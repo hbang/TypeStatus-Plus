@@ -5,8 +5,6 @@
 #import <BulletinBoard/BBServer.h>
 #import <BulletinBoard/BBDataProviderIdentity.h>
 #import "../HBTSPlusPreferences.h"
-#import <BulletinBoard/BBSectionParameters.h>
-#import <BulletinBoard/BBSectionSubtypeParameters.h>
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBApplication.h>
 
