@@ -32,6 +32,9 @@ static NSString *const kHBTSPlusServerSetStatusBarNotificationName = @"HBTSPlusS
 static NSString *const kHBTSPlusServerHideStatusBarNotificationName = @"HBTSPlusServerHideStatusBarNotificationName";
 static NSString *const kHBTSPlusServerStatusBarTappedNotificationName = @"kHBTSPlusServerStatusBarTappedNotificationName";
 static NSString *const kHBTSPlusServerGetUnreadCountNotificationName = @"kHBTSPlusServerGetUnreadCountNotificationName";
+static NSString *const kHBTSPlusServerShowBannersNotificationName = @"kHBTSPlusServerShowBannersNotificationName";
+
+static NSString *const kHBTSPlusShouldShowBannersKey = @"ShouldShowBanners";
 
 static NSString *const kHBTSPlusBadgeCountKey = @"BadgeCount";
 

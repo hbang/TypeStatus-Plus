@@ -8,6 +8,7 @@
 #import "../HBTSPlusPreferences.h"
 #import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
 #import <SpringBoard/SpringBoard.h>
+#import "HBTSPlusHelper.h"
 
 @implementation HBTSPlusServer
 
@@ -31,6 +32,8 @@
 		[self._distributedCenter registerForMessageName:kHBTSPlusServerHideStatusBarNotificationName target:self selector:@selector(receivedHideStatusBarMessage:)];
 		[self._distributedCenter registerForMessageName:kHBTSPlusServerStatusBarTappedNotificationName target:[HBTSPlusTapToOpenController sharedInstance] selector:@selector(receivedStatusBarTappedMessage:)];
 		[self._distributedCenter registerForMessageName:kHBTSPlusServerGetUnreadCountNotificationName target:self selector:@selector(receivedGetUnreadCountMessage:)];
+		[self._distributedCenter registerForMessageName:kHBTSPlusServerShowBannersNotificationName target:self selector:@selector(recievedShowBannersMessage:)];
+
 	}
 	return self;
 }
@@ -73,6 +76,11 @@
 	NSString *appIdentifier = [[%c(HBTSPlusPreferences) sharedInstance] applicationUsingUnreadCount];
 	SBApplication *messagesApplication = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:appIdentifier];
 	return @{kHBTSPlusBadgeCountKey: [messagesApplication badgeNumberOrString] ?: @""};
+}
+
+- (NSDictionary *)recievedShowBannersMessage:(NSString *)message {
+	BOOL shouldShowBanner = [HBTSPlusHelper shouldShowBanner];
+	return @{kHBTSPlusShouldShowBannersKey: @(shouldShowBanner)};
 }
 
 @end
