@@ -1,6 +1,6 @@
 INSTALL_TARGET_PROCESSES = MobileSMS Preferences
 
-ifeq ($(RESPRING),1)
+ifneq ($(RESPRING),0)
 INSTALL_TARGET_PROCESSES += SpringBoard
 endif
 
