@@ -41,6 +41,7 @@ static NSString *const kHBTSPlusMessageIconNameKey = @"IconName";
 static NSString *const kHBTSPlusAppIdentifierKey = @"AppIdentifier";
 
 static NSString *const kHBTSMessageIconNameKey = @"IconName";
+static NSString *const kHBTSMessageSenderKey = @"Sender";
 static NSString *const kHBTSMessageContentKey = @"Content";
 static NSString *const kHBTSMessageBoldRangeKey = @"BoldRange";
 static NSString *const kHBTSMessageDirectionKey = @"Direction";
