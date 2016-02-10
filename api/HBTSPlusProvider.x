@@ -7,8 +7,13 @@
 @implementation HBTSPlusProvider
 
 - (CPDistributedMessagingCenter *)_messagingCenter {
-	CPDistributedMessagingCenter *distributedCenter = [CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName];
-	rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
+	static CPDistributedMessagingCenter *distributedCenter = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		distributedCenter = [[CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName] retain];
+		rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
+	});
+
 	return distributedCenter;
 }
 
