@@ -127,4 +127,13 @@
 	}
 }
 
+#pragma mark - Memory management
+
+- (void)dealloc {
+	[_providers release];
+	[_appsRequiringBackgroundSupport release];
+
+	[super dealloc];
+}
+
 @end

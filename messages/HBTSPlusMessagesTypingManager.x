@@ -49,13 +49,12 @@
 	}
 
 	return entity.name;
-
 }
 
 - (void)dealloc {
-	[super dealloc];
-
 	[_conversations release];
+
+	[super dealloc];
 }
 
 @end

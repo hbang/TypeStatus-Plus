@@ -38,4 +38,15 @@
 	[self._messagingCenter sendMessageName:kHBTSPlusServerHideStatusBarNotificationName userInfo:nil];
 }
 
+#pragma mark - Memory management
+
+- (void)dealloc {
+	[_name release];
+	[_appIdentifier release];
+	[_preferencesBundle release];
+	[_preferencesClass release];
+
+	[super dealloc];
+}
+
 @end

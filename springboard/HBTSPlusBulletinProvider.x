@@ -39,6 +39,8 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 	});
 
 	BOOL useAppIcon = [[%c(HBTSPlusPreferences) sharedInstance] useAppIcon];
+
+	[_correctAppIdentifier release];
 	_correctAppIdentifier = useAppIcon ? appIdentifier : kHBTSPlusAppIdentifier;
 
 	// the correct app identifier can change in settings, so we don't put that in the dispatch_once
@@ -89,6 +91,14 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 
 - (BOOL)migrateSectionInfo:(BBSectionInfo *)arg1 oldSectionInfo:(BBSectionInfo *)arg2 {
 	return NO;
+}
+
+#pragma mark - Memory management
+
+- (void)dealloc {
+	[_correctAppIdentifier release];
+
+	[super dealloc];
 }
 
 @end

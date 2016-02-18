@@ -65,4 +65,12 @@ static NSString *const kHBTSPlusPreferencesVibrateInAppsKey = @"VibrateInApps";
 	return _preferences[appIdentifier] ? [_preferences[appIdentifier] boolValue] : YES;
 }
 
+#pragma mark - Memory management
+
+- (void)dealloc {
+	[_preferences release];
+
+	[super dealloc];
+}
+
 @end
