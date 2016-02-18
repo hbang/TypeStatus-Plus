@@ -43,10 +43,13 @@
 - (NSDictionary *)receivedSetStatusBarMessage:(NSString *)message withUserInfo:(NSDictionary *)userInfo {
 	HBLogInfo(@"Recieved set message on server side.");
 
-	NSString *title = userInfo[kHBTSPlusMessageTitleKey];
-	NSString *content = userInfo[kHBTSPlusMessageContentKey];
 	NSString *iconName = userInfo[kHBTSPlusMessageIconNameKey];
+	NSString *content = userInfo[kHBTSPlusMessageContentKey];
+	NSArray <NSNumber *> *boldRangeArray = userInfo[kHBTSPlusMessageBoldRangeKey];
 	NSString *appIdentifier = userInfo[kHBTSPlusAppIdentifierKey];
+
+	// deserialize the bold range to an NSRange
+	NSRange boldRange = NSMakeRange(boldRangeArray[0].unsignedIntegerValue, boldRangeArray[1].unsignedIntegerValue);
 
 	// tap to open controller needs this info
 	[HBTSPlusTapToOpenController sharedInstance].appIdentifier = appIdentifier;
@@ -61,7 +64,7 @@
 		return nil;
 	}
 
-	[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:iconName title:title content:content];
+	[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:iconName text:content boldRange:boldRange animatingInDirection:YES timeout:-1];
 
 	return nil;
 }

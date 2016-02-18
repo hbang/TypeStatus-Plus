@@ -20,10 +20,24 @@
 #pragma mark - Messaging methods
 
 - (void)showNotificationWithIconName:(NSString *)iconName title:(NSString *)title content:(NSString *)content {
+	NSParameterAssert(title);
+
+	NSString *text = nil;
+
+	if (content) {
+		text = [NSString stringWithFormat:@"%@ %@", title, content];
+	} else {
+		text = title;
+	}
+
+	[self showNotificationWithIconName:iconName content:text boldRange:NSMakeRange(0, title.length)];
+}
+
+- (void)showNotificationWithIconName:(NSString *)iconName content:(NSString *)content boldRange:(NSRange)boldRange {
 	NSDictionary *userInfo = @{
-		kHBTSPlusMessageTitleKey: title ?: @"",
-		kHBTSPlusMessageContentKey: content ?: @"",
 		kHBTSPlusMessageIconNameKey: iconName ?: @"",
+		kHBTSPlusMessageContentKey: content ?: @"",
+		kHBTSPlusMessageBoldRangeKey: @[ @(boldRange.location), @(boldRange.length) ],
 		kHBTSPlusAppIdentifierKey: self.appIdentifier
 	};
 
