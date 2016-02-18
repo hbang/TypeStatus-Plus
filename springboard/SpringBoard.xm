@@ -17,7 +17,7 @@
 #import "../HBTSPlusPreferences.h"
 #import "HBTSPlusHelper.h"
 
-LSStatusBarItem *typingStatusBarItem;
+LSStatusBarItem *unreadCountStatusBarItem;
 
 extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoundID, id unknown, NSDictionary *options);
 
@@ -62,9 +62,9 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 		return;
 	}
 
-	typingStatusBarItem = [[%c(LSStatusBarItem) alloc] initWithIdentifier:@"ws.hbang.typestatusplus.unreadcount" alignment:StatusBarAlignmentRight];
-	typingStatusBarItem.imageName = @"TypeStatusPlusUnreadCount";
-	typingStatusBarItem.visible = YES;
+	unreadCountStatusBarItem = [[%c(LSStatusBarItem) alloc] initWithIdentifier:@"ws.hbang.typestatusplus.unreadcount" alignment:StatusBarAlignmentRight];
+	unreadCountStatusBarItem.imageName = @"TypeStatusPlusUnreadCount";
+	unreadCountStatusBarItem.visible = YES;
 }
 
 %end
@@ -74,7 +74,7 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 - (void)setBadge:(id)arg1 {
 
 	if ([[%c(HBTSPlusPreferences) sharedInstance] enabled] && [self.bundleIdentifier isEqualToString:[[%c(HBTSPlusPreferences) sharedInstance] applicationUsingUnreadCount]]) {
-		[typingStatusBarItem update];
+		[unreadCountStatusBarItem update];
 	}
 	%orig;
 }
@@ -84,8 +84,6 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 #pragma mark - Constructor
 
 %ctor {
-	dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
-
 	[HBTSPlusServer sharedInstance];
 	[HBTSPlusTapToOpenController sharedInstance];
 

@@ -69,7 +69,7 @@
 }
 
 - (void)showSupportEmailController {
-	UIViewController *viewController = (UIViewController *)[HBSupportController supportViewControllerForBundle:[NSBundle bundleForClass:self.class] preferencesIdentifier:@"com.tweakbattles.chrysalis"];
+	UIViewController *viewController = (UIViewController *)[HBSupportController supportViewControllerForBundle:[NSBundle bundleForClass:self.class] preferencesIdentifier:@"ws.hbang.typestatusplus"];
 	[self.navigationController pushViewController:viewController animated:YES];
 }
 

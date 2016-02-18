@@ -18,13 +18,12 @@
 #import <AssertionServices/BKSProcessAssertion.h>
 
 %hook FBSSceneImpl
-- (id)_initWithQueue:(id)arg1 callOutQueue:(id)arg2 identifier:(id)arg3 display:(id)arg4 settings:(UIMutableApplicationSceneSettings*)arg5 clientSettings:(id)arg6
-{
-
-	if (!arg5) {
-		arg5 = [[%c(UIMutableApplicationSceneSettings) alloc] init];
+- (id)_initWithQueue:(id)queue callOutQueue:(id)callOutQueue identifier:(id)identifier display:(id)display settings:(UIMutableApplicationSceneSettings *)settings clientSettings:(id)clientSettings {
+	if (!settings) {
+		settings = [[%c(UIMutableApplicationSceneSettings) alloc] init];
 	}
-	return %orig(arg1, arg2, arg3, arg4, arg5, arg6);
+
+	return %orig(queue, callOutQueue, identifier, display, settings, clientSettings);
 }
 
 %end

@@ -24,15 +24,15 @@
 
 - (instancetype)init {
 	if (self = [super init]) {
-		self._distributedCenter = [[CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName] retain];
-		rocketbootstrap_distributedmessagingcenter_apply(self._distributedCenter);
-		[self._distributedCenter runServerOnCurrentThread];
+		_distributedCenter = [[CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName] retain];
+		rocketbootstrap_distributedmessagingcenter_apply(_distributedCenter);
+		[_distributedCenter runServerOnCurrentThread];
 
-		[self._distributedCenter registerForMessageName:kHBTSPlusServerSetStatusBarNotificationName target:self selector:@selector(receivedSetStatusBarMessage:withUserInfo:)];
-		[self._distributedCenter registerForMessageName:kHBTSPlusServerHideStatusBarNotificationName target:self selector:@selector(receivedHideStatusBarMessage:)];
-		[self._distributedCenter registerForMessageName:kHBTSPlusServerStatusBarTappedNotificationName target:[HBTSPlusTapToOpenController sharedInstance] selector:@selector(receivedStatusBarTappedMessage:)];
-		[self._distributedCenter registerForMessageName:kHBTSPlusServerGetUnreadCountNotificationName target:self selector:@selector(receivedGetUnreadCountMessage:)];
-		[self._distributedCenter registerForMessageName:kHBTSPlusServerShowBannersNotificationName target:self selector:@selector(recievedShowBannersMessage:)];
+		[_distributedCenter registerForMessageName:kHBTSPlusServerSetStatusBarNotificationName target:self selector:@selector(receivedSetStatusBarMessage:withUserInfo:)];
+		[_distributedCenter registerForMessageName:kHBTSPlusServerHideStatusBarNotificationName target:self selector:@selector(receivedHideStatusBarMessage:)];
+		[_distributedCenter registerForMessageName:kHBTSPlusServerStatusBarTappedNotificationName target:[HBTSPlusTapToOpenController sharedInstance] selector:@selector(receivedStatusBarTappedMessage:)];
+		[_distributedCenter registerForMessageName:kHBTSPlusServerGetUnreadCountNotificationName target:self selector:@selector(receivedGetUnreadCountMessage:)];
+		[_distributedCenter registerForMessageName:kHBTSPlusServerShowBannersNotificationName target:self selector:@selector(recievedShowBannersMessage:)];
 
 	}
 	return self;
@@ -74,8 +74,8 @@
 
 - (NSDictionary *)receivedGetUnreadCountMessage:(NSString *)message {
 	NSString *appIdentifier = [[%c(HBTSPlusPreferences) sharedInstance] applicationUsingUnreadCount];
-	SBApplication *messagesApplication = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:appIdentifier];
-	return @{kHBTSPlusBadgeCountKey: [messagesApplication badgeNumberOrString] ?: @""};
+	SBApplication *app = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:appIdentifier];
+	return @{kHBTSPlusBadgeCountKey: [app badgeNumberOrString] ?: @""};
 }
 
 - (NSDictionary *)recievedShowBannersMessage:(NSString *)message {
