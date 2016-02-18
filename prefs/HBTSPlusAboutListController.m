@@ -14,6 +14,7 @@
 	TSPackage *package = [[TSPackage alloc] initWithIdentifier:@"ws.hbang.typestatusplus"];
 
 	PSSpecifier *specifier = [self.specifiers lastObject];
+	// TODO: needs l10n
 	[specifier setProperty:[NSString stringWithFormat:@"%@\n%@", package.name, [NSString stringWithFormat:@"Version: %@", package.version]] forKey:PSFooterTextGroupKey];
 
 }

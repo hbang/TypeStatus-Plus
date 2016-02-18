@@ -13,6 +13,7 @@
 		if (!isBig) {
 			self.detailTextLabel.text = @"";
 		} else {
+			// TODO: needs l10n
 			NSString *role = specifier.properties[@"developer"] && ((NSNumber *)specifier.properties[@"developer"]).boolValue ? @"Developer" : @"Designer";
 			self.detailTextLabel.text = role;
 		}
