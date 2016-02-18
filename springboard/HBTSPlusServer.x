@@ -10,7 +10,9 @@
 #import <SpringBoard/SpringBoard.h>
 #import "HBTSPlusHelper.h"
 
-@implementation HBTSPlusServer
+@implementation HBTSPlusServer {
+	CPDistributedMessagingCenter *_distributedCenter;
+}
 
 + (instancetype)sharedInstance {
 	static HBTSPlusServer *sharedInstance = nil;
