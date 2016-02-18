@@ -41,13 +41,13 @@
 		kHBTSPlusAppIdentifierKey: self.appIdentifier
 	};
 
-	HBLogInfo(@"Posting showNotification message on client side.");
+	HBLogDebug(@"Posting showNotification message on client side.");
 
 	[self._messagingCenter sendMessageName:kHBTSPlusServerSetStatusBarNotificationName userInfo:userInfo];
 }
 
 - (void)hideNotification {
-	HBLogInfo(@"Posting hideNotification message on client side.");
+	HBLogDebug(@"Posting hideNotification message on client side.");
 
 	[self._messagingCenter sendMessageName:kHBTSPlusServerHideStatusBarNotificationName userInfo:nil];
 }

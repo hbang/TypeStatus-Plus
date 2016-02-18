@@ -38,7 +38,7 @@ CPDistributedMessagingCenter *distributedCenter;
 %new
 
 - (void)typeStatusPlus_openConversation:(UIGestureRecognizer *)gestureRecognizer {
-	HBLogInfo(@"Status bar tapped—sending notification");
+	HBLogDebug(@"Status bar tapped—sending notification");
 
 	if (![[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
 		return;

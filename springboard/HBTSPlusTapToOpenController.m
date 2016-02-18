@@ -40,7 +40,7 @@
 }
 
 - (NSDictionary *)receivedStatusBarTappedMessage:(NSString *)message {
-	HBLogInfo(@"Status bar tapped—recieved notification");
+	HBLogDebug(@"Status bar tapped—recieved notification");
 
 	if ([_appIdentifier isEqualToString:@"com.apple.MobileSMS"]) {
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://open?address=%@", _currentSender]]];

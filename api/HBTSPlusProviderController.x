@@ -31,8 +31,7 @@
 
 - (void)loadProviders {
 	static dispatch_once_t predicate;
-	   dispatch_once(&predicate, ^{
-
+	dispatch_once(&predicate, ^{
 		NSString *providerPath = @"/Library/TypeStatus/Providers";
 		NSError *error = nil;
 		NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL URLWithString:providerPath] includingPropertiesForKeys:nil options:kNilOptions error:&error];
@@ -82,7 +81,7 @@
 
 			if ([bundle.infoDictionary[kTypeStatusPlusBackgroundingString] boolValue]) {
 				[_appsRequiringBackgroundSupport addObject:identifier];
-				HBLogInfo(@"The bundle %@ requires backgrounding support.", baseName);
+				HBLogDebug(@"The bundle %@ requires backgrounding support.", baseName);
 			}
 
 			HBTSPlusProvider *provider = [[[bundle.principalClass alloc] init] autorelease];
@@ -94,7 +93,7 @@
 				continue;
 			}
 
-			HBLogInfo(@"The bundle %@ was successfully and completely loaded", baseName);
+			HBLogDebug(@"The bundle %@ was successfully and completely loaded", baseName);
 		}
 	});
 }
