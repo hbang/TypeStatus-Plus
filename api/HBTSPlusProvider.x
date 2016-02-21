@@ -7,6 +7,7 @@
 @implementation HBTSPlusProvider
 
 - (CPDistributedMessagingCenter *)_messagingCenter {
+	// only do this once so we don’t have to retrieve it every time
 	static CPDistributedMessagingCenter *distributedCenter = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
@@ -20,35 +21,39 @@
 #pragma mark - Messaging methods
 
 - (void)showNotificationWithIconName:(NSString *)iconName title:(NSString *)title content:(NSString *)content {
-	NSParameterAssert(title);
-
-	NSString *text = nil;
-
-	if (content) {
-		text = [NSString stringWithFormat:@"%@ %@", title, content];
-	} else {
-		text = title;
-	}
-
-	[self showNotificationWithIconName:iconName content:text boldRange:NSMakeRange(0, title.length)];
+	// make a notification from the args and post it
+	HBTSNotification *notification = [[[HBTSNotification alloc] init] autorelease];
+	notification.title = title;
+	notification.subtitle = content;
+	notification.statusBarIconName = iconName;
+	[self showNotification:notification];
 }
 
 - (void)showNotificationWithIconName:(NSString *)iconName content:(NSString *)content boldRange:(NSRange)boldRange {
-	NSDictionary *userInfo = @{
-		kHBTSPlusMessageIconNameKey: iconName ?: @"",
-		kHBTSPlusMessageContentKey: content ?: @"",
-		kHBTSPlusMessageBoldRangeKey: @[ @(boldRange.location), @(boldRange.length) ],
-		kHBTSPlusAppIdentifierKey: self.appIdentifier
-	};
+	// make a notification from the args and post it
+	HBTSNotification *notification = [[[HBTSNotification alloc] init] autorelease];
+	notification.content = content;
+	notification.boldRange = boldRange;
+	notification.statusBarIconName = iconName;
+	[self showNotification:notification];
+}
+
+- (void)showNotification:(HBTSNotification *)notification {
+	// override the section id with the app id if it’s nil
+	if (!notification.sectionID) {
+		notification.sectionID = _appIdentifier;
+	}
 
 	HBLogDebug(@"Posting showNotification message on client side.");
 
-	[self._messagingCenter sendMessageName:kHBTSPlusServerSetStatusBarNotificationName userInfo:userInfo];
+	// post the notification
+	[self._messagingCenter sendMessageName:kHBTSPlusServerSetStatusBarNotificationName userInfo:notification.dictionaryRepresentation];
 }
 
 - (void)hideNotification {
 	HBLogDebug(@"Posting hideNotification message on client side.");
 
+	// post the notification
 	[self._messagingCenter sendMessageName:kHBTSPlusServerHideStatusBarNotificationName userInfo:nil];
 }
 

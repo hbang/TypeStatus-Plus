@@ -5,8 +5,8 @@ DOCS_OUTPUT_PATH = docs
 include $(THEOS)/makefiles/common.mk
 
 FRAMEWORK_NAME = TypeStatusPlusProvider
-TypeStatusPlusProvider_FILES = Loading.xm $(wildcard *.x)
-TypeStatusPlusProvider_PUBLIC_HEADERS = HBTSPlusProvider.h HBTSPlusProviderController.h
+TypeStatusPlusProvider_FILES = $(wildcard *.m) $(wildcard *.x) $(wildcard *.xm)
+TypeStatusPlusProvider_PUBLIC_HEADERS = HBTSNotification.h HBTSPlusProvider.h
 TypeStatusPlusProvider_FRAMEWORKS = MobileCoreServices
 TypeStatusPlusProvider_PRIVATE_FRAMEWORKS = AppSupport
 TypeStatusPlusProvider_LIBRARIES = rocketbootstrap substrate
@@ -30,7 +30,7 @@ docs::
 
 	[[ -d "$(DOCS_STAGING_DIR)" ]] && rm -r "$(DOCS_STAGING_DIR)" || true
 
-	-appledoc --project-name TypeStatus\ Plus --project-company "HASHBANG Productions" --company-id ws.hbang \
+	-appledoc --project-name "TypeStatus Plus" --project-company "HASHBANG Productions" --company-id ws.hbang \
 		--project-version 1.2 --no-install-docset --keep-intermediate-files --create-html --publish-docset \
 		--docset-feed-url "https://hbang.github.io/typestatus-plus/xcode-docset.atom" \
 		--docset-atom-filename xcode-docset.atom --docset-package-url "https://hbang.github.io/typestatus-plus/docset.xar" \
