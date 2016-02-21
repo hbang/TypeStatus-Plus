@@ -25,12 +25,16 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 }
 
 - (void)showBulletinWithContent:(NSString *)content appIdentifier:(NSString *)appIdentifier {
-	BBDataProviderWithdrawBulletinsWithRecordID(self, @"ws.hbang.typestatusplus.notification");
+	HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
+
+	if (!preferences.keepAllBulletins) {
+		BBDataProviderWithdrawBulletinsWithRecordID(self, @"ws.hbang.typestatusplus.notification");
+	}
 
 	static BBBulletinRequest *bulletinRequest = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		bulletinRequest = [[%c(BBBulletinRequest) alloc] init];
+		bulletinRequest = [[BBBulletinRequest alloc] init];
 		bulletinRequest.showsUnreadIndicator = NO;
 
 		bulletinRequest.bulletinID = kHBTSPlusAppIdentifier;
@@ -38,10 +42,8 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 		bulletinRequest.recordID = kHBTSPlusAppIdentifier;
 	});
 
-	BOOL useAppIcon = [[%c(HBTSPlusPreferences) sharedInstance] useAppIcon];
-
 	[_correctAppIdentifier release];
-	_correctAppIdentifier = useAppIcon ? appIdentifier : kHBTSPlusAppIdentifier;
+	_correctAppIdentifier = preferences.useAppIcon ? appIdentifier : kHBTSPlusAppIdentifier;
 
 	// the correct app identifier can change in settings, so we don't put that in the dispatch_once
 	bulletinRequest.sectionID = _correctAppIdentifier;
