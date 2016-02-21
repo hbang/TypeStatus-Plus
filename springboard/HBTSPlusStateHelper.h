@@ -1,4 +1,4 @@
-@interface HBTSPlusHelper : NSObject
+@interface HBTSPlusStateHelper : NSObject
 
 + (BOOL)shouldShowBanner;
 

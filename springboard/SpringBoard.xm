@@ -100,14 +100,14 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 			return;
 		}
 
-		if ([HBTSPlusHelper shouldVibrate]) {
+		if ([HBTSPlusStateHelper shouldVibrate]) {
 			AudioServicesPlaySystemSoundWithVibration(4095, nil, @{
 				@"VibePattern": @[ @YES, @(50) ],
 				@"Intensity": @1
 			});
 		}
 
-		if ([HBTSPlusHelper shouldShowBanner]) {
+		if ([HBTSPlusStateHelper shouldShowBanner]) {
 			// this is a hax, probably shouldn't be doing it... ¯\_(ツ)_/¯
 			NSString *appIdentifier = [[%c(HBTSPlusTapToOpenController) sharedInstance] appIdentifier] ?: @"com.apple.MobileSMS";
 

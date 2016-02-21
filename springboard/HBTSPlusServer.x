@@ -84,7 +84,8 @@
 }
 
 - (NSDictionary *)recievedShowBannersMessage:(NSString *)message {
-	BOOL shouldShowBanner = [HBTSPlusHelper shouldShowBanner];
+	// grab the value and return it
+	BOOL shouldShowBanner = [HBTSPlusStateHelper shouldShowBanner];
 	return @{kHBTSPlusShouldShowBannersKey: @(shouldShowBanner)};
 }
 
