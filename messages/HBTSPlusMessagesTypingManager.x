@@ -1,6 +1,6 @@
 #import "HBTSPlusMessagesTypingManager.h"
-#import <ChatKit/CKEntity.h>
 #import <ChatKit/CKConversation.h>
+#import <ChatKit/CKEntity.h>
 #import <IMCore/IMHandle.h>
 
 @implementation HBTSPlusMessagesTypingManager {

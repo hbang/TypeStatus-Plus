@@ -1,13 +1,13 @@
-#import <IMFoundation/FZMessage.h>
 #import "../Global.h"
-#import <Foundation/NSDistributedNotificationCenter.h>
 #import "HBTSPlusMessagesTypingManager.h"
-#import <ChatKit/CKConversation.h>
 #import <Cephei/CompactConstraint.h>
-#import <ChatKit/CKConversationListCell.h>
+#import <ChatKit/CKConversation.h>
 #import <ChatKit/CKConversationList.h>
+#import <ChatKit/CKConversationListCell.h>
 #import <ChatKit/CKConversationListController.h>
 #import <ChatKit/CKTranscriptTypingIndicatorCell.h>
+#import <Foundation/NSDistributedNotificationCenter.h>
+#import <IMFoundation/FZMessage.h>
 
 @interface CKConversationListCell ()
 

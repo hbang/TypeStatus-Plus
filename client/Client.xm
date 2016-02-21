@@ -1,13 +1,13 @@
-#import <rocketbootstrap/rocketbootstrap.h>
-#import <AppSupport/CPDistributedMessagingCenter.h>
+#import "../HBTSPlusPreferences.h"
+#import "../springboard/HBTSPlusServer.h"
+#import "../springboard/HBTSPlusTapToOpenController.h"
 #import "../typestatus-private/HBTSStatusBarForegroundView.h"
+#import <AppSupport/CPDistributedMessagingCenter.h>
 #import <libstatusbar/UIStatusBarCustomItem.h>
 #import <libstatusbar/UIStatusBarCustomItemView.h>
-#import "../springboard/HBTSPlusServer.h"
+#import <rocketbootstrap/rocketbootstrap.h>
 #import <SpringBoard/SBApplication.h>
 #import <SpringBoard/SBApplicationController.h>
-#import "../HBTSPlusPreferences.h"
-#import "../springboard/HBTSPlusTapToOpenController.h"
 
 CPDistributedMessagingCenter *distributedCenter;
 

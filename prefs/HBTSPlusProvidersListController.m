@@ -1,6 +1,6 @@
 #import "HBTSPlusProvidersListController.h"
-#import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
 #import <TypeStatusPlusProvider/HBTSPlusProvider.h>
+#import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
 #import <Preferences/PSSpecifier.h>
 #import <Preferences/PSViewController.h>
 

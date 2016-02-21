@@ -1,9 +1,9 @@
-#import "HBTSPlusProviderController.h"
-#import "HBTSPlusProvider.h"
-#import <SpringBoard/SpringBoard.h>
-#import "HBTSPlusProviderBackgroundingManager.h"
 #import "../HBTSPlusPreferences.h"
+#import "HBTSPlusProvider.h"
+#import "HBTSPlusProviderBackgroundingManager.h"
+#import "HBTSPlusProviderController.h"
 #import <MobileCoreServices/LSApplicationProxy.h>
+#import <SpringBoard/SpringBoard.h>
 
 @implementation HBTSPlusProviderController
 

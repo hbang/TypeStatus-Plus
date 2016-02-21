@@ -1,4 +1,3 @@
-#import "../Global.h"
 #import <BulletinBoard/BBDataProvider.h>
 
 @interface HBTSPlusBulletinProvider : NSObject <BBDataProvider>

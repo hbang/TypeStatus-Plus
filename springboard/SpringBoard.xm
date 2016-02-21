@@ -1,21 +1,21 @@
+#import "../HBTSPlusPreferences.h"
 #import "HBTSPlusBulletinProvider.h"
-#import <Foundation/NSDistributedNotificationCenter.h>
-#import <BulletinBoard/BBLocalDataProviderStore.h>
-#import <version.h>
-#import <AudioToolbox/AudioToolbox.h>
 #import "HBTSPlusServer.h"
+#import "HBTSPlusStateHelper.h"
 #import "HBTSPlusTapToOpenController.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <BulletinBoard/BBLocalDataProviderStore.h>
+#import <Foundation/NSDistributedNotificationCenter.h>
 #import <libstatusbar/LSStatusBarItem.h>
-#import <UIKit/UIStatusBarItemView.h>
-#import <SpringBoard/SBApplicationController.h>
-#import <SpringBoard/SBApplication.h>
 #import <libstatusbar/UIStatusBarCustomItem.h>
 #import <libstatusbar/UIStatusBarCustomItemView.h>
 #import <SpringBoard/SBApplication.h>
+#import <SpringBoard/SBApplication.h>
+#import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBLockScreenManager.h>
-#import "../HBTSPlusPreferences.h"
-#import "HBTSPlusHelper.h"
+#import <UIKit/UIStatusBarItemView.h>
+#import <version.h>
 
 LSStatusBarItem *unreadCountStatusBarItem;
 

@@ -1,21 +1,21 @@
-#import "HBTSPlusProviderController.h"
-#import <SpringBoard/SBApplication.h>
-#import <SpringBoard/SpringBoard.h>
-#import <SpringBoard/SBApplicationController.h>
-#import <SpringBoard/SBApplication.h>
-#import <FrontBoard/FBSSceneSettings.h>
-#import <FrontBoard/FBSMutableSceneSettings.h>
-#import <FrontBoard/FBSSceneSettingsDiff.h>
-#import <FrontBoard/FBSceneClientProvider.h>
-#import <FrontBoard/FBSceneClient.h>
-#import <FrontBoard/FBScene.h>
-#import <FrontBoard/FBSceneManager.h>
-#import <UIKit/UIMutableApplicationSceneSettings.h>
-#import <FrontBoard/FBApplicationProcess.h>
 #import "HBTSPlusProviderBackgroundingManager.h"
-#import <UIKit/UIApplicationSceneSettings.h>
-#import <FrontBoard/FBProcess.h>
+#import "HBTSPlusProviderController.h"
 #import <AssertionServices/BKSProcessAssertion.h>
+#import <FrontBoard/FBApplicationProcess.h>
+#import <FrontBoard/FBProcess.h>
+#import <FrontBoard/FBScene.h>
+#import <FrontBoard/FBSceneClient.h>
+#import <FrontBoard/FBSceneClientProvider.h>
+#import <FrontBoard/FBSceneManager.h>
+#import <FrontBoard/FBSMutableSceneSettings.h>
+#import <FrontBoard/FBSSceneSettings.h>
+#import <FrontBoard/FBSSceneSettingsDiff.h>
+#import <SpringBoard/SpringBoard.h>
+#import <SpringBoard/SBApplication.h>
+#import <SpringBoard/SBApplication.h>
+#import <SpringBoard/SBApplicationController.h>
+#import <UIKit/UIApplicationSceneSettings.h>
+#import <UIKit/UIMutableApplicationSceneSettings.h>
 
 %hook FBSSceneImpl
 - (id)_initWithQueue:(id)queue callOutQueue:(id)callOutQueue identifier:(id)identifier display:(id)display settings:(UIMutableApplicationSceneSettings *)settings clientSettings:(id)clientSettings {

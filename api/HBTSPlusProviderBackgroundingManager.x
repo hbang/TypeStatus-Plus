@@ -1,12 +1,12 @@
 #import "HBTSPlusProviderBackgroundingManager.h"
-#import <FrontBoard/FBSSceneSettings.h>
-#import <FrontBoard/FBSMutableSceneSettings.h>
-#import <FrontBoard/FBSSceneSettingsDiff.h>
-#import <FrontBoard/FBSceneClientProvider.h>
-#import <FrontBoard/FBSceneClient.h>
-#import <FrontBoard/FBScene.h>
-#import <FrontBoard/FBSceneManager.h>
 #import <FrontBoard/FBApplicationProcess.h>
+#import <FrontBoard/FBScene.h>
+#import <FrontBoard/FBSceneClient.h>
+#import <FrontBoard/FBSceneClientProvider.h>
+#import <FrontBoard/FBSceneManager.h>
+#import <FrontBoard/FBSMutableSceneSettings.h>
+#import <FrontBoard/FBSSceneSettings.h>
+#import <FrontBoard/FBSSceneSettingsDiff.h>
 
 @implementation HBTSPlusProviderBackgroundingManager
 

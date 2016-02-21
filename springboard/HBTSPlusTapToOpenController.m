@@ -1,7 +1,7 @@
 #import "HBTSPlusTapToOpenController.h"
-#import "rocketbootstrap/rocketbootstrap.h"
 #import <AppSupport/CPDistributedMessagingCenter.h>
 #import <Foundation/NSDistributedNotificationCenter.h>
+#import <rocketbootstrap/rocketbootstrap.h>
 #import <SpringBoard/SpringBoard.h>
 
 @implementation HBTSPlusTapToOpenController {

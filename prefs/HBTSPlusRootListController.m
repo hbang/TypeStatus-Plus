@@ -1,6 +1,6 @@
 #include "HBTSPlusRootListController.h"
-#import <UIKit/UIImage+Private.h>
 #import <CepheiPrefs/HBSupportController.h>
+#import <UIKit/UIImage+Private.h>
 
 @implementation HBTSPlusRootListController
 

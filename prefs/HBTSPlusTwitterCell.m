@@ -1,6 +1,6 @@
 #import "HBTSPlusTwitterCell.h"
-#import <UIKit/UIImage+Private.h>
 #import <Preferences/PSSpecifier.h>
+#import <UIKit/UIImage+Private.h>
 
 @implementation HBTSPlusTwitterCell
 

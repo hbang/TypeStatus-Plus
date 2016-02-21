@@ -1,10 +1,10 @@
 #import "HBTSPlusBulletinProvider.h"
+#import "../HBTSPlusPreferences.h"
 #import <BulletinBoard/BBAction.h>
 #import <BulletinBoard/BBBulletinRequest.h>
 #import <BulletinBoard/BBSectionInfo.h>
 #import <BulletinBoard/BBServer.h>
 #import <BulletinBoard/BBDataProviderIdentity.h>
-#import "../HBTSPlusPreferences.h"
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBApplication.h>
 
