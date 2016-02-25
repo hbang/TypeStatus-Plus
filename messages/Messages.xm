@@ -1,4 +1,4 @@
-#import "../Global.h"
+#import "../global/Global.h"
 #import "HBTSPlusMessagesTypingManager.h"
 #import <Cephei/CompactConstraint.h>
 #import <ChatKit/CKConversation.h>
