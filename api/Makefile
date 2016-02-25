@@ -14,16 +14,6 @@ TypeStatusPlusProvider_CFLAGS = -include ../Global.h
 
 include $(THEOS)/makefiles/framework.mk
 
-after-TypeStatusPlusProvider-all::
-	# create directories
-	mkdir -p $(THEOS_OBJ_DIR)/TypeStatusPlusProvider.framework/Headers
-
-	# copy headers
-	rsync -ra $(TypeStatusPlusProvider_PUBLIC_HEADERS) $(THEOS_OBJ_DIR)/TypeStatusPlusProvider.framework/Headers
-
-	# copy to theos lib dir
-	rsync -ra $(THEOS_OBJ_DIR)/TypeStatusPlusProvider.framework $(THEOS)/lib
-
 docs::
 	# eventually, this should probably be in theos.
 	# for now, this is good enough :p
