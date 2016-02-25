@@ -5,7 +5,7 @@
 @implementation HBTSPlusRootListController
 
 + (NSString *)hb_shareText {
-	return @"I couldn't be more happy I joined the exclusive TypeStatus Plus beta group. You can join, too!";
+	return @"I couldn’t be more happy I joined the exclusive TypeStatus Plus beta group. You can join, too!";
 }
 
 + (NSURL *)hb_shareURL {
