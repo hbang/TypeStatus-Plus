@@ -88,8 +88,7 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 	[HBTSPlusTapToOpenController sharedInstance];
 
 	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
-
-		if (![[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
+		if (!((HBTSPlusPreferences *)[%c(HBTSPlusPreferences) sharedInstance]).enabled) {
 			return;
 		}
 
@@ -100,6 +99,7 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 			return;
 		}
 
+		// if the user wants vibration, let’s do that
 		if ([HBTSPlusStateHelper shouldVibrate]) {
 			AudioServicesPlaySystemSoundWithVibration(4095, nil, @{
 				@"VibePattern": @[ @YES, @(50) ],
@@ -107,11 +107,16 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 			});
 		}
 
+		// if the user wants a banner, let’s do that too
 		if ([HBTSPlusStateHelper shouldShowBanner]) {
 			// this is a hax, probably shouldn't be doing it... ¯\_(ツ)_/¯
-			NSString *appIdentifier = [[%c(HBTSPlusTapToOpenController) sharedInstance] appIdentifier] ?: @"com.apple.MobileSMS";
+			NSString *appIdentifier = ((HBTSPlusTapToOpenController *)[%c(HBTSPlusTapToOpenController) sharedInstance]).appIdentifier ?: @"com.apple.MobileSMS";
 
-			[[HBTSPlusBulletinProvider sharedInstance] showBulletinWithContent:content appIdentifier:appIdentifier];
+			// make sure this is a messages notification
+			if ([appIdentifier isEqualToString:@"com.apple.MobileSMS"]) {
+				// pass it over to the bulletin provider to do its thing
+				[[HBTSPlusBulletinProvider sharedInstance] showMessagesBulletinWithContent:content];
+			}
 		}
 	}];
 

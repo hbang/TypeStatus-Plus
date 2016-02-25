@@ -1,9 +1,12 @@
 #import <BulletinBoard/BBDataProvider.h>
 
+@class HBTSNotification;
+
 @interface HBTSPlusBulletinProvider : NSObject <BBDataProvider>
 
 + (instancetype)sharedInstance;
 
-- (void)showBulletinWithContent:(NSString *)content appIdentifier:(NSString *)appIdentifier;
+- (void)showMessagesBulletinWithContent:(NSString *)content;
+- (void)showBulletinForNotification:(HBTSNotification *)notification;
 
 @end

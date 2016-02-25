@@ -1,4 +1,5 @@
 #import "HBTSPlusBulletinProvider.h"
+#import "HBTSPlusTapToOpenController.h"
 #import "../HBTSPlusPreferences.h"
 #import <BulletinBoard/BBAction.h>
 #import <BulletinBoard/BBBulletinRequest.h>
@@ -7,6 +8,7 @@
 #import <BulletinBoard/BBDataProviderIdentity.h>
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBApplication.h>
+#import <TypeStatusPlusProvider/HBTSNotification.h>
 
 static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 
@@ -24,7 +26,15 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 	return sharedInstance;
 }
 
-- (void)showBulletinWithContent:(NSString *)content appIdentifier:(NSString *)appIdentifier {
+- (void)showMessagesBulletinWithContent:(NSString *)content {
+	// construct a notification and pass it over to the main method
+	HBTSNotification *notification = [[[HBTSNotification alloc] init] autorelease];
+	notification.sectionID = @"com.apple.MobileSMS";
+	notification.content = content;
+	[self showBulletinForNotification:notification];
+}
+
+- (void)showBulletinForNotification:(HBTSNotification *)notification {
 	HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
 
 	if (!preferences.keepAllBulletins) {
@@ -43,18 +53,25 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 	});
 
 	[_correctAppIdentifier release];
-	_correctAppIdentifier = preferences.useAppIcon ? appIdentifier : kHBTSPlusAppIdentifier;
+	_correctAppIdentifier = preferences.useAppIcon ? notification.sectionID : kHBTSPlusAppIdentifier;
 
 	// the correct app identifier can change in settings, so we don't put that in the dispatch_once
 	bulletinRequest.sectionID = _correctAppIdentifier;
 
-	SBApplication *application = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:appIdentifier];
+	// set the title to the app display name
+	SBApplication *application = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:notification.sectionID];
 	bulletinRequest.title = application.displayName;
 
-	bulletinRequest.message = content;
-	bulletinRequest.date = [NSDate date];
+	// set all the rest
+	bulletinRequest.message = notification.content;
+	bulletinRequest.date = notification.date;
 	bulletinRequest.lastInterruptDate = [NSDate date];
-	bulletinRequest.defaultAction = [BBAction actionWithLaunchBundleID:appIdentifier callblock:nil];
+
+	// set a callback to open the conversation
+	bulletinRequest.defaultAction = [BBAction actionWithCallblock:^{
+		// let the tap to open controller do its thing
+		[[HBTSPlusTapToOpenController sharedInstance] receivedStatusBarTappedMessage:nil];
+	}];
 
 	BBDataProviderAddBulletin(self, bulletinRequest);
 }

@@ -1,6 +1,8 @@
 #import "HBTSPlusServer.h"
+#import "HBTSPlusBulletinProvider.h"
 #import "HBTSPlusStateHelper.h"
 #import "HBTSPlusTapToOpenController.h"
+#import "../api/HBTSPlusProviderController.h"
 #import "../HBTSPlusPreferences.h"
 #import "../typestatus-private/HBTSStatusBarAlertServer.h"
 #import <AppSupport/CPDistributedMessagingCenter.h>
@@ -8,7 +10,7 @@
 #import <SpringBoard/SpringBoard.h>
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBApplication.h>
-#import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
+#import <TypeStatusPlusProvider/HBTSNotification.h>
 
 @implementation HBTSPlusServer {
 	CPDistributedMessagingCenter *_distributedCenter;
@@ -35,7 +37,6 @@
 		[_distributedCenter registerForMessageName:kHBTSPlusServerStatusBarTappedNotificationName target:[HBTSPlusTapToOpenController sharedInstance] selector:@selector(receivedStatusBarTappedMessage:)];
 		[_distributedCenter registerForMessageName:kHBTSPlusServerGetUnreadCountNotificationName target:self selector:@selector(receivedGetUnreadCountMessage:)];
 		[_distributedCenter registerForMessageName:kHBTSPlusServerShowBannersNotificationName target:self selector:@selector(recievedShowBannersMessage:)];
-
 	}
 	return self;
 }
@@ -66,7 +67,12 @@
 	}
 
 	// send it to typestatus
-	[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:iconName text:content boldRange:boldRange animatingInDirection:YES timeout:-1];
+	[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:notification.statusBarIconName text:notification.content boldRange:notification.boldRange animatingInDirection:YES timeout:-1];
+
+	// show as a banner if desired
+	if ([HBTSPlusStateHelper shouldShowBanner]) {
+		[[HBTSPlusBulletinProvider sharedInstance] showBulletinForNotification:notification];
+	}
 
 	return nil;
 }
