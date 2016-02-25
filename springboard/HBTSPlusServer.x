@@ -1,9 +1,9 @@
 #import "HBTSPlusServer.h"
 #import "HBTSPlusBulletinProvider.h"
+#import "HBTSPlusPreferences.h"
 #import "HBTSPlusStateHelper.h"
 #import "HBTSPlusTapToOpenController.h"
 #import "../api/HBTSPlusProviderController.h"
-#import "../HBTSPlusPreferences.h"
 #import "../typestatus-private/HBTSStatusBarAlertServer.h"
 #import <AppSupport/CPDistributedMessagingCenter.h>
 #import <rocketbootstrap/rocketbootstrap.h>

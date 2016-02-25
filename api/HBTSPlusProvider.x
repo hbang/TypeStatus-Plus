@@ -1,5 +1,5 @@
-#import "../HBTSPlusPreferences.h"
 #import "HBTSPlusProvider.h"
+#import "HBTSPlusPreferences.h"
 #import "HBTSPlusProviderController.h"
 #import <AppSupport/CPDistributedMessagingCenter.h>
 #import <rocketbootstrap/rocketbootstrap.h>

@@ -1,5 +1,5 @@
-#import "../HBTSPlusPreferences.h"
 #import "HBTSPlusProvider.h"
+#import "HBTSPlusPreferences.h"
 #import "HBTSPlusProviderBackgroundingManager.h"
 #import "HBTSPlusProviderController.h"
 #import <MobileCoreServices/LSApplicationProxy.h>

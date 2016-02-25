@@ -1,4 +1,4 @@
-#import "../HBTSPlusPreferences.h"
+#import "HBTSPlusPreferences.h"
 #import "HBTSPlusBulletinProvider.h"
 #import "HBTSPlusServer.h"
 #import "HBTSPlusStateHelper.h"

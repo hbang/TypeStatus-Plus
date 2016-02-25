@@ -1,4 +1,4 @@
-#import "../HBTSPlusPreferences.h"
+#import "HBTSPlusPreferences.h"
 #import "../springboard/HBTSPlusServer.h"
 #import "../springboard/HBTSPlusTapToOpenController.h"
 #import "../typestatus-private/HBTSStatusBarForegroundView.h"
@@ -77,6 +77,7 @@ CPDistributedMessagingCenter *distributedCenter;
 
 - (void)_receivedStatusNotification:(NSNotification *)notification {
 	// if we're showing a banner, we probably should not show the regular ts notification
+	// TODO: why can’t we just access
 	NSDictionary *result = IN_SPRINGBOARD ? [[%c(HBTSPlusServer) sharedInstance] recievedShowBannersMessage:nil] : [distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerShowBannersNotificationName userInfo:nil];
 	BOOL shouldShowBanners = [result[kHBTSPlusShouldShowBannersKey] boolValue];
 	if (shouldShowBanners) {

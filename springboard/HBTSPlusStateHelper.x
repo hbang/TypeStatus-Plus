@@ -1,5 +1,5 @@
 #import "HBTSPlusStateHelper.h"
-#import "../HBTSPlusPreferences.h"
+#import "HBTSPlusPreferences.h"
 #import <SpringBoard/SpringBoard.h>
 #import <SpringBoard/SBApplication.h>
 #import <SpringBoard/SBLockScreenManager.h>

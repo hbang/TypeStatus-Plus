@@ -1,6 +1,6 @@
 #import "HBTSPlusBulletinProvider.h"
 #import "HBTSPlusTapToOpenController.h"
-#import "../HBTSPlusPreferences.h"
+#import "HBTSPlusPreferences.h"
 #import <BulletinBoard/BBAction.h>
 #import <BulletinBoard/BBBulletinRequest.h>
 #import <BulletinBoard/BBSectionInfo.h>
