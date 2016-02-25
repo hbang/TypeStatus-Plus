@@ -43,27 +43,29 @@
 - (NSDictionary *)receivedSetStatusBarMessage:(NSString *)message withUserInfo:(NSDictionary *)userInfo {
 	HBLogDebug(@"Recieved set message on server side.");
 
-	NSString *iconName = userInfo[kHBTSPlusMessageIconNameKey];
-	NSString *content = userInfo[kHBTSPlusMessageContentKey];
-	NSArray <NSNumber *> *boldRangeArray = userInfo[kHBTSPlusMessageBoldRangeKey];
-	NSString *appIdentifier = userInfo[kHBTSPlusAppIdentifierKey];
+	// deserialize to an HBTSNotification
+	HBTSNotification *notification = [[[HBTSNotification alloc] initWithDictionary:userInfo] autorelease];
 
-	// deserialize the bold range to an NSRange
-	NSRange boldRange = NSMakeRange(boldRangeArray[0].unsignedIntegerValue, boldRangeArray[1].unsignedIntegerValue);
+	// give the tap to open controller context
+	HBTSPlusTapToOpenController *tapToOpenController = [HBTSPlusTapToOpenController sharedInstance];
+	tapToOpenController.appIdentifier = [notification.sectionID copy];
+	tapToOpenController.actionURL = [notification.actionURL copy];
 
-	// tap to open controller needs this info
-	[HBTSPlusTapToOpenController sharedInstance].appIdentifier = appIdentifier;
-
-	HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:appIdentifier];
+	// get the enabled state of the provider
+	HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:notification.sectionID];
 	BOOL enabled = [[HBTSPlusProviderController sharedInstance] providerIsEnabled:provider];
 
+	// determine whether the app is in the foreground
 	SpringBoard *app = (SpringBoard *)[UIApplication sharedApplication];
-	BOOL inForeground = [app._accessibilityFrontMostApplication.bundleIdentifier isEqualToString:appIdentifier];
+	BOOL inForeground = [app._accessibilityFrontMostApplication.bundleIdentifier isEqualToString:notification.sectionID];
 
-	if (!enabled || (![[%c(HBTSPlusPreferences) sharedInstance] showWhenInForeground] && inForeground)) {
+	// if we’re disabled, or we’re in the foreground and the user doesn’t want
+	// foreground notifications, return
+	if (!enabled || (inForeground && ![[%c(HBTSPlusPreferences) sharedInstance] showWhenInForeground])) {
 		return nil;
 	}
 
+	// send it to typestatus
 	[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:iconName text:content boldRange:boldRange animatingInDirection:YES timeout:-1];
 
 	return nil;
@@ -78,8 +80,13 @@
 }
 
 - (NSDictionary *)receivedGetUnreadCountMessage:(NSString *)message {
+	// get the bundle id the user wants
 	NSString *appIdentifier = [[%c(HBTSPlusPreferences) sharedInstance] applicationUsingUnreadCount];
+
+	// and get the SBApplication of it
 	SBApplication *app = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:appIdentifier];
+
+	// return the badge if we have one, or otherwise an empty string
 	return @{kHBTSPlusBadgeCountKey: [app badgeNumberOrString] ?: @""};
 }
 
