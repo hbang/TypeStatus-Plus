@@ -42,19 +42,29 @@
 - (NSDictionary *)receivedStatusBarTappedMessage:(NSString *)message {
 	HBLogDebug(@"Status bar tapped—recieved notification");
 
+	// if this is a messages notification
 	if ([_appIdentifier isEqualToString:@"com.apple.MobileSMS"]) {
+		// open the url ourselves
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://open?address=%@", _currentSender]]];
 
+		// we don’t need this any more
 		[_currentSender release];
 		_currentSender = nil;
-
-		return nil;
+	} else if (_actionURL) {
+		// if we got a url, open that
+		[[UIApplication sharedApplication] openURL:_actionURL];
+	} else {
+		// or fall back to just opening the app like normal
+		[(SpringBoard *)[UIApplication sharedApplication] launchApplicationWithIdentifier:_appIdentifier suspended:NO];
 	}
 
-	[(SpringBoard *)[UIApplication sharedApplication] launchApplicationWithIdentifier:_appIdentifier suspended:NO];
-
+	// we won’t need these any more
+	[_currentSender release];
 	[_appIdentifier release];
+	[_actionURL release];
+	_currentSender = nil;
 	_appIdentifier = nil;
+	_actionURL = nil;
 
 	return nil;
 }
@@ -62,6 +72,7 @@
 - (void)dealloc {
 	[_currentSender release];
 	[_appIdentifier release];
+	[_actionURL release];
 
 	[super dealloc];
 }
