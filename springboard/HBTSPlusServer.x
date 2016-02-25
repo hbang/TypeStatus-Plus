@@ -72,7 +72,7 @@
 }
 
 - (NSDictionary *)receivedHideStatusBarMessage:(NSString *)message {
-	HBLogDebug(@"Recieved hide message on server side.");
+	HBLogDebug(@"Received hide message on server side.");
 
 	[%c(HBTSStatusBarAlertServer) hide];
 
