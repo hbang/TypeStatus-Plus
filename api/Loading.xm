@@ -17,82 +17,35 @@
 #import <UIKit/UIApplicationSceneSettings.h>
 #import <UIKit/UIMutableApplicationSceneSettings.h>
 
-%hook FBSSceneImpl
-- (id)_initWithQueue:(id)queue callOutQueue:(id)callOutQueue identifier:(id)identifier display:(id)display settings:(UIMutableApplicationSceneSettings *)settings clientSettings:(id)clientSettings {
-	if (!settings) {
-		settings = [[%c(UIMutableApplicationSceneSettings) alloc] init];
-	}
-
-	return %orig(queue, callOutQueue, identifier, display, settings, clientSettings);
-}
-
-%end
-
-%hook FBUIApplicationSceneDeactivationManager
-
-- (BOOL)_isEligibleProcess:(FBApplicationProcess *)process {
-    return [[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:process.bundleIdentifier] ? NO : %orig;
-}
-
-%end
-
-%hook FBUIApplicationWorkspaceScene
-
-- (void)host:(FBScene *)scene didUpdateSettings:(UIApplicationSceneSettings *)sceneSettings withDiff:(FBSSceneSettingsDiff *)settingsDiff transitionContext:(id)transitionContext completion:(id)completionBlock {
-	// we check that all of these things exist to avoid crashes
-	if (scene && scene.settings && settingsDiff && scene.identifier && scene.clientProcess && sceneSettings && [sceneSettings isKindOfClass:%c(UIApplicationSceneSettings)]) {
-		// check:
-		// - app requires backgrounding
-		// - the settings that are about to be applied have the app in the background
-		// if both of those things are true, we need to take it out of the background
-		if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:scene.identifier]) {
-
-			UIMutableApplicationSceneSettings *mutableSettings = [sceneSettings mutableCopy];
-			mutableSettings.backgrounded = NO;
-			mutableSettings.idleModeEnabled = NO;
-
-			UIApplicationSceneSettings *settings = [[%c(UIApplicationSceneSettings) alloc] initWithSettings:mutableSettings];
-			[mutableSettings release];
-
-			%orig(scene, settings, settingsDiff, transitionContext, completionBlock);
-
-			return;
-		}
-
-	}
-	%orig;
-}
-
-%end
-
-%hook FBApplicationProcess
-
-- (void)killForReason:(NSInteger)integer andReport:(BOOL)report withDescription:(NSString *)description completion:(id)completionBlock {
-	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier]) {
-		[HBTSPlusProviderBackgroundingManager putAppWithIdentifier:self.bundleIdentifier intoBackground:NO];
-		return;
-	}
-	%orig;
-}
-
-%end
-
 %hook SBApplication
 
-- (BOOL)shouldAutoRelaunchAfterExit {
-	return [[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier] ?: %orig;
-}
-
-- (BOOL)_shouldAutoLaunchOnBootOrInstall:(BOOL)shouldAutoLaunch {
-	return [[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier] ?: %orig;
-}
-
-- (void)processDidLaunch:(FBApplicationProcess *)process {
-	%orig;
-
+- (BOOL)supportsContinuousBackgroundMode {
+	%log;
 	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier]) {
-		[(SpringBoard *)[UIApplication sharedApplication] launchApplicationWithIdentifier:self.bundleIdentifier suspended:YES];
-		[HBTSPlusProviderBackgroundingManager putAppWithIdentifier:self.bundleIdentifier intoBackground:NO];
+		HBLogDebug(@"*** whoa %@ is registering for multitasking", self.bundleIdentifier);
+		return YES;
+	} else {
+		HBLogDebug(@"=%i",%orig);
+		return %orig;
+	}
+}
+
+- (void)_transientSuspendForTimerFired:(NSTimer *)timer {
+	%log;
+	if (![[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier]) {
+		%orig;
+	}
+}
+
+%end
+
+%hook UIApplication
+
+- (void)_setSuspended:(BOOL)suspended {
+	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
+		%orig(NO);
+	} else {
+		%orig;
 	}
 }
 
