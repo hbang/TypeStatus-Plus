@@ -1,31 +1,15 @@
 #import "HBTSPlusProviderBackgroundingManager.h"
 #import "HBTSPlusProviderController.h"
-#import <AssertionServices/BKSProcessAssertion.h>
-#import <FrontBoard/FBApplicationProcess.h>
-#import <FrontBoard/FBProcess.h>
-#import <FrontBoard/FBScene.h>
-#import <FrontBoard/FBSceneClient.h>
-#import <FrontBoard/FBSceneClientProvider.h>
-#import <FrontBoard/FBSceneManager.h>
-#import <FrontBoard/FBSMutableSceneSettings.h>
-#import <FrontBoard/FBSSceneSettings.h>
-#import <FrontBoard/FBSSceneSettingsDiff.h>
-#import <SpringBoard/SpringBoard.h>
 #import <SpringBoard/SBApplication.h>
-#import <SpringBoard/SBApplication.h>
-#import <SpringBoard/SBApplicationController.h>
-#import <UIKit/UIApplicationSceneSettings.h>
-#import <UIKit/UIMutableApplicationSceneSettings.h>
 
+%group SpringBoard
 %hook SBApplication
 
 - (BOOL)supportsContinuousBackgroundMode {
-	%log;
 	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier]) {
 		HBLogDebug(@"*** whoa %@ is registering for multitasking", self.bundleIdentifier);
 		return YES;
 	} else {
-		HBLogDebug(@"=%i",%orig);
 		return %orig;
 	}
 }
@@ -37,6 +21,28 @@
 	}
 }
 
+- (void)_suspendForPeriodicWakeTimerFired:(NSTimer *)timer {
+	%log;
+	if (![[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier]) {
+		%orig;
+	}
+}
+
+- (void)_didSuspend {
+	%log;
+	%orig;
+}
+
+- (BOOL)shouldLaunchSuspendedAlways {
+	BOOL r = %orig;
+	%log((BOOL)r);
+	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier]) {
+		return YES;
+	}
+	return r;
+}
+
+%end
 %end
 
 %hook UIApplication
@@ -54,9 +60,9 @@
 %ctor {
 	[[HBTSPlusProviderController sharedInstance] loadProviders];
 
-	if (!IN_SPRINGBOARD) {
-		return;
-	}
-
 	%init;
+
+	if (IN_SPRINGBOARD) {
+		%init(SpringBoard);
+	}
 }
