@@ -4,9 +4,9 @@
 <dict>
 	<key>Filter</key>
 	<dict>
-		<key>Executables</key>
+		<key>Bundles</key>
 		<array>
-			<string>assertiond</string>
+			<string>com.apple.assertiond</string>
 		</array>
 	</dict>
 </dict>
