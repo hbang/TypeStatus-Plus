@@ -10,7 +10,7 @@
 	if (self) {
 		// set defaults for things that don’t have a nil default
 		_boldRange = NSMakeRange(0, 0);
-		_date = [NSDate date];
+		_date = [[NSDate alloc] init];
 	}
 
 	return self;
@@ -21,10 +21,11 @@
 
 	if (self) {
 		// deserialise the easy stuff
-		_sectionID = dictionary[kHBTSPlusAppIdentifierKey];
-		_content = dictionary[kHBTSPlusMessageContentKey];
-		_statusBarIconName = dictionary[kHBTSPlusMessageIconNameKey];
-		_date = dictionary[kHBTSPlusDateKey];
+		_sectionID = [dictionary[kHBTSPlusAppIdentifierKey] copy];
+		_content = [dictionary[kHBTSPlusMessageContentKey] copy];
+		_statusBarIconName = [dictionary[kHBTSPlusMessageIconNameKey] copy];
+		_date = dictionary[kHBTSPlusDateKey] ? [[NSDate alloc] initWithTimeIntervalSince1970:((NSNumber *)dictionary[kHBTSPlusDateKey]).doubleValue] : [[NSDate alloc] init];
+
 		_actionURL = dictionary[kHBTSPlusActionURLKey] ? [[NSURL alloc] initWithString:dictionary[kHBTSPlusActionURLKey]] : nil;
 
 		// deserialize the bold range to an NSRange
@@ -71,13 +72,16 @@
 	NSRange boldRange = NSMakeRange(0, 0);
 	NSString *content = [self _contentWithBoldRange:&boldRange];
 
+	NSParameterAssert(_sectionID);
+	NSParameterAssert(_date);
+
 	// return serialized dictionary
 	return @{
 		kHBTSPlusAppIdentifierKey: _sectionID,
 		kHBTSPlusMessageContentKey: content,
 		kHBTSMessageBoldRangeKey: @[ @(boldRange.location), @(boldRange.length) ],
 		kHBTSPlusMessageIconNameKey: _statusBarIconName ?: @"",
-		kHBTSPlusDateKey: _date,
+		kHBTSPlusDateKey: @(_date.timeIntervalSince1970),
 		kHBTSPlusActionURLKey: _actionURL ? _actionURL.absoluteString : @""
 	};
 }
