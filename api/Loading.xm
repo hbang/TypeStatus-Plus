@@ -1,57 +1,33 @@
 #import "HBTSPlusProviderBackgroundingManager.h"
 #import "HBTSPlusProviderController.h"
+#import <AssertionServices/BKSProcessAssertion.h>
+#import <AssertionServices/BKSProcessAssertionClient.h>
+#import <BaseBoard/BSMutableSettings.h>
 #import <SpringBoard/SBApplication.h>
 
-%group SpringBoard
-%hook SBApplication
+%hook SBAppSwitcherModel
 
-- (BOOL)supportsContinuousBackgroundMode {
-	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier]) {
-		HBLogDebug(@"*** whoa %@ is registering for multitasking", self.bundleIdentifier);
-		return YES;
-	} else {
-		return %orig;
-	}
-}
-
-- (void)_transientSuspendForTimerFired:(NSTimer *)timer {
-	%log;
-	if (![[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier]) {
-		%orig;
-	}
-}
-
-- (void)_suspendForPeriodicWakeTimerFired:(NSTimer *)timer {
-	%log;
-	if (![[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier]) {
-		%orig;
-	}
-}
-
-- (void)_didSuspend {
-	%log;
+- (void)_appActivationStateDidChange:(NSNotification *)notification {
 	%orig;
-}
 
-- (BOOL)shouldLaunchSuspendedAlways {
-	BOOL r = %orig;
-	%log((BOOL)r);
-	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:self.bundleIdentifier]) {
-		return YES;
-	}
-	return r;
-}
+	SBApplication *app = notification.object;
 
-%end
-%end
+	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:app.bundleIdentifier]) {
+		BSMutableSettings *settings = [[app valueForKey:@"_stateSettings"] valueForKey:@"_settings"];
 
-%hook UIApplication
+		if ((settings.allSettings.count > 1 && [settings boolForSetting:BSSettingTypeThisIsAReminderToFillOutTheseEnumNames]) || [app valueForKey:@"_activationSettings"]) {
+			__unused BKSProcessAssertion *assertion = [[BKSProcessAssertion alloc] initWithPID:app.pid flags:BKSProcessAssertionFlagPreventSuspend | BKSProcessAssertionFlagAllowIdleSleep | BKSProcessAssertionFlagPreventThrottleDownCPU | BKSProcessAssertionFlagWantsForegroundResourcePriority reason:BKSProcessAssertionReasonContinuous name:kBKSBackgroundModeContinuous withHandler:^(BOOL valid) {
+				HBLogDebug(@"valid? %i", valid);
 
-- (void)_setSuspended:(BOOL)suspended {
-	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
-		%orig(NO);
-	} else {
-		%orig;
+				NSMapTable *assertionHandlers = [[BKSProcessAssertionClient sharedInstance] valueForKey:@"_assertionHandlersByIdentifier"];
+
+				for (BKSProcessAssertion *currentAssertion in assertionHandlers.objectEnumerator) {
+					if (((NSNumber *)[currentAssertion valueForKey:@"_pid"]).intValue == app.pid) {
+						HBLogDebug(@"new assertion: %@", [currentAssertion valueForKey:@"_reason"]);
+					}
+				}
+			}];
+		}
 	}
 }
 
@@ -60,9 +36,7 @@
 %ctor {
 	[[HBTSPlusProviderController sharedInstance] loadProviders];
 
-	%init;
-
 	if (IN_SPRINGBOARD) {
-		%init(SpringBoard);
+		%init;
 	}
 }

@@ -9,7 +9,7 @@ TypeStatusPlusProvider_FILES = $(wildcard *.m) $(wildcard *.x) $(wildcard *.xm)
 TypeStatusPlusProvider_PUBLIC_HEADERS = HBTSNotification.h HBTSPlusProvider.h
 TypeStatusPlusProvider_CFLAGS = -I../global -include ../global/Global.h
 TypeStatusPlusProvider_FRAMEWORKS = MobileCoreServices
-TypeStatusPlusProvider_PRIVATE_FRAMEWORKS = AppSupport
+TypeStatusPlusProvider_PRIVATE_FRAMEWORKS = AppSupport BackBoardServices
 TypeStatusPlusProvider_LIBRARIES = rocketbootstrap substrate
 
 include $(THEOS)/makefiles/framework.mk
