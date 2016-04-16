@@ -5,6 +5,7 @@
 #import <BaseBoard/BSMutableSettings.h>
 #import <SpringBoard/SBApplication.h>
 
+%group SpringBoard
 %hook SBAppSwitcherModel
 
 - (void)_appActivationStateDidChange:(NSNotification *)notification {
@@ -32,11 +33,26 @@
 }
 
 %end
+%end
+
+%group Apps
+%hook UIApplication
+
+- (void)_deactivateForReason:(int)reason notify:(BOOL)notify {
+	if (![[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
+		%orig;
+	}
+}
+
+%end
+%end
 
 %ctor {
 	[[HBTSPlusProviderController sharedInstance] loadProviders];
 
 	if (IN_SPRINGBOARD) {
-		%init;
+		%init(SpringBoard);
+	} else {
+		%init(Apps);
 	}
 }
