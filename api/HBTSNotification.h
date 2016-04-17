@@ -3,6 +3,14 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * TODO: Document
  */
+typedef NS_ENUM(NSUInteger, HBTSNotificationType) {
+	HBTSNotificationTypeTyping,
+	HBTSNotificationTypeRead = 2
+};
+
+/**
+ * TODO: Document
+ */
 @interface HBTSNotification : NSObject
 
 /**
@@ -44,6 +52,11 @@ NS_ASSUME_NONNULL_BEGIN
  * TODO: Document
  */
 @property (nonatomic, copy, nullable) NSURL *actionURL;
+
+/**
+ * TODO: Document
+ */
+- (instancetype)initWithType:(HBTSNotificationType)type sender:(NSString *)sender iconName:(NSString *)iconName;
 
 /**
  * TODO: Document

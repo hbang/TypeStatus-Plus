@@ -1,4 +1,5 @@
 #import "HBTSNotification.h"
+#import "../typestatus-private/HBTSStatusBarAlertServer.h"
 
 @implementation HBTSNotification
 
@@ -16,6 +17,16 @@
 	return self;
 }
 
+- (instancetype)initWithType:(HBTSNotificationType)type sender:(NSString *)sender iconName:(NSString *)iconName {
+	self = [self init];
+
+	if (self) {
+		_content = [%c(HBTSStatusBarAlertServer) textForType:type sender:sender boldRange:&_boldRange];
+	}
+
+	return self;
+}
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
 	self = [self init];
 
@@ -24,7 +35,11 @@
 		_sectionID = [dictionary[kHBTSPlusAppIdentifierKey] copy];
 		_content = [dictionary[kHBTSPlusMessageContentKey] copy];
 		_statusBarIconName = [dictionary[kHBTSPlusMessageIconNameKey] copy];
-		_date = dictionary[kHBTSPlusDateKey] ? [[NSDate alloc] initWithTimeIntervalSince1970:((NSNumber *)dictionary[kHBTSPlusDateKey]).doubleValue] : [[NSDate alloc] init];
+
+		if (dictionary[kHBTSPlusDateKey]) {
+			[_date release];
+			_date = [[NSDate alloc] initWithTimeIntervalSince1970:((NSNumber *)dictionary[kHBTSPlusDateKey]).doubleValue];
+		}
 
 		_actionURL = dictionary[kHBTSPlusActionURLKey] ? [[NSURL alloc] initWithString:dictionary[kHBTSPlusActionURLKey]] : nil;
 
