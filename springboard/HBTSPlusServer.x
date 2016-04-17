@@ -58,7 +58,7 @@
 
 	// determine whether the app is in the foreground
 	SpringBoard *app = (SpringBoard *)[UIApplication sharedApplication];
-	BOOL inForeground = [app._accessibilityFrontMostApplication.bundleIdentifier isEqualToString:notification.sectionID];
+	BOOL inForeground = app._accessibilityFrontMostApplication ? [app._accessibilityFrontMostApplication.bundleIdentifier isEqualToString:notification.sectionID] : NO;
 
 	// if we’re disabled, or we’re in the foreground and the user doesn’t want
 	// foreground notifications, return
