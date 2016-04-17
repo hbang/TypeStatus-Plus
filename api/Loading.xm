@@ -4,21 +4,30 @@
 #import <AssertionServices/BKSProcessAssertionClient.h>
 #import <BaseBoard/BSMutableSettings.h>
 #import <SpringBoard/SBApplication.h>
+#import <FrontBoard/FBProcess.h>
+#import <SpringBoard/SpringBoard.h>
+#import <SpringBoard/SBApplicationController.h>
+
+@interface SBLaunchAppListener : NSObject
+
+- (instancetype)initWithBundleIdentifier:(NSString *)bundleIdentifier handlerBlock:(id)block;
+
+@end
 
 %group SpringBoard
-%hook SBAppSwitcherModel
+%hook SBUIController
 
-- (void)_appActivationStateDidChange:(NSNotification *)notification {
+- (void)finishLaunching {
 	%orig;
 
-	SBApplication *app = notification.object;
+	for (NSString *bundleIdentifier in [HBTSPlusProviderController sharedInstance].appsRequiringBackgroundSupport) {
+		[(SpringBoard *)[UIApplication sharedApplication] launchApplicationWithIdentifier:bundleIdentifier suspended:YES];
 
-	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:app.bundleIdentifier]) {
-		BSMutableSettings *settings = [[app valueForKey:@"_stateSettings"] valueForKey:@"_settings"];
+		[[%c(SBLaunchAppListener) alloc] initWithBundleIdentifier:bundleIdentifier handlerBlock:^{
+			SBApplication *application = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:bundleIdentifier];
 
-		if ((settings.allSettings.count > 1 && [settings boolForSetting:BSSettingTypeThisIsAReminderToFillOutTheseEnumNames]) || [app valueForKey:@"_activationSettings"]) {
-			[[BKSProcessAssertion alloc] initWithPID:app.pid flags:BKSProcessAssertionFlagPreventSuspend | BKSProcessAssertionFlagAllowIdleSleep | BKSProcessAssertionFlagPreventThrottleDownCPU | BKSProcessAssertionFlagWantsForegroundResourcePriority reason:BKSProcessAssertionReasonContinuous name:kBKSBackgroundModeContinuous withHandler:nil];
-		}
+			[[BKSProcessAssertion alloc] initWithPID:application.pid flags:BKSProcessAssertionFlagPreventSuspend | BKSProcessAssertionFlagPreventThrottleDownCPU | BKSProcessAssertionFlagWantsForegroundResourcePriority reason:BKSProcessAssertionReasonContinuous name:kBKSBackgroundModeContinuous withHandler:nil];
+		}];
 	}
 }
 
@@ -32,6 +41,41 @@
 	if (![[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
 		%orig;
 	}
+}
+
+- (BOOL)_isLaunchedSuspended {
+	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
+		return NO;
+	}
+	return %orig;
+}
+
+- (BOOL)isSuspended {
+	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
+		return NO;
+	}
+	return %orig;
+}
+
+- (BOOL)isSuspendedUnderLock {
+	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
+		return NO;
+	}
+	return %orig;
+}
+
+- (BOOL)isSuspendedEventsOnly {
+	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
+		return NO;
+	}
+	return %orig;
+}
+
+- (BOOL)_isActivated {
+	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
+		return YES;
+	}
+	return %orig;
 }
 
 %end
