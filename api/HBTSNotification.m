@@ -22,6 +22,7 @@
 
 	if (self) {
 		_content = [%c(HBTSStatusBarAlertServer) textForType:type sender:sender boldRange:&_boldRange];
+		_statusBarIconName = [iconName copy];
 	}
 
 	return self;
