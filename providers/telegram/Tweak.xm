@@ -60,6 +60,8 @@
 - (id)parseMessage:(NSData *)message {
 	id original = %orig;
 
+	HBTSPlusProvider *telegramProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"ph.telegra.Telegraph"];
+
 	if ([original isKindOfClass:%c(TLUpdates$updateShort)]) {
 		TLUpdates$updateShort *updateShort = (TLUpdates$updateShort *)original;
 		if (![updateShort.update isKindOfClass:%c(TLUpdate$updateUserTyping)] && ![updateShort.update isKindOfClass:%c(TLUpdate$updateChatUserTyping)]) {
@@ -73,7 +75,8 @@
 		TGUser *user = [userController valueForKey:@"_user"];
 		NSString *userDisplayName = [user displayName];
 
-		[[[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"ph.telegra.Telegraph"] showNotificationWithIconName:@"TypeStatusPlusTelegram" title:@"Typing:" content:userDisplayName];
+		HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeTyping sender:userDisplayName iconName:@"TypeStatusPlusTelegram"] autorelease];
+		[telegramProvider showNotification:notification];
 	} else if ([original isKindOfClass:%c(TLUpdates$updates)]) {
 		TLUpdates$updates *update = (TLUpdates$updates *)original;
 		for (TLUpdate *regularUpdate in update.updates) {
@@ -91,7 +94,8 @@
 				TGUser *user = [userController valueForKey:@"_user"];
 				NSString *userDisplayName = [user displayName];
 
-				[[[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"ph.telegra.Telegraph"] showNotificationWithIconName:@"TypeStatusPlusTelegram" title:@"Read:" content:userDisplayName];
+				HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeRead sender:userDisplayName iconName:@"TypeStatusPlusTelegram"] autorelease];
+				[telegramProvider showNotification:notification];
 			}
 		}
 	}
