@@ -6,10 +6,10 @@ typedef NS_ENUM(NSUInteger, HBTSStatusBarType) {
 	HBTSStatusBarTypeRead
 };
 
-typedef NS_ENUM(NSUInteger, HBTSNotificationType) {
-	HBTSNotificationTypeNone,
-	HBTSNotificationTypeOverlay,
-	HBTSNotificationTypeIcon
+typedef NS_ENUM(NSUInteger, HBTSNotificationUIType) {
+	HBTSNotificationUITypeNone,
+	HBTSNotificationUITypeOverlay,
+	HBTSNotificationUITypeIcon
 };
 
 typedef NS_ENUM(NSUInteger, HBTSStatusBarAnimation) {
