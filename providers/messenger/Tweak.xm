@@ -64,7 +64,7 @@ typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(NSString *display
 
 	MNAppDelegate *appDelegate = (MNAppDelegate *)[[UIApplication sharedApplication] delegate];
 
-	FBMUserFetcher *fetcher = [[%c(FBMUserFetcher) alloc] initWithProviderMapData:appDelegate.providerMap];
+	FBMUserFetcher *fetcher = [[%c(FBMUserFetcher) alloc] initWithProviderMapData:[appDelegate valueForKey:@"_providerMap"]];
 	[fetcher configureAndFetchUserWithWithUserId:userId delegate:self];
 }
 
