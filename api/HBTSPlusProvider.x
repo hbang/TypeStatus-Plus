@@ -39,6 +39,11 @@
 }
 
 - (void)showNotification:(HBTSNotification *)notification {
+	// no-op if we’re not enabled
+	if (![[HBTSPlusProviderController sharedInstance] providerIsEnabled:self]) {
+		return;
+	}
+
 	// override the section id with the app id if it’s nil
 	if (!notification.sectionID) {
 		notification.sectionID = _appIdentifier;
@@ -51,6 +56,11 @@
 }
 
 - (void)hideNotification {
+	// no-op if we’re not enabled
+	if (![[HBTSPlusProviderController sharedInstance] providerIsEnabled:self]) {
+		return;
+	}
+
 	HBLogDebug(@"Posting hideNotification message on client side.");
 
 	// post the notification
