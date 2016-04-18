@@ -1,3 +1,4 @@
+#import <TypeStatusPlusProvider/HBTSNotification.h>
 #import <TypeStatusPlusProvider/HBTSPlusProvider.h>
 #import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
 
@@ -37,13 +38,13 @@
 
 		HBTSPlusProvider *slackProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.tinyspeck.chatlyio"];
 
-		HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeTyping sender:userDisplayName iconName:@"TypeStatusPlusSlack"] autorelease];
+		HBTSNotification *tsNotification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeTyping sender:userDisplayName iconName:@"TypeStatusPlusSlack"] autorelease];
 
 		if (channel) {
-			notification.content = [notification.content stringByAppendingFormat:@" in %@", channelDisplayName];
+			tsNotification.content = [tsNotification.content stringByAppendingFormat:@" in %@", channelDisplayName];
 		}
 
-		[slackProvider showNotification:notification];
+		[slackProvider showNotification:tsNotification];
 
 	}];
 }
