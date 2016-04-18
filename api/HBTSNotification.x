@@ -21,7 +21,7 @@
 	self = [self init];
 
 	if (self) {
-		_content = [%c(HBTSStatusBarAlertServer) textForType:type sender:sender boldRange:&_boldRange];
+		_content = [%c(HBTSStatusBarAlertServer) textForType:(HBTSStatusBarType)type sender:sender boldRange:&_boldRange];
 		_statusBarIconName = [iconName copy];
 	}
 
