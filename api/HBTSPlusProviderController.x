@@ -1,11 +1,14 @@
-#import "HBTSPlusProvider.h"
-#import "HBTSPlusPreferences.h"
-#import "HBTSPlusProviderBackgroundingManager.h"
 #import "HBTSPlusProviderController.h"
+#import "HBTSPlusPreferences.h"
+#import "HBTSPlusProvider.h"
+#import "HBTSPlusProviderBackgroundingManager.h"
+#import "HBTSPlusProviderController+Private.h"
 #import <MobileCoreServices/LSApplicationProxy.h>
 #import <SpringBoard/SpringBoard.h>
 
-@implementation HBTSPlusProviderController
+@implementation HBTSPlusProviderController {
+	NSMutableArray *_appsRequiringBackgroundSupport;
+}
 
 + (instancetype)sharedInstance {
 	static HBTSPlusProviderController *sharedInstance = nil;
@@ -98,7 +101,11 @@
 	});
 }
 
-#pragma mark - backgrounding
+#pragma mark - Backgrounding
+
+- (NSMutableArray *)appsRequiringBackgroundSupport {
+	return _appsRequiringBackgroundSupport;
+}
 
 - (BOOL)applicationWithIdentifierRequiresBackgrounding:(NSString *)appIdentifier {
 	return [_appsRequiringBackgroundSupport containsObject:appIdentifier];

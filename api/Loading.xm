@@ -1,5 +1,6 @@
 #import "HBTSPlusProviderBackgroundingManager.h"
 #import "HBTSPlusProviderController.h"
+#import "HBTSPlusProviderController+Private.h"
 #import <AssertionServices/BKSProcessAssertion.h>
 #import <AssertionServices/BKSProcessAssertionClient.h>
 #import <BaseBoard/BSMutableSettings.h>
