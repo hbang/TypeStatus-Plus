@@ -10,15 +10,15 @@
 	<key>SHOW</key>
 	<string>Show…</string>
 
-	<!-- Option to show banners on lock screen -->
+	<!-- Option to vibrate on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
 	<string>On Lock Screen</string>
 
-	<!-- Option to show banners on lock screen -->
+	<!-- Option to vibrate on the home screen. -->
 	<key>ON_HOME_SCREEN</key>
 	<string>On Home Screen</string>
 
-	<!-- Option to show banners in apps -->
+	<!-- Option to vibrate in apps. -->
 	<key>IN_APPS</key>
 	<string>In Apps</string>
 </dict>
