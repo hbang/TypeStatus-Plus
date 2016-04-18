@@ -126,7 +126,9 @@
 	if (![[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
 		return NO;
 	}
+
 	if (provider.preferencesBundle && provider.preferencesClass) {
+		// the provider manages its own preferences. return YES
 		return YES;
 	} else {
 		return [(HBTSPlusPreferences *)[%c(HBTSPlusPreferences) sharedInstance] providerIsEnabled:provider.appIdentifier];

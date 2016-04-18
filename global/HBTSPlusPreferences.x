@@ -64,6 +64,7 @@ static NSString *const kHBTSPlusPreferencesVibrateInAppsKey = @"VibrateInApps";
 }
 
 - (BOOL)providerIsEnabled:(NSString *)appIdentifier {
+	// TODO: these keys should be prefixed
 	return _preferences[appIdentifier] ? [_preferences[appIdentifier] boolValue] : YES;
 }
 
