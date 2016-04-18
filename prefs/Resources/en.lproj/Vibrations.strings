@@ -8,7 +8,7 @@
 
 	<!-- Header for banner show options. -->
 	<key>SHOW</key>
-	<string>Show...</string>
+	<string>Show…</string>
 
 	<!-- Option to show banners on lock screen -->
 	<key>ON_LOCK_SCREEN</key>
