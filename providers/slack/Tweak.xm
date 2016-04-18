@@ -35,8 +35,15 @@
 
 		// Typing: Ben Rosen in #general
 
-		NSString *contentString = [NSString stringWithFormat:@"%@%@", userDisplayName, channel ? [NSString stringWithFormat:@" in %@", channelDisplayName] : @""];
+		HBTSPlusProvider *slackProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.tinyspeck.chatlyio"];
 
-		[[[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.tinyspeck.chatlyio"] showNotificationWithIconName:@"TypeStatusPlusSlack" title:@"Typing:" content:contentString];
+		HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeTyping sender:userDisplayName iconName:@"TypeStatusPlusSlack"] autorelease];
+
+		if (channel) {
+			notification.content = [notification.content stringByAppendingFormat:@" in %@", channelDisplayName];
+		}
+
+		[slackProvider showNotification:notification];
+
 	}];
 }
