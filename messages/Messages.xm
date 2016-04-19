@@ -26,9 +26,9 @@
 - (void)updateContentsForConversation:(CKConversation *)conversation {
 	%orig;
 
-	// in some situations, summaryLabel may be removed. don't do anything if that's the case
-	UILabel *summaryLabel = [self valueForKey:@"_summaryLabel"];
-	if (!summaryLabel.superview) {
+	// in some situations, fromLabel may be removed. don't do anything if that's the case
+	UILabel *fromLabel = [self valueForKey:@"_fromLabel"];
+	if (!fromLabel.superview) {
 		return;
 	}
 
@@ -38,11 +38,11 @@
 		self._typeStatusPlus_typingIndicatorCell.translatesAutoresizingMaskIntoConstraints = NO;
 		[self.contentView addSubview:self._typeStatusPlus_typingIndicatorCell];
 		[self.contentView hb_addCompactConstraints:@[
-			@"typingIndicatorCell.left = summaryLabel.left-4",
-			@"typingIndicatorCell.top = summaryLabel.top+12"
+			@"typingIndicatorCell.left = fromLabel.left - 1",
+			@"typingIndicatorCell.top = fromLabel.bottom + 4"
 		] metrics:nil views:@{
 			@"typingIndicatorCell": self._typeStatusPlus_typingIndicatorCell,
-			@"summaryLabel": summaryLabel
+			@"fromLabel": fromLabel
 		}];
 	}
 }
