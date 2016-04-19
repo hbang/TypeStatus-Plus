@@ -5,13 +5,14 @@
 #import <ChatKit/CKConversationList.h>
 #import <ChatKit/CKConversationListCell.h>
 #import <ChatKit/CKConversationListController.h>
-#import <ChatKit/CKTranscriptTypingIndicatorCell.h>
+#import <ChatKit/CKTypingView.h>
+#import <ChatKit/CKTypingIndicatorLayer.h>
 #import <Foundation/NSDistributedNotificationCenter.h>
 #import <IMFoundation/FZMessage.h>
 
 @interface CKConversationListCell ()
 
-@property (nonatomic, retain) CKTranscriptTypingIndicatorCell *_typeStatusPlus_typingIndicatorCell;
+@property (nonatomic, retain) CKTypingView *_typeStatusPlus_typingIndicatorView;
 
 @property (nonatomic, setter=_typeStatusPlus_setTypingIndicatorVisible:) BOOL _typeStatusPlus_typingIndicatorVisible;
 
@@ -21,7 +22,7 @@
 
 %hook CKConversationListCell
 
-%property (nonatomic, retain) CKTranscriptTypingIndicatorCell *_typeStatusPlus_typingIndicatorCell;
+%property (nonatomic, retain) CKTypingView *_typeStatusPlus_typingIndicatorView;
 
 - (void)updateContentsForConversation:(CKConversation *)conversation {
 	%orig;
@@ -32,23 +33,24 @@
 		return;
 	}
 
-	if (!self._typeStatusPlus_typingIndicatorCell) {
-		self._typeStatusPlus_typingIndicatorCell = [[CKTranscriptTypingIndicatorCell alloc] init];
-		self._typeStatusPlus_typingIndicatorCell.hidden = YES;
-		self._typeStatusPlus_typingIndicatorCell.translatesAutoresizingMaskIntoConstraints = NO;
-		[self.contentView addSubview:self._typeStatusPlus_typingIndicatorCell];
+	if (!self._typeStatusPlus_typingIndicatorView) {
+		self._typeStatusPlus_typingIndicatorView = [[CKTypingView alloc] init];
+		self._typeStatusPlus_typingIndicatorView.hidden = YES;
+		self._typeStatusPlus_typingIndicatorView.translatesAutoresizingMaskIntoConstraints = NO;
+		self._typeStatusPlus_typingIndicatorView.transform = CGAffineTransformMakeScale(0.8, 0.8);
+		[self.contentView addSubview:self._typeStatusPlus_typingIndicatorView];
 		[self.contentView hb_addCompactConstraints:@[
-			@"typingIndicatorCell.left = fromLabel.left - 1",
-			@"typingIndicatorCell.top = fromLabel.bottom + 4"
+			@"typingIndicatorView.left = fromLabel.left - 1",
+			@"typingIndicatorView.top = fromLabel.bottom + 4"
 		] metrics:nil views:@{
-			@"typingIndicatorCell": self._typeStatusPlus_typingIndicatorCell,
+			@"typingIndicatorView": self._typeStatusPlus_typingIndicatorView,
 			@"fromLabel": fromLabel
 		}];
 	}
 }
 
 %new - (BOOL)_typeStatusPlus_typingIndicatorVisible {
-	return !self._typeStatusPlus_typingIndicatorCell.hidden;
+	return !self._typeStatusPlus_typingIndicatorView.hidden;
 }
 
 %new - (void)_typeStatusPlus_setTypingIndicatorVisible:(BOOL)visible {
@@ -59,16 +61,16 @@
 	void (^completion)() = ^{
 		UILabel *summaryLabel = [self valueForKey:@"_summaryLabel"];
 		summaryLabel.hidden = visible;
-		self._typeStatusPlus_typingIndicatorCell.hidden = !visible;
+		self._typeStatusPlus_typingIndicatorView.hidden = !visible;
 	};
 
 	if (animated) {
 		if (visible) {
 			completion();
-			[self._typeStatusPlus_typingIndicatorCell startGrowAnimation];
-			[self._typeStatusPlus_typingIndicatorCell startPulseAnimation];
+			[self._typeStatusPlus_typingIndicatorView.layer startGrowAnimation];
+			[self._typeStatusPlus_typingIndicatorView.layer startPulseAnimation];
 		} else {
-			[self._typeStatusPlus_typingIndicatorCell startShrinkAnimation];
+			[self._typeStatusPlus_typingIndicatorView.layer startShrinkAnimation];
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.20 * NSEC_PER_SEC)), dispatch_get_main_queue(), completion);
 		}
 	} else {
