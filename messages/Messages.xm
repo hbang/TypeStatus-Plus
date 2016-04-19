@@ -34,18 +34,20 @@
 	}
 
 	if (!self._typeStatusPlus_typingIndicatorView) {
-		self._typeStatusPlus_typingIndicatorView = [[CKTypingView alloc] init];
-		self._typeStatusPlus_typingIndicatorView.hidden = YES;
-		self._typeStatusPlus_typingIndicatorView.translatesAutoresizingMaskIntoConstraints = NO;
-		self._typeStatusPlus_typingIndicatorView.transform = CGAffineTransformMakeScale(0.8, 0.8);
-		[self.contentView addSubview:self._typeStatusPlus_typingIndicatorView];
+		CKTypingView *typingView = [[CKTypingView alloc] init];
+		typingView.hidden = YES;
+		typingView.translatesAutoresizingMaskIntoConstraints = NO;
+		typingView.layer.affineTransform = CGAffineTransformMakeScale(0.8, 0.8);
+		[self.contentView addSubview:typingView];
 		[self.contentView hb_addCompactConstraints:@[
 			@"typingIndicatorView.left = fromLabel.left - 1",
-			@"typingIndicatorView.top = fromLabel.bottom + 4"
+			@"typingIndicatorView.top = fromLabel.bottom + 2"
 		] metrics:nil views:@{
-			@"typingIndicatorView": self._typeStatusPlus_typingIndicatorView,
+			@"typingIndicatorView": typingView,
 			@"fromLabel": fromLabel
 		}];
+
+		self._typeStatusPlus_typingIndicatorView = typingView;
 	}
 }
 
