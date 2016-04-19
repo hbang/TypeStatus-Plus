@@ -60,23 +60,42 @@
 }
 
 %new - (void)_typeStatusPlus_setTypingIndicatorVisible:(BOOL)visible animated:(BOOL)animated {
-	void (^completion)() = ^{
-		UILabel *summaryLabel = [self valueForKey:@"_summaryLabel"];
-		summaryLabel.hidden = visible;
-		self._typeStatusPlus_typingIndicatorView.hidden = !visible;
-	};
+	// if we’re already visible then don’t bother
+	if (visible == !self._typeStatusPlus_typingIndicatorView.hidden) {
+		return;
+	}
+
+	UILabel *summaryLabel = [self valueForKey:@"_summaryLabel"];
 
 	if (animated) {
 		if (visible) {
-			completion();
+			summaryLabel.alpha = 1;
+
+			[UIView animateWithDuration:0.2 animations:^{
+				summaryLabel.alpha = 0;
+			} completion:^(BOOL finished) {
+				summaryLabel.alpha = 1;
+				summaryLabel.hidden = YES;
+			}];
+
+			self._typeStatusPlus_typingIndicatorView.hidden = NO;
 			[self._typeStatusPlus_typingIndicatorView.layer startGrowAnimation];
 			[self._typeStatusPlus_typingIndicatorView.layer startPulseAnimation];
 		} else {
+			summaryLabel.alpha = 0;
+			summaryLabel.hidden = NO;
+
+			[UIView animateWithDuration:0.2 animations:^{
+				summaryLabel.alpha = 1;
+			} completion:^(BOOL finished) {
+				self._typeStatusPlus_typingIndicatorView.hidden = YES;
+			}];
+
 			[self._typeStatusPlus_typingIndicatorView.layer startShrinkAnimation];
-			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.20 * NSEC_PER_SEC)), dispatch_get_main_queue(), completion);
 		}
 	} else {
-		completion();
+		summaryLabel.hidden = visible;
+		self._typeStatusPlus_typingIndicatorView.hidden = !visible;
 	}
 }
 
