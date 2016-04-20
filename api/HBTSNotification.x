@@ -33,7 +33,7 @@
 
 	if (self) {
 		// deserialise the easy stuff
-		_sectionID = [dictionary[kHBTSPlusAppIdentifierKey] copy];
+		_sourceBundleID = [dictionary[kHBTSPlusAppIdentifierKey] copy];
 		_content = [dictionary[kHBTSPlusMessageContentKey] copy];
 		_statusBarIconName = [dictionary[kHBTSPlusMessageIconNameKey] copy];
 
@@ -55,32 +55,13 @@
 #pragma mark - Serialization
 
 - (NSString *)_contentWithBoldRange:(out NSRange *)boldRange {
-	NSString *text = nil;
-
-	// if we have a title
-	if (_title) {
-		// if we have a subtitle
-		if (_subtitle) {
-			// format as title + " " + subtitle
-			text = [NSString stringWithFormat:@"%@ %@", _title, _subtitle];
-		} else {
-			// just copy the title
-			text = [[_title copy] autorelease];
-		}
-
-		// set the bold range accordingly
-		*boldRange = NSMakeRange(0, _title.length);
-	} else {
-		// otherwise just directly grab the content and bold range
-		text = [[_content copy] autorelease];
-		*boldRange = _boldRange;
-	}
-
 	// we should never end up with nothing to return. crash if so
-	NSAssert(text, @"No notification content found");
-	NSAssert(text.length > 0, @"No notification content found");
+	NSAssert(_content, @"No notification content found");
+	NSAssert(_content.length > 0, @"No notification content found");
 
-	return text;
+	// grab the bold range, and return the content
+	*boldRange = _boldRange;
+	return _content;
 }
 
 - (NSDictionary *)dictionaryRepresentation {
@@ -88,12 +69,12 @@
 	NSRange boldRange = NSMakeRange(0, 0);
 	NSString *content = [self _contentWithBoldRange:&boldRange];
 
-	NSParameterAssert(_sectionID);
+	NSParameterAssert(_sourceBundleID);
 	NSParameterAssert(_date);
 
 	// return serialized dictionary
 	return @{
-		kHBTSPlusAppIdentifierKey: _sectionID,
+		kHBTSPlusAppIdentifierKey: _sourceBundleID,
 		kHBTSPlusMessageContentKey: content,
 		kHBTSMessageBoldRangeKey: @[ @(boldRange.location), @(boldRange.length) ],
 		kHBTSPlusMessageIconNameKey: _statusBarIconName ?: @"",
@@ -105,9 +86,7 @@
 #pragma mark - Memory management
 
 - (void)dealloc {
-	[_sectionID release];
-	[_title release];
-	[_subtitle release];
+	[_sourceBundleID release];
 	[_content release];
 	[_date release];
 	[_statusBarIconName release];

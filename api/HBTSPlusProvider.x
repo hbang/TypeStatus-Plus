@@ -21,15 +21,19 @@
 #pragma mark - Messaging methods
 
 - (void)showNotificationWithIconName:(NSString *)iconName title:(NSString *)title content:(NSString *)content {
+	HBLogWarn(@"%@: %@ is deprecated. Please transition to showNotification:.", self.class, NSStringFromSelector(_cmd));
+
 	// make a notification from the args and post it
 	HBTSNotification *notification = [[[HBTSNotification alloc] init] autorelease];
-	notification.title = title;
-	notification.subtitle = content;
+	notification.content = [NSString stringWithFormat:@"%@ %@", title, content];
+	notification.boldRange = NSMakeRange(0, title.length);
 	notification.statusBarIconName = iconName;
 	[self showNotification:notification];
 }
 
 - (void)showNotificationWithIconName:(NSString *)iconName content:(NSString *)content boldRange:(NSRange)boldRange {
+	HBLogWarn(@"%@: %@ is deprecated. Please transition to showNotification:.", self.class, NSStringFromSelector(_cmd));
+
 	// make a notification from the args and post it
 	HBTSNotification *notification = [[[HBTSNotification alloc] init] autorelease];
 	notification.content = content;
@@ -40,8 +44,8 @@
 
 - (void)showNotification:(HBTSNotification *)notification {
 	// override the section id with the app id if it’s nil
-	if (!notification.sectionID) {
-		notification.sectionID = _appIdentifier;
+	if (!notification.sourceBundleID) {
+		notification.sourceBundleID = _appIdentifier;
 	}
 
 	HBLogDebug(@"Posting showNotification message on client side.");

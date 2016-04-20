@@ -16,17 +16,7 @@ typedef NS_ENUM(NSUInteger, HBTSNotificationType) {
 /**
  * TODO: Document
  */
-@property (nonatomic, copy, nullable) NSString *sectionID;
-
-/**
- * TODO: Document
- */
-@property (nonatomic, copy, nullable) NSString *title;
-
-/**
- * TODO: Document
- */
-@property (nonatomic, copy, nullable) NSString *subtitle;
+@property (nonatomic, copy, nullable) NSString *sourceBundleID;
 
 /**
  * TODO: Document

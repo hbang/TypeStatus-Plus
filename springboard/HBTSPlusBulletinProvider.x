@@ -29,7 +29,7 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 - (void)showMessagesBulletinWithContent:(NSString *)content {
 	// construct a notification and pass it over to the main method
 	HBTSNotification *notification = [[[HBTSNotification alloc] init] autorelease];
-	notification.sectionID = @"com.apple.MobileSMS";
+	notification.sourceBundleID = @"com.apple.MobileSMS";
 	notification.content = content;
 	[self showBulletinForNotification:notification];
 }
@@ -53,13 +53,13 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 	});
 
 	[_correctAppIdentifier release];
-	_correctAppIdentifier = preferences.useAppIcon ? notification.sectionID : kHBTSPlusAppIdentifier;
+	_correctAppIdentifier = preferences.useAppIcon ? notification.sourceBundleID : kHBTSPlusAppIdentifier;
 
 	// the correct app identifier can change in settings, so we don't put that in the dispatch_once
 	bulletinRequest.sectionID = _correctAppIdentifier;
 
 	// set the title to the app display name
-	SBApplication *application = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:notification.sectionID];
+	SBApplication *application = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:notification.sourceBundleID];
 	bulletinRequest.title = application.displayName;
 
 	// set all the rest

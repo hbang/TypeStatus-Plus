@@ -49,16 +49,16 @@
 
 	// give the tap to open controller context
 	HBTSPlusTapToOpenController *tapToOpenController = [HBTSPlusTapToOpenController sharedInstance];
-	tapToOpenController.appIdentifier = [notification.sectionID copy];
+	tapToOpenController.appIdentifier = [notification.sourceBundleID copy];
 	tapToOpenController.actionURL = [notification.actionURL copy];
 
 	// get the enabled state of the provider
-	HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:notification.sectionID];
+	HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:notification.sourceBundleID];
 	BOOL enabled = [[HBTSPlusProviderController sharedInstance] providerIsEnabled:provider];
 
 	// determine whether the app is in the foreground
 	SpringBoard *app = (SpringBoard *)[UIApplication sharedApplication];
-	BOOL inForeground = [app._accessibilityFrontMostApplication.bundleIdentifier isEqualToString:notification.sectionID];
+	BOOL inForeground = [app._accessibilityFrontMostApplication.bundleIdentifier isEqualToString:notification.sourceBundleID];
 
 	// if we’re disabled, or we’re in the foreground and the user doesn’t want
 	// foreground notifications, return
