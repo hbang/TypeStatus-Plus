@@ -1,11 +1,7 @@
-#import "HBTSPlusProviderBackgroundingManager.h"
 #import "HBTSPlusProviderController.h"
 #import "HBTSPlusProviderController+Private.h"
 #import <AssertionServices/BKSProcessAssertion.h>
-#import <AssertionServices/BKSProcessAssertionClient.h>
-#import <BaseBoard/BSMutableSettings.h>
 #import <SpringBoard/SBApplication.h>
-#import <FrontBoard/FBProcess.h>
 #import <SpringBoard/SpringBoard.h>
 #import <SpringBoard/SBApplicationController.h>
 

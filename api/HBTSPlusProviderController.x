@@ -1,10 +1,8 @@
 #import "HBTSPlusProviderController.h"
 #import "HBTSPlusPreferences.h"
 #import "HBTSPlusProvider.h"
-#import "HBTSPlusProviderBackgroundingManager.h"
 #import "HBTSPlusProviderController+Private.h"
 #import <MobileCoreServices/LSApplicationProxy.h>
-#import <SpringBoard/SpringBoard.h>
 
 @implementation HBTSPlusProviderController {
 	NSMutableArray *_appsRequiringBackgroundSupport;
