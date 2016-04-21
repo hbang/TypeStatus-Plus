@@ -13,5 +13,5 @@ include $(THEOS_MAKE_PATH)/bundle.mk
 include $(THEOS_MAKE_PATH)/tweak.mk
 
 after-Messenger-stage::
-	mkdir -p $(THEOS_STAGING_DIR)/System/Library/Frameworks/UIKit.framework
-	cp Resources/*.png $(THEOS_STAGING_DIR)/System/Library/Frameworks/UIKit.framework
+	$(ECHO_NOTHING)mkdir -p $(THEOS_STAGING_DIR)/System/Library/Frameworks/UIKit.framework$(ECHO_END)
+	$(ECHO_NOTHING)cp Resources/*.png $(THEOS_STAGING_DIR)/System/Library/Frameworks/UIKit.framework$(ECHO_END)
