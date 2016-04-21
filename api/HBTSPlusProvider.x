@@ -11,7 +11,7 @@
 	static CPDistributedMessagingCenter *distributedCenter = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		distributedCenter = [[CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName] retain];
+		distributedCenter = [CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName];
 		rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
 	});
 
@@ -24,7 +24,7 @@
 	HBLogWarn(@"%@: %@ is deprecated. Please transition to showNotification:.", self.class, NSStringFromSelector(_cmd));
 
 	// make a notification from the args and post it
-	HBTSNotification *notification = [[[HBTSNotification alloc] init] autorelease];
+	HBTSNotification *notification = [[HBTSNotification alloc] init];
 	notification.content = [NSString stringWithFormat:@"%@ %@", title, content];
 	notification.boldRange = NSMakeRange(0, title.length);
 	notification.statusBarIconName = iconName;
@@ -35,7 +35,7 @@
 	HBLogWarn(@"%@: %@ is deprecated. Please transition to showNotification:.", self.class, NSStringFromSelector(_cmd));
 
 	// make a notification from the args and post it
-	HBTSNotification *notification = [[[HBTSNotification alloc] init] autorelease];
+	HBTSNotification *notification = [[HBTSNotification alloc] init];
 	notification.content = content;
 	notification.boldRange = boldRange;
 	notification.statusBarIconName = iconName;
@@ -59,17 +59,6 @@
 
 	// post the notification
 	[self._messagingCenter sendMessageName:kHBTSPlusServerHideStatusBarNotificationName userInfo:nil];
-}
-
-#pragma mark - Memory management
-
-- (void)dealloc {
-	[_name release];
-	[_appIdentifier release];
-	[_preferencesBundle release];
-	[_preferencesClass release];
-
-	[super dealloc];
 }
 
 @end

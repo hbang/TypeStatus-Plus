@@ -86,7 +86,7 @@ static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Prov
 				HBLogDebug(@"The bundle %@ requires backgrounding support.", baseName);
 			}
 
-			HBTSPlusProvider *provider = [[[bundle.principalClass alloc] init] autorelease];
+			HBTSPlusProvider *provider = [[bundle.principalClass alloc] init];
 			provider.appIdentifier = identifier;
 			[_providers addObject:provider];
 
@@ -132,15 +132,6 @@ static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Prov
 	} else {
 		return [(HBTSPlusPreferences *)[%c(HBTSPlusPreferences) sharedInstance] providerIsEnabled:provider.appIdentifier];
 	}
-}
-
-#pragma mark - Memory management
-
-- (void)dealloc {
-	[_providers release];
-	[_appsRequiringBackgroundSupport release];
-
-	[super dealloc];
 }
 
 @end

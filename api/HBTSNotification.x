@@ -22,7 +22,7 @@
 
 	if (self) {
 		_content = [%c(HBTSStatusBarAlertServer) textForType:(HBTSStatusBarType)type sender:sender boldRange:&_boldRange];
-		_statusBarIconName = [iconName copy];
+		_statusBarIconName = iconName;
 	}
 
 	return self;
@@ -38,7 +38,6 @@
 		_statusBarIconName = [dictionary[kHBTSPlusMessageIconNameKey] copy];
 
 		if (dictionary[kHBTSPlusDateKey]) {
-			[_date release];
 			_date = [[NSDate alloc] initWithTimeIntervalSince1970:((NSNumber *)dictionary[kHBTSPlusDateKey]).doubleValue];
 		}
 
@@ -81,18 +80,6 @@
 		kHBTSPlusDateKey: @(_date.timeIntervalSince1970),
 		kHBTSPlusActionURLKey: _actionURL ? _actionURL.absoluteString : @""
 	};
-}
-
-#pragma mark - Memory management
-
-- (void)dealloc {
-	[_sourceBundleID release];
-	[_content release];
-	[_date release];
-	[_statusBarIconName release];
-	[_actionURL release];
-
-	[super dealloc];
 }
 
 @end
