@@ -1,5 +1,5 @@
-static NSString *const kTypeStatusPlusIdentifierString = @"HBTSApplicationBundleIdentifier";
-static NSString *const kTypeStatusPlusBackgroundingString = @"HBTSKeepApplicationAlive";
+static NSString *const kHBTSApplicationBundleIdentifierKey = @"HBTSApplicationBundleIdentifier";
+static NSString *const kHBTSKeepApplicationAliveKey = @"HBTSKeepApplicationAlive";
 
 @class HBTSPlusProvider;
 
