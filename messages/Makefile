@@ -2,7 +2,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = TypeStatusPlusMessages
 TypeStatusPlusMessages_FILES = Messages.xm HBTSPlusMessagesTypingManager.x
-TypeStatusPlusMessages_CFLAGS = -I../global -include ../global/Global.h
+TypeStatusPlusMessages_CFLAGS = -I../global -include ../global/Global.h -fobjc-arc
 TypeStatusPlusMessages_PRIVATE_FRAMEWORKS = ChatKit
 TypeStatusPlusMessages_EXTRA_FRAMEWORKS = Cephei
 
