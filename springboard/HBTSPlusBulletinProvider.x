@@ -41,16 +41,12 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 		BBDataProviderWithdrawBulletinsWithRecordID(self, @"ws.hbang.typestatusplus.notification");
 	}
 
-	static BBBulletinRequest *bulletinRequest = nil;
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		bulletinRequest = [[BBBulletinRequest alloc] init];
-		bulletinRequest.showsUnreadIndicator = NO;
+	BBBulletinRequest *bulletinRequest = [[[BBBulletinRequest alloc] init] autorelease];
+	bulletinRequest.showsUnreadIndicator = NO;
 
-		bulletinRequest.bulletinID = kHBTSPlusAppIdentifier;
-		bulletinRequest.publisherBulletinID = kHBTSPlusAppIdentifier;
-		bulletinRequest.recordID = kHBTSPlusAppIdentifier;
-	});
+	bulletinRequest.bulletinID = kHBTSPlusAppIdentifier;
+	bulletinRequest.publisherBulletinID = kHBTSPlusAppIdentifier;
+	bulletinRequest.recordID = kHBTSPlusAppIdentifier;
 
 	_correctAppIdentifier = preferences.useAppIcon ? notification.sourceBundleID : kHBTSPlusAppIdentifier;
 
