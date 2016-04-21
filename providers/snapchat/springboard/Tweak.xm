@@ -18,7 +18,6 @@
 		} else if ([type isEqualToString:@"ss"] || [type isEqualToString:@"cs"]) {
 			// snap screenshot (ss) or chat screenshot (cs)
 			HBTSNotification *notification = [[[HBTSNotification alloc] init] autorelease];
-			notification.sectionID = @"com.toyopagroup.picaboo";
 			notification.content = message.userInfo[@"local_message"]; // @"Ben Rosen took a screenshot!"
 			notification.boldRange = [notification.content rangeOfString:message.userInfo[@"sender"]];
 			notification.statusBarIconName = @"TypeStatusPlusSnapchat";
