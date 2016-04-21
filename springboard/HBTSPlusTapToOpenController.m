@@ -28,8 +28,6 @@
 - (void)newMessageRecieved:(NSNotification *)notification {
 	_appIdentifier = @"com.apple.MobileSMS";
 
-	[_currentSender release];
-
 	NSString *rawSender = notification.userInfo[kHBTSMessageSenderKey];
 
 	if (!rawSender) {
@@ -48,7 +46,6 @@
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://open?address=%@", _currentSender]]];
 
 		// we don’t need this any more
-		[_currentSender release];
 		_currentSender = nil;
 	} else if (_actionURL) {
 		// if we got a url, open that
@@ -58,23 +55,7 @@
 		[(SpringBoard *)[UIApplication sharedApplication] launchApplicationWithIdentifier:_appIdentifier suspended:NO];
 	}
 
-	// we won’t need these any more
-	[_currentSender release];
-	[_appIdentifier release];
-	[_actionURL release];
-	_currentSender = nil;
-	_appIdentifier = nil;
-	_actionURL = nil;
-
 	return nil;
-}
-
-- (void)dealloc {
-	[_currentSender release];
-	[_appIdentifier release];
-	[_actionURL release];
-
-	[super dealloc];
 }
 
 @end

@@ -28,7 +28,7 @@
 
 - (instancetype)init {
 	if (self = [super init]) {
-		_distributedCenter = [[CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName] retain];
+		_distributedCenter = [CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName];
 		rocketbootstrap_distributedmessagingcenter_apply(_distributedCenter);
 		[_distributedCenter runServerOnCurrentThread];
 
@@ -45,12 +45,12 @@
 	HBLogDebug(@"Recieved set message on server side.");
 
 	// deserialize to an HBTSNotification
-	HBTSNotification *notification = [[[HBTSNotification alloc] initWithDictionary:userInfo] autorelease];
+	HBTSNotification *notification = [[HBTSNotification alloc] initWithDictionary:userInfo];
 
 	// give the tap to open controller context
 	HBTSPlusTapToOpenController *tapToOpenController = [HBTSPlusTapToOpenController sharedInstance];
-	tapToOpenController.appIdentifier = [notification.sourceBundleID copy];
-	tapToOpenController.actionURL = [notification.actionURL copy];
+	tapToOpenController.appIdentifier = notification.sourceBundleID;
+	tapToOpenController.actionURL = notification.actionURL;
 
 	// get the enabled state of the provider
 	HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:notification.sourceBundleID];

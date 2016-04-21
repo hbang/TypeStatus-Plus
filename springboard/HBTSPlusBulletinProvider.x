@@ -28,7 +28,7 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 
 - (void)showMessagesBulletinWithContent:(NSString *)content {
 	// construct a notification and pass it over to the main method
-	HBTSNotification *notification = [[[HBTSNotification alloc] init] autorelease];
+	HBTSNotification *notification = [[HBTSNotification alloc] init];
 	notification.sourceBundleID = @"com.apple.MobileSMS";
 	notification.content = content;
 	[self showBulletinForNotification:notification];
@@ -52,7 +52,6 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 		bulletinRequest.recordID = kHBTSPlusAppIdentifier;
 	});
 
-	[_correctAppIdentifier release];
 	_correctAppIdentifier = preferences.useAppIcon ? notification.sourceBundleID : kHBTSPlusAppIdentifier;
 
 	// the correct app identifier can change in settings, so we don't put that in the dispatch_once
@@ -110,14 +109,6 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 
 - (BOOL)migrateSectionInfo:(BBSectionInfo *)arg1 oldSectionInfo:(BBSectionInfo *)arg2 {
 	return NO;
-}
-
-#pragma mark - Memory management
-
-- (void)dealloc {
-	[_correctAppIdentifier release];
-
-	[super dealloc];
 }
 
 @end
