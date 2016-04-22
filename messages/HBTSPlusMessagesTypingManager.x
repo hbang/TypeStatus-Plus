@@ -42,7 +42,7 @@
 }
 
 - (NSString *)nameForHandle:(NSString *)handle {
-	CKEntity *entity = [[%c(CKEntity) copyEntityForAddressString:handle] autorelease];
+	CKEntity *entity = [%c(CKEntity) copyEntityForAddressString:handle];
 
 	if (!entity || ([entity respondsToSelector:@selector(handle)] && !entity.handle.person)) {
 		return handle;

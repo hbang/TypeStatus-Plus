@@ -41,9 +41,8 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 		BBDataProviderWithdrawBulletinsWithRecordID(self, @"ws.hbang.typestatusplus.notification");
 	}
 
-	BBBulletinRequest *bulletinRequest = [[[BBBulletinRequest alloc] init] autorelease];
+	BBBulletinRequest *bulletinRequest = [[BBBulletinRequest alloc] init];
 	bulletinRequest.showsUnreadIndicator = NO;
-
 	bulletinRequest.bulletinID = kHBTSPlusAppIdentifier;
 	bulletinRequest.publisherBulletinID = kHBTSPlusAppIdentifier;
 	bulletinRequest.recordID = kHBTSPlusAppIdentifier;
