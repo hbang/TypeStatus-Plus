@@ -8,10 +8,14 @@
 
 	<!-- Explanation of the providers for TypeStatus Plus. -->
 	<key>PROVIDERS_EXPLANATION</key>
-	<string>Providers allow HASHBANG Productions and other developers to support TypeStatus Plus with any app.</string>
+	<string>Providers are individual modules for different apps and iOS features. TypeStatus Plus includes some providers, and developers can make their own. If you don’t see your favourite app listed above, try searching for a provider in Cydia.
+
+Some providers require its corresponding app to constantly run in the background, even when the device is sleeping. This may have an effect on battery life.
+
+The Music provider supports all apps that display the currently playing media in Control Center and on the lock screen.</string>
 
 	<!-- Explanation used when there are no providers installed. -->
 	<key>NO_PROVIDERS_EXPLANATION</key>
-	<string>Visit Cydia to find and install providers for TypeStatus Plus!</string>
+	<string>No providers are installed. This is not meant to happen. Please try installing or reinstalling the “TypeStatus Plus Providers” package.</string>
 </dict>
 </plist>
