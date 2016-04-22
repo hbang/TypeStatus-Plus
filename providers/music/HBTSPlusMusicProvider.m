@@ -31,7 +31,11 @@
 			[_lastSongIdentifier release];
 			_lastSongIdentifier = [identifier retain];
 
-			[self showNotificationWithIconName:@"TypeStatusPlusMusic" title:artistName?:songName content:songName];
+			HBTSNotification *notification = [[[HBTSNotification alloc] init] autorelease];
+			notification.content = artistName ? [NSString stringWithFormat:@"%@ – %@", songName, artistName] : songName;
+			notification.boldRange = NSMakeRange(0, songName.length);
+			notification.statusBarIconName = @"TypeStatusPlusMusic";
+			[self showNotification:notification];
 		}
 	});
 }
