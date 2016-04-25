@@ -1,7 +1,7 @@
 Package: ws.hbang.typestatusplusproviders
 Name: TypeStatus Plus Providers
 Depends: ws.hbang.typestatusplus
-Version: 1.0~beta6
+Version: 1.0~beta7
 Architecture: iphoneos-arm
 Description: Support for various messaging apps
 Maintainer: HASHBANG Productions <support@hbang.ws>
