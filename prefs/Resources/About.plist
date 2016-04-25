@@ -40,7 +40,7 @@
 			<key>height</key>
 			<integer>60</integer>
 			<key>developer</key>
-			<true />
+			<true/>
 		</dict>
 		<dict>
 			<key>cellClass</key>
@@ -54,7 +54,7 @@
 			<key>height</key>
 			<integer>60</integer>
 			<key>developer</key>
-			<true />
+			<true/>
 		</dict>
 		<dict>
 			<key>cellClass</key>
@@ -68,7 +68,7 @@
 			<key>height</key>
 			<integer>60</integer>
 			<key>developer</key>
-			<false />
+			<false/>
 		</dict>
 		<dict>
 			<key>cellClass</key>
@@ -82,7 +82,7 @@
 			<key>height</key>
 			<integer>60</integer>
 			<key>developer</key>
-			<false />
+			<false/>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -97,6 +97,8 @@
 			<integer>100</integer>
 			<key>icon</key>
 			<string>headerlogo.png</string>
+			<key>id</key>
+			<string>VersionGroupCell</string>
 			<key>footerAlignment</key>
 			<integer>1</integer>
 		</dict>

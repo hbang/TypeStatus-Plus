@@ -8,11 +8,11 @@
 #pragma mark - HBListController
 
 + (NSString *)hb_shareText {
-	return @"I couldn’t be more happy I joined the exclusive TypeStatus Plus beta group. You can join, too!";
+	return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"SHARE_TEXT", @"Root", self.bundle, @"Default text for sharing the tweak. %@ is the device type (ie, iPhone)."), [UIDevice currentDevice].localizedModel];
 }
 
 + (NSURL *)hb_shareURL {
-	return [NSURL URLWithString:@"https://typestatus.com/plus"];
+	return [NSURL URLWithString:@"https://typestatus.com/plus/"];
 }
 
 + (NSString *)hb_specifierPlist {
@@ -36,11 +36,17 @@
 	appearance.tableViewBackgroundColor = [UIColor colorWithRed:0.089 green:0.089 blue:0.089 alpha:1.00];
 	self.hb_appearanceSettings = appearance;
 
-	UIImage *headerLogo = [UIImage imageNamed:@"headerlogo" inBundle:[NSBundle bundleForClass:self.class]];
+	UIImage *headerLogo = [UIImage imageNamed:@"headerlogo" inBundle:self.bundle];
 	self.navigationItem.titleView = [[[UIImageView alloc] initWithImage:headerLogo] autorelease];
 	self.navigationItem.titleView.alpha = 0.0;
+}
 
-	[self performSelector:@selector(animateIconAlpha) withObject:nil afterDelay:0.5];
+- (void)viewDidAppear:(BOOL)animated {
+	if (self.navigationItem.titleView.alpha == 0) {
+		[UIView animateWithDuration:0.5 delay:0.5 options:kNilOptions animations:^{
+			self.navigationItem.titleView.alpha = 1;
+		} completion:nil];
+	}
 }
 
 #pragma mark - Callbacks

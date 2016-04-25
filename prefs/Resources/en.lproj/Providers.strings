@@ -17,5 +17,13 @@ The Music provider supports all apps that display the currently playing media in
 	<!-- Explanation used when there are no providers installed. -->
 	<key>NO_PROVIDERS_EXPLANATION</key>
 	<string>No providers are installed. This is not meant to happen. Please try installing or reinstalling the “TypeStatus Plus Providers” package.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Couldn’t load the settings for %@ because an error occurred.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Check for updates to TypeStatus Plus and your providers. Contact the developer if this issue persists.</string>
 </dict>
 </plist>

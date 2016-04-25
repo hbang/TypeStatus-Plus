@@ -9,9 +9,13 @@
 	NSArray *_providers;
 }
 
+#pragma mark - HBListController
+
 + (NSString *)hb_specifierPlist {
 	return @"Providers";
 }
+
+#pragma mark - PSListController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -103,9 +107,12 @@
 }
 
 - (void)_showBundleLoadErrorForProviderName:(NSString *)name {
-	// TODO: needs l10n
-	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Couldn’t load the settings for %@ because an error occurred.", name] message:@"Check for updates to TypeStatus Plus and your providers. Contact the developer if this issue persists." preferredStyle:UIAlertControllerStyleAlert];
-	[alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+	NSString *title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"FAILED_TO_LOAD_PREFS_TITLE", @"Providers", self.bundle, @"Title used on an alert when a provider’s preferences fail to load."), name];
+	NSString *message = NSLocalizedStringFromTableInBundle(@"FAILED_TO_LOAD_PREFS_BODY", @"Providers", self.bundle, @"Body used on an alert when a provider’s preferences fail to load.");
+	NSString *ok = NSLocalizedStringFromTableInBundle(@"OK", @"Localizable", [NSBundle bundleForClass:UIView.class], nil);
+
+	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+	[alertController addAction:[UIAlertAction actionWithTitle:ok style:UIAlertActionStyleCancel handler:nil]];
 	[self presentViewController:alertController animated:YES completion:nil];
 }
 
