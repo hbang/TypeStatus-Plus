@@ -23,6 +23,8 @@
 @end
 
 %ctor {
+	NSBundle *bundle = [[NSBundle bundleWithPath:@"/Library/TypeStatus/Providers/Slack.bundle"] retain];
+
 	[[NSNotificationCenter defaultCenter] addObserverForName:SLKUserTyping object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
 
 		NSString *rawUserId = notification.userInfo[kSLKUserKey];
@@ -31,14 +33,17 @@
 		SLKUser *user = [%c(SLKUser) userForId:rawUserId contextType:1];
 		SLKChannel *channel = [%c(SLKChannel) channelForId:rawChannelId contextType:1];
 
-		NSString *userDisplayName = [user displayName];
-		NSString *channelDisplayName = [channel displayTitle];
-
 		// Typing: Ben Rosen in #general
 
 		HBTSPlusProvider *slackProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.tinyspeck.chatlyio"];
 
-		HBTSNotification *tsNotification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeTyping sender:userDisplayName iconName:@"TypeStatusPlusSlack"] autorelease];
+		NSString *sender = user.displayName;
+
+		if (channel) {
+			sender = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"SENDER_IN_CHANNEL", @"Localizable", bundle, @"String used in the status bar for messages sent in a channel. “Typing: kirb in #general”"), user.displayName, channel.displayTitle];
+		}
+
+		HBTSNotification *tsNotification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeTyping sender:sender iconName:@"TypeStatusPlusSlack"] autorelease];
 
 		if (channel) {
 			tsNotification.content = [tsNotification.content stringByAppendingFormat:@" in %@", channelDisplayName];
