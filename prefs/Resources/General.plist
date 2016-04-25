@@ -6,6 +6,30 @@
 	<array>
 		<dict>
 			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>STATUS_BAR</string>
+			<key>footerText</key>
+			<string>UNREAD_COUNT_EXPLANATION</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>ws.hbang.typestatusplus</string>
+			<key>key</key>
+			<string>ShowUnreadCount</string>
+			<key>label</key>
+			<string>UNREAD_COUNT</string>
+			<key>icon</key>
+			<string>count.png</string>
+			<key>PostNotification</key>
+			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>bundle</key>
 			<string>AppList</string>
@@ -14,17 +38,17 @@
 			<key>icon</key>
 			<string>count.png</string>
 			<key>label</key>
-			<string>SHOW_COUNT_FOR</string>
+			<string>SELECT_APPS</string>
+			<key>ALAllowsSelection</key>
+			<true/>
 			<key>ALChangeNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
-			<key>ALSettingsDefaultValue</key>
-			<string>com.apple.MobileSMS</string>
-			<key>ALSingleEnabledMode</key>
-			<true/>
-			<key>ALSettingsKey</key>
-			<string>UnreadNotificationAppBundleIdentifier</string>
+			<key>ALSettingsKeyPrefix</key>
+			<string>UnreadCountApp-</string>
 			<key>ALSettingsPath</key>
 			<string>/var/mobile/Library/Preferences/ws.hbang.typestatusplus.plist</string>
+			<key>ALSingleEnabledMode</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>cell</key>
