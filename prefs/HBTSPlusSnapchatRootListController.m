@@ -2,16 +2,19 @@
 
 @implementation HBTSPlusSnapchatRootListController
 
+#pragma mark - HBListController
+
 + (NSString *)hb_specifierPlist {
 	return @"Snapchat";
 }
 
-+ (UIColor *)hb_tintColor {
-	return [UIColor colorWithRed:1.0f green:0.8f blue:0.0f alpha:1.00f];
-}
+#pragma mark - UIViewController
 
-+ (BOOL)hb_invertedNavigationBar {
-	return YES;
+- (void)viewDidLoad {
+	[super viewDidLoad];
+
+	self.hb_appearanceSettings.tintColor = [UIColor colorWithRed:1.0f green:0.8f blue:0.0f alpha:1.00f];
+	self.hb_appearanceSettings.invertedNavigationBar = YES;
 }
 
 @end
