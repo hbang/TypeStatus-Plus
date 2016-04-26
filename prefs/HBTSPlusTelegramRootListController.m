@@ -1,4 +1,5 @@
-#include "HBTSPlusTelegramRootListController.h"
+#import "HBTSPlusTelegramRootListController.h"
+#import <CepheiPrefs/HBAppearanceSettings.h>
 
 @implementation HBTSPlusTelegramRootListController
 

@@ -44,12 +44,6 @@
 		}
 
 		HBTSNotification *tsNotification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeTyping sender:sender iconName:@"TypeStatusPlusSlack"] autorelease];
-
-		if (channel) {
-			tsNotification.content = [tsNotification.content stringByAppendingFormat:@" in %@", channelDisplayName];
-		}
-
 		[slackProvider showNotification:tsNotification];
-
 	}];
 }

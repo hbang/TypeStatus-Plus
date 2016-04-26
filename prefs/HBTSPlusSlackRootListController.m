@@ -1,4 +1,5 @@
-#include "HBTSPlusSlackRootListController.h"
+#import "HBTSPlusSlackRootListController.h"
+#import <CepheiPrefs/HBAppearanceSettings.h>
 
 @implementation HBTSPlusSlackRootListController
 

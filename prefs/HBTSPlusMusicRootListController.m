@@ -1,4 +1,5 @@
-#include "HBTSPlusMusicRootListController.h"
+#import "HBTSPlusMusicRootListController.h"
+#import <CepheiPrefs/HBAppearanceSettings.h>
 
 @implementation HBTSPlusMusicRootListController
 

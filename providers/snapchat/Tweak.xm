@@ -23,7 +23,7 @@ NSBundle *bundle;
 
 			HBTSNotification *notification = [[[HBTSNotification alloc] init] autorelease];
 			notification.content = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"SENDER_TOOK_A_SCREENSHOT", @"Localizable", bundle, @"String used in the status bar for screenshot notifications. “kirb took a screenshot!”"), sender];
-			notification.boldRange = [notification.content rangeOfString:];
+			notification.boldRange = [notification.content rangeOfString:sender];
 			notification.statusBarIconName = @"TypeStatusPlusSnapchat";
 
 			HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.toyopagroup.picaboo"];

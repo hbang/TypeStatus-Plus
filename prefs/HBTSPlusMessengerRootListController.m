@@ -1,4 +1,5 @@
-#include "HBTSPlusMessengerRootListController.h"
+#import "HBTSPlusMessengerRootListController.h"
+#import <CepheiPrefs/HBAppearanceSettings.h>
 
 @implementation HBTSPlusMessengerRootListController
 

@@ -1,4 +1,5 @@
-#include "HBTSPlusWhatsAppRootListController.h"
+#import "HBTSPlusWhatsAppRootListController.h"
+#import <CepheiPrefs/HBAppearanceSettings.h>
 
 @implementation HBTSPlusWhatsAppRootListController
 

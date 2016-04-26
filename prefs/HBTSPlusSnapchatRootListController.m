@@ -1,4 +1,5 @@
-#include "HBTSPlusSnapchatRootListController.h"
+#import "HBTSPlusSnapchatRootListController.h"
+#import <CepheiPrefs/HBAppearanceSettings.h>
 
 @implementation HBTSPlusSnapchatRootListController
 
