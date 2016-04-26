@@ -32,7 +32,7 @@
 	NSBundle *cepheiBundle = [NSBundle bundleWithPath:@"/Library/Frameworks/CepheiPrefs.framework"];
 	NSString *versionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"HEADER_VERSION", @"PackageNameHeaderCell", cepheiBundle, @"The subheading containing the package version."), package.version];
 
-	PSSpecifier *specifier = [self specifierWithID:@"VersionGroupCell"];
+	PSSpecifier *specifier = [self specifierForID:@"VersionGroupCell"];
 	specifier.properties[PSFooterTextGroupKey] = [NSString stringWithFormat:@"%@\n%@\n© HASHBANG Productions", package.name, versionString];
 }
 
