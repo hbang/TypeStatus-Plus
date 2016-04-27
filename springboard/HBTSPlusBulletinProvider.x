@@ -13,7 +13,7 @@
 static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 
 @implementation HBTSPlusBulletinProvider {
-	NSString *_correctAppIdentifier;
+	NSString *_currentAppIdentifier;
 }
 
 + (instancetype)sharedInstance {
@@ -37,20 +37,20 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 - (void)showBulletinForNotification:(HBTSNotification *)notification {
 	HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
 
+	// if the user has set us to only keep one notification, withdraw previous
+	// notifications
 	if (!preferences.keepAllBulletins) {
 		BBDataProviderWithdrawBulletinsWithRecordID(self, @"ws.hbang.typestatusplus.notification");
 	}
 
 	BBBulletinRequest *bulletinRequest = [[BBBulletinRequest alloc] init];
-	bulletinRequest.showsUnreadIndicator = NO;
-	bulletinRequest.bulletinID = kHBTSPlusAppIdentifier;
-	bulletinRequest.publisherBulletinID = kHBTSPlusAppIdentifier;
-	bulletinRequest.recordID = kHBTSPlusAppIdentifier;
 
-	_correctAppIdentifier = preferences.useAppIcon ? notification.sourceBundleID : kHBTSPlusAppIdentifier;
+	// set the bulletin id, which is just a UUID
+	bulletinRequest.bulletinID = [NSUUID UUID].UUIDString;
 
-	// the correct app identifier can change in settings, so we don't put that in the dispatch_once
-	bulletinRequest.sectionID = _correctAppIdentifier;
+	// set the section id according to the user’s settings
+	_currentAppIdentifier = [preferences.useAppIcon ? notification.sourceBundleID : kHBTSPlusAppIdentifier copy];
+	bulletinRequest.sectionID = _currentAppIdentifier;
 
 	// set the title to the app display name
 	SBApplication *application = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:notification.sourceBundleID];
@@ -60,6 +60,7 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 	bulletinRequest.message = notification.content;
 	bulletinRequest.date = notification.date;
 	bulletinRequest.lastInterruptDate = [NSDate date];
+	bulletinRequest.showsUnreadIndicator = NO;
 
 	// set a callback to open the conversation
 	bulletinRequest.defaultAction = [BBAction actionWithCallblock:^{
@@ -82,8 +83,8 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 }
 
 - (NSString *)sectionIdentifier {
-	// return the app identifier. if it doesn't exist yet, just return the typestatus plus icon
-	return _correctAppIdentifier ?: @"ws.hbang.typestatusplus.app";
+	// return the app identifier. if it doesn't exist yet, just return the typestatus plus one
+	return _currentAppIdentifier ?: kHBTSPlusAppIdentifier;
 }
 
 - (NSString *)sectionDisplayName {
