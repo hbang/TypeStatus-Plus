@@ -86,14 +86,22 @@
 }
 
 - (NSDictionary *)receivedGetUnreadCountMessage:(NSString *)message {
-	// get the bundle id the user wants
-	NSString *appIdentifier = [[%c(HBTSPlusPreferences) sharedInstance] applicationUsingUnreadCount];
+	// get the bundle ids the user wants
+	NSArray <NSString *> *apps = [[%c(HBTSPlusPreferences) sharedInstance] unreadCountApps];
+	NSInteger badgeCount = 0;
 
-	// and get the SBApplication of it
-	SBApplication *app = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:appIdentifier];
+	for (NSString *bundleIdentifier in apps) {
+		// get the SBApplication
+		SBApplication *app = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:bundleIdentifier];
+
+		// get the badge count (hopefully an NSNumber) and add it to the count if
+		// it’s not zero (hopefully not negative)
+		NSNumber *badgeNumber = app.badgeNumberOrString;
+		badgeCount += MAX(0, badgeNumber.integerValue);
+	}
 
 	// return the badge if we have one, or otherwise an empty string
-	return @{kHBTSPlusBadgeCountKey: [app badgeNumberOrString] ?: @""};
+	return @{ kHBTSPlusBadgeCountKey: badgeCount > 0 ? @(badgeCount) : @"" };
 }
 
 - (NSDictionary *)recievedShowBannersMessage:(NSString *)message {

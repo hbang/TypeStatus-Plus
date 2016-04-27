@@ -2,7 +2,7 @@
 
 @property (nonatomic, readonly) BOOL enabled;
 
-@property (nonatomic, readonly) BOOL showWhenInForeground;
+@property (nonatomic, readonly) BOOL showUnreadCount, showWhenInForeground;
 
 @property (nonatomic, readonly) BOOL keepAllBulletins, useAppIcon;
 
@@ -15,5 +15,7 @@
 + (instancetype)sharedInstance;
 
 - (BOOL)providerIsEnabled:(NSString *)appIdentifier;
+
+- (NSArray <NSString *> *)unreadCountApps;
 
 @end

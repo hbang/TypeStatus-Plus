@@ -5,9 +5,10 @@
 static NSString *const kHBTSPlusPreferencesEnabledKey = @"Enabled";
 
 // general
-static NSString *const kHBTSPlusUnreadNotificationAppIdentifierKey = @"UnreadNotificationAppBundleIdentifier";
+static NSString *const kHBTSPlusShowUnreadCountKey = @"ShowUnreadCount";
+static NSString *const kHBTSPlusUnreadCountAppPrefixKey = @"UnreadCountApp-";
 
-static NSString *const kHBTSPlusPreferencesShowWhenInForegroundKey = @"ShowInForeground";
+static NSString *const kHBTSPlusPreferencesShowInForegroundKey = @"ShowInForeground";
 
 // banners
 static NSString *const kHBTSPlusPreferencesKeepAllBulletinsKey = @"KeepAllBulletins";
@@ -39,13 +40,16 @@ static NSString *const kHBTSPlusPreferencesVibrateInAppsKey = @"VibrateInApps";
 	if (self = [super init]) {
 		_preferences = [[HBPreferences alloc] initWithIdentifier:@"ws.hbang.typestatusplus"];
 
+		// show unread count for messages by default
+		_preferences.defaults[[kHBTSPlusUnreadCountAppPrefixKey stringByAppendingString:@"com.apple.MobileSMS"]] = @YES;
+
 		//enabled
 		[_preferences registerBool:&_enabled default:YES forKey:kHBTSPlusPreferencesEnabledKey];
 
 		// general
-		[_preferences registerObject:&_applicationUsingUnreadCount default:@"com.apple.MobileSMS" forKey:kHBTSPlusUnreadNotificationAppIdentifierKey];
+		[_preferences registerBool:&_showUnreadCount default:YES forKey:kHBTSPlusShowUnreadCountKey];
 
-		[_preferences registerBool:&_showWhenInForeground default:NO forKey:kHBTSPlusPreferencesShowWhenInForegroundKey];
+		[_preferences registerBool:&_showWhenInForeground default:NO forKey:kHBTSPlusPreferencesShowInForegroundKey];
 
 		// banners
 		[_preferences registerBool:&_keepAllBulletins default:NO forKey:kHBTSPlusPreferencesKeepAllBulletinsKey];
@@ -66,6 +70,32 @@ static NSString *const kHBTSPlusPreferencesVibrateInAppsKey = @"VibrateInApps";
 - (BOOL)providerIsEnabled:(NSString *)appIdentifier {
 	// TODO: these keys should be prefixed
 	return _preferences[appIdentifier] ? [_preferences[appIdentifier] boolValue] : YES;
+}
+
+- (NSArray <NSString *> *)unreadCountApps {
+	// if this isn’t even enabled, just return an empty array
+	if (!_showUnreadCount) {
+		return @[];
+	}
+
+	NSMutableArray <NSString *> *apps = [NSMutableArray array];
+
+	// TODO: HBPreferences should have a dictionary representation thing with
+	// default keys in it too. this is intentionally ugly so i fix it sometime,
+	// probably, maybe
+	NSArray <NSString *> *keys = _preferences.dictionaryRepresentation.allKeys;
+
+	if (![keys containsObject:[kHBTSPlusUnreadCountAppPrefixKey stringByAppendingString:@"com.apple.MobileSMS"]]) {
+		keys = [keys arrayByAddingObject:[kHBTSPlusUnreadCountAppPrefixKey stringByAppendingString:@"com.apple.MobileSMS"]];
+	}
+
+	for (NSString *key in keys) {
+		if ([_preferences boolForKey:key default:NO]) {
+			[apps addObject:[key substringFromIndex:kHBTSPlusUnreadCountAppPrefixKey.length]];
+		}
+	}
+
+	return apps;
 }
 
 #pragma mark - Memory management
