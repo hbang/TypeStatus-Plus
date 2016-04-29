@@ -1,5 +1,4 @@
 #import "HBTSPlusPreferences.h"
-#import <Cephei/HBPreferences.h>
 
 // enabled
 static NSString *const kHBTSPlusPreferencesEnabledKey = @"Enabled";
@@ -92,6 +91,10 @@ static NSString *const kHBTSPlusPreferencesVibrateInAppsKey = @"VibrateInApps";
 	}
 
 	return apps;
+}
+
+- (void)registerPreferenceChangeBlock:(HBPreferencesChangeCallback)callback {
+	[_preferences registerPreferenceChangeBlock:callback];
 }
 
 #pragma mark - Memory management

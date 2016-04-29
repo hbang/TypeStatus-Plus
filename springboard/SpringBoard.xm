@@ -17,6 +17,8 @@
 #import <UIKit/UIStatusBarItemView.h>
 #import <version.h>
 
+HBTSPlusPreferences *preferences;
+
 LSStatusBarItem *unreadCountStatusBarItem;
 
 extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoundID, id unknown, NSDictionary *options);
@@ -63,11 +65,11 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 %hook SBApplication
 
 - (void)setBadge:(id)arg1 {
+	%orig;
 
-	if ([[%c(HBTSPlusPreferences) sharedInstance] enabled] && [self.bundleIdentifier isEqualToString:[[%c(HBTSPlusPreferences) sharedInstance] applicationUsingUnreadCount]]) {
+	if ([preferences.unreadCountApps containsObject:self.bundleIdentifier]) {
 		[unreadCountStatusBarItem update];
 	}
-	%orig;
 }
 
 %end
@@ -78,8 +80,14 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 	[HBTSPlusServer sharedInstance];
 	[HBTSPlusTapToOpenController sharedInstance];
 
+	preferences = [%c(HBTSPlusPreferences) sharedInstance];
+
+	[preferences registerPreferenceChangeBlock:^{
+		[unreadCountStatusBarItem update];
+	}];
+
 	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
-		if (!((HBTSPlusPreferences *)[%c(HBTSPlusPreferences) sharedInstance]).enabled) {
+		if (!preferences.enabled) {
 			return;
 		}
 

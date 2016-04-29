@@ -1,3 +1,5 @@
+#import <Cephei/HBPreferences.h>
+
 @interface HBTSPlusPreferences : NSObject
 
 @property (nonatomic, readonly) BOOL enabled;
@@ -10,12 +12,12 @@
 
 @property (nonatomic, readonly) BOOL vibrateOnLockScreen, vibrateOnHomeScreen, vibrateInApps;
 
-@property (nonatomic, readonly) NSString *applicationUsingUnreadCount;
-
 + (instancetype)sharedInstance;
 
 - (BOOL)providerIsEnabled:(NSString *)appIdentifier;
 
 - (NSArray <NSString *> *)unreadCountApps;
+
+- (void)registerPreferenceChangeBlock:(HBPreferencesChangeCallback)callback;
 
 @end
