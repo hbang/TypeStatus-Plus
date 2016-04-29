@@ -40,8 +40,11 @@ static NSString *const kHBTSPlusPreferencesVibrateInAppsKey = @"VibrateInApps";
 	if (self = [super init]) {
 		_preferences = [[HBPreferences alloc] initWithIdentifier:@"ws.hbang.typestatusplus"];
 
-		// show unread count for messages by default
-		_preferences.defaults[[kHBTSPlusUnreadCountAppPrefixKey stringByAppendingString:@"com.apple.MobileSMS"]] = @YES;
+		NSString *unreadCountMessagesAppKey = [kHBTSPlusUnreadCountAppPrefixKey stringByAppendingString:@"com.apple.MobileSMS"];
+
+		if (!_preferences[unreadCountMessagesAppKey]) {
+			_preferences[unreadCountMessagesAppKey] = @YES;
+		}
 
 		//enabled
 		[_preferences registerBool:&_enabled default:YES forKey:kHBTSPlusPreferencesEnabledKey];
@@ -80,17 +83,10 @@ static NSString *const kHBTSPlusPreferencesVibrateInAppsKey = @"VibrateInApps";
 
 	NSMutableArray <NSString *> *apps = [NSMutableArray array];
 
-	// TODO: HBPreferences should have a dictionary representation thing with
-	// default keys in it too. this is intentionally ugly so i fix it sometime,
-	// probably, maybe
-	NSArray <NSString *> *keys = _preferences.dictionaryRepresentation.allKeys;
-
-	if (![keys containsObject:[kHBTSPlusUnreadCountAppPrefixKey stringByAppendingString:@"com.apple.MobileSMS"]]) {
-		keys = [keys arrayByAddingObject:[kHBTSPlusUnreadCountAppPrefixKey stringByAppendingString:@"com.apple.MobileSMS"]];
-	}
-
-	for (NSString *key in keys) {
-		if ([_preferences boolForKey:key default:NO]) {
+	// loop over all preference keys
+	for (NSString *key in _preferences.dictionaryRepresentation.allKeys) {
+		// if the key has the prefix and is YES, add it to the array
+		if ([key hasPrefix:kHBTSPlusUnreadCountAppPrefixKey] && [_preferences boolForKey:key default:NO]) {
 			[apps addObject:[key substringFromIndex:kHBTSPlusUnreadCountAppPrefixKey.length]];
 		}
 	}
