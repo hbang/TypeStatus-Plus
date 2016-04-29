@@ -25,19 +25,10 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 
 %hook BBLocalDataProviderStore
 
-%group EddyCue
 - (void)loadAllDataProvidersAndPerformMigration:(BOOL)performMigration {
 	%orig;
 	[self addDataProvider:[HBTSPlusBulletinProvider sharedInstance] performMigration:NO];
 }
-%end
-
-%group CraigFederighi
-- (void)loadAllDataProviders {
-	%orig;
-	[self addDataProvider:[HBTSPlusBulletinProvider sharedInstance]];
-}
-%end
 
 %end
 
@@ -119,12 +110,6 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 			}
 		}
 	}];
-
-	if (IS_IOS_OR_NEWER(iOS_9_0)) {
-		%init(EddyCue);
-	} else {
-		%init(CraigFederighi);
-	}
 
 	%init;
 }
