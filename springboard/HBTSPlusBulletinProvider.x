@@ -37,16 +37,16 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 - (void)showBulletinForNotification:(HBTSNotification *)notification {
 	HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
 
-	// if the user has set us to only keep one notification, withdraw previous
-	// notifications
-	if (!preferences.keepAllBulletins) {
-		BBDataProviderWithdrawBulletinsWithRecordID(self, @"ws.hbang.typestatusplus.notification");
-	}
+	[self clearAllBulletins];
 
 	BBBulletinRequest *bulletinRequest = [[BBBulletinRequest alloc] init];
 
 	// set the bulletin id, which is just a UUID
 	bulletinRequest.bulletinID = [NSUUID UUID].UUIDString;
+
+	if (!preferences.keepAllBulletins) {
+		bulletinRequest.recordID = @"ws.hbang.typestatusplus.notification";
+	}
 
 	// set the section id according to the user’s settings
 	_currentAppIdentifier = [preferences.useAppIcon ? notification.sourceBundleID : kHBTSPlusAppIdentifier copy];
@@ -69,6 +69,16 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 	}];
 
 	BBDataProviderAddBulletin(self, bulletinRequest);
+}
+
+- (void)clearAllBulletins {
+	HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
+	
+	// if the user has set us to only keep one notification, withdraw previous
+	// notifications
+	if (!preferences.keepAllBulletins) {
+		BBDataProviderWithdrawBulletinsWithRecordID(self, @"ws.hbang.typestatusplus.notification");
+	}
 }
 
 #pragma mark - BBDataProvider

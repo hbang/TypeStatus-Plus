@@ -91,6 +91,14 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 			return;
 		}
 
+		HBTSStatusBarType type = ((NSNumber *)notification.userInfo[kHBTSMessageTypeKey]).unsignedIntegerValue;
+
+		if (type == HBTSStatusBarTypeTypingEnded) {
+			if ([HBTSPlusStateHelper shouldShowBanner]) {
+				[[HBTSPlusBulletinProvider sharedInstance] clearAllBulletins];
+			}
+		}
+
 		NSString *content = notification.userInfo[kHBTSMessageContentKey];
 
 		// right off the bat, if there's no title or content, stop right there.
