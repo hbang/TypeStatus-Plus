@@ -55,7 +55,15 @@ CPDistributedMessagingCenter *distributedCenter;
 
 #pragma mark - Unread count in status bar
 
-%hook UIStatusBarCustomItemView
+%hook UIStatusBarCustomItem
+
+- (Class)viewClass {
+	if ([[%c(HBTSPlusPreferences) sharedInstance] enabled] && [self.indicatorName isEqualToString:@"TypeStatusPlusUnreadCount"]) {
+		return %c(HBTSStatusBarUnreadItemView);
+	}
+
+	return %orig;
+}
 
 - (_UILegibilityImageSet *)contentsImage {
 	if ([[%c(HBTSPlusPreferences) sharedInstance] enabled] && [self.item.indicatorName isEqualToString:@"TypeStatusPlusUnreadCount"]) {
@@ -93,7 +101,7 @@ CPDistributedMessagingCenter *distributedCenter;
 
 	NSString *bundleIdentifier = [NSBundle mainBundle].bundleIdentifier;
 	if ([bundleIdentifier isEqualToString:@"com.apple.accessibility.AccessibilityUIServer"] || [bundleIdentifier isEqualToString:@"com.apple.SafariViewService"]) {
-	 	return;
+		return;
 	}
 
 	if (!IN_SPRINGBOARD) {
