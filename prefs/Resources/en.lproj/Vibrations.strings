@@ -6,10 +6,6 @@
 	<key>VIBRATIONS</key>
 	<string>Vibrations</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Show…</string>
-
 	<!-- Option to vibrate on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
 	<string>On Lock Screen</string>
