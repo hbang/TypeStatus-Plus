@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Dostawcy</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Dostawcy to moduły dla aplikacji i funkcji iOS. TypeStatus Plus nie ma ich wielu, ale programiści mogą przygotowwać własne. Jeżeli twoja ulubiona aplikacja nie ma dostawcy, poszukaj wszystkiego w Cydii.
+
+Niektórzy wymagają dedykowanych aplikacji do działania w tle, nawet podczas wygaszonego ekranu. Może to wpłynąć negatywnie na żywotność baterii.
+
+Dostawcy muzyczni są kompatybilni ze wszystkimi aplikacjami, mającymi dostęp do Centrum Sterowania i działającymi na zablokowanym ekranie.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Brak zainstalowanych dostawców. To nie powinno się wydarzyć. Zainstaluj ponownie paczkę “TypeStatus Plus Providers”.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Nie załadowano konfiguracji %@, ponieważ wystąpił błąd.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Sprawdź dostępność aktualizacji dla TypeStatus Plus i swoich dostawców. Skontaktuj się z autorem, jeżeli problem nadal występuje.</string>
+</dict>
+</plist>
