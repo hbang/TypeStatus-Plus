@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Sağlayıcılar</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Sağlayıcılar farklı uygulamalar ve iOS için modül içermektedir. TypeStatus Plus bazı Sağlayıcı içermektedir, ve geliştiriciler de kendileri yapabilir. Yukarıda listelenen favori uygulamaları göremiyorsanız, Cydia'da aramayı deneyin.
+
+Bazı Sağlayıcılar cihazınız uyku modundayken dahi arka planda çalışma gereği duyabilmektedir. Bu durum batarya ömrünü etkileyebilir.
+
+Müzik Sağlayıcıları Kontrol Merkezinde ve Kilit Ekranında medya oynatabilen tüm uygulamaları desteklemektedir.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Sağlayıcılar yüklenemedi. Bu hiç olmadığı anlamına gelmez. Lütfen “TypeStatus Plus Providers” paketini kurun veya yeniden yükleyin.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Bir hata oluştuğu için %@ ayarları yüklenemedi.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>TypeStatus Plus ve Sağlayıcılarınız için güncellemeleri kontrol edin. Sorun devam ederse geliştiriciyle iletişime geçin.</string>
+</dict>
+</plist>
