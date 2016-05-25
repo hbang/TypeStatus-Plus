@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Proveïdors</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string> Els proveïdors són mòduls individuals per vàries apps i funcions d’iOS. El TypeStatus Plus n’inclou alguns, i els desenvolupadors en poden fer de propis. Si la teva app preferida no està inclosa a la llista de damunt, pots intentar buscar-li un proveïdor a Cydia.
+
+Alguns proveïdors necessiten que l’app corresponent estigui sempre activa en pla secundari, fins i tot si el dispositiu està bloquejat. Això pot afectar la durada de la bateria.
+
+El proveïdor de Música funciona amb totes les apps que mostren la mèdia en reproducció al Centre de Control i la pantalla de bloqueig.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>No hi ha cap proveïdor instal·lat, cosa que no hauria de passar mai. Intenta instal·lar o reïnstallar el paquet “TypeStatus Plus Providers”.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>No s’han pogut carregar les preferències de %@ perquè ha ocorregut un error.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Intenta buscar actualitzacions pel TypeStatus Plus i pels proveïdors. Contacta el desenvolupador si el problema segueix.</string>
+</dict>
+</plist>
