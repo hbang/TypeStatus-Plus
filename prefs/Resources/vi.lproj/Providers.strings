@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Nhà cung cấp</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Nhà cung cấp là những mô-đun riêng dành riêng cho các ứng dụng khác nhau và tính năng iOS. TypeStatus Plus bao gồm một số nhà cung cấp, và các nhà phát triển làm riêng cho họ. Nếu bạn không thấy ứng dụng ưa thích của bạn được liệt kê ở trên, hãy thử tìm kiếm một nhà cung cấp trong Cydia.
+
+Một số nhà cung cấp bắt buộc ứng dụng tương ứng của nó liên tục chạy ở trong nền, ngay lúc thiết bị đang ở trong trạng thái ngủ. Điều này có thể ảnh hưởng đến tuổi thọ pin.
+
+Các nhà cung cấp âm nhạc hỗ trợ tất cả các ứng dụng hiển thị "âm nhạc đang phát" ở Trung Tâm Kiểm Soát và trên Màn Hình Khoá.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Không có nhà cung cấp nào được cài đặt. Điều này không nên xảy ra. Hãy thử cài đặt hoặc cài đặt lại gói "TypeStatus Plus Providers". </string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Không thể tải cài đặt cho %@ vì có một lỗi xảy ra.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Kiểm nếu TypeStatus Plus và các nhà cung cấp cần cập nhật. Liện hệ với các nhà phát triển nếu lỗi này tiếp tục xảy ra.</string>
+</dict>
+</plist>
