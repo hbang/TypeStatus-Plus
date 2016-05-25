@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Provideri</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Providerii sunt module individuale pentru diferite aplicatii si functii IOS. TypeStatus Plus include cativ a provideri, iar programatorii pot crea provideri proprii. Daca nu iti vezi aplicatia favorita in lista de mai sus, incearca sa cauti un provider pentru ea in Cydia.
+
+Anumiti provideri nevesita ca aplicatia corespunzatoare sa ruleze in fundal chiar si atunci cand dispozitivul e in asteptare/nefolosit. Acest lucru s-ar putea sa afecteze durata bateriei.
+
+Providerul pentru Muzica, suporta toate aplicatile care afiseaza fisierul curent in Centrul de Control si pe ecranul blocat.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Nu exista niciun provider instalat. Acest lucru nu ar trebui sa se intample in mod normal. Incearca sa instalezi sau sa reinstalezi pachetul “TypeStatus Plus Providers”.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Setaqrile pentru %@ nu au putut fi incarcate din cauza unei erori.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Verifica versiuni noi pentru TypeStatus Plus si provideri. Contacteaza dezvoltatorul daca eroarea persista.</string>
+</dict>
+</plist>

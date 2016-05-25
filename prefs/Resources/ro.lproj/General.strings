@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Header of status bar section. -->
+	<key>STATUS_BAR</key>
+	<string>Bara status</string>
+
+	<!-- Switch to toggle displaying the unread count in the status bar. -->
+	<key>UNREAD_COUNT</key>
+	<string>Numar necitite</string>
+
+	<!-- Button for choosing from which app the unread notifications count will be shown in the status bar. -->
+	<key>SELECT_APPS</key>
+	<string>Selecteaza aplicatii</string>
+
+	<!-- Explanation of the unread notifications count button. -->
+	<key>UNREAD_COUNT_EXPLANATION</key>
+	<string>Arata numarul de notificari necitite asiciate cu aplicatia(le) selectat in bara de status.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Arata in fata</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Afiseaza notificarea chiar daca aplicatia este in fata.</string>
+</dict>
+</plist>
