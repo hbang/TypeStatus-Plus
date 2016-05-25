@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Providers</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Providers are individual modules for different apps and iOS features. TypeStatus Plus includes some providers, and developers can make their own. If you don’t see your favourite app listed above, try searching for a provider in Cydia.
+
+Some providers require its corresponding app to constantly run in the background, even when the device is sleeping. This may have an effect on battery life.
+
+The Music provider supports all apps that display the currently playing media in Control Centre and on the lock screen.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>No providers are installed. This is not meant to happen. Please try installing or reinstalling the “TypeStatus Plus Providers” package.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Couldn’t load the settings for %@ because an error occurred.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Check for updates to TypeStatus Plus and your providers. Contact the developer if this issue persists.</string>
+</dict>
+</plist>
