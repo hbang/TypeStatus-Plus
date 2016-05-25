@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>ספקים</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>ספקים הם מודולים עצמאיים לאפליקציות ופיצ׳רים שונים של iOS. TypeStatus Plus כולל כמה ספקים, ומפתחים יכולים ליצור ספקים משלהם. אם את/ה לא רואה את האפליקציה האהובה עלייך ברשימה למעלה, נסה/י לחפש ספק בCydia. 
+
+ישנם ספקים הדורשים מהאפליקציה המתאימה שלהם לרוץ תמיד ברקע, אפילו כשהמכשיר במצב שינה. דבר זה עלול להשפיע על חיי סוללה.
+
+ספק המוזיקה תומך בכל האפליקציות שמציגות את המדיה המתנגנת במרכז הבקרה ובמסך הנעילה.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>אין ספקים מותקנים. דבר זה לא אמור לקרות. אנא נסה/י להתקין או להתקין מחדש את החבילה "TypeStatus Plus Providers".</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>נכשל בטעינת ההגדרות עבור %@ מכיוון שאירעה תקלה.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>בדוק אם קיימים עדכונים לTypeStatus Plus ולספקים שלך. צור קשר עם המפתח אם תקלה זו נמשכת.</string>
+</dict>
+</plist>
