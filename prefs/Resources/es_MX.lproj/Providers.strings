@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Proveedores</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Los proveedores son módulos individuales para apps y funciones de iOS distintas. El TypeStatus Plus incluye algunos, y los desarrolladores pueden hacer sus proveedores propios. Si tu app favorita no está incluida en la lista superior, intenta buscar un proveedor para ello en Cydia.
+
+Algunos proveedores necesitarán que la app correspondiente esté activa en plano secundario continuamente, hasta si el dispositivo está bloqueado. Esto puede afectar la duración de la batería.
+
+El proveedor de Música soporta todas las apps que pueden mostrar su audio en el Centro de Control y en la pantalla de bloqueo.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>No hay ningún proveedor instalado. Esto no debería pasar. Intenta instalar o reinstalar el paquete “TypeStatus Plus Providers”.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>No se han cargado las preferencias de %@ porque ha ocurrido un error.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Busca actualizaciones para TypeStatus Plus y los proveedores. Contacta el desarrollador si el problema no desaparece..</string>
+</dict>
+</plist>
