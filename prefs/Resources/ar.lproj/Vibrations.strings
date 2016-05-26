@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>VIBRATIONS</key>
+	<string>الإهتزازات</string>
+
+	<!-- Option to vibrate on the lock screen. -->
+	<key>ON_LOCK_SCREEN</key>
+	<string>في شاشة القفل</string>
+
+	<!-- Option to vibrate on the home screen. -->
+	<key>ON_HOME_SCREEN</key>
+	<string>في الشاشة الرئيسية</string>
+
+	<!-- Option to vibrate in apps. -->
+	<key>IN_APPS</key>
+	<string>في البرامج</string>
+</dict>
+</plist>
