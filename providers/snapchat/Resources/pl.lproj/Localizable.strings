@@ -4,6 +4,6 @@
 <dict>
 	<!-- String used in the status bar for screenshot notifications. “kirb took a screenshot!” -->
 	<key>SENDER_TOOK_A_SCREENSHOT</key>
-	<string>Zrzut ekranu wykonany!</string>
+	<string>%@ wykonał zrzut ekranowy!</string>
 </dict>
 </plist>
