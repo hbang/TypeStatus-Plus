@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Provider</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Provider sind individuelle Module für verschiedene Apps und iOS-Funktionen. TypeStatus Plus beinhaltet einige Provider, weitere können von Entwicklern bereitgestellt werden. Falls eine bestimmte App nicht in der obigen Liste erscheint, suche in Cydia nach einem Provider.
+
+Einige Provider erfordern, dass die jeweilige App im Hintergrund geöffnet bleibt, was die Akkulaufzeit beeinträchtigen kann.
+
+Der Music Provider unterstützt alle Apps, die ihre Informationen im Kontrollzentrum und im Sperrbildschirm anzeigen können.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Keine Provider installiert. Das sollte nicht passieren. Bitte versuche, das Paket “TypeStatus Plus Providers” (neu) zu installieren.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Konnte die Einstellungen für %@ nicht laden.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Suche nach Updates für TypeStatus Plus und alle Provider. Falls das Problem weiterhin bestehen bleibt, kontaktiere den Entwickler.</string>
+</dict>
+</plist>
