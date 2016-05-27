@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>프로바이더</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>프로바이더는 다양한 앱과 iOS 기능별 별도 모듈입니다. TypeStatus Plus에 일부 프로바이더가 포함되어 있으며, 개발자라면 직접 제작할 수도 있습니다. 자주 사용하는 앱이 목록에 없으면, Cydia에서 프로바이더를 검색해보세요.
+
+일부 프로바이더는 기기를 꺼놓은 상태에서도 해당 앱이 백그라운드에서 계속 실행돼야 할 수도 있습니다. 이는 배터리 지속시간에 영향을 줄 수 있습니다..
+
+음악 프로바이더는 제어 센터와 잠금 화면에 나타나는 재생중 미디어를 모두 지원합니다.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>설치된 프로바이더가 없습니다. 이는 의도된 사항이 아닙니다. "TypeStatus Plus Providers" 패키지를 설치 또는 재설치해주세요.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>오류로 인해 %@ 설정을 불러오지 못했습니다.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>TypeStatus Plus와 프로바이더의 업데이트를 확인해주세요. 문제가 지속되면 개발자에게 문의해주세요.</string>
+</dict>
+</plist>
