@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Tuottajat</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Tuottajat ovat yksittäisiä moduuleja eri sovelluksille ja iOS-ominaisuuksille.TypeStatus Plus sisältää joitain tuottajia ja kehittäjät voivat tehdä heidän omiaan. Jos et näe suosikkisovellustasi listattuna alla, kokeile etsiä tuottaja Cydiasta.
+
+Jotkut tuottajat vaativat tietyn sovelluksen pyöriäkseen jatkuvasti taustalla, jopa laitteen ollessa unitilassa. Tämä voi vaikuttaa akun kestävyyteen.
+
+Musiikkituottaja tukee kaikkia sovelluksia, jotka näyttävät juuri sillä hetkellä soivan median Hallintapaneelissa ja lukitysnäytöllä.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Ei asennettuja tuottajia. Tätä ei ole tarkoitettu tapahtuvaksi. Ole hyvä ja kokeile asentaa, tai uudelleen asentaa "TypeStatus Plus Providers" paketti.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Asetuksia %@ ei voi voitu ladata virheen takia.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Tarkista päivitykset TypeStatus Plus:lle ja tuottajille. Ota yhteyttä kehittäjään, jos tämä ongelma toistuu.</string>
+</dict>
+</plist>
