@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Header of status bar section. -->
+	<key>STATUS_BAR</key>
+	<string>Barre de statut</string>
+
+	<!-- Switch to toggle displaying the unread count in the status bar. -->
+	<key>UNREAD_COUNT</key>
+	<string>notifications non-lue(s)</string>
+
+	<!-- Button for choosing from which app the unread notifications count will be shown in the status bar. -->
+	<key>SELECT_APPS</key>
+	<string>Séléctionner les applications</string>
+
+	<!-- Explanation of the unread notifications count button. -->
+	<key>UNREAD_COUNT_EXPLANATION</key>
+	<string>Afficher le nombre de notification des apps séléctionnées dans la barre de status.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Afficher au premier plan</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Afficher les notifications, même si l'application d'envoi est au premier plan.</string>
+</dict>
+</plist>

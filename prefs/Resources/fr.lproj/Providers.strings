@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Providers</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Les providers sont des modules individuels pour différentes apps et fonctionnalités d'iOS. TypeStatus Plus inclut quelques providers, de plus les développeurs peuvent créer leurs propres modules. Si vous ne voyez pas votre application préférée ci-dessus, essayez de rechercher un provider dans Cydia.
+
+Certains providers exigent que l'application correspondant au module tourne constamment en tache de fond, même si l'appareil est en veille. Cela peut avoir un effet sur la batterie.
+
+Le Music provider supporte toutes les apps qui affichent un media joué dans le Centre de Controle et l'écran de verrouillage.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Aucun provider n'est installé. Cela ne doit pas se produire. S'il vous plait essayez d'installer ou de réinstaller le paquet “TypeStatus Plus Providers”.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Impossible de charger les réglages pour %@ car une erreur est survenue.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Vérifiez les mises à jour de TypeStatus Plus et de vos providers. Contactez le développeur si le problème persiste.</string>
+</dict>
+</plist>
