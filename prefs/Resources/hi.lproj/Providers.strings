@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>प्रदाता</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>प्रदाताओं अलग क्षुधा और आईओएस सुविधाओं के लिए अलग-अलग मॉड्यूल हैं। TypeStatus प्लस कुछ प्रदाताओं भी शामिल है, और डेवलपर्स के लिए अपने स्वयं के कर सकते हैं। आप ऊपर सूचीबद्ध अपने पसंदीदा एप्लिकेशन को नहीं देख पा रहे हैं, तो Cydia में एक प्रदाता के लिए खोज करने की कोशिश।
+
+कुछ प्रदाताओं लगातार पृष्ठभूमि में चलाने के लिए अपनी इसी एप्लिकेशन की आवश्यकता होती है, तब भी जब डिवाइस सो रही है। इस बैटरी जीवन पर असर पड़ सकता है।
+
+संगीत प्रदाता है कि नियंत्रण केंद्र में और लॉक स्क्रीन पर वर्तमान में खेल मीडिया प्रदर्शित सभी क्षुधा का समर्थन करता है।</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>कोई प्रदाताओं स्थापित कर रहे हैं। यह तो होना मतलब नहीं है। स्थापित करने या "TypeStatus प्लस प्रदाता" पैकेज फिर से स्थापित करने की कोशिश करें।</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>क्योंकि एक त्रुटि हुई% @ के लिए सेटिंग लोड नहीं कर सका।</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>TypeStatus प्लस और अपने प्रदाताओं के लिए अद्यतन के लिए जाँच करें। डेवलपर से संपर्क करें इस समस्या बनी रहती है।</string>
+</dict>
+</plist>
