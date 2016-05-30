@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Tjänsteleverantörer</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Tjänsteleverantörer är individuella moduler för olika applikationer och are individual modules for different apps and iOS funktioner. TypeStatus Plus inkluderar några tjänsteleverantörer, och utvecklare kan skriva egna. Om du inte ser din favorit applikation listad ovan, prova att söka efter en tjänsteleverantör i Cydia.
+
+Vissa tjänsteleverantör kräver dess tillhörande applikation ständigt körs i bakgrunden, även när enheten är i viloläge. Detta kan påverka batteriets livslängd.
+
+Musik tjänsteleverantören stödjer alla applikationer som visar spelat media i Control Center och på låsskärmen.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Inga tjänsteleverantörer är installerade. Detta är inte menat att hända. Försök att installera eller ominstallera om "TypeStatus Plus Tjänsteleverantörs" moduler.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Det gick inte att läsa in inställningarna för %@ eftersom ett fel inträffade.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Sök efter uppdateringar till TypeStatus Plus och dina tjänsteleverantörer. Kontakta utvecklaren om det här problemet kvarstår .</string>
+</dict>
+</plist>
