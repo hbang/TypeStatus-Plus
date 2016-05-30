@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Header of status bar section. -->
+	<key>STATUS_BAR</key>
+	<string>Bar Status</string>
+
+	<!-- Switch to toggle displaying the unread count in the status bar. -->
+	<key>UNREAD_COUNT</key>
+	<string>Jumlah Belum Dibaca</string>
+
+	<!-- Button for choosing from which app the unread notifications count will be shown in the status bar. -->
+	<key>SELECT_APPS</key>
+	<string>Pilih App</string>
+
+	<!-- Explanation of the unread notifications count button. -->
+	<key>UNREAD_COUNT_EXPLANATION</key>
+	<string>Paparkan jumlah notifikasi yang belum dibaca dari app yang terpilih dalam bar status.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Paparkan Di Latar Depan</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Paparkan notifikasi walaupun app yang menghantar ada pada latar depan.</string>
+</dict>
+</plist>

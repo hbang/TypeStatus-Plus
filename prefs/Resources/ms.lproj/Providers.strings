@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Pembekal</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Pembekal adalah modul tersendiri untuk app dan ciri-ciri iOS yang berlainan. TypeStatus Plus mengandungi beberapa pembekal, dan pembuat boleh membuat sendiri punya. Kalau kamu tidak jumpa app kegemaran tersenarai diatas, cuba cari pembekal tersebut di Cydia.
+
+Sesetengah pembekal memerlukan app yang berkenaan untuk berterusan berjalan di belakang, walaupun bila peranti sedang tidur. Ini mungkin akan meninggalkan kesan pada jangka hayat bateri.
+
+Pembekal Musik boleh menyokong semua app yang memaparkan media sedang bermain pada Pusat Kawalan dan pada skrin kekunci.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Tiada pembekal telah dipasang. Ini sepatutnya tidak sepatutnya berlaku. Sila pasang atau memasang semula pakej “Pembekal TypeStatus Plus”.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Tidak berjaya memuatkan perubahan untuk %@ sebab ada ralat berlaku.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Periksa untuk kemas kini pada TypeStatus Plus dan pembekal anda. Hubungi pembuat jika isu ini terus berlaku.</string>
+</dict>
+</plist>
