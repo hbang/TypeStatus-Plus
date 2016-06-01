@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Stringa usata nella barra di stato per i messaggi inviati in un canale. “Digitando: kirb in #general” -->
+	<key>SENDER_IN_CHANNEL</key>
+	<string>%@ in %@</string>
+</dict>
+</plist>
