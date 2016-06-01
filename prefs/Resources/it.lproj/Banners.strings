@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Titolo. -->
+	<key>BANNERS</key>
+	<string>Bandiera</string>
+
+	<!-- Intestazione per banner Mostra le opzioni. -->
+	<key>SHOW</key>
+	<string>Mostrare…</string>
+
+	<!-- Opzione per mostrare banner sulla schermata di blocco. -->
+	<key>ON_LOCK_SCREEN</key>
+	<string>Sulla schermata di blocco</string>
+
+	<!-- Opzione per mostrare banner sulla schermata iniziale. -->
+	<key>ON_HOME_SCREEN</key>
+	<string>Sulla schermata iniziale</string>
+
+	<!-- Opzione per mostrare banner in applicazioni. -->
+	<key>IN_APPS</key>
+	<string>In applicazioni</string>
+
+	<!-- Passare a mantenere tutte le notifiche nel centro di notifica. -->
+	<key>KEEP_ALL_BULLETINS</key>
+	<string>Mantenere tutte le notifiche.</string>
+
+	<!-- Spiegazione del mastio passare tutte le notifiche. -->
+	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
+	<string>Mostra tutti gli avvisi TypeStatus nel centro di notifica e bloccare schermo, o mostrare solo quelli più recenti.</string>
+
+	<!-- Passare a utilizzare l' icona dell'applicazione corrispondente per le notifiche di bandiera , al posto dell'icona TypeStatus plus.. -->
+	<key>USE_APP_ICON</key>
+	<string>Utilizzare rispettivi Icona App</string>
+
+	<!-- Spiegazione del rispettivo interruttore icona dell'applicazione. -->
+	<key>USE_APP_ICON_EXPLANATION</key>
+	<string>Quando è attivata, le notifiche bandiera utilizzeranno il rispettivo icona dell'applicazione invece che l'icona TypeStatus Più.</string>
+</dict>
+</plist>

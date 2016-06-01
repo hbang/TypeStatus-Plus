@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Titolo. -->
+	<key>PROVIDERS</key>
+	<string>Fornitori</string>
+
+	<!-- Spiegazione dei fornitori per TypeStatus più. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Provider sono moduli individuali per diverse applicazioni e caratteristiche iOS. TypeStatus Plus include alcuni fornitori e gli sviluppatori possono fare proprio. Se non vedi la vostra applicazione preferita di cui sopra, prova a cercare un fornitore in Cydia.
+
+
+Alcuni provider richiedono la corrispondente applicazione per eseguire costantemente in background, anche quando il dispositivo sta dormendo. Questo può avere un effetto sulla durata della batteria.
+
+Il provider musicale supporta tutte le applicazioni che consentono di visualizzare i media in riproduzione nel Centro di controllo e sulla schermata di blocco.</string>
+
+	<!-- Spiegazione usato quando non ci sono provider installati. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Nessun provider sono installati. Questo non è destinato a succedere. Si prega di provare a installare o reinstallare il pacchetto "Provider TypeStatus Plus".</string>
+
+	<!-- Titolo usato su un avviso quando le preferenze di un fornitore non vengono caricati. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Impossibile caricare le impostazioni per% @ causa di un errore.</string>
+
+	<!-- Corpo utilizzato su un avviso quando le preferenze di un fornitore non vengono caricati. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Verificare la presenza di aggiornamenti di TypeStatus Plus e il vostro provider. Contattare lo sviluppatore se il problema persiste.</string>
+</dict>
+</plist>

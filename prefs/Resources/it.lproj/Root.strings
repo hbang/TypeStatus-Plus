@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Pulsante che porta alla sottosezione delle impostazioni. -->
+	<key>PROVIDERS</key>
+	<string>Fornitori</string>
+
+	<!-- Pulsante che porta alla sottosezione delle impostazioni. -->
+	<key>BANNERS</key>
+	<string>Bandiera</string>
+
+	<!-- Pulsante che porta alla sottosezione delle impostazioni. -->
+	<key>VIBRATIONS</key>
+	<string>Vibrazioni</string>
+</dict>
+</plist>
