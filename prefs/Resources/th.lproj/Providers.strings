@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>ตัว้จัดหา</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>ตัวจัดหาเป็นหน่วยเฉพาะสำหรับแอปต่างๆ และฟีเจอร์ของ iOS ซึ่ง TypeStatus Plus ได้มีตัวจัดหาไว้บางส่วนแล้ว นักพัฒนาสามารถสร้างขึ้นเองได้ หากท่านไม่พบแอปโปรดอยู่ในรายการ ให้ลองค้นหาตัวจัดหาสำหรับแอปนั้นใน Cydia
+
+ตัวจัดหาบางตัวอาจต้องการให้แอปนั้นๆ ทำงานบนพื้นหลังตลอดเวลา แม้ว่าเครื่องจะอยู่ในโหมดพักผ่อน ซึ่งอาจส่งผลต่อระยะเวลาการใช้งานของแบตเตอรี่
+
+ตัวจัดหา เพลง รองรับทุกแอปที่แสดงผลมีเดียที่กำลังเล่นผ่านศูนย์กลางการควบคุมและในหน้าจอล๊อค</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>ไม่มีตัวจัดหาใดๆ ถูกติดตั้งไว้ ลักษณะเช่นนี้ไม่ควรเกิดขึ้น ให้ลองลง TypeStatus Plus Providers ซ้ำ</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>ไม่สามารถโหลดการตั้งค่าสำหรับ %@ เพราะได้มีปัญหาเกิดขึ้น</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>ตรวจสอบการปรับปรุงรุ่นของ TypeStatus Plus และตัวจัดหาของท่าน หรือติดต่อนักพัฒนาหากปัญหายังคงมีอยู่</string>
+</dict>
+</plist>
