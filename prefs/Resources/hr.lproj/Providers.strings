@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Poslužitelji</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Poslužitelji su zasebni moduli za različite aplikacije i iOS značajke. TypeStatus Plus sadrži neke pružatelje, a programeri mogu napraviti svoje. Ukoliko ne vidiš svoju omiljenu aplikaciju na listi iznad probaj pronaći poslužitelja u Cydia-i.
+
+Neki poslužitelji zahtjevaju da pripadajuča aplikacija konstantno radi u pozadini i u slučaju kada je uređaj u stanju mirovanja. Ovo može utjecati na vijek trajanja baterije.
+
+Glazba poslužitelj podržava sve aplikacije koje prikazuju trenutno izvođeni medij u kontrolnom centru i na zaključanom zaslonu.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Poslužitelji nisu instalirani. Ovo se nije trebalo dogoditi. Molimo pokušajte instalirati ili reinstalirati “TypeStatus Plus Providers” paket.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Ne mogu učitati postavke %@ zato što se dogodila pogreška.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Provjeri ažuriranja za TypeStatus Plus i tvoje poslužitelje. Kontaktiraj programera ukoliko poteškoća potraje.</string>
+</dict>
+</plist>
