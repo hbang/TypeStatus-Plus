@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Poskytovatelé</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Poskytovatelé jsou jednotlivé moduly pro různé aplikace a funkce iOS. TypeStatus Plus obsahuje některé poskytovatele, a vývojáři mohou vytvořit své vlastní. Pokud výše nevidíte svou oblíbenou aplikaci, zkuste vyhledat poskytovatele v aplikaci Cydia.
+
+Někteří poskytovatelé vyžadují svou příslušnou aplikaci neustále aktivní v pozadí, i pokud je zařízení ve stavu spánku. Toto může mít vliv na baterii.
+
+Poskytovatel Hudba podporuje všechny aplikace, které zobrazují právě přehrávaná média v Ovládacím centru a na zamčené obrazovce.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Nejsou nainstalovaní žádní poskytovatelé. Toto se nemá stát. Prosím zkuste nainstalovat nebo přeinstalovat balíček “TypeStatus Plus Providers”.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Nepodařilo se načíst nastavení pro %@, protože nastala chyba.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Zkontrolujte aktualizace pro TypeStatus Plus a vaše poskytovatele. Pokud problém přetrvává, kontaktujte vývojáře.</string>
+</dict>
+</plist>
