@@ -8,11 +8,11 @@
 
 	<!-- Option to vibrate on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
-	<string>På låseskærm</string>
+	<string>På låseskærmen</string>
 
 	<!-- Option to vibrate on the home screen. -->
 	<key>ON_HOME_SCREEN</key>
-	<string>På hjemmeskærm</string>
+	<string>På hjemmeskærmen</string>
 
 	<!-- Option to vibrate in apps. -->
 	<key>IN_APPS</key>
