@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Szolgáltatások</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>A szolgáltatások a különböző alkalmazások és iOS tulajdonságok egyes elemei. A TypeStatus Plus tartalmaz néhány szolgáltatást, és a fejlesztők elkészíthetik sajátjukat. Ha nem látod a kedvenc alkalmazásod, keress szolgáltatást a Cydián.
+
+ Egyes szogláltatásokhoz tartozó alkalmazások a háttérben futhatnak, akkor is, ha az eszköz alvó módba kerül. Ez hatással lehet az akkumulátor élettartamára. 
+
+A Zene szolgáltatás minden jelenleg az Irányítóközpontban és zárolt képernyőn futó médiát támogat.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Nincs szolgáltatás telepítve. Ennek nem így kellene lennie. Kérlek próbáld újratelepíteni a "Typestatus Plus Provider" csomagot.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Nem tudtam a %@ beállításait betölteni, mert hiba lépett fel.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>A TypeStatus Plushoz és szolgáltatásokhoz elérhető frissítések keresése. Ha a probléma továbbra is fennáll lépj kapcsolatba a fejlesztőkkel.</string>
+</dict>
+</plist>
