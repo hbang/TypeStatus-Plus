@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Penyedia</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Penyedia adalah modul individu untul aplikasi-aplikasi dan fitur iOS berbeda. TypeStatus Plus memiliki beberapa penyedia, and developer bisa membuat miliknya sendiri. Jika kamu tidak melihat apliakasi tertentu diatas, coba mencari penyedia di Cydia. 
+
+Beberapa penyedia membutuhkan aplikasi yang digunakan untuk selalu aktif di latar belakang, bahkan jika alat sedang tidak digunakan. Ini mungkin memiliki dampak ke kekuatan baterai.
+ Penyedia musik mendukung semua aplikasi yang menunjukkan media yang sedang diputar di Control Center dan Lock Screen.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Tidak ada penyedia ter-install. Ini seharusnya tidak terjadi. Tolong coba menginstall atau install ulang paket “TypeStatus Plus Providers”.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Tidak dapat membuka pengaturan untuk %@ karena terjadi error.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Periksa untuk update dengan TypeStatus Plus dan penyedia mu. Kontak developer jika masalah ini berlanjut.</string>
+</dict>
+</plist>
