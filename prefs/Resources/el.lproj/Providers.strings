@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Πάροχοι</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Οι πάροχοι είναι ατομικές ενότητες για διαφορετικές εφαρμογές και χαρακτηριστικά του iOS. Το TypeStatus Plus περιλαμβάνει μερικούς παρόχους, και οι προγραμματιστές μπορούν να φτάξουν τους δικούς τους. Εάν δεν βλέπετε την αγαπημένη σας εφαρμογή να είναι καταγεγραμμένη παραπάνω, δοκιμάστε να αναζητήσεται έναν πάροχο στο Cydia.
+
+Κάποιοι πάροχοι απαιτούν την αντίστοιχη εφαρμογή ώστε να τρέχουν συνεχώς στο παρασκήνιο, ακόμη και όταν η συσκευή είναι σε κατάσταση ύπνου. Αυτό μπορεί να έχει επίδραση στην διάρκεια ζωής της μπαταρίας σας.
+
+Ο πάροχος της Μουσικής υποστηρίζει όλες τις εφαρμογές που προβάλλουν τα μέσα αναπαραγωγής που παίζουν αυτήν τη στιγμή στο Κέντρο Ελέγχου και στην οθόνη κλειδώματος.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Δεν έχουν εγκατασταθεί πάροχοι. Αυτό δεν θα έπρεπε να συμβαίνει. Παρακαλούμε προσπαθήστε να εγκαταστήσετε ή να επαναεγκαταστήσετε το πακέτο “TypeStatus Plus Providers”.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Δεν ήταν δυνατή η φόρτωση των ρυθμίσεων %@ επειδ΄ξ προέκυψε ένα σφάλμα.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Έλεγχος ενημερώσεων του TypeStatus Plus και των παρόχων σας. Επικοινωνήστε με τον προγραμματιστή εάν αυτο το σφάλμα παραμείνει.</string>
+</dict>
+</plist>
