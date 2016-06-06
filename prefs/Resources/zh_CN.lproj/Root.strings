@@ -4,11 +4,11 @@
 <dict>
 	<!-- Button leading to sub-section of the settings. -->
 	<key>PROVIDERS</key>
-	<string>供应商</string>
+	<string>Providers</string>
 
 	<!-- Button leading to sub-section of the settings. -->
 	<key>BANNERS</key>
-	<string>横幅</string>
+	<string>通知横幅</string>
 
 	<!-- Button leading to sub-section of the settings. -->
 	<key>VIBRATIONS</key>

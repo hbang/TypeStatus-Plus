@@ -8,22 +8,22 @@
 
 	<!-- Switch to toggle displaying the unread count in the status bar. -->
 	<key>UNREAD_COUNT</key>
-	<string>未读计数</string>
+	<string>未读数量</string>
 
 	<!-- Button for choosing from which app the unread notifications count will be shown in the status bar. -->
 	<key>SELECT_APPS</key>
-	<string>挑选软件</string>
+	<string>选择应用</string>
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>把挑选好的软件的未读通知在状态栏显示。</string>
+	<string>在通知中心显示被选中应用的未读通知数量。</string>
 
 	<!-- Switch to toggle show in foreground. -->
 	<key>SHOW_IN_FOREGROUND</key>
-	<string>在前景显示</string>
+	<string>前台运行时显示</string>
 
 	<!-- Explanation of the show in foreground switch. -->
 	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>就算在返送的软件在前景，也会把通知显示出来。</string>
+	<string>应用在前台运行时也显示通知。</string>
 </dict>
 </plist>

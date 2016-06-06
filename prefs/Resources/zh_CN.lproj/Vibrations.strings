@@ -4,18 +4,18 @@
 <dict>
 	<!-- Title. -->
 	<key>VIBRATIONS</key>
-	<string>振动</string>
+	<string>震动</string>
 
 	<!-- Option to vibrate on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
-	<string>在锁屏</string>
+	<string>锁屏界面</string>
 
 	<!-- Option to vibrate on the home screen. -->
 	<key>ON_HOME_SCREEN</key>
-	<string>在主屏幕</string>
+	<string>主屏幕</string>
 
 	<!-- Option to vibrate in apps. -->
 	<key>IN_APPS</key>
-	<string>在软件里</string>
+	<string>应用内</string>
 </dict>
 </plist>
