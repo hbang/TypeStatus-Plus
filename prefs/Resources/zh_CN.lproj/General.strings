@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Header of status bar section. -->
+	<key>STATUS_BAR</key>
+	<string>状态栏</string>
+
+	<!-- Switch to toggle displaying the unread count in the status bar. -->
+	<key>UNREAD_COUNT</key>
+	<string>未读计数</string>
+
+	<!-- Button for choosing from which app the unread notifications count will be shown in the status bar. -->
+	<key>SELECT_APPS</key>
+	<string>挑选软件</string>
+
+	<!-- Explanation of the unread notifications count button. -->
+	<key>UNREAD_COUNT_EXPLANATION</key>
+	<string>把挑选好的软件的未读通知在状态栏显示。</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>在前景显示</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>就算在返送的软件在前景，也会把通知显示出来。</string>
+</dict>
+</plist>

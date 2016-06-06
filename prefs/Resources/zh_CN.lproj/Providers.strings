@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>供应商</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>供应商是不同软件与iOS特征的各个组件。TypeStatus Plus 有包含一些组件，开发人员也能自己制造供应商。若没看到喜爱的软件以上所列，试在Cydia搜索供应商。
+
+有些供应商须它所应对的软件就算手机已进睡眠状态，也在后景运作。这可能会影响手机电池寿命。
+
+音乐的提供商与全部在控制中心与锁屏显示当时播放的音乐的软件兼容。</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>手机没有安装供应商。这不是应该发生的事。请试着安装或重新安装 “TypeStatus Plus Providers” 组件.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>由于有故障，无法加载 %@ 的设置</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>清查 TypeStatus Plus 和您供应商是否有没有更新。如果情况仍然存在，请与开发商联系。</string>
+</dict>
+</plist>

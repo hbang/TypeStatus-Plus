@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>BANNERS</key>
+	<string>横幅</string>
+
+	<!-- Header for banner show options. -->
+	<key>SHOW</key>
+	<string>显示…</string>
+
+	<!-- Option to show banners on the lock screen. -->
+	<key>ON_LOCK_SCREEN</key>
+	<string>在锁屏</string>
+
+	<!-- Option to show banners on the home screen. -->
+	<key>ON_HOME_SCREEN</key>
+	<string>在主屏幕</string>
+
+	<!-- Option to show banners in apps. -->
+	<key>IN_APPS</key>
+	<string>在软件里</string>
+
+	<!-- Switch to keep all notifications in the notification center. -->
+	<key>KEEP_ALL_BULLETINS</key>
+	<string>保留全部的通知</string>
+
+	<!-- Explanation of the keep all notifications switch. -->
+	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
+	<string>把所有的 TypeStatus 通知在通知中心与锁屏显示，还是只显示最新的。</string>
+
+	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
+	<key>USE_APP_ICON</key>
+	<string>用软件自己的图标</string>
+
+	<!-- Explanation of the respective app icon switch. -->
+	<key>USE_APP_ICON_EXPLANATION</key>
+	<string>启用时，通知横幅会用相关软件的图标，而不会使用 TypeStatus Plus 的图标</string>
+</dict>
+</plist>
