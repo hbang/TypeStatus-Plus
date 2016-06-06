@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Leverandører</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Leverandører er individuelle moduler for forskellige apper og iOS funktioner. TypeStatus Plus inkluderer nogle leverandører, og udviklere kan lave deres egne. Hvis du ikke ser din favorit app listet ovenfor, så prøv at søge efter en leverandør iCydia.
+
+Nogle leverandørrt kræver deres tilsvarende app for at blive ved med at køre i forgrunden, selv når enheden sover. Dette kan have en effekt på batteritid.
+
+Musikleverandøren understøtter alle apper som viser den nuværende afspillingsmedie i Control Center og på låseskærmen.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Ingen leverandører er installeret. Dette er ikke meningen. Prøv venligst at installere eller geninstallere “TypeStatus Plus Providers” pakken.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Kunne ikke indlæse indstillingerne til %@ fordi en fejl opstod.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Check for opdateringer til TypeStatus Plus og dine leverandører. Contakt udvikleren hvis denne fejl issue vedvarer.</string>
+</dict>
+</plist>
