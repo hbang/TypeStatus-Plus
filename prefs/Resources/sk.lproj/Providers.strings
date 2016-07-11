@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Providery</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Providery sú osobitné moduly pre rôzne aplikácie a funkcie iOS. TypeStatus Plus zahŕňa nejaké providery, ale vývojári môžu vytvoriť ich vlastné. Ak nevidíš svoju obľúbenú aplikáciu uvedenú hore, skús vyhľadať providera v Cydii.
+
+Niektorí provideri vyžadujú aby istá aplikácia bežala neustále v pozadí, aj keď je zariadenie uzamknuté. Toto môže ovplyvniť výdrž batérie.
+
+Provider pre hudbu podporuje všetky aplikácie, ktoré zobrazujú práve prehrávané média v Ovládacom centri a na zamkuntej ploche.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Žiadni provideri nie sú nainštalovaný. Toto sa nemá stať. Prosím, skúste nainštalovať alebo preinštalovať balík "TypeStatus Plus Providers" v Cydii.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Nebolo možné načítať nastavenia pre %@ pretože došlo k chybe.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Skontrolujte aktualizácie pre TypeStatus Plus a providerov. Kontaktujte vývojára ak táto chyba pretrváva.</string>
+</dict>
+</plist>
