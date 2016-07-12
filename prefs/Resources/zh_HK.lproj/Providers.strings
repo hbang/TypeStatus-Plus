@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Providers</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Providers是供不同App和不同iOS功能調用的模塊。TypeStatus Plus包含了一些Providers，開發者也可以自行製作。如果上面的列表中沒有您喜歡的App，您可以嘗試在Cydia中搜索。
+
+一些Providers需要其相應的App一直保持在後台運行，甚至手機鎖定時也需要。這可能會減少手機的續航時間。
+
+音樂Provider支持所有在控制中心和鎖定畫面顯示"正在播放媒體"的App。</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>未安裝任何Providers。這是不正常的現象，請嘗試安裝或者重新安裝 “TypeStatus Plus Providers”.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>發生錯誤，無法載入 %@ 設定。</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>請檢查TypeStatus Plus以及Providers的更新。如果該問題仍舊存在，請聯繫開發者。</string>
+</dict>
+</plist>
