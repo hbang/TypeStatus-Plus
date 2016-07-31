@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>プロバイダー</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>プロバイダは、異なるアプリやiOSの機能の個々のモジュールです。 TypeStatus Plusは、一部のプロバイダが含まれており、開発者が自分自身を作ることができます。あなたは上記のお気に入りのアプリが表示されない場合は、Cydiaの中のプロバイダーを検索してみてください。
+
+一部のプロバイダは、デバイスが眠っている場合でも、常にバックグラウンドで実行するには、対応するアプリが必要です。これは、バッテリーの寿命に影響を与えることができます。
+
+音楽プロバイダは、コントロール・センターで、ロック画面上で現在再生中のメディアを表示するすべてのアプリケーションをサポートしています。</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>いいえプロバイダがインストールされていません。これが起こることを意味するものではありません。 「TypeStatusプラスプロバイダ」パッケージをインストールまたは再インストールしてみてください。</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>エラーが発生したため、％@の設定をロードできませんでした。</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>TypeStatus Plusとあなたのプロバイダへの更新をチェックしてください。この問題の開発者が解決しないご連絡ください</string>
+</dict>
+</plist>
