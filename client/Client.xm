@@ -8,6 +8,7 @@
 #import <rocketbootstrap/rocketbootstrap.h>
 #import <SpringBoard/SBApplication.h>
 #import <SpringBoard/SBApplicationController.h>
+#import "HBTSStatusBarUnreadItemView.h"
 
 CPDistributedMessagingCenter *distributedCenter;
 
@@ -62,18 +63,6 @@ CPDistributedMessagingCenter *distributedCenter;
 		return %c(HBTSStatusBarUnreadItemView);
 	}
 
-	return %orig;
-}
-
-- (_UILegibilityImageSet *)contentsImage {
-	if ([[%c(HBTSPlusPreferences) sharedInstance] enabled] && [self.item.indicatorName isEqualToString:@"TypeStatusPlusUnreadCount"]) {
-		// if it's in springboard, then call through, if not, message through
-		NSDictionary *result = IN_SPRINGBOARD ? [[%c(HBTSPlusServer) sharedInstance] receivedGetUnreadCountMessage:nil] : [distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerGetUnreadCountNotificationName userInfo:nil];
-		id badgeNumberOrString = result[kHBTSPlusBadgeCountKey];
-
-		// this works because if it's a number it is converted to a string, if it's a string, it's converted to a string.
-		return [self imageWithText:[NSString stringWithFormat:@"%@", badgeNumberOrString]];
-	}
 	return %orig;
 }
 

@@ -68,6 +68,7 @@
 	UILabel *summaryLabel = [self valueForKey:@"_summaryLabel"];
 
 	if (animated) {
+		CKTypingIndicatorLayer *layer = (CKTypingIndicatorLayer *)self._typeStatusPlus_typingIndicatorView.layer;
 		if (visible) {
 			summaryLabel.alpha = 1;
 
@@ -79,8 +80,10 @@
 			}];
 
 			self._typeStatusPlus_typingIndicatorView.hidden = NO;
-			[self._typeStatusPlus_typingIndicatorView.layer startGrowAnimation];
-			[self._typeStatusPlus_typingIndicatorView.layer startPulseAnimation];
+
+
+			[layer startGrowAnimation];
+			[layer startPulseAnimation];
 		} else {
 			summaryLabel.alpha = 0;
 			summaryLabel.hidden = NO;
@@ -88,10 +91,11 @@
 			[UIView animateWithDuration:0.2 animations:^{
 				summaryLabel.alpha = 1;
 			} completion:^(BOOL finished) {
+
 				self._typeStatusPlus_typingIndicatorView.hidden = YES;
 			}];
 
-			[self._typeStatusPlus_typingIndicatorView.layer startShrinkAnimation];
+			[layer startShrinkAnimation];
 		}
 	} else {
 		summaryLabel.hidden = visible;
