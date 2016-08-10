@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Провайдери</string>
+
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Провайдери - це окремі модулі для різних програм та можливостей iOS. TypeStatus Plus містить деякі провайдери, та розробники можуть додавати свої. Якщо ви не бачите бажаної програми у списку вище, спробуйте пошукати провайдера для неї у Cydia.
+
+Деякі провайдери вимагають щоб відповідна програма завжди працювала у фоновому режимі, навіть якщо прістрій знаходиться у режимі сну. Це може впливати на термін служби батареї.
+
+Првайдер Music підтримує усі програми що відображають медіа, що грає у даний час, у Центрі Налаштувань або Екрані Блокування.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Не встановлено жодного провайдера. Це не повинно було трапитись. Будь ласка, спробуйте перевстановити пакет “TypeStatus Plus Providers”.</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Не вдалося завантажити налаштування для %@ через те, що виникла помилка.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Перевірте оновлення для TypeStatus Plus та провайдерів. Зверніться до розробників якщо проблема залишилася.</string>
+</dict>
+</plist>
