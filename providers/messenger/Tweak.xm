@@ -108,6 +108,7 @@ typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(NSString *display
 			[messengerProvider hideNotification];
 		}
 	}];
+
 }
 
 
@@ -131,4 +132,3 @@ typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(NSString *display
 }
 
 %end
-
