@@ -57,18 +57,6 @@
 
 @end
 
-@interface FBMThreadParticipationInfoReadReceiptUpdate : NSObject
-
-@property (nonatomic,readonly) long long updatedTimestamp;              //@synthesize updatedTimestamp=_updatedTimestamp - In the implementation block
-
-@end
-
-@interface FBMThreadSummary : NSObject
-
-@property (nonatomic,readonly) unsigned long long numberOfUnreadMessages;                                            //@synthesize numberOfUnreadMessages=_numberOfUnreadMessages - In the implementation block
-
-@end
-
 typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(NSString *displayName);
 
 @interface HBTSPlusMessengerProviderHelper : NSObject <FBMUserFetcherDelegate>
