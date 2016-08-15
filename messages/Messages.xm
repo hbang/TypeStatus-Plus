@@ -65,8 +65,6 @@
 		return;
 	}*/
 
-	HBLogInfo(@"running the code???");
-
 	UILabel *summaryLabel = [self valueForKey:@"_summaryLabel"];
 
 	if (animated) {
@@ -134,7 +132,6 @@
 			if (isTyping) {
 				[[HBTSPlusMessagesTypingManager sharedInstance] addConversation:conversation];
 			} else {
-				HBLogInfo(@"actually removing stuff..");
 				[[HBTSPlusMessagesTypingManager sharedInstance] removeConversation:conversation];
 			}
 
