@@ -74,9 +74,23 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 
 %end
 
+%hook HBTSSpringBoardServer
+
+- (void)receivedRelayedNotification:(NSDictionary *)userInfo {
+	%orig;
+
+	HBLogInfo(@"received relayed notification");
+
+	[[NSDistributedNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:HBTSPlusReceiveRelayNotification object:nil userInfo:userInfo]];
+}
+
+%end
+
 #pragma mark - Constructor
 
 %ctor {
+	dlopen("/Library/MobileSubstrate/DynamicLibraries/TypeStatus.dylib", RTLD_LAZY);
+
 	[HBTSPlusServer sharedInstance];
 	[HBTSPlusTapToOpenController sharedInstance];
 

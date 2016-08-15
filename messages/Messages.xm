@@ -105,7 +105,7 @@
 
 - (id)init {
 	if ((self = %orig)) {
-		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(typeStatusPlus_addInlineBubble:) name:HBTSSpringBoardReceivedMessageNotification object:nil];
+		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(typeStatusPlus_addInlineBubble:) name:HBTSPlusReceiveRelayNotification object:nil];
 	}
 	return self;
 }
