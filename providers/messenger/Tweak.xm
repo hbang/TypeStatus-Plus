@@ -5,6 +5,18 @@
 #define kMessengerSenderFBIDKey @"sender_fbid"
 #define kMessengerStateKey @"state"
 
+@interface MNMessagesSyncThreadKey : NSObject
+
+@property (nonatomic, getter=otherUserFbId, setter=setOtherUserFbId:) long long otherUserFbId;
+
+@end
+
+@interface MNMessagesSyncDeltaReadReceipt : NSObject
+
+@property (retain, nonatomic, getter=threadKey, setter=setThreadKey:) MNMessagesSyncThreadKey *threadKey;
+
+@end
+
 @interface FBMUserName : NSObject
 
 @property (nonatomic, copy, readonly) NSString *firstName;
@@ -43,7 +55,17 @@
 
 @interface MNAppDelegate : NSObject
 
-@property (nonatomic, retain) FBProviderMap *providerMap;
+@end
+
+@interface FBMThreadParticipationInfoReadReceiptUpdate : NSObject
+
+@property (nonatomic,readonly) long long updatedTimestamp;              //@synthesize updatedTimestamp=_updatedTimestamp - In the implementation block
+
+@end
+
+@interface FBMThreadSummary : NSObject
+
+@property (nonatomic,readonly) unsigned long long numberOfUnreadMessages;                                            //@synthesize numberOfUnreadMessages=_numberOfUnreadMessages - In the implementation block
 
 @end
 
@@ -99,3 +121,26 @@ typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(NSString *display
 		}
 	}];
 }
+
+
+%hook FBMSPReadReceiptDeltaHandler
+
+- (void)_processDeltaReadReceipt:(MNMessagesSyncDeltaReadReceipt *)readReceipt completion:(id)completionBlock {
+	%orig;
+
+	MNMessagesSyncThreadKey *threadKey = readReceipt.threadKey;
+	long long userId = threadKey.otherUserFbId;
+	NSString *userIdString = [NSString stringWithFormat:@"%llu", userId];
+
+	HBTSPlusMessengerProviderHelper *helper = [[HBTSPlusMessengerProviderHelper alloc] init];
+	[helper _userDisplayNameForId:userIdString completionBlock:^(NSString *displayName) {
+		HBTSPlusProvider *messengerProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.facebook.Messenger"];
+
+		HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeRead sender:displayName iconName:@"TypeStatusPlusMessenger"] autorelease];
+		[messengerProvider showNotification:notification];
+	}];
+
+}
+
+%end
+
