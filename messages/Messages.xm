@@ -35,7 +35,7 @@
 
 	if (!self._typeStatusPlus_typingIndicatorView) {
 		CKTypingView *typingView = [[CKTypingView alloc] init];
-		typingView.hidden = YES;
+		typingView.alpha = 0.0;
 		typingView.translatesAutoresizingMaskIntoConstraints = NO;
 		typingView.layer.affineTransform = CGAffineTransformMakeScale(0.8, 0.8);
 		[self.contentView addSubview:typingView];
@@ -52,7 +52,7 @@
 }
 
 %new - (BOOL)_typeStatusPlus_typingIndicatorVisible {
-	return !self._typeStatusPlus_typingIndicatorView.hidden;
+	return (self._typeStatusPlus_typingIndicatorView.alpha == 1);
 }
 
 %new - (void)_typeStatusPlus_setTypingIndicatorVisible:(BOOL)visible {
@@ -61,45 +61,36 @@
 
 %new - (void)_typeStatusPlus_setTypingIndicatorVisible:(BOOL)visible animated:(BOOL)animated {
 	// if we’re already visible then don’t bother
-	if (visible == !self._typeStatusPlus_typingIndicatorView.hidden) {
+/*	if (visible == !self._typeStatusPlus_typingIndicatorView.hidden) {
 		return;
-	}
+	}*/
+
+	HBLogInfo(@"running the code???");
 
 	UILabel *summaryLabel = [self valueForKey:@"_summaryLabel"];
 
 	if (animated) {
 		CKTypingIndicatorLayer *layer = (CKTypingIndicatorLayer *)self._typeStatusPlus_typingIndicatorView.layer;
 		if (visible) {
-			summaryLabel.alpha = 1;
-
 			[UIView animateWithDuration:0.2 animations:^{
-				summaryLabel.alpha = 0;
-			} completion:^(BOOL finished) {
-				summaryLabel.alpha = 1;
-				summaryLabel.hidden = YES;
+				summaryLabel.alpha = 0.0;
+				self._typeStatusPlus_typingIndicatorView.alpha = 1.0;
 			}];
-
-			self._typeStatusPlus_typingIndicatorView.hidden = NO;
-
 
 			[layer startGrowAnimation];
 			[layer startPulseAnimation];
 		} else {
-			summaryLabel.alpha = 0;
-			summaryLabel.hidden = NO;
-
 			[UIView animateWithDuration:0.2 animations:^{
-				summaryLabel.alpha = 1;
-			} completion:^(BOOL finished) {
+				summaryLabel.alpha = 1.0;
 
-				self._typeStatusPlus_typingIndicatorView.hidden = YES;
+				self._typeStatusPlus_typingIndicatorView.alpha = 0.0;
 			}];
 
 			[layer startShrinkAnimation];
 		}
 	} else {
-		summaryLabel.hidden = visible;
-		self._typeStatusPlus_typingIndicatorView.hidden = !visible;
+		summaryLabel.alpha = (visible == YES ? 0.0 : 1.0);
+		self._typeStatusPlus_typingIndicatorView.alpha = (visible == YES ? 1.0 : 0.0);
 	}
 }
 
@@ -143,6 +134,7 @@
 			if (isTyping) {
 				[[HBTSPlusMessagesTypingManager sharedInstance] addConversation:conversation];
 			} else {
+				HBLogInfo(@"actually removing stuff..");
 				[[HBTSPlusMessagesTypingManager sharedInstance] removeConversation:conversation];
 			}
 
