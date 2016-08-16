@@ -16,6 +16,7 @@
 #import <SpringBoard/SBLockScreenManager.h>
 #import <UIKit/UIStatusBarItemView.h>
 #import <version.h>
+#import <TypeStatusPlusProvider/HBTSNotification.h>
 
 HBTSPlusPreferences *preferences;
 
@@ -128,15 +129,19 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 			});
 		}
 
+		HBTSNotification *receivedNotification = [[HBTSNotification alloc] initWithDictionary:notification.userInfo];
+
 		// if the user wants a banner, let’s do that too
 		if ([HBTSPlusStateHelper shouldShowBanner]) {
-			// this is a hax, probably shouldn't be doing it... ¯\_(ツ)_/¯
-			NSString *appIdentifier = ((HBTSPlusTapToOpenController *)[%c(HBTSPlusTapToOpenController) sharedInstance]).appIdentifier ?: @"com.apple.MobileSMS";
+			// grab this from the notification
+			NSString *appIdentifier = receivedNotification.sourceBundleID;
 
 			// make sure this is a messages notification
 			if ([appIdentifier isEqualToString:@"com.apple.MobileSMS"]) {
 				// pass it over to the bulletin provider to do its thing
 				[[HBTSPlusBulletinProvider sharedInstance] showMessagesBulletinWithContent:content];
+			} else {
+				[[HBTSPlusBulletinProvider sharedInstance] showBulletinForNotification:receivedNotification];
 			}
 		}
 	}];
