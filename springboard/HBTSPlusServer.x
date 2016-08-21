@@ -10,7 +10,7 @@
 #import <SpringBoard/SpringBoard.h>
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBApplication.h>
-#import <TypeStatusPlusProvider/HBTSNotification.h>
+#import "../api/HBTSNotification.h"
 
 @implementation HBTSPlusServer {
 	CPDistributedMessagingCenter *_distributedCenter;

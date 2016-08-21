@@ -16,7 +16,7 @@
 #import <SpringBoard/SBLockScreenManager.h>
 #import <UIKit/UIStatusBarItemView.h>
 #import <version.h>
-#import <TypeStatusPlusProvider/HBTSNotification.h>
+#import "../api/HBTSNotification.h"
 
 HBTSPlusPreferences *preferences;
 

@@ -1,7 +1,7 @@
 #import "HBTSPlusProvidersListController.h"
 #import "../api/HBTSPlusProviderController.h"
 #import "../api/HBTSPlusProviderController+Private.h"
-#import <TypeStatusPlusProvider/HBTSPlusProvider.h>
+#import "../api/HBTSPlusProvider.h"
 #import <Preferences/PSSpecifier.h>
 #import <Preferences/PSViewController.h>
 

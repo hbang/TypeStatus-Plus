@@ -8,7 +8,7 @@
 #import <BulletinBoard/BBDataProviderIdentity.h>
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBApplication.h>
-#import <TypeStatusPlusProvider/HBTSNotification.h>
+#import "../api/HBTSNotification.h"
 
 static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 
@@ -73,7 +73,7 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 
 - (void)clearAllBulletins {
 	HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
-	
+
 	// if the user has set us to only keep one notification, withdraw previous
 	// notifications
 	if (!preferences.keepAllBulletins) {
