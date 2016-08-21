@@ -41,7 +41,9 @@
 			_date = [[NSDate alloc] initWithTimeIntervalSince1970:((NSNumber *)dictionary[kHBTSPlusDateKey]).doubleValue];
 		}
 
-		_actionURL = dictionary[kHBTSPlusActionURLKey] ? [[NSURL alloc] initWithString:dictionary[kHBTSPlusActionURLKey]] : nil;
+		if (![dictionary[kHBTSPlusActionURLKey] isEqualToString:@""]) {
+			_actionURL = [[NSURL alloc] initWithString:dictionary[kHBTSPlusActionURLKey]];
+		}
 
 		// deserialize the bold range to an NSRange
 		NSArray <NSNumber *> *boldRangeArray = dictionary[kHBTSMessageBoldRangeKey];

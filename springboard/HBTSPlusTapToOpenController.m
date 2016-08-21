@@ -38,7 +38,7 @@
 }
 
 - (NSDictionary *)receivedStatusBarTappedMessage:(NSString *)message {
-	HBLogDebug(@"Status bar tapped—recieved notification");
+	HBLogInfo(@"Status bar tapped—recieved notification");
 
 	// if this is a messages notification
 	if ([_appIdentifier isEqualToString:@"com.apple.MobileSMS"]) {
