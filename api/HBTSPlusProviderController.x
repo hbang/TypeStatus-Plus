@@ -35,6 +35,8 @@ static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Prov
 - (void)loadProviders {
 	static dispatch_once_t predicate;
 	dispatch_once(&predicate, ^{
+		HBLogDebug(@"loading providers");
+
 		NSError *error = nil;
 		NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL URLWithString:kHBTSPlusProvidersURL] includingPropertiesForKeys:nil options:kNilOptions error:&error];
 
@@ -56,22 +58,52 @@ static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Prov
 				continue;
 			}
 
-			NSString *identifier = bundle.infoDictionary[kHBTSApplicationBundleIdentifierKey];
+			id identifier = bundle.infoDictionary[kHBTSApplicationBundleIdentifierKey];
 
 			if (!identifier) {
 				HBLogError(@"no app identifier set for provider %@", baseName);
 				continue;
 			}
 
-			LSApplicationProxy *proxy = [LSApplicationProxy applicationProxyForIdentifier:identifier];
+			NSArray *identifiers;
 
-			// if the app isn’t installed, don’t bother loading
-			if (!proxy.isInstalled) {
+			if ([identifier isKindOfClass:NSString.class]) {
+				identifiers = @[ identifier ];
+			} else if ([identifier isKindOfClass:NSArray.class]) {
+				identifiers = identifier;
+			} else {
+				HBLogError(@"huh, what kind of class is %@?", identifier);
 				continue;
 			}
 
-			if (inApp && ![[NSBundle mainBundle].bundleIdentifier isEqualToString:identifier]) {
-				continue;
+			NSString *appIdentifier;
+
+			if (inApp) {
+				if (![identifiers containsObject:[NSBundle mainBundle].bundleIdentifier]) {
+					continue;
+				}
+
+				appIdentifier = [NSBundle mainBundle].bundleIdentifier;
+			} else if (IN_SPRINGBOARD) {
+				NSMutableArray *knownIdentifiers = [NSMutableArray array];
+
+				for (NSString *identifier in identifiers) {
+					HBLogDebug(@"checking %@", identifier);
+					LSApplicationProxy *proxy = [LSApplicationProxy applicationProxyForIdentifier:identifier];
+
+					if (proxy.isInstalled) {
+						HBLogDebug(@" --> is installed");
+						[knownIdentifiers addObject:identifier];
+					}
+				}
+
+				// if the app isn’t installed, don’t bother loading
+				if (knownIdentifiers.count == 0) {
+					HBLogDebug(@"skipping – no supported apps are installed");
+					continue;
+				}
+
+				appIdentifier = knownIdentifiers[0];
 			}
 
 			[bundle load];
@@ -82,16 +114,16 @@ static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Prov
 			}
 
 			if (((NSNumber *)bundle.infoDictionary[kHBTSKeepApplicationAliveKey]).boolValue) {
-				[_appsRequiringBackgroundSupport addObject:identifier];
+				[_appsRequiringBackgroundSupport addObjectsFromArray:identifiers];
 				HBLogDebug(@"The bundle %@ requires backgrounding support.", baseName);
 			}
 
 			HBTSPlusProvider *provider = [[bundle.principalClass alloc] init];
-			provider.appIdentifier = identifier;
+			provider.appIdentifier = appIdentifier;
 			[_providers addObject:provider];
 
 			if (!provider) {
-				HBLogError(@"TypeStatusPlusProvider: failed to initialise principal class %@ for %@", identifier, baseName);
+				HBLogError(@"failed to initialise principal class %@ for %@", identifier, baseName);
 				continue;
 			}
 
