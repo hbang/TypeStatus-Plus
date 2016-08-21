@@ -11,7 +11,7 @@
 CPDistributedMessagingCenter *distributedCenter;
 
 - (_UILegibilityImageSet *)contentsImage {
-	if ([[%c(HBTSPlusPreferences) sharedInstance] enabled] && [self.item.indicatorName isEqualToString:@"TypeStatusPlusUnreadCount"]) {
+	if ([[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
 		// if it's in springboard, then call through, if not, message through
 		NSDictionary *result = IN_SPRINGBOARD ? [[%c(HBTSPlusServer) sharedInstance] receivedGetUnreadCountMessage:nil] : [distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerGetUnreadCountNotificationName userInfo:nil];
 		id badgeNumberOrString = result[kHBTSPlusBadgeCountKey];
