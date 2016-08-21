@@ -5,9 +5,12 @@
 		<key>HBPackageIdentifier</key>
 		<string>ws.hbang.typestatusplusskypeprovider</string>
 		<key>HBTSApplicationBundleIdentifier</key>
-		<string>com.skype.skype</string>
+		<array>
+			<string>com.skype.skype</string>
+			<string>com.skype.SkypeForiPad</string>
+		</array>
 		<key>HBTSKeepApplicationAlive</key>
-		<false/>
+		<true/>
 		<key>NSPrincipalClass</key>
 		<string>HBTSPlusSkypeProvider</string>
 	</dict>

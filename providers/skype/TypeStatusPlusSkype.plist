@@ -1,1 +1,1 @@
-{ Filter = { Bundles = ( "com.skype.skype" ); }; }
+{ Filter = { Bundles = ( "com.skype.skype", "com.skype.SkypeForiPad" ); }; }
