@@ -48,14 +48,14 @@
 		notification.sourceBundleID = _appIdentifier;
 	}
 
-	HBLogDebug(@"Posting showNotification message on client side.");
+	HBLogInfo(@"Posting showNotification message on client side.");
 
 	// post the notification
 	[self._messagingCenter sendMessageName:kHBTSPlusServerSetStatusBarNotificationName userInfo:notification.dictionaryRepresentation];
 }
 
 - (void)hideNotification {
-	HBLogDebug(@"Posting hideNotification message on client side.");
+	HBLogInfo(@"Posting hideNotification message on client side.");
 
 	// post the notification
 	[self._messagingCenter sendMessageName:kHBTSPlusServerHideStatusBarNotificationName userInfo:nil];
