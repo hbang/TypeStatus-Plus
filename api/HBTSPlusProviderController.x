@@ -84,7 +84,7 @@ static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Prov
 				}
 
 				appIdentifier = [NSBundle mainBundle].bundleIdentifier;
-			} else if (IN_SPRINGBOARD) {
+			} else {
 				NSMutableArray *knownIdentifiers = [NSMutableArray array];
 
 				for (NSString *identifier in identifiers) {
