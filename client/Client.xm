@@ -59,7 +59,7 @@ CPDistributedMessagingCenter *distributedCenter;
 %hook UIStatusBarCustomItem
 
 - (Class)viewClass {
-	if ([[%c(HBTSPlusPreferences) sharedInstance] enabled] && [self.indicatorName isEqualToString:@"TypeStatusPlusUnreadCount"]) {
+	if ([self.indicatorName isEqualToString:@"TypeStatusPlusUnreadCount"]) {
 		return %c(HBTSStatusBarUnreadItemView);
 	}
 
