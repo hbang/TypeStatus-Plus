@@ -1,17 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <!-- Button leading to sub-section of the settings. -->
-    <key>PROVIDERS</key>
-    <string>Провайдеры</string>
+	<!-- Title. -->
+	<key>PROVIDERS</key>
+	<string>Провайдеры</string>
 
-    <!-- Button leading to sub-section of the settings. -->
-    <key>BANNERS</key>
-    <string>Баннеры</string>
+	<!-- Explanation of the providers for TypeStatus Plus. -->
+	<key>PROVIDERS_EXPLANATION</key>
+	<string>Уведомления из приложенийИз Music app будет показывать название трека при переключении
 
-    <!-- Button leading to sub-section of the settings. -->
-    <key>VIBRATIONS</key>
-    <string>Вибрация</string>
+Поставщики являются отдельные модули для различных приложений и функций ОС IOS. TypeStatus Plus включает в себя несколько поставщиков, и разработчики могут сделать свои собственные. Если вы не видите ваши любимые приложения, перечисленные выше, попробуйте выполнить поиск поставщика в Cydia.
+
+Некоторые провайдеры требуют его соответствующего приложения, чтобы постоянно работать в фоновом режиме, даже когда устройство находится в спящем режиме. Это может влиять на срок службы батареи.</string>
+
+	<!-- Explanation used when there are no providers installed. -->
+	<key>NO_PROVIDERS_EXPLANATION</key>
+	<string>Не найдены провайдеры приложений. Такого не должно было случиться. Пожалуйста, попробуйте установить или переустановить пакет "TypeStatus Plus Providers".</string>
+
+	<!-- Title used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
+	<string>Не удалось загрузить настройки для %@, потому что произошла ошибка.</string>
+
+	<!-- Body used on an alert when a provider’s preferences fail to load. -->
+	<key>FAILED_TO_LOAD_PREFS_BODY</key>
+	<string>Проверьте наличие обновлений для TypeStatus Plus и ваших поставщиков. Связаться с разработчиком по этому вопросу.</string>
 </dict>
 </plist>
