@@ -15,9 +15,11 @@
 %hook UIApplication
 
 - (void)_deactivateForReason:(int)reason notify:(BOOL)notify {
-	if (![[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
-		%orig;
+	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
+		notify = NO;
 	}
+
+	%orig;
 }
 
 - (BOOL)_isLaunchedSuspended {
@@ -44,13 +46,6 @@
 - (BOOL)isSuspendedEventsOnly {
 	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
 		return NO;
-	}
-	return %orig;
-}
-
-- (BOOL)_isActivated {
-	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
-		return YES;
 	}
 	return %orig;
 }
