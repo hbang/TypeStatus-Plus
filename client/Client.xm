@@ -86,6 +86,7 @@ CPDistributedMessagingCenter *distributedCenter;
 %end
 
 %ctor {
+	dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
 	dlopen("/Library/MobileSubstrate/DynamicLibraries/TypeStatusClient.dylib", RTLD_LAZY);
 
 	NSString *bundleIdentifier = [NSBundle mainBundle].bundleIdentifier;
