@@ -138,7 +138,7 @@
 
 %new - (void)_typeStatusPlus_receivedNotification:(NSNotification *)notification {
 	NSString *senderName = notification.userInfo[kHBTSMessageSenderKey];
-	HBTSStatusBarType type = (HBTSStatusBarType)((NSNumber *)userInfo[kHBTSMessageTypeKey]).intValue;
+	HBTSStatusBarType type = (HBTSStatusBarType)((NSNumber *)notification.userInfo[kHBTSMessageTypeKey]).intValue;
 
 	HBTSPlusMessagesTypingManager *typingManager = [HBTSPlusMessagesTypingManager sharedInstance];
 
