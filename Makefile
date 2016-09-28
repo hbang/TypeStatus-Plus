@@ -6,6 +6,9 @@ endif
 
 include $(THEOS)/makefiles/common.mk
 
-SUBPROJECTS = api app assertionhax client messages prefs springboard
+# the main bits
+SUBPROJECTS = springboard api prefs
+# the less often updated bits
+SUBPROJECTS += client messages assertionhax app
 
 include $(THEOS_MAKE_PATH)/aggregate.mk
