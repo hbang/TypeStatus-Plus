@@ -3,6 +3,7 @@
 #import "HBTSPlusServer.h"
 #import "HBTSPlusStateHelper.h"
 #import "HBTSPlusTapToOpenController.h"
+#import "../api/HBTSNotification.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <BulletinBoard/BBLocalDataProviderStore.h>
 #import <Foundation/NSDistributedNotificationCenter.h>
@@ -10,16 +11,12 @@
 #import <libstatusbar/UIStatusBarCustomItem.h>
 #import <libstatusbar/UIStatusBarCustomItemView.h>
 #import <SpringBoard/SBApplication.h>
-#import <SpringBoard/SBApplication.h>
-#import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBLockScreenManager.h>
 #import <UIKit/UIStatusBarItemView.h>
 #import <version.h>
-#import "../api/HBTSNotification.h"
 
 HBTSPlusPreferences *preferences;
-
 LSStatusBarItem *unreadCountStatusBarItem;
 
 extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoundID, id unknown, NSDictionary *options);
@@ -42,16 +39,14 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 - (void)applicationDidFinishLaunching:(id)application {
 	%orig;
 
-	if (![[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
+	if (![%c(HBTSPlusPreferences) sharedInstance].enabled) {
 		return;
 	}
 
-	// is libstatusbar loaded? if not, let's try dlopening it
-	if (!%c(LSStatusBarItem)) {
-		dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
-	}
+	// try loading libstatusbar
+	dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
 
-	// still not loaded? probably not installed. just bail out
+	// hmm not loaded? probably not installed. just bail out
 	if (!%c(LSStatusBarItem)) {
 		return;
 	}
@@ -65,7 +60,7 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 
 %hook SBApplication
 
-- (void)setBadge:(id)arg1 {
+- (void)setBadge:(id)badge {
 	%orig;
 
 	if ([preferences.unreadCountApps containsObject:self.bundleIdentifier]) {
@@ -90,22 +85,28 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 #pragma mark - Constructor
 
 %ctor {
+	// make sure typestatus free is loaded before we do anything
 	dlopen("/Library/MobileSubstrate/DynamicLibraries/TypeStatus.dylib", RTLD_LAZY);
 
+	// initialise our singleton classes
 	[HBTSPlusServer sharedInstance];
 	[HBTSPlusTapToOpenController sharedInstance];
 
 	preferences = [%c(HBTSPlusPreferences) sharedInstance];
 
+	// when preferences update, forcefully update the status bar item
 	[preferences registerPreferenceChangeBlock:^{
 		[unreadCountStatusBarItem update];
 	}];
 
+	// when a set status bar notification is sent by typestatus free
 	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
+		// not enabled? don’t do anything
 		if (!preferences.enabled) {
 			return;
 		}
 
+		//
 		HBTSStatusBarType type = ((NSNumber *)notification.userInfo[kHBTSMessageTypeKey]).unsignedIntegerValue;
 
 		if (type == HBTSStatusBarTypeTypingEnded) {
@@ -116,19 +117,21 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 
 		NSString *content = notification.userInfo[kHBTSMessageContentKey];
 
-		// right off the bat, if there's no title or content, stop right there.
+		// right off the bat, if there’s no title or content, stop right there.
 		if (!content || [content isEqualToString:@""]) {
 			return;
 		}
 
 		// if the user wants vibration, let’s do that
 		if ([HBTSPlusStateHelper shouldVibrate]) {
+			// TODO: document and define constants for these things
 			AudioServicesPlaySystemSoundWithVibration(4095, nil, @{
 				@"VibePattern": @[ @YES, @(50) ],
 				@"Intensity": @1
 			});
 		}
 
+		// create a typestatus plus notification object from the user info
 		HBTSNotification *receivedNotification = [[HBTSNotification alloc] initWithDictionary:notification.userInfo];
 
 		// if the user wants a banner, let’s do that too
@@ -136,11 +139,12 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 			// grab this from the notification
 			NSString *appIdentifier = receivedNotification.sourceBundleID;
 
-			// make sure this is a messages notification
+			// if this is a messages notification
 			if ([appIdentifier isEqualToString:@"com.apple.MobileSMS"]) {
-				// pass it over to the bulletin provider to do its thing
+				// pass it over with the specific logic for messages bulletins
 				[[HBTSPlusBulletinProvider sharedInstance] showMessagesBulletinWithContent:content];
 			} else {
+				// pass over the notification and show it
 				[[HBTSPlusBulletinProvider sharedInstance] showBulletinForNotification:receivedNotification];
 			}
 		}
