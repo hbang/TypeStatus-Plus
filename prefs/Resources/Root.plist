@@ -73,6 +73,10 @@
 			<string>haptic.png</string>
 			<key>label</key>
 			<string>VIBRATIONS</string>
+			<key>requiredCapabilities</key>
+			<array>
+				<string>ringer-switch</string>
+			</array>
 		</dict>
 		<dict>
 			<key>cell</key>
