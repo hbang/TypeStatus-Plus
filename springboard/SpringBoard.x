@@ -19,7 +19,7 @@
 HBTSPlusPreferences *preferences;
 LSStatusBarItem *unreadCountStatusBarItem;
 
-extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoundID, id unknown, NSDictionary *options);
+extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoundID, id unknown, NSDictionary *options);
 
 #pragma mark - Notification Center
 
@@ -39,7 +39,7 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 - (void)applicationDidFinishLaunching:(id)application {
 	%orig;
 
-	if (![%c(HBTSPlusPreferences) sharedInstance].enabled) {
+	if (!((HBTSPlusPreferences *)[%c(HBTSPlusPreferences) sharedInstance]).enabled) {
 		return;
 	}
 
