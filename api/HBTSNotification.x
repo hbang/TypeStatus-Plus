@@ -38,11 +38,11 @@
 		_statusBarIconName = [dictionary[kHBTSPlusMessageIconNameKey] copy];
 
 		if (dictionary[kHBTSPlusDateKey]) {
-			_date = [[NSDate alloc] initWithTimeIntervalSince1970:((NSNumber *)dictionary[kHBTSPlusDateKey]).doubleValue];
+			_date = [NSDate dateWithTimeIntervalSince1970:((NSNumber *)dictionary[kHBTSPlusDateKey]).doubleValue];
 		}
 
 		if (![dictionary[kHBTSPlusActionURLKey] isEqualToString:@""]) {
-			_actionURL = [[NSURL alloc] initWithString:dictionary[kHBTSPlusActionURLKey]];
+			_actionURL = [NSURL URLWithString:dictionary[kHBTSPlusActionURLKey]];
 		}
 
 		// deserialize the bold range to an NSRange

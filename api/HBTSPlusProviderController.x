@@ -156,7 +156,7 @@ static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Prov
 }
 
 - (BOOL)providerIsEnabled:(HBTSPlusProvider *)provider {
-	if (![[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
+	if (!((HBTSPlusPreferences *)[%c(HBTSPlusPreferences) sharedInstance]).enabled) {
 		return NO;
 	}
 
