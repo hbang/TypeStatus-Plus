@@ -1,0 +1,2 @@
+#!/bin/bash
+[[ -x /usr/libexec/cydia/move.sh ]] && /usr/libexec/cydia/move.sh /Library/TypeStatus

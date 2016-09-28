@@ -4,7 +4,7 @@
 #import "HBTSPlusProviderController+Private.h"
 #import <MobileCoreServices/LSApplicationProxy.h>
 
-static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Providers";
+static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Providers/";
 
 @implementation HBTSPlusProviderController {
 	NSMutableArray *_appsRequiringBackgroundSupport;
@@ -37,8 +37,10 @@ static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Prov
 	dispatch_once(&predicate, ^{
 		HBLogDebug(@"loading providers");
 
+		NSURL *providersURL = [NSURL URLWithString:kHBTSPlusProvidersURL].URLByResolvingSymlinksInPath;
+
 		NSError *error = nil;
-		NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL URLWithString:kHBTSPlusProvidersURL] includingPropertiesForKeys:nil options:kNilOptions error:&error];
+		NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:providersURL includingPropertiesForKeys:nil options:kNilOptions error:&error];
 
 		if (error) {
 			HBLogError(@"failed to access handler directory %@: %@", kHBTSPlusProvidersURL, error.localizedDescription);

@@ -12,3 +12,7 @@ SUBPROJECTS = springboard api prefs
 SUBPROJECTS += client messages assertionhax app
 
 include $(THEOS_MAKE_PATH)/aggregate.mk
+
+after-stage::
+	$(ECHO_NOTHING)mkdir -p $(THEOS_STAGING_DIR)/DEBIAN$(ECHO_END)
+	$(ECHO_NOTHING)cp postinst $(THEOS_STAGING_DIR)/DEBIAN$(ECHO_END)
