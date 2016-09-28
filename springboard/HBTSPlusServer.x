@@ -3,14 +3,14 @@
 #import "HBTSPlusPreferences.h"
 #import "HBTSPlusStateHelper.h"
 #import "HBTSPlusTapToOpenController.h"
+#import "../api/HBTSNotification.h"
 #import "../api/HBTSPlusProviderController.h"
 #import "../typestatus-private/HBTSStatusBarAlertServer.h"
 #import <AppSupport/CPDistributedMessagingCenter.h>
-#import <rocketbootstrap/rocketbootstrap.h>
 #import <SpringBoard/SpringBoard.h>
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBApplication.h>
-#import "../api/HBTSNotification.h"
+#import <rocketbootstrap/rocketbootstrap.h>
 
 @implementation HBTSPlusServer {
 	CPDistributedMessagingCenter *_distributedCenter;
