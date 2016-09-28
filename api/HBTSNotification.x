@@ -23,6 +23,7 @@
 	if (self) {
 		_content = [%c(HBTSStatusBarAlertServer) textForType:(HBTSStatusBarType)type sender:sender boldRange:&_boldRange];
 		_statusBarIconName = iconName;
+		_date = [NSDate date];
 	}
 
 	return self;
@@ -39,6 +40,8 @@
 
 		if (dictionary[kHBTSPlusDateKey]) {
 			_date = [NSDate dateWithTimeIntervalSince1970:((NSNumber *)dictionary[kHBTSPlusDateKey]).doubleValue];
+		} else {
+			_date = [NSDate date];
 		}
 
 		if (![dictionary[kHBTSPlusActionURLKey] isEqualToString:@""]) {
