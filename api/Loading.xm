@@ -54,17 +54,23 @@
 %end
 
 void launchApps() {
-	// TODO: maybe we could spread each one out a few seconds to avoid thrashing
-	// the cpu?
+	NSUInteger i = 0;
+
+	// loop over each app we must launch
 	for (NSString *bundleIdentifier in [HBTSPlusProviderController sharedInstance].appsRequiringBackgroundSupport) {
-		HBLogDebug(@"launching %@", bundleIdentifier);
-		[(SpringBoard *)[UIApplication sharedApplication] launchApplicationWithIdentifier:bundleIdentifier suspended:YES];
+		// wait i * 2 seconds before launching, so we don’t thrash cpu as much
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(NSEC_PER_SEC * i * 2)), dispatch_get_main_queue(), ^{
+			HBLogDebug(@"launching %@", bundleIdentifier);
+			[(SpringBoard *)[UIApplication sharedApplication] launchApplicationWithIdentifier:bundleIdentifier suspended:YES];
 
-		(void)[[%c(SBLaunchAppListener) alloc] initWithBundleIdentifier:bundleIdentifier handlerBlock:^{
-			SBApplication *application = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:bundleIdentifier];
+			(void)[[%c(SBLaunchAppListener) alloc] initWithBundleIdentifier:bundleIdentifier handlerBlock:^{
+				SBApplication *application = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:bundleIdentifier];
 
-			(void)[[BKSProcessAssertion alloc] initWithPID:application.pid flags:BKSProcessAssertionFlagPreventSuspend | BKSProcessAssertionFlagPreventThrottleDownCPU | BKSProcessAssertionFlagWantsForegroundResourcePriority reason:BKSProcessAssertionReasonContinuous name:kBKSBackgroundModeContinuous withHandler:nil];
-		}];
+				(void)[[BKSProcessAssertion alloc] initWithPID:application.pid flags:BKSProcessAssertionFlagPreventSuspend | BKSProcessAssertionFlagPreventThrottleDownCPU | BKSProcessAssertionFlagWantsForegroundResourcePriority reason:BKSProcessAssertionReasonContinuous name:kBKSBackgroundModeContinuous withHandler:nil];
+			}];
+		});
+
+		i++;
 	}
 }
 
