@@ -18,7 +18,7 @@ static CGSize const kHBTSStatusBarUnreadItemViewSize = (CGSize){13.f, 13.f};
 
 - (_UILegibilityImageSet *)contentsImage {
 	// if we’re not enabled, do nothing
-	if (![[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
+	if (![HBTSPlusPreferences sharedInstance].enabled) {
 		return %orig;
 	}
 

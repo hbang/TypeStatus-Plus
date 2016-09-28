@@ -20,6 +20,7 @@
 
 - (void)_typeStatus_init {
 	%orig;
+
 	self.tapToOpenConvoRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(typeStatusPlus_openConversation:)];
 	[self addGestureRecognizer:self.tapToOpenConvoRecognizer];
 }
@@ -30,12 +31,10 @@
 	%orig;
 }
 
-%new
+%new - (void)typeStatusPlus_openConversation:(UIGestureRecognizer *)gestureRecognizer {
+	HBLogDebug(@"Status bar tapped—sending notification");
 
-- (void)typeStatusPlus_openConversation:(UIGestureRecognizer *)gestureRecognizer {
-	HBLogInfo(@"Status bar tapped—sending notification");
-
-	if (![[%c(HBTSPlusPreferences) sharedInstance] enabled]) {
+	if (![HBTSPlusPreferences sharedInstance].enabled) {
 		return;
 	}
 

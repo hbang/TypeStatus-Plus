@@ -80,7 +80,7 @@ extern "C" void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystem
 - (void)receivedRelayedNotification:(NSDictionary *)userInfo {
 	%orig;
 
-	HBLogInfo(@"received relayed notification");
+	HBLogDebug(@"received relayed notification");
 
 	[[NSDistributedNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:HBTSPlusReceiveRelayNotification object:nil userInfo:userInfo]];
 }
