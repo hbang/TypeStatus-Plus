@@ -23,7 +23,7 @@
 
 	if (self) {
 		if (!IN_SPRINGBOARD) {
-			_distributedCenter = [[CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName] retain];
+			_distributedCenter = [CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName];
 			rocketbootstrap_distributedmessagingcenter_apply(_distributedCenter);
 		}
 	}
@@ -63,12 +63,6 @@
 	} else {
 		[_distributedCenter sendMessageName:kHBTSPlusServerStatusBarTappedNotificationName userInfo:nil];
 	}
-}
-
-- (void)dealloc {
-	[_distributedCenter release];
-
-	[super dealloc];
 }
 
 @end

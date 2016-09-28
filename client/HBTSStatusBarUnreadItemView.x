@@ -73,7 +73,7 @@ static CGSize const kHBTSStatusBarUnreadItemViewSize = (CGSize){13.f, 13.f};
 	[badgeString drawAtPoint:labelPoint withAttributes:attributes];
 
 	// get the UIImage
-	UIImage *image = [UIGraphicsGetImageFromCurrentImageContext() autorelease];
+	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 
 	// return it as an image set

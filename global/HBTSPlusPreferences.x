@@ -71,7 +71,7 @@ static NSString *const kHBTSPlusPreferencesVibrateInAppsKey = @"VibrateInApps";
 
 - (BOOL)providerIsEnabled:(NSString *)appIdentifier {
 	// TODO: these keys should be prefixed
-	return _preferences[appIdentifier] ? [_preferences[appIdentifier] boolValue] : YES;
+	return _preferences[appIdentifier] ? ((NSNumber *)_preferences[appIdentifier]).boolValue : YES;
 }
 
 - (NSArray <NSString *> *)unreadCountApps {
@@ -95,14 +95,6 @@ static NSString *const kHBTSPlusPreferencesVibrateInAppsKey = @"VibrateInApps";
 
 - (void)registerPreferenceChangeBlock:(HBPreferencesChangeCallback)callback {
 	[_preferences registerPreferenceChangeBlock:callback];
-}
-
-#pragma mark - Memory management
-
-- (void)dealloc {
-	[_preferences release];
-
-	[super dealloc];
 }
 
 @end

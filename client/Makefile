@@ -6,8 +6,6 @@ TypeStatusPlusClient_CFLAGS = -I../global -include ../global/Global.h
 TypeStatusPlusClient_PRIVATE_FRAMEWORKS = AppSupport
 TypeStatusPlusClient_EXTRA_FRAMEWORKS = Cephei
 TypeStatusPlusClient_LIBRARIES = rocketbootstrap
+TypeStatusPlusClient_CFLAGS = -I../global -include ../global/Global.h -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
-
-after-install::
-	install.exec "killall -9 SpringBoard"

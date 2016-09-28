@@ -37,7 +37,7 @@
 	self.hb_appearanceSettings = appearance;
 
 	UIImage *headerLogo = [UIImage imageNamed:@"headerlogo" inBundle:self.bundle];
-	self.navigationItem.titleView = [[[UIImageView alloc] initWithImage:headerLogo] autorelease];
+	self.navigationItem.titleView = [[UIImageView alloc] initWithImage:headerLogo];
 	self.navigationItem.titleView.alpha = 0.0;
 }
 

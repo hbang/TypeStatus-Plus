@@ -25,12 +25,6 @@
 	[self addGestureRecognizer:self.tapToOpenConvoRecognizer];
 }
 
-- (void)dealloc {
-	[self.tapToOpenConvoRecognizer release];
-
-	%orig;
-}
-
 %new - (void)typeStatusPlus_openConversation:(UIGestureRecognizer *)gestureRecognizer {
 	HBLogDebug(@"Status bar tapped—sending notification");
 

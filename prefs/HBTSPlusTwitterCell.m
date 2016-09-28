@@ -19,8 +19,8 @@
 		}
 
 		// use a different tint color for the twitter bird in the accessory view
-		UIImage *originalDefaultImage = [super valueForKey:@"_defaultImage"];
-		UIImage *newDefaultImage = [[originalDefaultImage _flatImageWithColor:[UIColor colorWithRed:0.196 green:0.196 blue:0.196 alpha:1.00]] retain];
+		UIImage *originalDefaultImage = [self valueForKey:@"_defaultImage"];
+		UIImage *newDefaultImage = [originalDefaultImage _flatImageWithColor:[UIColor colorWithWhite:0.196 alpha:1.00]];
 		((UIImageView *)self.accessoryView).image = newDefaultImage;
 
 		// resize the avatar for what we want

@@ -116,12 +116,4 @@
 	[self presentViewController:alertController animated:YES completion:nil];
 }
 
-#pragma mark - Memory management
-
-- (void)dealloc {
-	[_providers release];
-
-	[super dealloc];
-}
-
 @end
