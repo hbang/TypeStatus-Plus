@@ -1,8 +1,6 @@
 #import "HBTSStatusBarUnreadItemView.h"
+#import "HBTSPlusClient.h"
 #import "HBTSPlusPreferences.h"
-#import "../springboard/HBTSPlusServer.h"
-#import <AppSupport/CPDistributedMessagingCenter.h>
-#import <rocketbootstrap/rocketbootstrap.h>
 #import <UIKit/_UILegibilityImageSet.h>
 #import <UIKit/UIStatusBarForegroundStyleAttributes.h>
 
@@ -16,8 +14,6 @@ static CGSize const kHBTSStatusBarUnreadItemViewSize = (CGSize){13.f, 13.f};
 
 %subclass HBTSStatusBarUnreadItemView : UIStatusBarCustomItemView
 
-CPDistributedMessagingCenter *distributedCenter;
-
 %property (nonatomic, retain) BOOL _typeStatusPlus_isVisible;
 
 - (_UILegibilityImageSet *)contentsImage {
@@ -26,12 +22,11 @@ CPDistributedMessagingCenter *distributedCenter;
 		return %orig;
 	}
 
-	// if it's in springboard, then call through, if not, message through
-	NSDictionary *result = IN_SPRINGBOARD ? [[%c(HBTSPlusServer) sharedInstance] receivedGetUnreadCountMessage:nil] : [distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerGetUnreadCountNotificationName userInfo:nil];
+	// get the badge count
+	NSInteger badgeCount = [HBTSPlusClient sharedInstance].badgeCount;
 
-	// get the badge count as an integer
-	id badgeNumberOrString = result[kHBTSPlusBadgeCountKey];
-	NSInteger badgeCount = ((NSNumber *)badgeNumberOrString).integerValue;
+	// if it’s >99, use a static string because 3+ digits won’t fit
+	NSString *badgeString = badgeCount > 99 ? @":)" : [NSString stringWithFormat:@"%li", (long)badgeCount];
 
 	// if it’s zero, mark ourself as not visible and do nothing
 	if (badgeCount == 0) {
@@ -41,11 +36,6 @@ CPDistributedMessagingCenter *distributedCenter;
 
 	// mark ourself as visible
 	self._typeStatusPlus_isVisible = YES;
-
-	// if it’s >99, use a static string because 3+ digits won’t fit
-	if (badgeCount > 99) {
-		badgeNumberOrString = @":)";
-	}
 
 	// start up a graphics context
 	UIGraphicsBeginImageContextWithOptions(self.intrinsicContentSize, NO, 0);
@@ -65,10 +55,6 @@ CPDistributedMessagingCenter *distributedCenter;
 	CGContextBeginPath(context);
 	CGContextAddEllipseInRect(context, (CGRect){{physicalPixel, physicalPixel}, kHBTSStatusBarUnreadItemViewSize});
 	CGContextDrawPath(context, kCGPathFillStroke);
-
-	// this works because if it’s a number it is converted to a string, if it’s a
-	// string, it’s converted to a string.
-	NSString *badgeString = [NSString stringWithFormat:@"%@", badgeNumberOrString];
 
 	// set up our attributes
 	NSDictionary <NSString *, id> *attributes = @{
@@ -118,12 +104,3 @@ CPDistributedMessagingCenter *distributedCenter;
 }
 
 %end
-
-%ctor {
-	if (!IN_SPRINGBOARD) {
-		distributedCenter = [[CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName] retain];
-		rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
-	}
-
-	%init;
-}

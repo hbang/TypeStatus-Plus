@@ -1,16 +1,10 @@
+#import "HBTSPlusClient.h"
 #import "HBTSPlusPreferences.h"
-#import "../springboard/HBTSPlusServer.h"
-#import "../springboard/HBTSPlusTapToOpenController.h"
+#import "HBTSStatusBarUnreadItemView.h"
 #import "../typestatus-private/HBTSStatusBarForegroundView.h"
-#import <AppSupport/CPDistributedMessagingCenter.h>
 #import <libstatusbar/UIStatusBarCustomItem.h>
-#import <libstatusbar/UIStatusBarCustomItemView.h>
-#import <rocketbootstrap/rocketbootstrap.h>
 #import <SpringBoard/SBApplication.h>
 #import <SpringBoard/SBApplicationController.h>
-#import "HBTSStatusBarUnreadItemView.h"
-
-CPDistributedMessagingCenter *distributedCenter;
 
 @interface HBTSStatusBarForegroundView (TapToOpen)
 
@@ -45,11 +39,7 @@ CPDistributedMessagingCenter *distributedCenter;
 		return;
 	}
 
-	if (IN_SPRINGBOARD) {
-		[[%c(HBTSPlusTapToOpenController) sharedInstance] receivedStatusBarTappedMessage:nil];
-	} else {
-		[distributedCenter sendMessageName:kHBTSPlusServerStatusBarTappedNotificationName userInfo:nil];
-	}
+	[[HBTSPlusClient sharedInstance] statusBarTapped];
 }
 
 %end
@@ -74,13 +64,9 @@ CPDistributedMessagingCenter *distributedCenter;
 
 - (void)_receivedStatusNotification:(NSNotification *)notification {
 	// if we're showing a banner, we probably should not show the regular ts notification
-	// TODO: why can’t we just access
-	NSDictionary *result = IN_SPRINGBOARD ? [[%c(HBTSPlusServer) sharedInstance] recievedShowBannersMessage:nil] : [distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerShowBannersNotificationName userInfo:nil];
-	BOOL shouldShowBanners = [result[kHBTSPlusShouldShowBannersKey] boolValue];
-	if (shouldShowBanners) {
-		return;
+	if (![HBTSPlusClient sharedInstance].showBanners) {
+		%orig;
 	}
-	%orig;
 }
 
 %end
@@ -90,13 +76,9 @@ CPDistributedMessagingCenter *distributedCenter;
 	dlopen("/Library/MobileSubstrate/DynamicLibraries/TypeStatusClient.dylib", RTLD_LAZY);
 
 	NSString *bundleIdentifier = [NSBundle mainBundle].bundleIdentifier;
+
 	if ([bundleIdentifier isEqualToString:@"com.apple.accessibility.AccessibilityUIServer"] || [bundleIdentifier isEqualToString:@"com.apple.SafariViewService"]) {
 		return;
-	}
-
-	if (!IN_SPRINGBOARD) {
-		distributedCenter = [[CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName] retain];
-		rocketbootstrap_distributedmessagingcenter_apply(distributedCenter);
 	}
 
 	%init;
