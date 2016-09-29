@@ -104,3 +104,14 @@ static CGSize const kHBTSStatusBarUnreadItemViewSize = (CGSize){13.f, 13.f};
 }
 
 %end
+
+%ctor {
+	// load libstatusbar
+	dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
+
+	// only %init this file if it's installed, or UIStatusBarCustomItemView
+	// won't exist and things will crash
+	if (%c(LSStatusBarItem)) {
+		%init;
+	}
+}
