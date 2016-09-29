@@ -85,8 +85,9 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 #pragma mark - Constructor
 
 %ctor {
-	// make sure typestatus free is loaded before we do anything
+	// make sure typestatus free and plus client are loaded before we do anything
 	dlopen("/Library/MobileSubstrate/DynamicLibraries/TypeStatus.dylib", RTLD_LAZY);
+	dlopen("/Library/MobileSubstrate/DynamicLibraries/TypeStatusPlusClient.dylib", RTLD_LAZY);
 
 	// initialise our singleton classes
 	[HBTSPlusServer sharedInstance];
