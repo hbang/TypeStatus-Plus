@@ -11,7 +11,7 @@
 	if (self) {
 		// set defaults for things that don’t have a nil default
 		_boldRange = NSMakeRange(0, 0);
-		_date = [[NSDate alloc] init];
+		_date = [NSDate date];
 	}
 
 	return self;
@@ -23,7 +23,6 @@
 	if (self) {
 		_content = [%c(HBTSStatusBarAlertServer) textForType:(HBTSStatusBarType)type sender:sender boldRange:&_boldRange];
 		_statusBarIconName = iconName;
-		_date = [NSDate date];
 	}
 
 	return self;
@@ -39,9 +38,14 @@
 		_statusBarIconName = [dictionary[kHBTSPlusMessageIconNameKey] copy];
 
 		if (dictionary[kHBTSPlusDateKey]) {
-			_date = [NSDate dateWithTimeIntervalSince1970:((NSNumber *)dictionary[kHBTSPlusDateKey]).doubleValue];
-		} else {
-			_date = [NSDate date];
+			id date = dictionary[kHBTSPlusDateKey];
+
+			// TODO: i don’t think we ever transform it into a time interval???
+			if ([date isKindOfClass:NSNumber.class]) {
+				_date = [NSDate dateWithTimeIntervalSince1970:((NSNumber *)date).doubleValue];
+			} else if ([date isKindOfClass:NSDate.class]) {
+				_date = [date copy];
+			}
 		}
 
 		if (![dictionary[kHBTSPlusActionURLKey] isEqualToString:@""]) {
