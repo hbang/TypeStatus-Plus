@@ -107,13 +107,14 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 			return;
 		}
 
-		//
+		// get the notification type
 		HBTSStatusBarType type = ((NSNumber *)notification.userInfo[kHBTSMessageTypeKey]).unsignedIntegerValue;
 
+		// if it’s an ended notification, just clear all bulletins and return
+		// TODO: we should probably allow people to disable this?
 		if (type == HBTSStatusBarTypeTypingEnded) {
-			if ([HBTSPlusStateHelper shouldShowBanner]) {
-				[[HBTSPlusBulletinProvider sharedInstance] clearAllBulletins];
-			}
+			[[HBTSPlusBulletinProvider sharedInstance] clearAllBulletins];
+			return;
 		}
 
 		NSString *content = notification.userInfo[kHBTSMessageContentKey];
