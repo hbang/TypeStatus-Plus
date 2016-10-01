@@ -28,11 +28,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showNotification:(HBTSNotification *)notification;
 
 /**
- * @deprecated Use showNotification: instead.
- */
-- (void)showNotificationWithIconName:(NSString *)iconName title:(NSString *)title content:(NSString *)content;
-
-/**
  * TODO: Document
  */
 - (void)hideNotification;
