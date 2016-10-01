@@ -40,7 +40,8 @@
 		if (dictionary[kHBTSPlusDateKey]) {
 			id date = dictionary[kHBTSPlusDateKey];
 
-			// TODO: i don’t think we ever transform it into a time interval???
+			// the date will be serialized to an NSNumber if it’s sent in an IPC
+			// message
 			if ([date isKindOfClass:NSNumber.class]) {
 				_date = [NSDate dateWithTimeIntervalSince1970:((NSNumber *)date).doubleValue];
 			} else if ([date isKindOfClass:NSDate.class]) {
