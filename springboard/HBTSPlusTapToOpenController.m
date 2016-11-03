@@ -18,7 +18,7 @@
 
 - (instancetype)init {
 	if (self = [super init]) {
-		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(newMessageRecieved:) name:HBTSSpringBoardReceivedMessageNotification object:nil];
+		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(newMessageRecieved:) name:HBTSPlusReceiveRelayNotification object:nil];
 	}
 	return self;
 }
