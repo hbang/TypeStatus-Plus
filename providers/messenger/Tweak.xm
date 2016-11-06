@@ -7,13 +7,14 @@
 
 @interface MNMessagesSyncThreadKey : NSObject
 
-@property (nonatomic, getter=otherUserFbId, setter=setOtherUserFbId:) long long otherUserFbId;
+@property (nonatomic) long long otherUserFbId;
 
 @end
 
 @interface MNMessagesSyncDeltaReadReceipt : NSObject
 
-@property (retain, nonatomic, getter=threadKey, setter=setThreadKey:) MNMessagesSyncThreadKey *threadKey;
+@property (nonatomic) long long actorFbId;
+@property (retain, nonatomic) MNMessagesSyncThreadKey *threadKey;
 
 @end
 
@@ -35,7 +36,7 @@
 
 @end
 
-@interface FBMUserFetcher
+@interface FBMUserFetcher : NSObject
 
 - (instancetype)initWithProviderMapData:(FBProviderMap *)providerMap;
 
@@ -83,14 +84,13 @@ typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(NSString *display
 }
 
 - (void)fetcher:(FBMUserFetcher *)fetcher couldNotFetchUser:(NSError *)error {
-	HBLogError(@"The error trying to retrieve the display name is %@", error);
+	HBLogError(@"error getting user display name: %@", error);
 }
 
 @end
 
 %ctor {
 	[[NSNotificationCenter defaultCenter] addObserverForName:OrcaAppReceivedTyping object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
-
 		NSDictionary *userInfo = notification.userInfo;
 		NSString *senderID = userInfo[kMessengerSenderFBIDKey];
 		BOOL state = [userInfo[kMessengerStateKey] boolValue];
@@ -118,7 +118,7 @@ typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(NSString *display
 	%orig;
 
 	MNMessagesSyncThreadKey *threadKey = readReceipt.threadKey;
-	long long userId = threadKey.otherUserFbId;
+	long long userId = threadKey.otherUserFbId ?: readReceipt.actorFbId;
 	NSString *userIdString = [NSString stringWithFormat:@"%llu", userId];
 
 	HBTSPlusMessengerProviderHelper *helper = [[HBTSPlusMessengerProviderHelper alloc] init];
