@@ -1,4 +1,4 @@
-INSTALL_TARGET_PROCESSES = Messenger Music Skype Slack Snapchat Telegram WhatsApp
+INSTALL_TARGET_PROCESSES = Messenger Music Skype Slack Snapchat Telegram Twitter WhatsApp
 
 include $(THEOS)/makefiles/common.mk
 
