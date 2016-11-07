@@ -44,9 +44,8 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 	// set the bulletin id, which is just a UUID
 	bulletinRequest.bulletinID = [NSUUID UUID].UUIDString;
 
-	if (!preferences.keepAllBulletins) {
-		bulletinRequest.recordID = @"ws.hbang.typestatusplus.notification";
-	}
+	// set the record id based on the keep all bulletins setting
+	bulletinRequest.recordID = preferences.keepAllBulletins ? @"ws.hbang.typestatusplus.notification" : bulletinRequest.bulletinID;
 
 	// set the section id according to the user’s settings
 	_currentAppIdentifier = [preferences.useAppIcon ? notification.sourceBundleID : kHBTSPlusAppIdentifier copy];
