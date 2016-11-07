@@ -141,13 +141,14 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 			// grab this from the notification
 			NSString *appIdentifier = receivedNotification.sourceBundleID;
 
-			// if this is a messages notification
-			if ([appIdentifier isEqualToString:@"com.apple.MobileSMS"]) {
-				// pass it over with the specific logic for messages bulletins
-				[[HBTSPlusBulletinProvider sharedInstance] showMessagesBulletinWithContent:content];
-			} else {
+			// if this is a messages notification (just guessing based on whether the
+			// sourceBundleID is nil)
+			if (appIdentifier) {
 				// pass over the notification and show it
 				[[HBTSPlusBulletinProvider sharedInstance] showBulletinForNotification:receivedNotification];
+			} else {
+				// pass it over with the specific logic for messages bulletins
+				[[HBTSPlusBulletinProvider sharedInstance] showMessagesBulletinWithContent:content];
 			}
 		}
 	}];

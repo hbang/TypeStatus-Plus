@@ -42,7 +42,7 @@
 }
 
 - (NSDictionary *)receivedSetStatusBarMessage:(NSString *)message withUserInfo:(NSDictionary *)userInfo {
-	HBLogDebug(@"Recieved set message on server side.");
+	HBLogDebug(@"Received set message on server side.");
 
 	// deserialize to an HBTSNotification
 	HBTSNotification *notification = [[HBTSNotification alloc] initWithDictionary:userInfo];
@@ -63,16 +63,11 @@
 	// if we’re disabled, or we’re in the foreground and the user doesn’t want
 	// foreground notifications, return
 	if (!enabled || (inForeground && ![[%c(HBTSPlusPreferences) sharedInstance] showWhenInForeground])) {
-		return nil;
+		return;
 	}
 
 	// send it to typestatus
 	[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:notification.statusBarIconName text:notification.content boldRange:notification.boldRange animatingInDirection:YES timeout:-1];
-
-	// show as a banner if desired
-	if ([HBTSPlusStateHelper shouldShowBanner]) {
-		[[HBTSPlusBulletinProvider sharedInstance] showBulletinForNotification:notification];
-	}
 
 	return nil;
 }
