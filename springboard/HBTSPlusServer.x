@@ -47,6 +47,9 @@
 	// deserialize to an HBTSNotification
 	HBTSNotification *notification = [[HBTSNotification alloc] initWithDictionary:userInfo];
 
+	// crash if we don’t have a source bundle id
+	NSParameterAssert(notification.sourceBundleID);
+
 	// give the tap to open controller context
 	HBTSPlusTapToOpenController *tapToOpenController = [HBTSPlusTapToOpenController sharedInstance];
 	tapToOpenController.appIdentifier = notification.sourceBundleID;
@@ -63,7 +66,7 @@
 	// if we’re disabled, or we’re in the foreground and the user doesn’t want
 	// foreground notifications, return
 	if (!enabled || (inForeground && ![[%c(HBTSPlusPreferences) sharedInstance] showWhenInForeground])) {
-		return;
+		return nil;
 	}
 
 	// send it to typestatus
