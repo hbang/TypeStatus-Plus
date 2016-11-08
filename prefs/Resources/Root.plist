@@ -62,21 +62,7 @@
 			<key>icon</key>
 			<string>notif.png</string>
 			<key>label</key>
-			<string>BANNERS</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSLinkCell</string>
-			<key>detail</key>
-			<string>HBTSPlusVibrationsListController</string>
-			<key>icon</key>
-			<string>haptic.png</string>
-			<key>label</key>
-			<string>VIBRATIONS</string>
-			<key>requiredCapabilities</key>
-			<array>
-				<string>ringer-switch</string>
-			</array>
+			<string>ALERTS</string>
 		</dict>
 		<dict>
 			<key>cell</key>

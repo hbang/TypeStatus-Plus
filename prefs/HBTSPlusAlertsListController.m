@@ -1,10 +1,10 @@
-#import "HBTSPlusBannersListController.h"
+#import "HBTSPlusAlertsListController.h"
 #include <notify.h>
 
-@implementation HBTSPlusBannersListController
+@implementation HBTSPlusAlertsListController
 
 + (NSString *)hb_specifierPlist {
-	return @"Banners";
+	return @"Alerts";
 }
 
 #pragma mark - Callbacks

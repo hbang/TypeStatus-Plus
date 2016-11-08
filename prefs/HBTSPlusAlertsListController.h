@@ -1,5 +1,5 @@
 #import <CepheiPrefs/HBListController.h>
 
-@interface HBTSPlusBannersListController : HBListController
+@interface HBTSPlusAlertsListController : HBListController
 
 @end
