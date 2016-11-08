@@ -6,6 +6,10 @@
 	<key>ALERTS</key>
 	<string>Tiêu Đề</string>
 
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Rung Động</string>
+
 	<!-- Header for banner show options. -->
 	<key>SHOW</key>
 	<string>Cho thấy…</string>

@@ -6,6 +6,10 @@
 	<key>ALERTS</key>
 	<string>배너</string>
 
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>진동</string>
+
 	<!-- Header for banner show options. -->
 	<key>SHOW</key>
 	<string>보기…</string>

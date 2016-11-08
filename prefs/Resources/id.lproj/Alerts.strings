@@ -6,6 +6,10 @@
 	<key>ALERTS</key>
 	<string>Spanduk Notifikasi</string>
 
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Getaran</string>
+
 	<!-- Header for banner show options. -->
 	<key>SHOW</key>
 	<string>Perlihatkan</string>

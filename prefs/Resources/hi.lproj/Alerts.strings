@@ -6,6 +6,10 @@
 	<key>ALERTS</key>
 	<string>बैनर</string>
 
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>कंपन</string>
+
 	<!-- Header for banner show options. -->
 	<key>SHOW</key>
 	<string>दिखाना…</string>

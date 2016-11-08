@@ -58,7 +58,7 @@
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>detail</key>
-			<string>HBTSPlusBannersListController</string>
+			<string>HBTSPlusAlertsListController</string>
 			<key>icon</key>
 			<string>notif.png</string>
 			<key>label</key>

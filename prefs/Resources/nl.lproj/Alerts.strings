@@ -6,6 +6,10 @@
 	<key>ALERTS</key>
 	<string>Stroken</string>
 
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Trillingen</string>
+
 	<!-- Header for banner show options. -->
 	<key>SHOW</key>
 	<string>Toon…</string>

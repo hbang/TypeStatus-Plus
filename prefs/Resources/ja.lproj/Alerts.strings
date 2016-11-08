@@ -6,6 +6,10 @@
 	<key>ALERTS</key>
 	<string>バナー</string>
 
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>振動</string>
+
 	<!-- Header for banner show options. -->
 	<key>SHOW</key>
 	<string>ショー..</string>

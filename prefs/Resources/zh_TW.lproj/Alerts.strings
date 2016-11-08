@@ -5,6 +5,10 @@
 	<!-- Title. -->
 	<key>ALERTS</key>
 	<string>通知橫幅</string>
+	
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>震動</string>
 
 	<!-- Header for banner show options. -->
 	<key>SHOW</key>

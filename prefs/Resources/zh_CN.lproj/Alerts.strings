@@ -6,6 +6,10 @@
 	<key>ALERTS</key>
 	<string>通知横幅</string>
 
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>震动</string>
+
 	<!-- Header for banner show options. -->
 	<key>SHOW</key>
 	<string>显示位置</string>

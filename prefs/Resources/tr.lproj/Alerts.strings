@@ -6,6 +6,10 @@
 	<key>ALERTS</key>
 	<string>Semboller</string>
 
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Titreşimler</string>
+
 	<!-- Header for banner show options. -->
 	<key>SHOW</key>
 	<string>Göster…</string>

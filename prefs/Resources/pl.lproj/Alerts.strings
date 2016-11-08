@@ -6,6 +6,10 @@
 	<key>ALERTS</key>
 	<string>Banery</string>
 
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Wibracje</string>
+
 	<!-- Header for banner show options. -->
 	<key>SHOW</key>
 	<string>Wyświetl…</string>

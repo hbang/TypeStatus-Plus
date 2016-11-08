@@ -6,6 +6,10 @@
 	<key>ALERTS</key>
 	<string>Bannerek</string>
 
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Rezgesek</string>
+
 	<!-- Header for banner show options. -->
 	<key>SHOW</key>
 	<string>Mutasd...</string>

@@ -22,6 +22,10 @@
 	<key>ALERT_TYPE_OVERLAY</key>
 	<string>Status Bar</string>
 
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Vibrations</string>
+
 	<!-- Header for notification center options. -->
 	<key>NOTIFICATION_CENTER</key>
 	<string>Notification Center</string>
@@ -63,3 +67,7 @@
 	<string>Test Alert</string>
 </dict>
 </plist>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Vibrations</string>
