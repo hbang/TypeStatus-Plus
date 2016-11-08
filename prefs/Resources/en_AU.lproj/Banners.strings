@@ -48,7 +48,7 @@
 
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
-	<string>Show all TypeStatus alerts in the notification centre and lock screen, or only show the latest.</string>
+	<string>Show all TypeStatus alerts in the Notification Centre and lock screen, or only show the latest.</string>
 
 	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
 	<key>USE_APP_ICON</key>
@@ -57,5 +57,9 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>When enabled, banner notifications will use the respective app icon instead of the TypeStatus Plus icon.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Test Alert</string>
 </dict>
 </plist>
