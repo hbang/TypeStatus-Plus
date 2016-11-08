@@ -4,15 +4,35 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>באנרים</string>
+	<string>התראות</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>סוג התראה</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>ההגדרה לעיל חלה רק על התראות המסופקות מ-TypeStatus Plus.</string>
+
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>כבוי</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>אייקון בלבד</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>שורת המצב</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
-	<string>רטטים</string>
+	<string>רטט</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>הצג...</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>מרכז העדכונים</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>התראות במרכז העדכונים רומסות התראות רגילות של TypeStatus.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +61,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>כאשר דלוק, התראות באנר ישתמשו באייקון של האפליקציה המתאימה במקום באייקון של TypeStatus Plus.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>התראה לבדיקה</string>
 </dict>
 </plist>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>רטט</string>
