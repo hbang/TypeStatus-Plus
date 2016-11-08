@@ -70,7 +70,7 @@
 	}
 
 	// send it to typestatus
-	[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:notification.statusBarIconName text:notification.content boldRange:notification.boldRange animatingInDirection:YES timeout:-1];
+	[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:notification.statusBarIconName text:notification.content boldRange:notification.boldRange animatingInDirection:YES timeout:-1 source:notification.sourceBundleID];
 
 	return nil;
 }

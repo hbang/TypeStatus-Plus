@@ -1,6 +1,17 @@
 #import "HBTSNotification.h"
 #import "../typestatus-private/HBTSStatusBarAlertServer.h"
 
+static NSString *const kHBTSMessageIconNameKey = @"IconName";
+static NSString *const kHBTSMessageContentKey = @"Content";
+static NSString *const kHBTSMessageBoldRangeKey = @"BoldRange";
+static NSString *const kHBTSMessageDirectionKey = @"Direction";
+static NSString *const kHBTSMessageSourceKey = @"Source";
+
+static NSString *const kHBTSMessageTimeoutKey = @"Duration";
+static NSString *const kHBTSMessageSendDateKey = @"Date";
+
+static NSString *const kHBTSPlusActionURLKey = @"ActionURL";
+
 @implementation HBTSNotification
 
 #pragma mark - NSObject
@@ -17,11 +28,11 @@
 	return self;
 }
 
-- (instancetype)initWithType:(HBTSNotificationType)type sender:(NSString *)sender iconName:(NSString *)iconName {
+- (instancetype)initWithType:(HBTSMessageType)type sender:(NSString *)sender iconName:(NSString *)iconName {
 	self = [self init];
 
 	if (self) {
-		_content = [%c(HBTSStatusBarAlertServer) textForType:(HBTSStatusBarType)type sender:sender boldRange:&_boldRange];
+		_content = [%c(HBTSStatusBarAlertServer) textForType:type sender:sender boldRange:&_boldRange];
 		_statusBarIconName = iconName;
 	}
 
@@ -33,12 +44,12 @@
 
 	if (self) {
 		// deserialise the easy stuff
-		_sourceBundleID = [dictionary[kHBTSPlusAppIdentifierKey] copy];
-		_content = [dictionary[kHBTSPlusMessageContentKey] copy];
-		_statusBarIconName = [dictionary[kHBTSPlusMessageIconNameKey] copy];
+		_sourceBundleID = [dictionary[kHBTSMessageSourceKey] copy];
+		_content = [dictionary[kHBTSMessageContentKey] copy];
+		_statusBarIconName = [dictionary[kHBTSMessageIconNameKey] copy];
 
-		if (dictionary[kHBTSPlusDateKey]) {
-			id date = dictionary[kHBTSPlusDateKey];
+		if (dictionary[kHBTSMessageSendDateKey]) {
+			id date = dictionary[kHBTSMessageSendDateKey];
 
 			// the date will be serialized to an NSNumber if it’s sent in an IPC
 			// message
@@ -83,11 +94,11 @@
 
 	// return serialized dictionary
 	return @{
-		kHBTSPlusAppIdentifierKey: _sourceBundleID,
-		kHBTSPlusMessageContentKey: content,
+		kHBTSMessageSourceKey: _sourceBundleID,
+		kHBTSMessageContentKey: content,
 		kHBTSMessageBoldRangeKey: @[ @(boldRange.location), @(boldRange.length) ],
-		kHBTSPlusMessageIconNameKey: _statusBarIconName ?: @"",
-		kHBTSPlusDateKey: @(_date.timeIntervalSince1970),
+		kHBTSMessageIconNameKey: _statusBarIconName ?: @"",
+		kHBTSMessageSendDateKey: @(_date.timeIntervalSince1970),
 		kHBTSPlusActionURLKey: _actionURL ? _actionURL.absoluteString : @""
 	};
 }

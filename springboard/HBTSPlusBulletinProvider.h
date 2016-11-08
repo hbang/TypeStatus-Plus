@@ -6,9 +6,7 @@
 
 + (instancetype)sharedInstance;
 
-- (void)showMessagesBulletinWithContent:(NSString *)content;
 - (void)showBulletinForNotification:(HBTSNotification *)notification;
-
 - (void)clearAllBulletins;
 
 @end

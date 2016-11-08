@@ -9,6 +9,7 @@
 #import <ChatKit/CKTypingIndicatorLayer.h>
 #import <Foundation/NSDistributedNotificationCenter.h>
 #import <IMFoundation/FZMessage.h>
+#import <TypeStatusPlusProvider/HBTSNotification.h>
 
 @interface CKConversationListCell ()
 
@@ -138,7 +139,7 @@
 
 %new - (void)_typeStatusPlus_receivedNotification:(NSNotification *)notification {
 	NSString *senderName = notification.userInfo[kHBTSMessageSenderKey];
-	HBTSStatusBarType type = (HBTSStatusBarType)((NSNumber *)notification.userInfo[kHBTSMessageTypeKey]).intValue;
+	HBTSMessageType type = (HBTSMessageType)((NSNumber *)notification.userInfo[kHBTSMessageTypeKey]).intValue;
 
 	HBTSPlusMessagesTypingManager *typingManager = [HBTSPlusMessagesTypingManager sharedInstance];
 
@@ -153,15 +154,15 @@
 		if (conversation && [conversation.name isEqualToString:[[HBTSPlusMessagesTypingManager sharedInstance] nameForHandle:senderName]]) {
 			// add or remove it from the list accordingly
 			switch (type) {
-				case HBTSStatusBarTypeTyping:
+				case HBTSMessageTypeTyping:
 					[typingManager addConversation:conversation];
 					break;
 
-				case HBTSStatusBarTypeTypingEnded:
+				case HBTSMessageTypeTypingEnded:
 					[typingManager removeConversation:conversation];
 					break;
 
-				case HBTSStatusBarTypeRead:
+				case HBTSMessageTypeReadReceipt:
 					break;
 			}
 

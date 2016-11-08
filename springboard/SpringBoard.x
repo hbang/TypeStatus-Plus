@@ -74,9 +74,6 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 
 - (void)receivedRelayedNotification:(NSDictionary *)userInfo {
 	%orig;
-
-	HBLogDebug(@"received relayed notification");
-
 	[[NSDistributedNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:HBTSPlusReceiveRelayNotification object:nil userInfo:userInfo]];
 }
 
@@ -101,25 +98,25 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 	}];
 
 	// when a set status bar notification is sent by typestatus free
-	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
+	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *nsNotification) {
 		// not enabled? don’t do anything
 		if (!preferences.enabled) {
 			return;
 		}
 
 		// get the notification type
-		HBTSStatusBarType type = ((NSNumber *)notification.userInfo[kHBTSMessageTypeKey]).unsignedIntegerValue;
+		HBTSMessageType type = ((NSNumber *)nsNotification.userInfo[kHBTSMessageTypeKey]).unsignedIntegerValue;
 
 		// if it’s an ended notification, just clear all bulletins and return
-		if (type == HBTSStatusBarTypeTypingEnded && !preferences.keepAllBulletins) {
+		if (type == HBTSMessageTypeTypingEnded && !preferences.keepAllBulletins) {
 			[[HBTSPlusBulletinProvider sharedInstance] clearAllBulletins];
 			return;
 		}
 
-		NSString *content = notification.userInfo[kHBTSMessageContentKey];
+		HBTSNotification *notification = [[HBTSNotification alloc] initWithDictionary:nsNotification.userInfo];
 
 		// right off the bat, if there’s no title or content, stop right there.
-		if (!content || [content isEqualToString:@""]) {
+		if (!notification.content || [notification.content isEqualToString:@""]) {
 			return;
 		}
 
@@ -131,9 +128,6 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 				@"Intensity": @1
 			});
 		}
-
-		// create a typestatus plus notification object from the user info
-		HBTSNotification *receivedNotification = [[HBTSNotification alloc] initWithDictionary:notification.userInfo];
 
 		// if the user wants a banner, let’s do that too
 		if ([HBTSPlusStateHelper shouldShowBanner]) {

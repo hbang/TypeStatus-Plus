@@ -26,14 +26,6 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 	return sharedInstance;
 }
 
-- (void)showMessagesBulletinWithContent:(NSString *)content {
-	// construct a notification and pass it over to the main method
-	HBTSNotification *notification = [[HBTSNotification alloc] init];
-	notification.sourceBundleID = @"com.apple.MobileSMS";
-	notification.content = content;
-	[self showBulletinForNotification:notification];
-}
-
 - (void)showBulletinForNotification:(HBTSNotification *)notification {
 	HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
 

@@ -3,9 +3,10 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * TODO: Document
  */
-typedef NS_ENUM(NSUInteger, HBTSNotificationType) {
-	HBTSNotificationTypeTyping,
-	HBTSNotificationTypeRead = 2
+typedef NS_ENUM(NSUInteger, HBTSMessageType) {
+	HBTSMessageTypeTyping,
+	HBTSMessageTypeTypingEnded,
+	HBTSMessageTypeReadReceipt
 };
 
 /**
@@ -46,7 +47,7 @@ typedef NS_ENUM(NSUInteger, HBTSNotificationType) {
 /**
  * TODO: Document
  */
-- (instancetype)initWithType:(HBTSNotificationType)type sender:(NSString *)sender iconName:(NSString *)iconName;
+- (instancetype)initWithType:(HBTSMessageType)type sender:(NSString *)sender iconName:(NSString *)iconName;
 
 /**
  * TODO: Document
