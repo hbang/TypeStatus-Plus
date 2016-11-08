@@ -4,15 +4,35 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Баннери</string>
+	<string>Сповіщення</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Тип сповіщення</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>Налаштування вище стосуються лише сповіщень від провайдерів TypeStatus Plus.</string>
+
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Вимкнено</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Лише значок</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Панель статусу</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Вібрації</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Показувати…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Центр Сповіщень</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Повідомлення Центру Сповіщень перевизначають стандартні повідомлення TypeStatus.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +61,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Якщо ввімкнено, сповіщення у баннерах будуть використовувати зображення відповідної програми замість зображення TypeStatus Plus.</string>
+	
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Пробне Сповіщення</string>
 </dict>
 </plist>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Вібрації</string>
