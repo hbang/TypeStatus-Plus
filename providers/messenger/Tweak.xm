@@ -100,7 +100,7 @@ typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(NSString *display
 			[helper _userDisplayNameForId:senderID completionBlock:^(NSString *displayName) {
 				HBTSPlusProvider *messengerProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.facebook.Messenger"];
 
-				HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeTyping sender:displayName iconName:@"TypeStatusPlusMessenger"] autorelease];
+				HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:displayName iconName:@"TypeStatusPlusMessenger"] autorelease];
 				[messengerProvider showNotification:notification];
 			}];
 		} else {
@@ -125,7 +125,7 @@ typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(NSString *display
 	[helper _userDisplayNameForId:userIdString completionBlock:^(NSString *displayName) {
 		HBTSPlusProvider *messengerProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.facebook.Messenger"];
 
-		HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeRead sender:displayName iconName:@"TypeStatusPlusMessenger"] autorelease];
+		HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSMessageTypeReadReceipt sender:displayName iconName:@"TypeStatusPlusMessenger"] autorelease];
 		[messengerProvider showNotification:notification];
 	}];
 

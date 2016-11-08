@@ -87,7 +87,7 @@ NSString *nameFromJID(NSString *jid) {
 				NSString *name = nameFromJID(jid);
 
 				HBTSPlusProvider *whatsAppProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"net.whatsapp.WhatsApp"];
-				HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeRead sender:name iconName:@"TypeStatusPlusWhatsApp"] autorelease];
+				HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSMessageTypeReadReceipt sender:name iconName:@"TypeStatusPlusWhatsApp"] autorelease];
 				[whatsAppProvider showNotification:notification];
 			}
 		}
@@ -103,7 +103,7 @@ NSString *nameFromJID(NSString *jid) {
 			NSString *name = nameFromJID(userInfo[@"JID"]);
 
 			HBTSPlusProvider *whatsAppProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"net.whatsapp.WhatsApp"];
-			HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeTyping sender:name iconName:@"TypeStatusPlusWhatsApp"] autorelease];
+			HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:name iconName:@"TypeStatusPlusWhatsApp"] autorelease];
 			[whatsAppProvider showNotification:notification];
 		} else if (state == 0) {
 			[whatsAppProvider hideNotification];

@@ -13,7 +13,7 @@ NSBundle *bundle;
 
 		if ([type isEqualToString:@"typing"]) {
 			// typing
-			HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeTyping sender:message.userInfo[@"sender"] iconName:@"TypeStatusPlusSnapchat"] autorelease];
+			HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:message.userInfo[@"sender"] iconName:@"TypeStatusPlusSnapchat"] autorelease];
 
 			HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.toyopagroup.picaboo"];
 			[provider showNotification:notification];

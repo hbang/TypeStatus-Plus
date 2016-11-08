@@ -75,7 +75,7 @@
 		TGUser *user = [userController valueForKey:@"_user"];
 		NSString *userDisplayName = [user displayName];
 
-		HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeTyping sender:userDisplayName iconName:@"TypeStatusPlusTelegram"] autorelease];
+		HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:userDisplayName iconName:@"TypeStatusPlusTelegram"] autorelease];
 		[telegramProvider showNotification:notification];
 	} else if ([original isKindOfClass:%c(TLUpdates$updates)]) {
 		TLUpdates$updates *update = (TLUpdates$updates *)original;
@@ -94,7 +94,7 @@
 				TGUser *user = [userController valueForKey:@"_user"];
 				NSString *userDisplayName = [user displayName];
 
-				HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeRead sender:userDisplayName iconName:@"TypeStatusPlusTelegram"] autorelease];
+				HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSMessageTypeReadReceipt sender:userDisplayName iconName:@"TypeStatusPlusTelegram"] autorelease];
 				[telegramProvider showNotification:notification];
 			}
 		}

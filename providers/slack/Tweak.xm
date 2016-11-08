@@ -43,7 +43,7 @@
 			sender = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"SENDER_IN_CHANNEL", @"Localizable", bundle, @"String used in the status bar for messages sent in a channel. “Typing: kirb in #general”"), user.displayName, channel.displayTitle];
 		}
 
-		HBTSNotification *tsNotification = [[[HBTSNotification alloc] initWithType:HBTSNotificationTypeTyping sender:sender iconName:@"TypeStatusPlusSlack"] autorelease];
+		HBTSNotification *tsNotification = [[[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:sender iconName:@"TypeStatusPlusSlack"] autorelease];
 		[slackProvider showNotification:tsNotification];
 	}];
 }
