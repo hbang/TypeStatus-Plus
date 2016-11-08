@@ -91,8 +91,6 @@
 			<string>UseAppIcon</string>
 			<key>label</key>
 			<string>USE_APP_ICON</string>
-			<key>icon</key>
-			<string>bannericon.png</string>
 			<key>PostNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
 		</dict>
