@@ -4,11 +4,31 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Banners</string>
+	<string>Alerts</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Show…</string>
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Alert Type</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>The above applies only to notifications from TypeStatus Plus providers.</string>
+
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Off</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Icon Only</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Status Bar</string>
+
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Notification Center</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Notification Center alerts override standard TypeStatus alerts.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -37,5 +57,9 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>When enabled, banner notifications will use the respective app icon instead of the TypeStatus Plus icon.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Test Alert</string>
 </dict>
 </plist>

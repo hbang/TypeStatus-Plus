@@ -2,15 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<!-- Button leading to sub-section of the settings. -->
+	<!-- Default text for sharing the tweak. -->
+	<key>SHARE_TEXT</key>
+	<string>Check out TypeStatus Plus! 💬</string>
+
+	<!-- Button leading to providers sub-section of the settings. -->
 	<key>PROVIDERS</key>
 	<string>Providers</string>
 
-	<!-- Button leading to sub-section of the settings. -->
+	<!-- Button leading to alerts sub-section of the settings. -->
 	<key>ALERTS</key>
-	<string>Banners</string>
+	<string>Alerts</string>
 
-	<!-- Button leading to sub-section of the settings. -->
+	<!-- Button leading to vibrations sub-section of the settings. -->
 	<key>VIBRATIONS</key>
 	<string>Vibrations</string>
 </dict>
