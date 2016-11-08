@@ -18,6 +18,8 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>HBPackageIdentifier</key>
+	<string>ws.hbang.typestatusplus</string>
 	<key>NSPrincipalClass</key>
 	<string>HBTSPlusRootListController</string>
 </dict>
