@@ -7,7 +7,7 @@
 
 @interface WAMessageInfo : NSObject
 
-@property (nonatomic, retain) NSMutableArray *_typeStatusPlus_alreadyNotifiedReceipts;
+@property (nonatomic, retain) NSMutableSet *_typeStatusPlus_alreadyNotifiedReceipts;
 
 @property (nonatomic, copy, readonly) NSDictionary *allReadReceipts;
 
@@ -47,11 +47,11 @@
 
 %hook WAMessageInfo
 
-%property (nonatomic, retain) NSMutableArray *_typeStatusPlus_alreadyNotifiedReceipts;
+%property (nonatomic, retain) NSMutableSet *_typeStatusPlus_alreadyNotifiedReceipts;
 
 - (id)init {
 	if ((self = %orig)) {
-		self._typeStatusPlus_alreadyNotifiedReceipts = [[NSMutableArray alloc] init];
+		self._typeStatusPlus_alreadyNotifiedReceipts = [[NSMutableSet alloc] init];
 	}
 	return self;
 }
@@ -72,7 +72,7 @@ NSString *nameFromJID(NSString *jid) {
 }
 
 %ctor {
-	// for when someone reads a message
+	HBTSPlusProvider *whatsAppProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"net.whatsapp.WhatsApp"];
 
 	[[NSNotificationCenter defaultCenter] addObserverForName:ChatStorageDidUpdateChatSession object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
 		WAChatSession *chatSession = notification.userInfo[@"ChatSession"];
@@ -86,7 +86,6 @@ NSString *nameFromJID(NSString *jid) {
 				[messageInfo._typeStatusPlus_alreadyNotifiedReceipts addObject:jid];
 				NSString *name = nameFromJID(jid);
 
-				HBTSPlusProvider *whatsAppProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"net.whatsapp.WhatsApp"];
 				HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSMessageTypeReadReceipt sender:name iconName:@"TypeStatusPlusWhatsApp"] autorelease];
 				[whatsAppProvider showNotification:notification];
 			}
@@ -98,11 +97,10 @@ NSString *nameFromJID(NSString *jid) {
 	[[NSNotificationCenter defaultCenter] addObserverForName:XMPPConnectionChatStateDidChange object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
 		NSDictionary *userInfo = notification.userInfo;
 		NSInteger state = ((NSNumber *)userInfo[@"State"]).integerValue;
-		HBTSPlusProvider *whatsAppProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"net.whatsapp.WhatsApp"];
+
 		if (state == 1) {
 			NSString *name = nameFromJID(userInfo[@"JID"]);
 
-			HBTSPlusProvider *whatsAppProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"net.whatsapp.WhatsApp"];
 			HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:name iconName:@"TypeStatusPlusWhatsApp"] autorelease];
 			[whatsAppProvider showNotification:notification];
 		} else if (state == 0) {
