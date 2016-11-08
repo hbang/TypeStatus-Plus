@@ -39,6 +39,10 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>VIBRATIONS</string>
+			<key>requiredCapabilities</key>
+			<array>
+				<string>ringer-switch</string>
+			</array>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -53,6 +57,10 @@
 			<string>ON_LOCK_SCREEN</string>
 			<key>PostNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
+			<key>requiredCapabilities</key>
+			<array>
+				<string>ringer-switch</string>
+			</array>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -67,6 +75,10 @@
 			<string>ON_HOME_SCREEN</string>
 			<key>PostNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
+			<key>requiredCapabilities</key>
+			<array>
+				<string>ringer-switch</string>
+			</array>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -81,6 +93,10 @@
 			<string>IN_APPS</string>
 			<key>PostNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
+			<key>requiredCapabilities</key>
+			<array>
+				<string>ringer-switch</string>
+			</array>
 		</dict>
 		<dict>
 			<key>cell</key>
