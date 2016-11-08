@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>ALERTS</key>
+	<string>Tiras</string>
+
+	<!-- Header for banner show options. -->
+	<key>SHOW</key>
+	<string>Mostrar…</string>
+
+	<!-- Option to show banners on the lock screen. -->
+	<key>ON_LOCK_SCREEN</key>
+	<string>En la pantalla de bloqueo</string>
+
+	<!-- Option to show banners on the home screen. -->
+	<key>ON_HOME_SCREEN</key>
+	<string>En la pantalla de inicio</string>
+
+	<!-- Option to show banners in apps. -->
+	<key>IN_APPS</key>
+	<string>En las apps</string>
+
+	<!-- Switch to keep all notifications in the notification center. -->
+	<key>KEEP_ALL_BULLETINS</key>
+	<string>Mostrar todas</string>
+
+	<!-- Explanation of the keep all notifications switch. -->
+	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
+	<string>Mostrar todas las alertas de TypeStatus en la pantalla de bloqueo y el centro de notificaciones, o solamente las más recientes.</string>
+
+	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
+	<key>USE_APP_ICON</key>
+	<string>Usar iconas de apps</string>
+
+	<!-- Explanation of the respective app icon switch. -->
+	<key>USE_APP_ICON_EXPLANATION</key>
+	<string>Una vez activado, las notificaciones de tiras de TypeStatus usarán las iconas de sus aplicaciones respectivas.</string>
+</dict>
+</plist>

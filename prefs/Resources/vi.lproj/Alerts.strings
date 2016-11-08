@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>ALERTS</key>
+	<string>Tiêu Đề</string>
+
+	<!-- Header for banner show options. -->
+	<key>SHOW</key>
+	<string>Cho thấy…</string>
+
+	<!-- Option to show banners on the lock screen. -->
+	<key>ON_LOCK_SCREEN</key>
+	<string>Trên màn hình khoá</string>
+
+	<!-- Option to show banners on the home screen. -->
+	<key>ON_HOME_SCREEN</key>
+	<string>Trên màn hình chủ</string>
+
+	<!-- Option to show banners in apps. -->
+	<key>IN_APPS</key>
+	<string>Trong các ứng dụng</string>
+
+	<!-- Switch to keep all notifications in the notification center. -->
+	<key>KEEP_ALL_BULLETINS</key>
+	<string>Giữ hết tất cả các thông báo</string>
+
+	<!-- Explanation of the keep all notifications switch. -->
+	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
+	<string>Hiển thị tất cả các TypeStatus thông báo ở Trung Tâm Thông Báo và Màn Hình Khoá, hoặc chỉ hiển thị những thông báo mới nhất.</string>
+
+	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
+	<key>USE_APP_ICON</key>
+	<string>Sử dụng biểu tượng </string>
+
+	<!-- Explanation of the respective app icon switch. -->
+	<key>USE_APP_ICON_EXPLANATION</key>
+	<string>Khi được kích hoạt, các thông báo bằng tiêu đề sẽ sử dụng các biểu tượng của ứng dụng thay vì biểu tượng của TypeStatus Plus.</string>
+</dict>
+</plist>

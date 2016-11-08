@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>ALERTS</key>
+	<string>通知橫額</string>
+
+	<!-- Header for banner show options. -->
+	<key>SHOW</key>
+	<string>顯示位置</string>
+
+	<!-- Option to show banners on the lock screen. -->
+	<key>ON_LOCK_SCREEN</key>
+	<string>鎖定畫面</string>
+
+	<!-- Option to show banners on the home screen. -->
+	<key>ON_HOME_SCREEN</key>
+	<string>主畫面</string>
+
+	<!-- Option to show banners in apps. -->
+	<key>IN_APPS</key>
+	<string>App內</string>
+
+	<!-- Switch to keep all notifications in the notification center. -->
+	<key>KEEP_ALL_BULLETINS</key>
+	<string>保留所有通知</string>
+
+	<!-- Explanation of the keep all notifications switch. -->
+	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
+	<string>在通知中心和鎖定畫面顯示所有的 TypeStatus 提示，或只顯示最新的。</string>
+
+	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
+	<key>USE_APP_ICON</key>
+	<string>使用App自帶的圖標</string>
+
+	<!-- Explanation of the respective app icon switch. -->
+	<key>USE_APP_ICON_EXPLANATION</key>
+	<string>該選項開啟後，顯示橫額通知時會使用App自帶的圖示，而不使用 TypeStatus 的圖示。</string>
+</dict>
+</plist>

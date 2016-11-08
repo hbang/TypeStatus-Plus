@@ -7,7 +7,7 @@
 	<string>Sağlayıcılar</string>
 
 	<!-- Button leading to sub-section of the settings. -->
-	<key>BANNERS</key>
+	<key>ALERTS</key>
 	<string>Semboller</string>
 
 	<!-- Button leading to sub-section of the settings. -->

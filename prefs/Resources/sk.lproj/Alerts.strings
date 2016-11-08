@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>ALERTS</key>
+	<string>Bannery</string>
+
+	<!-- Header for banner show options. -->
+	<key>SHOW</key>
+	<string>Zobraziť…</string>
+
+	<!-- Option to show banners on the lock screen. -->
+	<key>ON_LOCK_SCREEN</key>
+	<string>Na zamknutú plochu</string>
+
+	<!-- Option to show banners on the home screen. -->
+	<key>ON_HOME_SCREEN</key>
+	<string>Na plochu</string>
+
+	<!-- Option to show banners in apps. -->
+	<key>IN_APPS</key>
+	<string>V aplikáciách</string>
+
+	<!-- Switch to keep all notifications in the notification center. -->
+	<key>KEEP_ALL_BULLETINS</key>
+	<string>Ponechať všetky upozornenia</string>
+
+	<!-- Explanation of the keep all notifications switch. -->
+	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
+	<string>Zobraziť všetky TypeStatus upozornenia v centre hlásení a zamknutej plcohe, alebo zobraziť len najnovšie.</string>
+
+	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
+	<key>USE_APP_ICON</key>
+	<string>Použiť ikonu príslušnej aplikácie</string>
+
+	<!-- Explanation of the respective app icon switch. -->
+	<key>USE_APP_ICON_EXPLANATION</key>
+	<string>Keď je zapnuté, bannerové upozornenia použijú ikonu aplikácie namiesto ikony TypeStatus Plus.</string>
+</dict>
+</plist>

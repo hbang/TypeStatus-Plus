@@ -7,7 +7,7 @@
 	<string>Providers</string>
 
 	<!-- Button leading to sub-section of the settings. -->
-	<key>BANNERS</key>
+	<key>ALERTS</key>
 	<string>通知横幅</string>
 
 	<!-- Button leading to sub-section of the settings. -->

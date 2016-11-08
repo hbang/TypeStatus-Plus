@@ -7,7 +7,7 @@
 	<string>Πάροχοι</string>
 
 	<!-- Button leading to sub-section of the settings. -->
-	<key>BANNERS</key>
+	<key>ALERTS</key>
 	<string>Μπάνερ</string>
 
 	<!-- Button leading to sub-section of the settings. -->

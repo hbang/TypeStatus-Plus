@@ -7,7 +7,7 @@
 	<string>ספקים</string>
 
 	<!-- Button leading to sub-section of the settings. -->
-	<key>BANNERS</key>
+	<key>ALERTS</key>
 	<string>באנרים</string>
 
 	<!-- Button leading to sub-section of the settings. -->

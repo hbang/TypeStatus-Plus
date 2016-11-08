@@ -7,7 +7,7 @@
 	<string>Pembekal</string>
 
 	<!-- Button leading to sub-section of the settings. -->
-	<key>BANNERS</key>
+	<key>ALERTS</key>
 	<string>Banner</string>
 
 	<!-- Button leading to sub-section of the settings. -->

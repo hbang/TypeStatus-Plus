@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title. -->
+	<key>ALERTS</key>
+	<string>Banery</string>
+
+	<!-- Header for banner show options. -->
+	<key>SHOW</key>
+	<string>Wyświetl…</string>
+
+	<!-- Option to show banners on the lock screen. -->
+	<key>ON_LOCK_SCREEN</key>
+	<string>Na zablokowanym ekranie</string>
+
+	<!-- Option to show banners on the home screen. -->
+	<key>ON_HOME_SCREEN</key>
+	<string>Na ekranie głównym</string>
+
+	<!-- Option to show banners in apps. -->
+	<key>IN_APPS</key>
+	<string>Podczas działania aplikacji</string>
+
+	<!-- Switch to keep all notifications in the notification center. -->
+	<key>KEEP_ALL_BULLETINS</key>
+	<string>Zachowaj wszystkie powiadomienia</string>
+
+	<!-- Explanation of the keep all notifications switch. -->
+	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
+	<string>Wyświetla wszystkie powiadomienia TypeStatus w Centrum Powiadomień i na zablokowanym ekranie lub pokazuje najnowsze.</string>
+
+	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
+	<key>USE_APP_ICON</key>
+	<string>Użyj charakterystycznej dla aplikacji ikony</string>
+
+	<!-- Explanation of the respective app icon switch. -->
+	<key>USE_APP_ICON_EXPLANATION</key>
+	<string>Po włączeniu, banery z powiadomieniami będą mieć ikonę danej aplikacji, a nie TypeStatus+.</string>
+</dict>
+</plist>

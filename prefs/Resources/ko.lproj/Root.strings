@@ -7,7 +7,7 @@
 	<string>프로바이더</string>
 
 	<!-- Button leading to sub-section of the settings. -->
-	<key>BANNERS</key>
+	<key>ALERTS</key>
 	<string>배너</string>
 
 	<!-- Button leading to sub-section of the settings. -->

@@ -7,7 +7,7 @@
 	<string>Les fournisseurs</string>
 
 	<!-- Button leading to sub-section of the settings. -->
-	<key>BANNERS</key>
+	<key>ALERTS</key>
 	<string>Bannières</string>
 
 	<!-- Button leading to sub-section of the settings. -->
