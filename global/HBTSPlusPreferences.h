@@ -1,16 +1,20 @@
 #import <Cephei/HBPreferences.h>
 
+typedef NS_ENUM(NSUInteger, HBTSPlusAlertType) {
+	HBTSPlusAlertTypeIcon,
+	HBTSPlusAlertTypeOverlay
+};
+
 @interface HBTSPlusPreferences : NSObject
 
 @property (nonatomic, readonly) BOOL enabled;
 
 @property (nonatomic, readonly) BOOL showUnreadCount, showWhenInForeground;
-
 @property (nonatomic, readonly) BOOL keepAllBulletins, useAppIcon;
-
 @property (nonatomic, readonly) BOOL showBannersOnLockScreen, showBannersOnHomeScreen, showBannersInApps;
-
 @property (nonatomic, readonly) BOOL vibrateOnLockScreen, vibrateOnHomeScreen, vibrateInApps;
+
+@property (nonatomic, readonly) HBTSPlusAlertType alertType;
 
 + (instancetype)sharedInstance;
 

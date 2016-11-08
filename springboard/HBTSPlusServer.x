@@ -1,11 +1,9 @@
 #import "HBTSPlusServer.h"
-#import "HBTSPlusBulletinProvider.h"
+#import "HBTSPlusAlertController.h"
 #import "HBTSPlusPreferences.h"
 #import "HBTSPlusStateHelper.h"
 #import "HBTSPlusTapToOpenController.h"
 #import "../api/HBTSNotification.h"
-#import "../api/HBTSPlusProviderController.h"
-#import "../typestatus-private/HBTSStatusBarAlertServer.h"
 #import <AppSupport/CPDistributedMessagingCenter.h>
 #import <SpringBoard/SpringBoard.h>
 #import <SpringBoard/SBApplicationController.h>
@@ -47,30 +45,8 @@
 	// deserialize to an HBTSNotification
 	HBTSNotification *notification = [[HBTSNotification alloc] initWithDictionary:userInfo];
 
-	// crash if we don’t have a source bundle id
-	NSParameterAssert(notification.sourceBundleID);
-
-	// give the tap to open controller context
-	HBTSPlusTapToOpenController *tapToOpenController = [HBTSPlusTapToOpenController sharedInstance];
-	tapToOpenController.appIdentifier = notification.sourceBundleID;
-	tapToOpenController.actionURL = notification.actionURL;
-
-	// get the enabled state of the provider
-	HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:notification.sourceBundleID];
-	BOOL enabled = [[HBTSPlusProviderController sharedInstance] providerIsEnabled:provider];
-
-	// determine whether the app is in the foreground
-	SpringBoard *app = (SpringBoard *)[UIApplication sharedApplication];
-	BOOL inForeground = [app._accessibilityFrontMostApplication.bundleIdentifier isEqualToString:notification.sourceBundleID];
-
-	// if we’re disabled, or we’re in the foreground and the user doesn’t want
-	// foreground notifications, return
-	if (!enabled || (inForeground && ![[%c(HBTSPlusPreferences) sharedInstance] showWhenInForeground])) {
-		return nil;
-	}
-
-	// send it to typestatus
-	[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:notification.statusBarIconName text:notification.content boldRange:notification.boldRange source:notification.sourceBundleID timeout:-1];
+	// hand over to the alert controller
+	[HBTSPlusAlertController sendNotification:notification];
 
 	return nil;
 }
@@ -78,7 +54,8 @@
 - (NSDictionary *)receivedHideStatusBarMessage:(NSString *)message {
 	HBLogDebug(@"Received hide message on server side.");
 
-	[%c(HBTSStatusBarAlertServer) hide];
+	// invoke a hide command
+	[HBTSPlusAlertController hide];
 
 	return nil;
 }
