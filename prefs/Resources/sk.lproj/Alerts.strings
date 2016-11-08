@@ -4,15 +4,35 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Bannery</string>
+	<string>Upozornenia</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Typy upozornení</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>Toto platí len pre upozornenia z TypeStatus Plus providerov.</string>
+
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Vypnuté</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Len ikona</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Stavová lišta</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Vibrácie</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Zobraziť…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Centrum hlásení</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Upozornenia centra hlásení ignorujú štandardné TypeStatus upozornenia.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +61,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Keď je zapnuté, bannerové upozornenia použijú ikonu aplikácie namiesto ikony TypeStatus Plus.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Testovať upozornenie</string>
 </dict>
 </plist>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Vibrácie</string>
