@@ -6,9 +6,29 @@
 	<key>BANNERS</key>
 	<string>Banners</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Show…</string>
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Alert Type</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>The above applies only to notifications from TypeStatus Plus providers.</string>
+
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Off</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Icon Only</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Status Bar</string>
+
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Notification Centre</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Notification Centre alerts override standard TypeStatus alerts.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
