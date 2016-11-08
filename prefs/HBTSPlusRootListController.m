@@ -51,12 +51,6 @@
 
 #pragma mark - Callbacks
 
-- (void)animateIconAlpha {
-	[UIView animateWithDuration:0.5 animations:^{
-		self.navigationItem.titleView.alpha = 1;
-	} completion:nil];
-}
-
 - (void)showSupportEmailController {
 	UIViewController *viewController = (UIViewController *)[HBSupportController supportViewControllerForBundle:[NSBundle bundleForClass:self.class] preferencesIdentifier:@"ws.hbang.typestatusplus"];
 	[self.navigationController pushViewController:viewController animated:YES];
