@@ -4,15 +4,35 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Bàners</string>
+	<string>Alertes</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Tipus d'alerta</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>L'opció superior només s'aplica a les notificacions dels proveïdors del TypeStatus Plus.</string>
+
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Desactivat</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Només l'icona</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Barra d'estat</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Vibracions</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Mostrar…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Centre de notificacions</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Prioritat de les alertes del centre de notificacions davant de les del TypeStatus.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +61,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Quan està habilitat, les notificacions de bàner de TypeStatus utilitzaran la icona de l’app corresponent.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Provar alerta</string>
 </dict>
 </plist>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Vibracions</string>

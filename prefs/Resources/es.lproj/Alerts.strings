@@ -4,15 +4,35 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Tiras</string>
+	<string>Alertas</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Tipo de alerta</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>La opción superor solo se aplica a las notificaciones de los proveedores de TypeStatus Plus.</string>
+
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Desactivado</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Solo icona</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Barra de estado</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Vibraciones</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Mostrar…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Centro de notificaciones</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Notification Center alerts override standard TypeStatus alerts.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +61,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Una vez activado, las notificaciones de tiras de TypeStatus usarán las iconas de sus aplicaciones respectivas.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Alerta de prueba</string>
 </dict>
 </plist>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Vibraciones</string>
