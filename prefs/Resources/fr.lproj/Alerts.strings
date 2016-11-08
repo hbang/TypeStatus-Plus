@@ -4,15 +4,35 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Banners</string>
+	<string>Alertes</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Type d'alerte</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>La fonction précédente ne s'applique que pour les possesseurs de TypeStatus Plus.</string>
+
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Désactivée</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Icone seulement</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Barre de statut</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Vibrations</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Afficher</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Centre de Notifications</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Les alertes depuis le Centre de Notifications remplacent les alertes standards de TypeStatus.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +61,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Lorsque cette option est activée, les bannière de notification vont utiliser l'icone respective de l'application à la place de l'icone de TypeStatus.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Tester l'alerte</string>
 </dict>
 </plist>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Vibrations</string>	

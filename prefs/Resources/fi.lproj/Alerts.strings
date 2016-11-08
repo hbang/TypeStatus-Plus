@@ -4,15 +4,35 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Bannerit</string>
+	<string>Hälytykset</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Hälytyksen tyyppi</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>Yllä oleva koskee vain ilmoituksia TypeStatus Plus tarjoajilta.</string>
+
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Pois</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Vain ikoni</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Tilapalkki</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Värinät</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Näytä…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Huomautuskeskus</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Huomatuskeskuksen hälytykset ohittavat normaalit TypeStatus hälytykset.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +61,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Kun kytketty, banneri-ilmoitukset käyttävät sovelluksen omaa kuvaketta TypeStatus Plus-kuvakkeen sijaan.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Testihälytykset</string>
 </dict>
 </plist>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Värinät</string>
