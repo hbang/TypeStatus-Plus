@@ -65,9 +65,9 @@
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>
 	<string>Testihälytykset</string>
-</dict>
-</plist>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Värinät</string>
+</dict>
+</plist>

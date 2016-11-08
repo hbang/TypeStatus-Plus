@@ -65,9 +65,9 @@
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>
 	<string>התראה לבדיקה</string>
-</dict>
-</plist>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>רטט</string>
+</dict>
+</plist>
