@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>แถบ</string>
+	<string>การแจ้งเตือน</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>ประเภทการแจ้งเตือน</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>สำหรับการแจ้งเตือนที่มาจากส่วน TypeStatus Plus เท่านั้น</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>เปิดจอเมื่อล็อคเครื่อง</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>เปิดหน้าจอเมื่อได้รับการแจ้งเตือนผ่านแถบสถานะจาก TypeStatus</string>
+	
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>ปิด</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>เฉพาะไอคอน</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>แถบสถานะ</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>การสั่น</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>แสดง…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>ศูนย์กลางการแจ้งเตือน</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>การแจ้งเตือนที่มาจากศูนย์กลางการแจ้งเตือนจะทับการแจ้งเตือนที่มาจาก TypeStatus</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>เมื่อเปิดใช้ แถบการแจ่งเตือนจะใช้ไอคอนของแอปนั้นๆ แทนที่ปกติจะใช้ไอคอนของ TypeStatus Plus</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>ทดสอบการแจ้งเตือน</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>การสั่น</string>
 </dict>
 </plist>

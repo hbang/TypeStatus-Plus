@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>通知橫幅</string>
+	<string>通知</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>通知類型</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>以上將只套用在 TypeStatus Plus 所提供的通知。</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>當螢幕鎖定時亮起螢幕</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>當裝置鎖定而收到 TypeStatus 狀態列通知時亮起螢幕。通知中心的通知將一直亮起螢幕。</string>
 	
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>關閉</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>只有圖示</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>狀態列</string>
+
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>震動</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>顯示位置</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>通知中心</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>通知中心的通知將覆寫標準的 TypeStatus 通知。</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>該選項開啟后，顯示橫幅通知時會使用應用自帶的圖標，而不使用 TypeStatus 的圖標。</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>測試通知</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>震動</string>
 </dict>
 </plist>
