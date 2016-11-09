@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Banery</string>
+	<string>Powiadomienia</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Typ</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>Powyższa konfiguracja dotyczy kompatybilnych aplikacji.</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Wybudź podczas blokady ekranu</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Wyświetlacz zostanie wybudzony w momencie otrzymania powiadomienia dla TypeStatus. Te powiadomienia zawsze wybudzają ekran.</string>
+	
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Wyłącz</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Ikona</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Belka statusu</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Wibracje</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Wyświetl…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Centrum powiadomień</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Standardowe powiadomienia mają wyższy priorytet od TypeStatus.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Po włączeniu, banery z powiadomieniami będą mieć ikonę danej aplikacji, a nie TypeStatus+.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Wypróbuj</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Wibracje</string>
 </dict>
 </plist>
