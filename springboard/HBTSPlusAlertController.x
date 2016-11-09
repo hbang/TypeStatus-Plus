@@ -16,9 +16,9 @@
 	NSParameterAssert(notification.statusBarIconName);
 	NSParameterAssert(notification.sourceBundleID);
 
-	// get the enabled state of the provider
+	// get the enabled state of the provider (if there is one)
 	HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:notification.sourceBundleID];
-	BOOL enabled = [[HBTSPlusProviderController sharedInstance] providerIsEnabled:provider];
+	BOOL enabled = provider ? [[HBTSPlusProviderController sharedInstance] providerIsEnabled:provider] : YES;
 
 	// determine whether the app is in the foreground
 	SpringBoard *app = (SpringBoard *)[UIApplication sharedApplication];
