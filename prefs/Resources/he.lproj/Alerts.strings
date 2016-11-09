@@ -14,6 +14,14 @@
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>ההגדרה לעיל חלה רק על התראות המסופקות מ-TypeStatus Plus.</string>
 
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>הער מנעילה</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>הער את המסך בקבלת התראת סטטוס בר מTypeStatus כאשר המכשיר נעול. התראות מרכז עדכונים תמיד מעירות את המסך.</string>
+
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
 	<string>כבוי</string>
