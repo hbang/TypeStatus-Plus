@@ -129,9 +129,16 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 			});
 		}
 
-		// if the user wants a banner, let’s do that too
+		// if the user wants a banner, let’s do that too. else if they want an
+		// undim, do that (SBUIUnlockOptionsTurnOnScreenFirstKey doesn’t actually do
+		// an unlock… weird stuff)
 		if ([HBTSPlusStateHelper shouldShowBanner]) {
 			[[HBTSPlusBulletinProvider sharedInstance] showBulletinForNotification:notification];
+		} else if (preferences.wakeWhenLocked) {
+			[[%c(SBLockScreenManager) sharedInstance] unlockUIFromSource:0 withOptions:@{
+				@"SBUIUnlockOptionsTurnOnScreenFirstKey": @YES,
+				@"SBUIUnlockOptionsStartFadeInAnimation": @YES
+			}];
 		}
 	}];
 
