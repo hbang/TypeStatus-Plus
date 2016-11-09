@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Баннеры</string>
+	<string>Уведомления</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Тип уведомлений</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>Эта настройка влияет только на уведомления от TypeStatus Plus.</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Зажигать экран, когда заблокирован</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Зажигать экран устройства при получении уведомления TypeStatus в статусбар. Уведомления из Центра Уведомлений всегда зажигают экран.</string>
+
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Выкл</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Только значок</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Статусбар</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Вибрация</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Показывать…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Центр уведомлений</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Оповещения центра уведомлений имеют больший приоритет по сравнению с уведомлениями статусбара</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Когда включено, уведомления будут с иконкой приложения, а не TypeStatus Plus.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Пробное уведомление</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Вибрация</string>
 </dict>
 </plist>
