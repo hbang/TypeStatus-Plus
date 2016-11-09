@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>배너</string>
+	<string>알림</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>알림 유형</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>위 사항은 TypeStatus Plus 프로바이더에만 적용됩니다.</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>잠금상태에서 깨움</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>기기 화면이 꺼진 상태에서 TypeStatus 상태표시줄 알림을 받으면 기기 화면을 켭니다. 알림 센터의 알림은 항상 화면을 켭니다.</string>
+	
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>꺼짐</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>아이콘만</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>상태 표시줄</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>진동</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>보기…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>알림 센터</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>알림 센터 알림이 일반 TypeStatus 알림보다 우선합니다.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>사용시, 배너 알림이 TypeStatus Plus 아이콘 대신 본래 아이콘을 사용합니다.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>알림 테스트</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>진동</string>
 </dict>
 </plist>
