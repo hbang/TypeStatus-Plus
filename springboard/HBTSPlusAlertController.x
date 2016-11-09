@@ -16,11 +16,6 @@
 	NSParameterAssert(notification.statusBarIconName);
 	NSParameterAssert(notification.sourceBundleID);
 
-	// give the tap to open controller context
-	HBTSPlusTapToOpenController *tapToOpenController = [HBTSPlusTapToOpenController sharedInstance];
-	tapToOpenController.appIdentifier = notification.sourceBundleID;
-	tapToOpenController.actionURL = notification.actionURL;
-
 	// get the enabled state of the provider
 	HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:notification.sourceBundleID];
 	BOOL enabled = [[HBTSPlusProviderController sharedInstance] providerIsEnabled:provider];
@@ -36,6 +31,11 @@
 	if (!preferences.enabled || !enabled || (inForeground && !preferences.showWhenInForeground)) {
 		return;
 	}
+
+	// give the tap to open controller context
+	HBTSPlusTapToOpenController *tapToOpenController = [HBTSPlusTapToOpenController sharedInstance];
+	tapToOpenController.appIdentifier = notification.sourceBundleID;
+	tapToOpenController.actionURL = notification.actionURL;
 
 	// pass the alert to the appropriate typestatus controller based on the alert
 	// type preference
