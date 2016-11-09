@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Tiêu Đề</string>
+	<string>Thông báo</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Những kiểu thông báo</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>Những kiểu ở trên chỉ áp dụng cho các thông báo từ nhà cung cấp TypeStatus Plus.</string> 
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Làm màn hình sáng khi thiết bị đang khoá máy.</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Làm màn hình sáng khi nhận được thông báo từ TypeStatus khi thiết bị đang khoá. Notification Center thông báo luôn luôn sáng màn hình khi khoá .</string>
+	
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Tắt</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Chỉ hiện biểu tượng</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Thanh trạng thái</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
-	<string>Rung Động</string>
+	<string>Run</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Cho thấy…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Notification Center</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Notification Center thông báo đè lên TypeStatus thông báo.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Khi được kích hoạt, các thông báo bằng tiêu đề sẽ sử dụng các biểu tượng của ứng dụng thay vì biểu tượng của TypeStatus Plus.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Thử Thông Báo</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Run</string>
 </dict>
 </plist>
