@@ -37,21 +37,25 @@
 	tapToOpenController.appIdentifier = notification.sourceBundleID;
 	tapToOpenController.actionURL = notification.actionURL;
 
-	// pass the alert to the appropriate typestatus controller based on the alert
-	// type preference
-	switch (preferences.alertType) {
-		case HBTSPlusAlertTypeIcon:
-			[%c(HBTSStatusBarIconController) showIcon:notification.statusBarIconName timeout:-1];
-			break;
+	dispatch_async(dispatch_get_main_queue(), ^{
+		// pass the alert to the appropriate typestatus controller based on the alert
+		// type preference
+		switch (preferences.alertType) {
+			case HBTSPlusAlertTypeIcon:
+				[%c(HBTSStatusBarIconController) showIcon:notification.statusBarIconName timeout:-1];
+				break;
 
-		case HBTSPlusAlertTypeOverlay:
-			[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:notification.statusBarIconName text:notification.content boldRange:notification.boldRange source:notification.sourceBundleID timeout:-1];
-			break;
-	}
+			case HBTSPlusAlertTypeOverlay:
+				[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:notification.statusBarIconName text:notification.content boldRange:notification.boldRange source:notification.sourceBundleID timeout:-1];
+				break;
+		}
+	});
 }
 
 + (void)hide {
-	[%c(HBTSStatusBarAlertServer) hide];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[%c(HBTSStatusBarAlertServer) hide];
+	});
 }
 
 @end
