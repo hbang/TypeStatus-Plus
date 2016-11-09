@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Stroken</string>
+	<string>Meldingen</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Meldingsstijl</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>Het bovenstaande is alleen van toepassing op meldingen van TypeStatus Plus-providers.</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Licht toegangsscherm op</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Licht het scherm op waneer er een melding van TypeStatus in de statusbalk binnenkomt. Meldingen van het berichtencentrum lichten altijd het scherm op.</string>
+
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Uit</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Symbool</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Statusbalk</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Trillingen</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Toon…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Berichtencentrum</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Meldingen van het berichtencentrum overschrijven de standaard meldingen van TypeStatus.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,9 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Indien inschakeld, gebruiken stroken het bijbehorende icoon van de app in plaats van het TypeStatus Plus-icoon.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Test meldingen</string>
 </dict>
 </plist>
