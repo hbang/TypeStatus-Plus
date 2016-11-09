@@ -14,6 +14,14 @@
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Yllä oleva koskee vain ilmoituksia TypeStatus Plus tarjoajilta.</string>
 
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Herätä kun lukittu</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Herätä näyttö, kun saat TypeStatus tilapalkki-ilmoituksen kun näyttö on lukittu. Ilmoituskeskuksen hälytykset herättävät näytön aina.</string>
+
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
 	<string>Pois</string>

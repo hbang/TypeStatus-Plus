@@ -14,6 +14,14 @@
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>La fonction précédente ne s'applique que pour les possesseurs de TypeStatus Plus.</string>
 
+    <!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Allumer quand l'appareil est verrouillé</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>	
+	<string>Allumer l'écran lorsque vous recevez une notification sur la barre de statut avec TypeStatus alors que l'appareil est verrouillé. Les alertes du Centre de Notifications allument toujours l'écran.</string>
+
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
 	<string>Désactivée</string>
