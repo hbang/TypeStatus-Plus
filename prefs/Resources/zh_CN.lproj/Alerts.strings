@@ -4,15 +4,35 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>通知横幅</string>
+	<string>提醒</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>提醒类型</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>上面的设置仅应用于来自 TypeStatus Plus 第三方应用支持模块的通知</string>
+
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>关闭</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>仅显示图标</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>状态栏</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>震动</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>显示位置</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>通知中心</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>通知中心提醒的优先级高于普通的 TypeStatus 提醒</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +61,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>该选项开启后，显示横幅通知时会使用应用自带的图标，而不使用 TypeStatus 的图标。</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>测试通知效果</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>震动</string>
 </dict>
 </plist>
