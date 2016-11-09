@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Banner</string>
+	<string>Benachrichtigungen</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Benachrichtigungsarten</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>Das oben beschriebene betrifft nur TypeStatus Plus Anbieter.</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Im Sperrzustand aufwecken</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Aufwachen wenn eine TypeStatus Statusleisten Benachrichtigung ankommt, während das Gerät gesperrt ist. Normale Mitteilungen wecken den Bildschirm immer auf.</string>
+	
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Aus</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Nur Symbol</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Statusleiste</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
-	<string>Vibration</string>
+	<string>Vibrationen</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Anzeigen…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Mitteilungszentrale</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Mitteilungszentralen Benachrichtigungen überschreiben Standart TypeStatus Benachrichtigungen.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Wenn aktiviert, wird in der Benachrichtigung das Icon der jeweiligen App statt des TypeStatus-Icons benutzt.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Test Benachrichtigung</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Vibrationen</string>
 </dict>
 </plist>
