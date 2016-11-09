@@ -16,14 +16,9 @@
 	NSParameterAssert(notification.statusBarIconName);
 	NSParameterAssert(notification.sourceBundleID);
 
-	// give the tap to open controller context
-	HBTSPlusTapToOpenController *tapToOpenController = [HBTSPlusTapToOpenController sharedInstance];
-	tapToOpenController.appIdentifier = notification.sourceBundleID;
-	tapToOpenController.actionURL = notification.actionURL;
-
-	// get the enabled state of the provider
+	// get the enabled state of the provider (if there is one)
 	HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:notification.sourceBundleID];
-	BOOL enabled = [[HBTSPlusProviderController sharedInstance] providerIsEnabled:provider];
+	BOOL enabled = provider ? [[HBTSPlusProviderController sharedInstance] providerIsEnabled:provider] : YES;
 
 	// determine whether the app is in the foreground
 	SpringBoard *app = (SpringBoard *)[UIApplication sharedApplication];
@@ -37,21 +32,30 @@
 		return;
 	}
 
-	// pass the alert to the appropriate typestatus controller based on the alert
-	// type preference
-	switch (preferences.alertType) {
-		case HBTSPlusAlertTypeIcon:
-			[%c(HBTSStatusBarIconController) showIcon:notification.statusBarIconName timeout:-1];
-			break;
+	// give the tap to open controller context
+	HBTSPlusTapToOpenController *tapToOpenController = [HBTSPlusTapToOpenController sharedInstance];
+	tapToOpenController.appIdentifier = notification.sourceBundleID;
+	tapToOpenController.actionURL = notification.actionURL;
 
-		case HBTSPlusAlertTypeOverlay:
-			[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:notification.statusBarIconName text:notification.content boldRange:notification.boldRange source:notification.sourceBundleID timeout:-1];
-			break;
-	}
+	dispatch_async(dispatch_get_main_queue(), ^{
+		// pass the alert to the appropriate typestatus controller based on the alert
+		// type preference
+		switch (preferences.alertType) {
+			case HBTSPlusAlertTypeIcon:
+				[%c(HBTSStatusBarIconController) showIcon:notification.statusBarIconName timeout:-1];
+				break;
+
+			case HBTSPlusAlertTypeOverlay:
+				[%c(HBTSStatusBarAlertServer) sendAlertWithIconName:notification.statusBarIconName text:notification.content boldRange:notification.boldRange source:notification.sourceBundleID timeout:-1];
+				break;
+		}
+	});
 }
 
 + (void)hide {
-	[%c(HBTSStatusBarAlertServer) hide];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[%c(HBTSStatusBarAlertServer) hide];
+	});
 }
 
 @end

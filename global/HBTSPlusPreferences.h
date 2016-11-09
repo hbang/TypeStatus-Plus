@@ -11,8 +11,9 @@ typedef NS_ENUM(NSUInteger, HBTSPlusAlertType) {
 
 @property (nonatomic, readonly) BOOL showUnreadCount, showWhenInForeground;
 @property (nonatomic, readonly) BOOL keepAllBulletins, useAppIcon;
-@property (nonatomic, readonly) BOOL showBannersOnLockScreen, showBannersOnHomeScreen, showBannersInApps;
+@property (nonatomic, readonly) BOOL wakeWhenLocked;
 @property (nonatomic, readonly) BOOL vibrateOnLockScreen, vibrateOnHomeScreen, vibrateInApps;
+@property (nonatomic, readonly) BOOL showBannersOnLockScreen, showBannersOnHomeScreen, showBannersInApps;
 
 @property (nonatomic, readonly) HBTSPlusAlertType alertType;
 

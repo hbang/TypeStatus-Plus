@@ -28,8 +28,8 @@
 			</array>
 			<key>validValues</key>
 			<array>
+				<integer>0</integer>
 				<integer>1</integer>
-				<integer>2</integer>
 			</array>
 			<key>PostNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
@@ -44,7 +44,7 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
-			<false/>
+			<true/>
 			<key>defaults</key>
 			<string>ws.hbang.typestatusplus</string>
 			<key>key</key>

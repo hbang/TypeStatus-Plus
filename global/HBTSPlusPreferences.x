@@ -10,7 +10,9 @@ static NSString *const kHBTSPlusUnreadCountAppPrefixKey = @"UnreadCountApp-";
 static NSString *const kHBTSPlusPreferencesShowInForegroundKey = @"ShowInForeground";
 
 // alerts
-static NSString *const kHBTSPlusGlobalAlertTypeKey = @"GlobalAlertType";
+static NSString *const kHBTSPlusPreferencesGlobalAlertTypeKey = @"GlobalAlertType";
+
+static NSString *const kHBTSPlusPreferencesWakeWhenLockedKey = @"WakeWhenLocked";
 
 static NSString *const kHBTSPlusPreferencesVibrateOnLockScreenKey = @"VibrateOnLockScreen";
 static NSString *const kHBTSPlusPreferencesVibrateOnHomeScreenKey = @"VibrateOnHomeScreen";
@@ -51,11 +53,12 @@ static NSString *const kHBTSPlusPreferencesUseAppIconKey = @"UseAppIcon";
 
 		// general
 		[_preferences registerBool:&_showUnreadCount default:YES forKey:kHBTSPlusShowUnreadCountKey];
-
 		[_preferences registerBool:&_showWhenInForeground default:NO forKey:kHBTSPlusPreferencesShowInForegroundKey];
 
 		// alerts
-		[_preferences registerInteger:(NSInteger *)&_alertType default:HBTSPlusAlertTypeOverlay forKey:kHBTSPlusGlobalAlertTypeKey];
+		[_preferences registerInteger:(NSInteger *)&_alertType default:HBTSPlusAlertTypeOverlay forKey:kHBTSPlusPreferencesGlobalAlertTypeKey];
+
+		[_preferences registerBool:&_wakeWhenLocked default:YES forKey:kHBTSPlusPreferencesWakeWhenLockedKey];
 
 		[_preferences registerBool:&_vibrateOnLockScreen default:NO forKey:kHBTSPlusPreferencesVibrateOnLockScreenKey];
 		[_preferences registerBool:&_vibrateOnHomeScreen default:YES forKey:kHBTSPlusPreferencesVibrateOnHomeScreenKey];
