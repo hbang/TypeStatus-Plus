@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<!-- Default text for sharing the tweak. -->
+	<key>SHARE_TEXT</key>
+	<string>Prova TypeStatus Plus! 💬</string>
+
 	<!-- Pulsante che porta alla sottosezione delle impostazioni. -->
 	<key>PROVIDERS</key>
 	<string>Fornitori</string>

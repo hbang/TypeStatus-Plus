@@ -2,17 +2,45 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<!-- Titolo. -->
+	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Bandiera</string>
+	<string>Avvisi</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Tipo Di Avviso</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>Le impostazioni qui sopra vengono applicate solo alle notifiche dai fornitori di TypeStatus Plus.</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Sveglia Quando Bloccato</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Accendi lo schermo quando ricevi una notifica di TypeStatus nella barra di stato quando il dispositivo è bloccato. Gli avvisi del Centro Notifiche accendono sempre lo schermo.</string>
+	
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Spento</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Solo Icona</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Barra Di Stato</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Vibrazioni</string>
 
-	<!-- Intestazione per banner Mostra le opzioni. -->
-	<key>SHOW</key>
-	<string>Mostrare…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Centro Notifiche</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Gli avvisi del Centro Notifiche sostituiscono gli avvisi standard di TypeStatus</string>
 
 	<!-- Opzione per mostrare banner sulla schermata di blocco. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,13 @@
 	<!-- Spiegazione del rispettivo interruttore icona dell'applicazione. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Quando è attivata, le notifiche bandiera utilizzeranno il rispettivo icona dell'applicazione invece che l'icona TypeStatus Più.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Avviso Di Prova</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Vibrazioni</string>
 </dict>
 </plist>
