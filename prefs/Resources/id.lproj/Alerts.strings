@@ -2,17 +2,45 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<!-- Title. -->
-	<key>ALERTS</key>
-	<string>Spanduk Notifikasi</string>
+    <!-- Title. -->
+    <key>ALERTS</key>
+    <string>Peringatan</string>
 
-	<!-- Header for vibration options. -->
-	<key>VIBRATIONS</key>
-	<string>Getaran</string>
+    <!-- Header for alert type selection. -->
+    <key>ALERT_TYPE</key>
+    <string>Tipe peringatan</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Perlihatkan</string>
+    <!-- Explanation of the alert type setting. -->
+    <key>ALERT_TYPE_EXPLANATION</key>
+    <string>Hal di atas hanya berlaku untuk notifikasi dari penyedia TypeStatus Plus.</string>
+
+    <!-- Switch to wake the screen when the device is locked. -->
+    <key>WAKE_WHEN_LOCKED</key>
+    <string>Nyalakan saat terkunci</string>
+
+    <!-- Explanation of the above setting. -->
+    <key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+    <string>Nyalakan layar saat menerima notifikasi TypeStatus pada status bar meskipun perangkat terkunci. Peringatan pada Pusat Notifikasi akan tetap menyalakan layar.</string>
+
+    <!-- Buttons shown in the segmented controls for the alert type. -->
+    <key>OFF</key>
+    <string>Mati</string>
+    <key>ALERT_TYPE_ICON</key>
+    <string>Hanya Ikon</string>
+    <key>ALERT_TYPE_OVERLAY</key>
+    <string>Status Bar</string>
+
+    <!-- Header for vibration options. -->
+    <key>VIBRATIONS</key>
+    <string>Getar</string>
+
+    <!-- Header for notification center options. -->
+    <key>NOTIFICATION_CENTER</key>
+    <string>Pusat Notifikasi</string>
+
+    <!-- Note displayed below the notification center section. -->
+    <key>NOTIFICATION_CENTER_EXPLANATION</key>
+    <string>Peringatan Pusat Notifikasi menimpa peringatan standar TypeStatus.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Jika Di gunakan, notifikasi di spanduk akan menggunakan ikon aplikasi tersendiri dan bukan ikon TypeStatus Plus.</string>
+
+	<!-- Button to test the alerts. -->
+    <key>TEST_ALERT</key>
+    <string>Uji coba peringatan</string>
+
+    <!-- Header for vibration options. -->
+    <key>VIBRATIONS</key>
+    <string>Getar</string>
 </dict>
 </plist>
