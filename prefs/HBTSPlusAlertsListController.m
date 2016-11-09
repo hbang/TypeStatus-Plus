@@ -10,7 +10,7 @@
 #pragma mark - Callbacks
 
 - (void)testAlert {
-	notify_post("ws.hbang.typestatus/TestTyping");
+	notify_post("ws.hbang.typestatusplus/TestNotification");
 }
 
 @end

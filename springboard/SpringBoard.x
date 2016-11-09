@@ -1,4 +1,5 @@
 #import "HBTSPlusPreferences.h"
+#import "HBTSPlusAlertController.h"
 #import "HBTSPlusBulletinProvider.h"
 #import "HBTSPlusServer.h"
 #import "HBTSPlusStateHelper.h"
@@ -70,6 +71,8 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 
 %end
 
+#pragma mark - Relay hook
+
 %hook HBTSSpringBoardServer
 
 - (void)receivedRelayedNotification:(NSDictionary *)userInfo {
@@ -78,6 +81,14 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 }
 
 %end
+
+#pragma mark - Test notification
+
+void TestNotification() {
+	HBTSNotification *notification = [[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:@"Johnny Appleseed" iconName:@"TypeStatus"];
+	notification.sourceBundleID = @"com.apple.MobileSMS";
+	[HBTSPlusAlertController sendNotification:notification];
+}
 
 #pragma mark - Constructor
 
@@ -96,6 +107,9 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 	[preferences registerPreferenceChangeBlock:^{
 		[unreadCountStatusBarItem update];
 	}];
+
+	// register for test notification notification
+	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)TestNotification, CFSTR("ws.hbang.typestatusplus/TestNotification"), NULL, kNilOptions);
 
 	// when a set status bar notification is sent by typestatus free
 	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *nsNotification) {
