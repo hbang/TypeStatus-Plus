@@ -14,6 +14,14 @@
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Toto platí len pre upozornenia z TypeStatus Plus providerov.</string>
 
+	<!-- Switch to wake the screen when the device is locked. -->
+    <key>WAKE_WHEN_LOCKED</key>
+    <string>Prebudiť obrazovku, keď je zamknutý</string>
+
+    <!-- Explanation of the above setting. -->
+    <key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+    <string>Zobudiť obrazovku pri prijatí TypeStatus notifikácie na stavovej lište pri uzamknutom zariadení. Upozornenia centra notifikácii vždy prebudia obrazovku.</string>
+
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
 	<string>Vypnuté</string>
