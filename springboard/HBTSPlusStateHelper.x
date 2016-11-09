@@ -15,9 +15,19 @@
 	SpringBoard *app = (SpringBoard *)[UIApplication sharedApplication];
 	NSString *frontmostAppIdentifier = app._accessibilityFrontMostApplication.bundleIdentifier;
 
-	// TODO: wow this is impossible to read
-	BOOL shouldShowBanner = ([preferences showBannersOnLockScreen] && onLockScreen) || ([preferences showBannersOnHomeScreen] && !frontmostAppIdentifier && !onLockScreen) || ([preferences showBannersInApps] && frontmostAppIdentifier);
-	return shouldShowBanner;
+	if (onLockScreen) {
+		// lock screen
+		return preferences.showBannersOnLockScreen;
+	} else if (!frontmostAppIdentifier && !onLockScreen) {
+		// home screen
+		return preferences.showBannersOnHomeScreen;
+	} else if (frontmostAppIdentifier) {
+		// apps
+		return preferences.showBannersInApps;
+	} else {
+		// ???
+		return YES;
+	}
 }
 
 + (BOOL)shouldVibrate {
@@ -30,9 +40,19 @@
 	SpringBoard *app = (SpringBoard *)[UIApplication sharedApplication];
 	NSString *frontmostAppIdentifier = app._accessibilityFrontMostApplication.bundleIdentifier;
 
-	BOOL shouldVibrate =  ([preferences vibrateOnLockScreen] && onLockScreen) || ([preferences vibrateOnHomeScreen] && !frontmostAppIdentifier && !onLockScreen) || ([preferences vibrateInApps] && frontmostAppIdentifier);
-
-	return shouldVibrate;
+	if (onLockScreen) {
+		// lock screen
+		return preferences.vibrateOnLockScreen;
+	} else if (!frontmostAppIdentifier && !onLockScreen) {
+		// home screen
+		return preferences.vibrateOnHomeScreen;
+	} else if (frontmostAppIdentifier) {
+		// apps
+		return preferences.vibrateInApps;
+	} else {
+		// ???
+		return YES;
+	}
 }
 
 @end
