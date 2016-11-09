@@ -14,6 +14,14 @@
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>上面的设置仅应用于来自 TypeStatus Plus 第三方应用支持模块的通知</string>
 
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>手机锁定时点亮屏幕</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>手机锁定状态下，收到 TypeStatus 状态栏提醒时点亮屏幕。无论手机处于何种状态，通知中心提醒都会点亮屏幕。</string>
+
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
 	<string>关闭</string>
