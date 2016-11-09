@@ -14,6 +14,14 @@
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>The above applies only to notifications from TypeStatus Plus providers.</string>
 
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Wake When Locked</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Wake the screen when receiving a TypeStatus status bar notification while the device is locked. Notification Centre alerts always wake the screen.</string>
+
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
 	<string>Off</string>

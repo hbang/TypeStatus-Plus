@@ -37,6 +37,26 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>WAKE_WHEN_LOCKED_EXPLANATION</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>ws.hbang.typestatusplus</string>
+			<key>key</key>
+			<string>WakeWhenLocked</string>
+			<key>label</key>
+			<string>WAKE_WHEN_LOCKED</string>
+			<key>PostNotification</key>
+			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>VIBRATIONS</string>
 			<key>requiredCapabilities</key>
@@ -165,8 +185,6 @@
 			<string>KeepAllBulletins</string>
 			<key>label</key>
 			<string>KEEP_ALL_BULLETINS</string>
-			<key>icon</key>
-			<string>TODO.png</string>
 			<key>PostNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
 		</dict>
