@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Banneri</string>
+	<string>Alarmi</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Vrsta alarma</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>Postavke iznad se odnose samo na aplikacije koje podržavaju TypeStatus.</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Ukljuèi zaslon dok je ureðaj zakljuèan</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Ukljuèuje zaslon kada stigne TypeStatus obavijest dok je ureðaj zakljuèan. Obiène obavijesti uvek ukljuèuju zaslon.</string>
+	
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Isklj.</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Samo ikonica</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Statusna traka</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
-	<string>Vibracije</string>
+	<string>Vibracija</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Prikaži...</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Obavijesti</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Alarmi centra za obavijesti nadglašavaju TypeStatus obavijesti.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Kada je uključeno, banneri obavijesti će koristiti dotičnu ikonu aplikacije umijesto TypeStatus Plus ikone.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Testiraj Alarm</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Vibracija</string>
 </dict>
 </plist>
