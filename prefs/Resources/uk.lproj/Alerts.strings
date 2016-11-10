@@ -14,6 +14,14 @@
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Налаштування вище стосуються лише сповіщень від провайдерів TypeStatus Plus.</string>
 
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Розбудити при заблокованому екрані</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Розбудити заблокований екран при отриманні TypeStatus сповіщення у панелі статусу коли пристрій заблоковано. Повідомлення Центру Сповіщень завжди будять екран.</string>
+
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
 	<string>Вимкнено</string>
