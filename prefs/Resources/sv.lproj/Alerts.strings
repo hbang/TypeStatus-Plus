@@ -4,17 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Banners</string>
+	<string>Notiser</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Typ av notiser</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>Ovan definierat gäller bara notiser ifrån TypeStatus Plus.</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Vakna när låst</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Väck skärmen när en TypeStatus statusmenynotis tas emot och enheten är låst. Notiser ifrån Notiscenter kommer alltid väcka skärmen.</string>
+	
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Av</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Endast ikon</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Statusmeny</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Vibrationer</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Visa…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Notiscenter</string>
 
-	<!-- Option to show banners on the lock screen. -->
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Notiser ifrån Notiscenter åsidosätter TypeStatus standardnotiser.</string>
 	<key>ON_LOCK_SCREEN</key>
 	<string>På låsskärm</string>
 
@@ -41,5 +67,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>När funktionen är aktiverad kommer banner notiser att använda applikationens original ikon i stället för TypeStatus Plus icon.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Testa notis</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Vibrationer</string>
 </dict>
 </plist>
