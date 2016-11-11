@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>الشعارات</string>
+	<string>التنبيهات</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>نوع التنبيه</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>نوع التنبيه بالأعلى ينطبق فقط للإشعارات من مزودى خدمة TypeStatus Plus</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>إيقاظ الشاشة إذا كان الهاتف مقفل</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>إيقاظ الشاشة فى حالة إستقبال شريط إشعار TypeStatus و الهاتف مقفل. تنبيهات مركز الإشعارات تقوم دومًا بإيقاظ الشاشة.</string>
+	
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>مقفل</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>الأيقونة فقط</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>شريط الحالة</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>الإهتزازات</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>الإشعار:</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>مركز الإشعارات</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>تنبيهات مركز الإشعارات تستبدل إشعارات TypeStatus التقليدية.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>عند تشغيلها, سيتم إستخدام ايكونة البرنامج بدلاً من ايكونة (TypeStatus) بلاس في الإشعارات.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>تجربة التنبيه</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>الإهتزازات</string>
 </dict>
 </plist>
