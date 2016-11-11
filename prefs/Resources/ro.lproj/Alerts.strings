@@ -2,17 +2,42 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<!-- Title. -->
-	<key>ALERTS</key>
-	<string>Bannere</string>
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Tip alerta</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>Selectia de mai sus se aplica doar notificarilor din providerii TypeStatus Plus.</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Afiseaza cand ecranul e  blocat</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Aprinde ecranul cand o notificare este primita, atunci cand dispozitivul e blocat. Alertele primite in Centrul de Notificare, intotdeauna pornesc ecranul.</string>
+
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Oprit</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Doar icoana</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Bara Status</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Vibratii</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Arata…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Centru de Notificari</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Alertele prin Centrul de Notificari suprascriu notificarile standard prin TypeStatus.</string>
+
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +66,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Cand activat, notificarile prin banner, vor folosi icoana aplicatiei de unde notificarea isi are originea si nu icoana clasica TypeStatus Plus.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Testeaza Alertele</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Vibratii</string>
 </dict>
 </plist>
