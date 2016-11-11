@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Banners</string>
+	<string>Alertas</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Tipo do Alerta</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>A opção acima se aplica somente a notificações dos provedores do TypeStatus Plus.</string>
+	
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Acender quando bloqueado</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Acende a tela quando receber notificações do TypeStatus enquanto o dispositivo está bloqueado. Alertas da Central de Notificações sempre acendem a tela.</string>
+	
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Desativar</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>ApenasÍcone</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Barra de Status</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Vibrações</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Mostrar…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Central de Notificações</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Alertas da Central de Notificações ignoram os alertas padrões do TypeStatus.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Quando ativado, os banners de notificação vão usar o ícone do aplicativo respectivo, em vez de usar o ícone do TypeStatus Plus.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Teste do Alerta</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Vibrações</string>
 </dict>
 </plist>
