@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Semboller</string>
+	<string>Uyarılar</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Uyarı Tipi</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>Yukarıdaki sadece TypeStatus Plus bildirimleri için geçerlidir.</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Kilitliyken Uyan</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Ekran kapalıyken bir TypeStatus bildirimi aldığında cihazı uyandır. Bildirim Çubuğu uyarısı her zaman ekranı uyandırır.</string>
+
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Kapalı</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Sadece İkon</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Bildirim Çubuğu</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Titreşimler</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Göster…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Bildirim Çubuğu</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Bildirim Çubuğu uyarıları normal TypeStatus uyarılarını bastırır.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Etkinleştirildiğinde, TypeStatus Plus simgelerinin yerine uygulamanın kendi simgesi kullanacaktır.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Deneme Bildirimi</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>Titreşimler</string>
 </dict>
 </plist>
