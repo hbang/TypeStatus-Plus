@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>बैनर</string>
+	<string>अलर्ट</string>
+	
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>अलर्ट के प्रकार</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>ऊपर की सेटिंग केवल TypeStatus प्लस से जुड़े सूचनाओं के लिए लागू होती है।</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>जब उपकरण लॉक हो तब भी सक्रीय करे</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>जब उपकरण लॉक हो तब भी सूचना आने पर स्क्रीन सक्रिय करे। सूचना केंद्र अलर्ट हमेशा स्क्रीन सक्रीय करती है।</string>
+
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>बंद</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>केवल आइकॉन</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>स्टेटस बार</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>कंपन</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>दिखाना…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>सूचना केन्द्र</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>सूचना केंद्र के अलर्ट TypeStatus के अलर्ट को निरस्त (ओवर्राइड) करते है।</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,13 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>जब सक्षम, बैनर सूचनाएं TypeStatus प्लस आइकन के बजाय संबंधित app आइकन का प्रयोग करेंगे।</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>चेतावनी (अलर्ट) की जाँच करे</string>
+
+	<!-- Header for vibration options. -->
+	<key>VIBRATIONS</key>
+	<string>कंपन</string>
 </dict>
 </plist>
