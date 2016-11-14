@@ -73,9 +73,5 @@
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>
 	<string>चेतावनी (अलर्ट) की जाँच करे</string>
-
-	<!-- Header for vibration options. -->
-	<key>VIBRATIONS</key>
-	<string>कंपन</string>
 </dict>
 </plist>

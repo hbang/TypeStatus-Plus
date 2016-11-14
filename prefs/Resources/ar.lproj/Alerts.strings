@@ -73,9 +73,5 @@
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>
 	<string>تجربة التنبيه</string>
-
-	<!-- Header for vibration options. -->
-	<key>VIBRATIONS</key>
-	<string>الإهتزازات</string>
 </dict>
 </plist>

@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Banners</string>
+	<string>Varsler</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Varsling Type</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>Ovennevnte gjelder kun for varslinger fra TypeStatus Plus leverandører.</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Wake When Locked</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Wake the screen when receiving a TypeStatus status bar notification while the device is locked. Notification Center alerts always wake the screen.</string>
+	
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Av</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Bare Ikon</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Status Bar</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Vibrasjoner</string>
 
-	<!-- Header for banner vis muligheter. -->
-	<key>VIS</key>
-	<string>Vis…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Varslingssenter</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Varslingssenter varsler styrer standard TypeStatus varsler.</string>
 
 	<!-- Mulighet til å nise banners på låst skjerm. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,9 @@
 	<!-- Forklaring for respektiv app ikon bytte. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Når aktivert, vil banner varsel bruke det respektive app ikonet isteden for TypeStatus Plus ikonet.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Test Varsel</string>
 </dict>
 </plist>
