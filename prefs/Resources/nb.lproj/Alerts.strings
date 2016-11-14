@@ -16,11 +16,11 @@
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
-	<string>Wake When Locked</string>
+	<string>Wake Når Låst</string>
 
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
-	<string>Wake the screen when receiving a TypeStatus status bar notification while the device is locked. Notification Center alerts always wake the screen.</string>
+	<string>Våkn skjermen når du mottar en TypeStatus statuslinjen varsling mens enheten er låst. Varslingsenter varsler alltid på vekke skjermen.</string>
 	
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
