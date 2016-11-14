@@ -1,9 +1,13 @@
 #import "HBTSPlusTapToOpenController.h"
 #import <Foundation/NSDistributedNotificationCenter.h>
+#import <FrontBoardServices/FBSSystemService.h>
 #import <MobileCoreServices/LSApplicationProxy.h>
 #import <MobileCoreServices/LSApplicationWorkspace.h>
 #import <SpringBoard/SpringBoard.h>
-#import <SpringBoardServices/SpringBoardServices.h>
+#import <SpringBoard/SBWorkspaceApplication.h>
+#import <SpringBoard/SBWorkspaceApplicationTransitionContext.h>
+
+BOOL overrideBreadcrumbHax;
 
 @implementation HBTSPlusTapToOpenController {
 	NSString *_currentSender;
@@ -62,20 +66,35 @@
 }
 
 - (void)_openURL:(NSURL *)url bundleIdentifier:(NSString *)bundleIdentifier {
-	if (!bundleIdentifier) {
-		NSArray <LSApplicationProxy *> *apps = [[LSApplicationWorkspace defaultWorkspace] applicationsAvailableForHandlingURLScheme:url.scheme];
+	// get the frontboard system service and then create a port for the message
+	// we’re about to send
+	FBSSystemService *systemService = [FBSSystemService sharedService];
+	mach_port_t port = [systemService createClientPort];
 
-		if (apps.count == 0) {
-			HBLogError(@"huh? no app available to open %@", url);
-			return;
-		}
+	overrideBreadcrumbHax = YES;
 
-		bundleIdentifier = apps[0].applicationIdentifier;
-	}
-
-	SBSLaunchApplicationWithIdentifierAndURLAndLaunchOptions(bundleIdentifier, url, @{}, @{
-		SBSApplicationLaunchOptionUnlockDeviceKey: @YES
-	}, NO);
+	[systemService openURL:url application:bundleIdentifier options:@{
+		FBSOpenApplicationOptionKeyUnlockDevice: @YES
+	} clientPort:port withResult:nil];
 }
 
 @end
+
+%hook SBMainDisplaySceneManager
+
+- (BOOL)_shouldBreadcrumbApplication:(SBWorkspaceApplication *)launchedApplication withTransitionContext:(SBWorkspaceApplicationTransitionContext *)transitionContext {
+	if (overrideBreadcrumbHax) {
+		overrideBreadcrumbHax = NO;
+
+		// get the app we’re about to switch from
+		SBWorkspaceApplication *previousApp = [transitionContext previousApplicationForLayoutRole:SBLayoutRoleMainApp];
+
+		// if there was an app (not the home screen), and it’s not the same as the
+		// one we’re launching, override to enable breadcrumbs
+		return previousApp && ![launchedApplication.bundleIdentifier isEqualToString:previousApp.bundleIdentifier];
+	}
+
+	return %orig;
+}
+
+%end
