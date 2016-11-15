@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Banner</string>
+	<string>Amaran</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>Jenis Amaran</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>Yang diatas hanya dipakai untuk notifikasi dari pembekal TypeStatus Plus.</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>Nyala Bila Terkunci</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>Nyala skrin bila menerima status bar notifikasi TypeStatus bila peranti terkunci. Amaran Pusat Notifikasi sentiasa menyalakan skrin.</string>
+	
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Padam</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Hanya Ikon</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Bar Status</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>Getaran</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Tunjuk…</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>Pusat Notifikasi</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>Amaran Pusat Notifikasi mengambil-alih amaran TypeStatus yang biasa.</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,9 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>Apabila dibolehkan, banner notifikasi akan menggunakan ikon app tersebut daripada menggunakan ikon TypeStatus Plus.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>Uji Amaran</string>
 </dict>
 </plist>
