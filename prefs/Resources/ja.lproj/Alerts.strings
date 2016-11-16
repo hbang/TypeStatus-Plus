@@ -4,15 +4,43 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>バナー</string>
+	<string>通知</string>
+
+	<!-- Header for alert type selection. -->
+	<key>ALERT_TYPE</key>
+	<string>通知タイプ</string>
+
+	<!-- Explanation of the alert type setting. -->
+	<key>ALERT_TYPE_EXPLANATION</key>
+	<string>この設定はTypeStatus Plusのプロバイダーから通知を変更します。</string>
+
+	<!-- Switch to wake the screen when the device is locked. -->
+	<key>WAKE_WHEN_LOCKED</key>
+	<string>ロックされたで画面をつけて</string>
+
+	<!-- Explanation of the above setting. -->
+	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+	<string>ステータスバーでTypeStatusの通知を受ける時にロックされたデバイスの画面をつけて。通知センターの通知はずっと画面をつけてです。</string>
+	
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>オフ</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>アイコンのみ</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>ステータスバー</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
-	<string>振動</string>
+	<string>バイブレーション</string>
 
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>ショー..</string>
+	<!-- Header for notification center options. -->
+	<key>NOTIFICATION_CENTER</key>
+	<string>通知センター</string>
+
+	<!-- Note displayed below the notification center section. -->
+	<key>NOTIFICATION_CENTER_EXPLANATION</key>
+	<string>通知センターの通知はTypeStatusの通知を無視するです。</string>
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
@@ -41,5 +69,9 @@
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
 	<string>有効にすると、バナー通知が代わりにTypeStatusプラスアイコンのそれぞれのアプリのアイコンを使用します。.</string>
+
+	<!-- Button to test the alerts. -->
+	<key>TEST_ALERT</key>
+	<string>通知をテスト</string>
 </dict>
 </plist>
