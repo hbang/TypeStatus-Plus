@@ -4,7 +4,7 @@
 <dict>
 	<!-- Header of status bar section. -->
 	<key>STATUS_BAR</key>
-	<string>Statusbar</string>
+	<string>Statuslinje</string>
 
 	<!-- Switch to toggle displaying the unread count in the status bar. -->
 	<key>UNREAD_COUNT</key>
@@ -12,11 +12,11 @@
 
 	<!-- Button for choosing from which app the unread notifications count will be shown in the status bar. -->
 	<key>SELECT_APPS</key>
-	<string>Vælg apps</string>
+	<string>Vælg apper</string>
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>Viser antallet af ulæste notifikationer fra de(n) valgte app(er) i statusbaren.</string>
+	<string>Viser antallet af ulæste notifikationer fra de(n) valgte app(er) i statuslinjen.</string>
 
 	<!-- Switch to toggle show in foreground. -->
 	<key>SHOW_IN_FOREGROUND</key>
@@ -24,6 +24,6 @@
 
 	<!-- Explanation of the show in foreground switch. -->
 	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>Vis notifikationer selvom den sendende app er i forgrunden.</string>
+	<string>Vis notifikationer, selvom den sendende app er i forgrunden.</string>
 </dict>
 </plist>
