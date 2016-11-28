@@ -147,6 +147,7 @@ static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Prov
 #pragma mark - Preferences
 
 - (HBTSPlusProvider *)providerWithAppIdentifier:(NSString *)appIdentifier {
+	// TODO: this should be a dictionary
 	for (HBTSPlusProvider *provider in _providers) {
 		if ([provider.appIdentifier isEqualToString:appIdentifier]) {
 			return provider;
@@ -171,3 +172,7 @@ static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Prov
 }
 
 @end
+
+%ctor {
+	[[HBTSPlusProviderController sharedInstance] loadProviders];
+}

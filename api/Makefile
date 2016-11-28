@@ -9,9 +9,9 @@ TypeStatusPlusProvider_FILES = $(wildcard *.m) $(wildcard *.x) $(wildcard *.xm)
 TypeStatusPlusProvider_PUBLIC_HEADERS = HBTSNotification.h HBTSPlusProvider.h HBTSPlusProviderController.h
 TypeStatusPlusProvider_CFLAGS = -I../global -include ../global/Global.h -fobjc-arc
 TypeStatusPlusProvider_FRAMEWORKS = MobileCoreServices
-TypeStatusPlusProvider_PRIVATE_FRAMEWORKS = AppSupport BackBoardServices
-TypeStatusPlusProvider_EXTRA_FRAMEWORKS = Cephei
-TypeStatusPlusProvider_LIBRARIES = rocketbootstrap substrate
+TypeStatusPlusProvider_PRIVATE_FRAMEWORKS = AppSupport
+TypeStatusPlusProvider_EXTRA_FRAMEWORKS = Cephei CydiaSubstrate
+TypeStatusPlusProvider_LIBRARIES = rocketbootstrap
 
 include $(THEOS)/makefiles/framework.mk
 
