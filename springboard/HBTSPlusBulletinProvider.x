@@ -31,17 +31,19 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 
 	[self clearAllBulletins];
 
+	// store the current app bundle id
+	_currentAppIdentifier = preferences.useAppIcon ? [notification.sourceBundleID copy] : nil;
+
+	// construct our bulletin
 	BBBulletinRequest *bulletinRequest = [[BBBulletinRequest alloc] init];
 
-	// set the bulletin id, which is just a UUID
+	// set the basic stuff
 	bulletinRequest.bulletinID = [NSUUID UUID].UUIDString;
+	bulletinRequest.sectionID = kHBTSPlusAppIdentifier;
+	bulletinRequest.parentSectionID = kHBTSPlusAppIdentifier;
 
 	// set the record id based on the keep all bulletins setting
 	bulletinRequest.recordID = preferences.keepAllBulletins ? bulletinRequest.bulletinID : @"ws.hbang.typestatusplus.notification";
-
-	// set the section id according to the user’s settings
-	_currentAppIdentifier = [preferences.useAppIcon ? notification.sourceBundleID : kHBTSPlusAppIdentifier copy];
-	bulletinRequest.sectionID = _currentAppIdentifier;
 
 	// set the title to the app display name
 	SBApplication *application = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:notification.sourceBundleID];
@@ -51,7 +53,6 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 	bulletinRequest.message = notification.content;
 	bulletinRequest.date = notification.date;
 	bulletinRequest.lastInterruptDate = [NSDate date];
-	bulletinRequest.showsUnreadIndicator = NO;
 
 	// set a callback to open the conversation
 	bulletinRequest.defaultAction = [BBAction actionWithCallblock:^{
@@ -84,7 +85,6 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 }
 
 - (NSString *)sectionIdentifier {
-	// return the app identifier. if it doesn't exist yet, just return the typestatus plus one
 	return _currentAppIdentifier ?: kHBTSPlusAppIdentifier;
 }
 
