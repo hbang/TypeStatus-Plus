@@ -121,9 +121,13 @@ void TestNotification() {
 		// get the notification type
 		HBTSMessageType type = ((NSNumber *)nsNotification.userInfo[kHBTSMessageTypeKey]).unsignedIntegerValue;
 
-		// if it’s an ended notification, just clear all bulletins and return
-		if (type == HBTSMessageTypeTypingEnded && !preferences.keepAllBulletins) {
+		// if we need to remove previous bulletins, do so now
+		if (!preferences.keepAllBulletins) {
 			[[HBTSPlusBulletinProvider sharedInstance] clearAllBulletins];
+		}
+
+		// if it’s an ended notification, there’s nothing else to do
+		if (type == HBTSMessageTypeTypingEnded) {
 			return;
 		}
 

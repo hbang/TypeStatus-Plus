@@ -1,16 +1,16 @@
 #import "HBTSPlusBulletinProvider.h"
-#import "HBTSPlusTapToOpenController.h"
 #import "HBTSPlusPreferences.h"
+#import "HBTSPlusTapToOpenController.h"
 #import <BulletinBoard/BBAction.h>
 #import <BulletinBoard/BBBulletinRequest.h>
 #import <BulletinBoard/BBSectionInfo.h>
 #import <BulletinBoard/BBServer.h>
-#import <BulletinBoard/BBDataProviderIdentity.h>
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBApplication.h>
 #import "../api/HBTSNotification.h"
 
 static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
+static NSString *const kHBTSPlusBulletinRecordIdentifier = @"ws.hbang.typestatusplus.notification";
 
 @implementation HBTSPlusBulletinProvider {
 	NSString *_currentAppIdentifier;
@@ -29,8 +29,6 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 - (void)showBulletinForNotification:(HBTSNotification *)notification {
 	HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
 
-	[self clearAllBulletins];
-
 	// store the current app bundle id
 	_currentAppIdentifier = preferences.useAppIcon ? [notification.sourceBundleID copy] : nil;
 
@@ -43,7 +41,7 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 	bulletinRequest.parentSectionID = kHBTSPlusAppIdentifier;
 
 	// set the record id based on the keep all bulletins setting
-	bulletinRequest.recordID = preferences.keepAllBulletins ? bulletinRequest.bulletinID : @"ws.hbang.typestatusplus.notification";
+	bulletinRequest.recordID = preferences.keepAllBulletins ? bulletinRequest.bulletinID : kHBTSPlusBulletinRecordIdentifier;
 
 	// set the title to the app display name
 	SBApplication *application = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:notification.sourceBundleID];
@@ -64,13 +62,9 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 }
 
 - (void)clearAllBulletins {
-	HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
-
-	// if the user has set us to only keep one notification, withdraw previous
-	// notifications
-	if (!preferences.keepAllBulletins) {
-		BBDataProviderWithdrawBulletinsWithRecordID(self, @"ws.hbang.typestatusplus.notification");
-	}
+	// remove notifications with the unique id we use when the user has the keep
+	// all bulletins preference off. we don't clear others, for now at least
+	BBDataProviderWithdrawBulletinsWithRecordID(self, kHBTSPlusBulletinRecordIdentifier);
 }
 
 #pragma mark - BBDataProvider
@@ -80,8 +74,7 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 }
 
 - (BBSectionInfo *)defaultSectionInfo {
-	BBSectionInfo *sectionInfo = [BBSectionInfo defaultSectionInfoForType:0];
-	return sectionInfo;
+	return [BBSectionInfo defaultSectionInfoForType:0];
 }
 
 - (NSString *)sectionIdentifier {
@@ -89,7 +82,7 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 }
 
 - (NSString *)sectionDisplayName {
-	return @"TypeStatus Plus";
+	return @"TypeStatus";
 }
 
 - (NSArray *)sortDescriptors {
