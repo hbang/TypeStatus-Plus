@@ -4,7 +4,7 @@
 <dict>
 	<!-- Standard tekst for å dele tweak. -->
 	<key>SHARE_TEXT</key>
-	<String>Sjekk ut TypeStatus Plus! 💬</string>
+	<string>Sjekk ut TypeStatus Plus! 💬</string>
 
 	<!-- Knapp som fører til underdelen av innstillingene. -->
 	<key>PROVIDERS</key>
