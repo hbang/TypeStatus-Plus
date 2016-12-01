@@ -7,7 +7,7 @@ Architecture: iphoneos-arm
 Description: Lots of messaging-related features
 Maintainer: HASHBANG Productions <support@hbang.ws>
 Author: HASHBANG Productions <support@hbang.ws>
-Section: Tweaks
+Section: Messaging
 Icon: file:///Library/PreferenceBundles/TypeStatusPlus.bundle/icon@2x.png
 Support: https://hbang.ws/support/
 Sponsor: thebigboss.org <http://thebigboss.org>
