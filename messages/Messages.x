@@ -71,7 +71,8 @@
 	// if animating, do things in an animation-y way. otherwise just jump to
 	// what we want
 	if (animated) {
-		CKTypingIndicatorLayer *layer = (CKTypingIndicatorLayer *)self._typeStatusPlus_typingIndicatorView.layer;
+		CKTypingView *typingView = self._typeStatusPlus_typingIndicatorView;
+		CKTypingIndicatorLayer *layer = [typingView respondsToSelector:@selector(indicatorLayer)] ? typingView.indicatorLayer : typingView.layer;
 
 		if (visible) {
 			// fade out label; fade in indicator
