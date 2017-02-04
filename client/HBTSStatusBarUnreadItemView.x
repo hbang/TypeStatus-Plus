@@ -17,8 +17,8 @@ static CGSize const kHBTSStatusBarUnreadItemViewSize = (CGSize){13.f, 13.f};
 %property (nonatomic, retain) BOOL _typeStatusPlus_isVisible;
 
 - (_UILegibilityImageSet *)contentsImage {
-	// if we’re not enabled, do nothing
-	if (![HBTSPlusPreferences sharedInstance].enabled) {
+	// if we’re not enabled, or foregroundStyle isn’t set yet, do nothing
+	if (![HBTSPlusPreferences sharedInstance].enabled || !self.foregroundStyle || !self.foregroundStyle.tintColor) {
 		return %orig;
 	}
 
