@@ -2,7 +2,7 @@ Package: ws.hbang.typestatusplus
 Name: TypeStatus Plus
 Depends: firmware (>= 9.0), firmware (<< 10.3), mobilesubstrate, ws.hbang.typestatus2 (>= 2.2.1), ws.hbang.typestatusplusproviders, com.rpetrich.rocketbootstrap (>= 1.0.5), applist (>= 1.5.9)
 Recommends: firmware (>= 9.2) | libstatusbar (>= 1:0.9.9.0-1), firmware (<< 9.2) | libmoorecon
-Version: 1.1.2
+Version: 1.2
 Architecture: iphoneos-arm
 Description: Lots of messaging-related features
 Maintainer: HASHBANG Productions <support@hbang.ws>
