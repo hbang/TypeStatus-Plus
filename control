@@ -1,15 +1,16 @@
 Package: ws.hbang.typestatusplus
 Name: TypeStatus Plus
-Depends: firmware (>= 9.0), mobilesubstrate, ws.hbang.typestatus2 (>= 2.1.8), ws.hbang.typestatusplusproviders, com.rpetrich.rocketbootstrap (>= 1.0.4), applist (>= 1.5.9)
+Depends: firmware (>= 9.0), firmware (<< 10.3), mobilesubstrate, ws.hbang.typestatus2 (>= 2.2.1), ws.hbang.typestatusplusproviders, com.rpetrich.rocketbootstrap (>= 1.0.5), applist (>= 1.5.9)
 Recommends: firmware (>= 9.2) | libstatusbar (>= 1:0.9.9.0-1), firmware (<< 9.2) | libmoorecon
-Version: 1.1.1
+Version: 1.1.2
 Architecture: iphoneos-arm
 Description: Lots of messaging-related features
 Maintainer: HASHBANG Productions <support@hbang.ws>
 Author: HASHBANG Productions <support@hbang.ws>
 Section: Messaging
 Icon: file:///Library/PreferenceBundles/TypeStatusPlus.bundle/icon@2x.png
+Depiction: https://cydia.hbang.ws/package/ws.hbang.typestatusplus/
 Support: https://hbang.ws/support/
 Sponsor: thebigboss.org <http://thebigboss.org>
-Tag: purpose::extension, compatible::ios9
+Tag: purpose::extension, compatible::ios9, compatible::ios10, cydia::commercial
 dev: hbang
