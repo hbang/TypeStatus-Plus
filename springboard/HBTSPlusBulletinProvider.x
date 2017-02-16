@@ -8,6 +8,7 @@
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBApplication.h>
 #import "../api/HBTSNotification.h"
+#import <version.h>
 
 static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 static NSString *const kHBTSPlusBulletinRecordIdentifier = @"ws.hbang.typestatusplus.notification";
@@ -43,9 +44,11 @@ static NSString *const kHBTSPlusBulletinRecordIdentifier = @"ws.hbang.typestatus
 	// set the record id based on the keep all bulletins setting
 	bulletinRequest.recordID = preferences.keepAllBulletins ? bulletinRequest.bulletinID : kHBTSPlusBulletinRecordIdentifier;
 
-	// set the title to the app display name
-	SBApplication *application = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:notification.sourceBundleID];
-	bulletinRequest.title = application.displayName;
+	// on iOS 9, set the title to the app display name – iOS 10 already shows it
+	if (!IS_IOS_OR_NEWER(iOS_10_0)) {
+		SBApplication *application = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:notification.sourceBundleID];
+		bulletinRequest.title = application.displayName;
+	}
 
 	// set all the rest
 	bulletinRequest.message = notification.content;
