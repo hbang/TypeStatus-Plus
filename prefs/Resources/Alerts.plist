@@ -57,6 +57,38 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<integer>1</integer>
+			<key>defaults</key>
+			<string>ws.hbang.typestatusplus</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>TapToOpenMode</string>
+			<key>label</key>
+			<string>TAP_TO_OPEN_ACTION</string>
+			<key>validTitles</key>
+			<array>
+				<string>OFF</string>
+				<string>TAP_TO_OPEN_ACTION_OPEN</string>
+				<string>TAP_TO_OPEN_ACTION_DISMISS</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+			</array>
+			<key>PostNotification</key>
+			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>VIBRATIONS</string>
 			<key>requiredCapabilities</key>

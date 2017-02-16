@@ -5,6 +5,12 @@ typedef NS_ENUM(NSUInteger, HBTSPlusAlertType) {
 	HBTSPlusAlertTypeOverlay
 };
 
+typedef NS_ENUM(NSUInteger, HBTSTapToOpenMode) {
+	HBTSTapToOpenModeNothing,
+	HBTSTapToOpenModeOpen,
+	HBTSTapToOpenModeDismiss
+};
+
 @interface HBTSPlusPreferences : NSObject
 
 @property (nonatomic, readonly) BOOL enabled;
@@ -16,6 +22,7 @@ typedef NS_ENUM(NSUInteger, HBTSPlusAlertType) {
 @property (nonatomic, readonly) BOOL showBannersOnLockScreen, showBannersOnHomeScreen, showBannersInApps;
 
 @property (nonatomic, readonly) HBTSPlusAlertType alertType;
+@property (nonatomic, readonly) HBTSTapToOpenMode tapToOpenMode;
 
 + (instancetype)sharedInstance;
 

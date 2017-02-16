@@ -10,6 +10,14 @@
 	<key>ALERT_TYPE</key>
 	<string>Alert Type</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Off</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Icon Only</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Status Bar</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>The above applies only to notifications from TypeStatus Plus providers.</string>
@@ -22,13 +30,15 @@
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>Wake the screen when receiving a TypeStatus status bar notification while the device is locked. Notification Center alerts always wake the screen.</string>
 
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>Off</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>Icon Only</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>Status Bar</string>
+	<!-- Header for tap action section. -->
+	<key>TAP_TO_OPEN_ACTION</key>
+	<string>Tap Action</string>
+
+	<!-- Options shown for the tap action. -->
+	<key>TAP_TO_OPEN_ACTION_OPEN</key>
+	<string>Open App</string>
+	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
+	<string>Dismiss Alert</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

@@ -1,4 +1,6 @@
 #import "HBTSPlusTapToOpenController.h"
+#import "HBTSPlusAlertController.h"
+#import "HBTSPlusPreferences.h"
 #import <Foundation/NSDistributedNotificationCenter.h>
 #import <FrontBoardServices/FBSSystemService.h>
 #import <MobileCoreServices/LSApplicationProxy.h>
@@ -46,19 +48,33 @@ BOOL overrideBreadcrumbHax;
 	HBLogDebug(@"Status bar tapped—recieved notification");
 
 	dispatch_async(dispatch_get_main_queue(), ^{
-		// if this is a messages notification
-		if ([_appIdentifier isEqualToString:@"com.apple.MobileSMS"]) {
-			// open the url ourselves
-			[self _openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://open?address=%@", _currentSender]] bundleIdentifier:@"com.apple.MobileSMS"];
+		HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
 
-			// we don’t need this any more
-			_currentSender = nil;
-		} else if (_actionURL) {
-			// if we got a url, open that
-			[self _openURL:_actionURL bundleIdentifier:nil];
-		} else {
-			// or fall back to just opening the app like normal
-			[self _openURL:nil bundleIdentifier:_appIdentifier];
+		switch (preferences.tapToOpenMode) {
+			case HBTSTapToOpenModeNothing:
+				break;
+			
+			case HBTSTapToOpenModeOpen:
+				// if this is a messages notification
+				if ([_appIdentifier isEqualToString:@"com.apple.MobileSMS"]) {
+					// open the url ourselves
+					[self _openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://open?address=%@", _currentSender ?: @""]] bundleIdentifier:@"com.apple.MobileSMS"];
+
+					// we don’t need this any more
+					_currentSender = nil;
+				} else if (_actionURL) {
+					// if we got a url, open that
+					[self _openURL:_actionURL bundleIdentifier:nil];
+				} else {
+					// or fall back to just opening the app like normal
+					[self _openURL:nil bundleIdentifier:_appIdentifier];
+				}
+
+				break;
+			
+			case HBTSTapToOpenModeDismiss:
+				[HBTSPlusAlertController hide];
+				break;
 		}
 	});
 
