@@ -16,7 +16,7 @@
 			<key>cell</key>
 			<string>PSSegmentCell</string>
 			<key>default</key>
-			<integer>2</integer>
+			<integer>1</integer>
 			<key>defaults</key>
 			<string>ws.hbang.typestatusplus</string>
 			<key>key</key>
