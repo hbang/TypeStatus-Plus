@@ -10,6 +10,7 @@
 #import <Foundation/NSDistributedNotificationCenter.h>
 #import <IMFoundation/FZMessage.h>
 #import <TypeStatusPlusProvider/HBTSNotification.h>
+#import <version.h>
 
 @interface CKConversationListCell ()
 
@@ -42,6 +43,12 @@
 		typingView.alpha = 0.0;
 		typingView.translatesAutoresizingMaskIntoConstraints = NO;
 		typingView.layer.affineTransform = CGAffineTransformMakeScale(0.8, 0.8);
+
+		// on ios 10, you build your own typing view!
+		if (IS_IOS_OR_NEWER(iOS_10_0)) {
+			typingView.indicatorLayer = [CKTypingIndicatorLayer layer];
+		}
+		
 		[self.contentView addSubview:typingView];
 
 		[self.contentView hb_addCompactConstraints:@[
