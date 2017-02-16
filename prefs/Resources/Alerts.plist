@@ -61,7 +61,7 @@
 			<string>VIBRATIONS</string>
 			<key>requiredCapabilities</key>
 			<array>
-				<string>ringer-switch</string>
+				<string>VibratorCapability</string>
 			</array>
 		</dict>
 		<dict>
@@ -79,7 +79,7 @@
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
 			<key>requiredCapabilities</key>
 			<array>
-				<string>ringer-switch</string>
+				<string>VibratorCapability</string>
 			</array>
 		</dict>
 		<dict>
@@ -97,7 +97,7 @@
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
 			<key>requiredCapabilities</key>
 			<array>
-				<string>ringer-switch</string>
+				<string>VibratorCapability</string>
 			</array>
 		</dict>
 		<dict>
@@ -115,7 +115,7 @@
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
 			<key>requiredCapabilities</key>
 			<array>
-				<string>ringer-switch</string>
+				<string>VibratorCapability</string>
 			</array>
 		</dict>
 		<dict>
