@@ -21,6 +21,16 @@
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>เปิดหน้าจอเมื่อได้รับการแจ้งเตือนผ่านแถบสถานะจาก TypeStatus</string>
+
+	<!-- Header for tap action section. -->
+	<key>TAP_TO_OPEN_ACTION</key>
+	<string>คำสั่งเมื่อแตะ</string>
+
+	<!-- Options shown for the tap action. -->
+	<key>TAP_TO_OPEN_ACTION_OPEN</key>
+	<string>เปิดแอพ</string>
+	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
+	<string>ปิดการแจ้งเตือน</string>
 	
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
