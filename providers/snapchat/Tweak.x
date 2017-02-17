@@ -40,4 +40,10 @@ NSBundle *bundle;
 
 %ctor {
 	bundle = [[NSBundle bundleWithPath:@"/Library/TypeStatus/Providers/Snapchat.bundle"] retain];
+
+	if (IN_SPRINGBOARD) {
+		// UNRemoteNotificationServer in iOS 9, UNSRemoteNotificationServer in iOS 10
+		Class serverClass = %c(UNSRemoteNotificationServer) ?: %c(UNRemoteNotificationServer);
+		%init(_ungrouped, UNRemoteNotificationServer = serverClass);
+	}
 }
