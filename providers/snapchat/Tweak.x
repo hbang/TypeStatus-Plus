@@ -13,7 +13,7 @@ NSBundle *bundle;
 
 		if ([type isEqualToString:@"typing"]) {
 			// typing
-			HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:message.userInfo[@"sender"] iconName:@"TypeStatusPlusSnapchat"] autorelease];
+			HBTSNotification *notification = [[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:message.userInfo[@"sender"] iconName:@"TypeStatusPlusSnapchat"];
 
 			HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.toyopagroup.picaboo"];
 			[provider showNotification:notification];
@@ -21,7 +21,7 @@ NSBundle *bundle;
 			// snap screenshot (ss) or chat screenshot (cs)
 			NSString *sender = message.userInfo[@"sender"];
 
-			HBTSNotification *notification = [[[HBTSNotification alloc] init] autorelease];
+			HBTSNotification *notification = [[HBTSNotification alloc] init];
 			notification.content = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"SENDER_TOOK_A_SCREENSHOT", @"Localizable", bundle, @"String used in the status bar for screenshot notifications. “kirb took a screenshot!”"), sender];
 			notification.boldRange = [notification.content rangeOfString:sender];
 			notification.statusBarIconName = @"TypeStatusPlusSnapchat";
@@ -39,7 +39,7 @@ NSBundle *bundle;
 %end
 
 %ctor {
-	bundle = [[NSBundle bundleWithPath:@"/Library/TypeStatus/Providers/Snapchat.bundle"] retain];
+	bundle = [NSBundle bundleWithPath:@"/Library/TypeStatus/Providers/Snapchat.bundle"];
 
 	if (IN_SPRINGBOARD) {
 		// UNRemoteNotificationServer in iOS 9, UNSRemoteNotificationServer in iOS 10
