@@ -21,6 +21,16 @@
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>Väck skärmen när en TypeStatus statusmenynotis tas emot och enheten är låst. Notiser ifrån Notiscenter kommer alltid väcka skärmen.</string>
+
+	<!-- Header for tap action section. --> 
+	<key>TAP_TO_OPEN_ACTION</key> 
+	<string>Tryck-handling</string>
+	
+	<!-- Options shown for the tap action. -->
+	<key>TAP_TO_OPEN_ACTION_OPEN</key>
+	<string>Öppna App</string>
+	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
+	<string>Stäng Alert</string>
 	
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
