@@ -21,6 +21,15 @@
     <!-- Explanation of the above setting. -->
     <key>WAKE_WHEN_LOCKED_EXPLANATION</key>
     <string>Zobudiť obrazovku pri prijatí TypeStatus notifikácie na stavovej lište pri uzamknutom zariadení. Upozornenia centra notifikácii vždy prebudia obrazovku.</string>
+    <!-- Header for tap action section. -->
+	<key>TAP_TO_OPEN_ACTION</key>
+	<string>Akcia pri klepnutí</string>
+
+	<!-- Options shown for the tap action. -->
+	<key>TAP_TO_OPEN_ACTION_OPEN</key>
+	<string>Otvoriť aplikáciu</string>
+	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
+	<string>Zatvoriť upozornenie</string>
 
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
