@@ -21,6 +21,16 @@
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>Αφύπνηση της οθόνης όταν λάβετε μια ειδοποίηση TypeStatus στην γραμμή κατάστασης καθως η συσκευη ειναι κλειδωμένη. Οι ειδοποιήσεις στο Κέντρο Γνωστοποιήσεων ξυπνάνε πάντα την οθόνη.</string>
+
+	<!-- Header for tap action section. -->
+	<key>TAP_TO_OPEN_ACTION</key>
+	<string>ÅíÝñãåéá ÐáôÞìáôïò</string>
+
+	<!-- Options shown for the tap action. -->
+	<key>TAP_TO_OPEN_ACTION_OPEN</key>
+	<string>¢íïéãìá åöáñìïãÞò</string>
+	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
+	<string>Áðüññéøç åéäïðïßçóçò</string>
 	
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>

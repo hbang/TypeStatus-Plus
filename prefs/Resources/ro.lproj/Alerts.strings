@@ -18,6 +18,16 @@
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>Aprinde ecranul cand o notificare este primita, atunci cand dispozitivul e blocat. Alertele primite in Centrul de Notificare, intotdeauna pornesc ecranul.</string>
 
+	<!-- Header for tap action section. -->
+	<key>TAP_TO_OPEN_ACTION</key>
+	<string>Acțiune pentru Atingere</string>
+
+	<!-- Options shown for the tap action. -->
+	<key>TAP_TO_OPEN_ACTION_OPEN</key>
+	<string>Deschide Aplicație</string>
+	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
+	<string>Îndepărtează Alerta</string>
+
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
 	<string>Oprit</string>
@@ -37,7 +47,6 @@
 	<!-- Note displayed below the notification center section. -->
 	<key>NOTIFICATION_CENTER_EXPLANATION</key>
 	<string>Alertele prin Centrul de Notificari suprascriu notificarile standard prin TypeStatus.</string>
-
 
 	<!-- Option to show banners on the lock screen. -->
 	<key>ON_LOCK_SCREEN</key>
