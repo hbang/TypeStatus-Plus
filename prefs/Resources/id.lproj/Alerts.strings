@@ -22,6 +22,15 @@
     <key>WAKE_WHEN_LOCKED_EXPLANATION</key>
     <string>Nyalakan layar saat menerima notifikasi TypeStatus pada status bar meskipun perangkat terkunci. Peringatan pada Pusat Notifikasi akan tetap menyalakan layar.</string>
 
+    <key>TAP_TO_OPEN_ACTION</key>
+    <string>Tindakan Ketuk</string>
+
+    <!-- Options shown for the tap action. -->
+    <key>TAP_TO_OPEN_ACTION_OPEN</key>
+    <string>Buka Aplikasi</string>
+    <key>TAP_TO_OPEN_ACTION_DISMISS</key>
+    <string>Abaikan Peringatan</string>
+
     <!-- Buttons shown in the segmented controls for the alert type. -->
     <key>OFF</key>
     <string>Mati</string>

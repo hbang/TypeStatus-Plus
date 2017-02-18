@@ -21,6 +21,16 @@
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>기기 화면이 꺼진 상태에서 TypeStatus 상태표시줄 알림을 받으면 기기 화면을 켭니다. 알림 센터의 알림은 항상 화면을 켭니다.</string>
+
+	<!-- Header for tap action section. -->
+	<key>TAP_TO_OPEN_ACTION</key>
+	<string>탭 동작</string>
+
+	<!-- Options shown for the tap action. -->
+	<key>TAP_TO_OPEN_ACTION_OPEN</key>
+	<string>앱 실행</string>
+	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
+	<string>알림 닫기</string>
 	
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
