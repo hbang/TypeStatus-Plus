@@ -16,11 +16,11 @@
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
-	<string>إيقاظ الشاشة إذا كان الهاتف مقفل</string>
+	<string>تنبية الشاشة إذا كان الهاتف مقفل</string>
 
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
-	<string>إيقاظ الشاشة فى حالة إستقبال شريط إشعار TypeStatus و الهاتف مقفل. تنبيهات مركز الإشعارات تقوم دومًا بإيقاظ الشاشة.</string>
+	<string>تنبية الشاشة فى حالة إستقبال شريط إشعار TypeStatus و الهاتف مقفل. تنبيهات مركز الإشعارات تقوم دومًا تنبية الشاشة.</string>
 
  	<!-- Header for tap action section. -->
 	<key>TAP_TO_OPEN_ACTION</key>
@@ -74,11 +74,11 @@
 
 	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
 	<key>USE_APP_ICON</key>
-	<string>إستخدام نفس ايكونة البرنامج</string>
+	<string>إستخدام نفس إيقونة البرنامج</string>
 
 	<!-- Explanation of the respective app icon switch. -->
 	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>عند تشغيلها, سيتم إستخدام ايكونة البرنامج بدلاً من ايكونة (TypeStatus) بلاس في الإشعارات.</string>
+	<string>عند تشغيلها, سيتم إستخدام إيقونة البرنامج بدلاً من إيقونة (TypeStatus Plus)  في الإشعارات.</string>
 
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>

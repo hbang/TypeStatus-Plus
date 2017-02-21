@@ -8,15 +8,15 @@
 
 	<!-- Explanation of the providers for TypeStatus Plus. -->
 	<key>PROVIDERS_EXPLANATION</key>
-	<string>إظافات البرامج المدعومة هي إظافات منفردة لكل تطبيق. يحتوي (TypeStatus) بلاس على بعض من هذه الإظافات, ويمكن للمطورين بتطوير إظافات خاصة بهم, إذا لم تجد إظافة لبرنامجك المفضل, فقم بالبحث عنه في الـ Cydia.
-	
-	بعض الإظافات تتطلب إبقاء البرنامج مشتغل في الخلفية حتى ولو كان الجهاز مقفول, وقد يكون له تأثير على عمر البطارية.
-	
-	الإظافة لبرنامج (الموسيقى) يدعم جميع البرامج التي تظهر اسم الوسائط المشتغلة في مركز التحكم وفي شاشة القفل.</string>
+	<string>إضافات البرامج المدعومة هي إضافات منفردة لكل تطبيق. يحتوي (TypeStatus Plus)  على بعض من هذه الإضافات, ويمكن للمطورين بتطوير إضافات خاصة بهم, إذا لم تجد إضافة لبرنامجك المفضل, فقم بالبحث عنه في الـ Cydia.
+
+	بعض الإضافات تتطلب إبقاء البرنامج مشتغل في الخلفية حتى ولو كان الجهاز مقفل, وقد يكون له تأثير على عمر البطارية.
+
+	الإضافة لبرنامج (الموسيقى) يدعم جميع البرامج التي تظهر اسم الوسائط المشتغلة في مركز التحكم وفي شاشة القفل.</string>
 
 	<!-- Explanation used when there are no providers installed. -->
 	<key>NO_PROVIDERS_EXPLANATION</key>
-	<string>لا توجد إظافات منصبة. لابد من وجود خطأ ما. يرجى المحاولة بـ(تنصيب) او (إعادة تنصيب) الحزمة (TypeStatus Plus Providers) في الـ Cydia.</string>
+	<string>لا توجد إضافات منصبة. لابد من وجود خطأ ما. يرجى المحاولة بـ(تنصيب) او (إعادة تنصيب) الحزمة (TypeStatus Plus Providers) في الـ Cydia.</string>
 
 	<!-- Title used on an alert when a provider’s preferences fail to load. -->
 	<key>FAILED_TO_LOAD_PREFS_TITLE</key>
@@ -24,6 +24,6 @@
 
 	<!-- Body used on an alert when a provider’s preferences fail to load. -->
 	<key>FAILED_TO_LOAD_PREFS_BODY</key>
-	<string>تحقق من وجود تحديثات لـ (TypeStatus) بلاس. إتصل بالمطورين اذا لازال الخطأ قائماً.</string>
+	<string>تحقق من وجود تحديثات لـ (TypeStatus Plus) . إتصل بالمطورين اذا لازال الخطأ قائماً.</string>
 </dict>
 </plist>
