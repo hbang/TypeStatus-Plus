@@ -22,6 +22,16 @@
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>Ekran kapalıyken bir TypeStatus bildirimi aldığında cihazı uyandır. Bildirim Çubuğu uyarısı her zaman ekranı uyandırır.</string>
 
+	<!-- Header for tap action section. -->
+	<key>TAP_TO_OPEN_ACTION</key>
+	<string>Dokunma Hareketi</string>
+
+	<!-- Options shown for the tap action. -->
+	<key>TAP_TO_OPEN_ACTION_OPEN</key>
+	<string>Uygulamayı Aç</string>
+	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
+	<string>Bildirimi Gizle</string>
+
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
 	<string>Kapalı</string>
