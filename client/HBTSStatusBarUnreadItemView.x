@@ -6,6 +6,11 @@
 
 static CGSize const kHBTSStatusBarUnreadItemViewSize = (CGSize){13.f, 13.f};
 
+static inline CGFloat getBorderWidth() {
+	CGFloat scale = [UIScreen mainScreen].scale;
+	return (scale < 3 ? 1.f : 1.5f) / scale;
+}
+
 @interface HBTSStatusBarUnreadItemView ()
 
 @property (nonatomic) BOOL _typeStatusPlus_isVisible;
@@ -41,8 +46,8 @@ static CGSize const kHBTSStatusBarUnreadItemViewSize = (CGSize){13.f, 13.f};
 	UIGraphicsBeginImageContextWithOptions(self.intrinsicContentSize, NO, 0);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 
-	// get the value of a physical pixel (eg, 0.5pt for 1 physical pixel @2x)
-	CGFloat physicalPixel = 1.f / [UIScreen mainScreen].scale;
+	// determine our border width
+	CGFloat physicalPixel = getBorderWidth();
 
 	// use a hairline width, so it always uses one physical pixel
 	CGContextSetLineWidth(context, physicalPixel);
@@ -66,8 +71,15 @@ static CGSize const kHBTSStatusBarUnreadItemViewSize = (CGSize){13.f, 13.f};
 	// determine where to place the label
 	CGSize labelSize = [badgeString sizeWithAttributes:attributes];
 	CGPoint labelPoint;
-	labelPoint.x = physicalPixel + roundf((kHBTSStatusBarUnreadItemViewSize.width - labelSize.width) / 2.f);
-	labelPoint.y = roundf((kHBTSStatusBarUnreadItemViewSize.height - labelSize.height) / 2.f);
+	labelPoint.x = physicalPixel + ((kHBTSStatusBarUnreadItemViewSize.width - labelSize.width) / 2.f);
+	labelPoint.y = (kHBTSStatusBarUnreadItemViewSize.height - labelSize.height) / 2.f;
+
+	// sitting it in between physical pixels will look awful on non retina screens, so round it if
+	// that’s the case
+	if ([UIScreen mainScreen].scale < 2) {
+		labelPoint.x = roundf(labelPoint.x);
+		labelPoint.y = roundf(labelPoint.y);
+	}
 
 	// render the string into the context
 	[badgeString drawAtPoint:labelPoint withAttributes:attributes];
@@ -86,8 +98,8 @@ static CGSize const kHBTSStatusBarUnreadItemViewSize = (CGSize){13.f, 13.f};
 		return CGSizeZero;
 	}
 
-	// get the value of a physical pixel (eg, 0.5pt for 1 physical pixel @2x)
-	CGFloat physicalPixel = 1.f / [UIScreen mainScreen].scale;
+	// determine our border width
+	CGFloat physicalPixel = getBorderWidth();
 
 	// add a physical pixel of space to avoid cutting off the circle
 	CGSize size = kHBTSStatusBarUnreadItemViewSize;
