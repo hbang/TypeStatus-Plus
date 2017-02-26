@@ -35,6 +35,14 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 
 #pragma mark - Unread Count
 
+void updateUnreadCountStatusBarItem() {
+	NSDictionary *result = [[HBTSPlusServer sharedInstance] receivedGetUnreadCountMessage:nil];
+	NSNumber *count = result[kHBTSPlusBadgeCountKey];
+
+	[unreadCountStatusBarItem update];
+	unreadCountStatusBarItem.visible = count.integerValue > 0;
+}
+
 %hook SpringBoard
 
 - (void)applicationDidFinishLaunching:(id)application {
@@ -54,7 +62,7 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 
 	unreadCountStatusBarItem = [[%c(LSStatusBarItem) alloc] initWithIdentifier:@"ws.hbang.typestatusplus.unreadcount" alignment:StatusBarAlignmentRight];
 	unreadCountStatusBarItem.imageName = @"TypeStatusPlusUnreadCount";
-	unreadCountStatusBarItem.visible = YES;
+	updateUnreadCountStatusBarItem();
 }
 
 %end
@@ -65,7 +73,7 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 	%orig;
 
 	if ([preferences.unreadCountApps containsObject:self.bundleIdentifier]) {
-		[unreadCountStatusBarItem update];
+		updateUnreadCountStatusBarItem();
 	}
 }
 
