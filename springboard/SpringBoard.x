@@ -40,7 +40,7 @@ void updateUnreadCountStatusBarItem() {
 	NSNumber *count = result[kHBTSPlusBadgeCountKey];
 
 	[unreadCountStatusBarItem update];
-	unreadCountStatusBarItem.visible = count.integerValue > 0;
+	unreadCountStatusBarItem.visible = preferences.showUnreadCount && count.integerValue > 0;
 }
 
 %hook SpringBoard
@@ -113,7 +113,7 @@ void TestNotification() {
 
 	// when preferences update, forcefully update the status bar item
 	[preferences registerPreferenceChangeBlock:^{
-		[unreadCountStatusBarItem update];
+		updateUnreadCountStatusBarItem();
 	}];
 
 	// register for test notification notification
