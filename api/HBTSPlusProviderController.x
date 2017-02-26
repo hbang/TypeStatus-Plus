@@ -53,6 +53,11 @@ static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Prov
 		for (NSURL *directory in contents) {
 			NSString *baseName = directory.pathComponents.lastObject;
 
+			// skip anything not ending in .bundle
+			if (![baseName hasSuffix:@".bundle"]) {
+				continue;
+			}
+
 			NSBundle *bundle = [NSBundle bundleWithURL:directory];
 
 			if (!bundle) {
