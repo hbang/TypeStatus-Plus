@@ -28,7 +28,7 @@
 
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
-	<string>Wake the screen when receiving a TypeStatus status bar notification while the device is locked. Notification Center alerts always wake the screen.</string>
+	<string>Wake the screen when receiving a TypeStatus notification while the device is locked.</string>
 
 	<!-- Header for tap action section. -->
 	<key>TAP_TO_OPEN_ACTION</key>
