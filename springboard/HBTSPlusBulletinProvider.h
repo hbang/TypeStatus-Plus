@@ -2,7 +2,7 @@
 
 @class HBTSNotification;
 
-@interface HBTSPlusBulletinProvider : NSObject <BBDataProvider>
+@interface HBTSPlusBulletinProvider : BBDataProvider <BBDataProvider>
 
 + (instancetype)sharedInstance;
 

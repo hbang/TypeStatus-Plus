@@ -28,7 +28,7 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 
 - (void)loadAllDataProvidersAndPerformMigration:(BOOL)performMigration {
 	%orig;
-	[self addDataProvider:[HBTSPlusBulletinProvider sharedInstance] performMigration:NO];
+	[self _addDataProviderClass:HBTSPlusBulletinProvider.class performMigration:YES];
 }
 
 %end
@@ -129,20 +129,8 @@ void TestNotification() {
 		// get the notification type
 		HBTSMessageType type = ((NSNumber *)nsNotification.userInfo[kHBTSMessageTypeKey]).unsignedIntegerValue;
 
-		// if we need to remove previous bulletins, do so now
-		if (!preferences.keepAllBulletins) {
-			[[HBTSPlusBulletinProvider sharedInstance] clearAllBulletins];
-		}
-
 		// if it’s an ended notification, there’s nothing else to do
 		if (type == HBTSMessageTypeTypingEnded) {
-			return;
-		}
-
-		HBTSNotification *notification = [[HBTSNotification alloc] initWithDictionary:nsNotification.userInfo];
-
-		// right off the bat, if there’s no title or content, stop right there.
-		if (!notification.content || [notification.content isEqualToString:@""]) {
 			return;
 		}
 
@@ -155,12 +143,9 @@ void TestNotification() {
 			});
 		}
 
-		// if the user wants a banner, let’s do that too. else if they want an
-		// undim, do that (SBUIUnlockOptionsTurnOnScreenFirstKey doesn’t actually do
-		// an unlock… weird stuff)
-		if ([HBTSPlusStateHelper shouldShowBanner]) {
-			[[HBTSPlusBulletinProvider sharedInstance] showBulletinForNotification:notification];
-		} else if (preferences.wakeWhenLocked) {
+		// if the user wants an undim, and we aren’t going to show a banner anyway, do that
+		// (SBUIUnlockOptionsTurnOnScreenFirstKey doesn’t actually do an unlock… weird stuff)
+		if (preferences.wakeWhenLocked) {
 			[[%c(SBLockScreenManager) sharedInstance] unlockUIFromSource:0 withOptions:@{
 				@"SBUIUnlockOptionsTurnOnScreenFirstKey": @YES,
 				@"SBUIUnlockOptionsStartFadeInAnimation": @YES
