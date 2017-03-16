@@ -120,6 +120,24 @@ void TestNotification() {
 	[HBTSPlusAlertController sendNotification:notification];
 }
 
+#pragma mark - Apple weirdness fix
+
+%hook FBSSystemAppProxy
+
+- (void)setKeyboardFocusApplicationWithBundleID:(NSString *)bundleID pid:(pid_t)pid completion:(id)completion {
+	// workaround for the keyboard flashing visible for a split second when closing a backgrounded app
+	// it seems this only happens when the keyboard focus given to nobody, by passing in nil and 0.
+	// when this happens, we’ll instead give focus to springboard
+	if (!bundleID) {
+		bundleID = @"com.apple.springboard";
+		pid = getpid();
+	}
+
+	%orig;
+}
+
+%end
+
 #pragma mark - Constructor
 
 %ctor {
