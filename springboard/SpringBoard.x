@@ -50,7 +50,8 @@ void updateUnreadCountStatusBarItem() {
 	[unreadCountStatusBarItem update];
 
 	// show if we’re enabled and have a non-0 value, hide otherwise
-	unreadCountStatusBarItem.visible = preferences.showUnreadCount && count.integerValue > 0;
+	BOOL enabled = preferences.enabled && preferences.showUnreadCount;
+	unreadCountStatusBarItem.visible = enabled && count.integerValue > 0;
 }
 
 %hook SpringBoard
