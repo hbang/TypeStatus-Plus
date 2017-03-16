@@ -113,9 +113,44 @@ void updateUnreadCountStatusBarItem() {
 
 %end
 
+#pragma mark - Set status bar notification
+
+void (^receivedSetStatusBarNotification)(NSNotification *) = ^(NSNotification *nsNotification) {
+	// not enabled? don’t do anything
+	if (!preferences.enabled) {
+		return;
+	}
+
+	// get the notification type
+	HBTSMessageType type = ((NSNumber *)nsNotification.userInfo[kHBTSMessageTypeKey]).unsignedIntegerValue;
+
+	// if it’s an ended notification, there’s nothing else to do
+	if (type == HBTSMessageTypeTypingEnded) {
+		return;
+	}
+
+	// if the user wants vibration, let’s do that
+	if ([HBTSPlusStateHelper shouldVibrate]) {
+		// TODO: document and define constants for these things
+		AudioServicesPlaySystemSoundWithVibration(4095, nil, @{
+			@"VibePattern": @[ @YES, @50 ],
+			@"Intensity": @1
+		});
+	}
+
+	// if the user wants an undim, and we aren’t going to show a banner anyway, do that
+	// (SBUIUnlockOptionsTurnOnScreenFirstKey doesn’t actually do an unlock… weird stuff)
+	if (preferences.wakeWhenLocked) {
+		[[%c(SBLockScreenManager) sharedInstance] unlockUIFromSource:0 withOptions:@{
+			@"SBUIUnlockOptionsTurnOnScreenFirstKey": @YES,
+			@"SBUIUnlockOptionsStartFadeInAnimation": @YES
+		}];
+	}
+};
+
 #pragma mark - Test notification
 
-void TestNotification() {
+void sendTestNotification() {
 	HBTSNotification *notification = [[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:@"Johnny Appleseed" iconName:@"TypeStatus"];
 	notification.sourceBundleID = @"com.apple.MobileSMS";
 	[HBTSPlusAlertController sendNotification:notification];
@@ -153,41 +188,10 @@ void TestNotification() {
 	preferences = [%c(HBTSPlusPreferences) sharedInstance];
 
 	// register for test notification notification
-	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)TestNotification, CFSTR("ws.hbang.typestatusplus/TestNotification"), NULL, kNilOptions);
+	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)sendTestNotification, CFSTR("ws.hbang.typestatusplus/TestNotification"), NULL, kNilOptions);
 
 	// when a set status bar notification is sent by typestatus free
-	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *nsNotification) {
-		// not enabled? don’t do anything
-		if (!preferences.enabled) {
-			return;
-		}
-
-		// get the notification type
-		HBTSMessageType type = ((NSNumber *)nsNotification.userInfo[kHBTSMessageTypeKey]).unsignedIntegerValue;
-
-		// if it’s an ended notification, there’s nothing else to do
-		if (type == HBTSMessageTypeTypingEnded) {
-			return;
-		}
-
-		// if the user wants vibration, let’s do that
-		if ([HBTSPlusStateHelper shouldVibrate]) {
-			// TODO: document and define constants for these things
-			AudioServicesPlaySystemSoundWithVibration(4095, nil, @{
-				@"VibePattern": @[ @YES, @(50) ],
-				@"Intensity": @1
-			});
-		}
-
-		// if the user wants an undim, and we aren’t going to show a banner anyway, do that
-		// (SBUIUnlockOptionsTurnOnScreenFirstKey doesn’t actually do an unlock… weird stuff)
-		if (preferences.wakeWhenLocked) {
-			[[%c(SBLockScreenManager) sharedInstance] unlockUIFromSource:0 withOptions:@{
-				@"SBUIUnlockOptionsTurnOnScreenFirstKey": @YES,
-				@"SBUIUnlockOptionsStartFadeInAnimation": @YES
-			}];
-		}
-	}];
+	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:receivedSetStatusBarNotification];
 
 	%init;
 }
