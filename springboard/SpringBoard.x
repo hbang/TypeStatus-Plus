@@ -7,8 +7,8 @@
 #import "../api/HBTSNotification.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <BulletinBoard/BBLocalDataProviderStore.h>
-#import <Cephe/HBStatusBarController.h>
-#import <Cephe/HBStatusBarItem.h>
+#import <Cephei/HBStatusBarController.h>
+#import <Cephei/HBStatusBarItem.h>
 #import <Foundation/NSDistributedNotificationCenter.h>
 #import <libstatusbar/LSStatusBarItem.h>
 #import <SpringBoard/SBApplication.h>
@@ -64,7 +64,7 @@ void updateUnreadCountStatusBarItem() {
 		HBStatusBarItem *item = [[%c(HBStatusBarItem) alloc] initWithIdentifier:@"ws.hbang.typestatusplus.unreadcount"];
 		item.customViewClass = @"HBTSStatusBarUnreadItemView";
 
-		[[%c(HBStatusBarController) sharedInstance] addItem:item];
+		[(HBStatusBarController *)[%c(HBStatusBarController) sharedInstance] addItem:item];
 
 		// cast it to LSStatusBarItem because we only use apis in common from here
 		unreadCountStatusBarItem = (LSStatusBarItem *)item;
