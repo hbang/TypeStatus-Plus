@@ -1,3 +1,5 @@
+export TARGET = iphone:10.1:9.0
+
 INSTALL_TARGET_PROCESSES = MobileSMS Preferences
 
 ifneq ($(RESPRING),0)
