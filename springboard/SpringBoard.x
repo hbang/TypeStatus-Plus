@@ -7,10 +7,10 @@
 #import "../api/HBTSNotification.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <BulletinBoard/BBLocalDataProviderStore.h>
+#import <Cephe/HBStatusBarController.h>
+#import <Cephe/HBStatusBarItem.h>
 #import <Foundation/NSDistributedNotificationCenter.h>
 #import <libstatusbar/LSStatusBarItem.h>
-#import <libstatusbar/UIStatusBarCustomItem.h>
-#import <libstatusbar/UIStatusBarCustomItemView.h>
 #import <SpringBoard/SBApplication.h>
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBLockScreenManager.h>
@@ -18,6 +18,7 @@
 #import <version.h>
 
 HBTSPlusPreferences *preferences;
+
 LSStatusBarItem *unreadCountStatusBarItem;
 
 extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoundID, id unknown, NSDictionary *options);
@@ -36,33 +37,54 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 #pragma mark - Unread Count
 
 void updateUnreadCountStatusBarItem() {
+	// bail if we don’t have a status bar item (eg, lsb not installed)
+	if (!unreadCountStatusBarItem) {
+		return;
+	}
+
+	// grab the count
 	NSDictionary *result = [[HBTSPlusServer sharedInstance] receivedGetUnreadCountMessage:nil];
 	NSNumber *count = result[kHBTSPlusBadgeCountKey];
 
+	// force an update
 	[unreadCountStatusBarItem update];
+
+	// show if we’re enabled and have a non-0 value, hide otherwise
 	unreadCountStatusBarItem.visible = preferences.showUnreadCount && count.integerValue > 0;
 }
 
 %hook SpringBoard
 
-- (void)applicationDidFinishLaunching:(id)application {
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
 	%orig;
 
-	if (!((HBTSPlusPreferences *)[%c(HBTSPlusPreferences) sharedInstance]).enabled) {
-		return;
+	// if we have cephei status bar(!) – using %c() for now since it doesn’t have a stable release yet
+	// when it does release, libstatusbar support will probably be removed
+	if (%c(HBStatusBarItem)) {
+		HBStatusBarItem *item = [[%c(HBStatusBarItem) alloc] initWithIdentifier:@"ws.hbang.typestatusplus.unreadcount"];
+		item.customViewClass = @"HBTSStatusBarUnreadItemView";
+
+		[[%c(HBStatusBarController) sharedInstance] addItem:item];
+
+		// cast it to LSStatusBarItem because we only use apis in common from here
+		unreadCountStatusBarItem = (LSStatusBarItem *)item;
+	} else {
+		// try loading libstatusbar
+		dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
+
+		// hmm not loaded? probably not installed. just bail out
+		if (!%c(LSStatusBarItem)) {
+			return;
+		}
+
+		unreadCountStatusBarItem = [[%c(LSStatusBarItem) alloc] initWithIdentifier:@"ws.hbang.typestatusplus.unreadcount" alignment:StatusBarAlignmentRight];
+		unreadCountStatusBarItem.imageName = @"TypeStatusPlusUnreadCount";
 	}
 
-	// try loading libstatusbar
-	dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
-
-	// hmm not loaded? probably not installed. just bail out
-	if (!%c(LSStatusBarItem)) {
-		return;
-	}
-
-	unreadCountStatusBarItem = [[%c(LSStatusBarItem) alloc] initWithIdentifier:@"ws.hbang.typestatusplus.unreadcount" alignment:StatusBarAlignmentRight];
-	unreadCountStatusBarItem.imageName = @"TypeStatusPlusUnreadCount";
-	updateUnreadCountStatusBarItem();
+	// when preferences update (and right now, ugh bad api design sorry), update the status bar item
+	[preferences registerPreferenceChangeBlock:^{
+		updateUnreadCountStatusBarItem();
+	}];
 }
 
 %end
@@ -110,11 +132,6 @@ void TestNotification() {
 	[HBTSPlusTapToOpenController sharedInstance];
 
 	preferences = [%c(HBTSPlusPreferences) sharedInstance];
-
-	// when preferences update, forcefully update the status bar item
-	[preferences registerPreferenceChangeBlock:^{
-		updateUnreadCountStatusBarItem();
-	}];
 
 	// register for test notification notification
 	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)TestNotification, CFSTR("ws.hbang.typestatusplus/TestNotification"), NULL, kNilOptions);
