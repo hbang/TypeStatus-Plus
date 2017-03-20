@@ -9,7 +9,7 @@ BuiltIn_EXTRA_FRAMEWORKS = CydiaSubstrate TypeStatusPlusProvider
 BuiltIn_INSTALL_PATH = /Library/TypeStatus/Providers
 BuiltIn_CFLAGS = -fobjc-arc
 
-SUBPROJECTS = $(wildcard providers/*) prefs
+SUBPROJECTS = $(wildcard providers/*)
 
 include $(THEOS_MAKE_PATH)/library.mk
 include $(THEOS_MAKE_PATH)/aggregate.mk
