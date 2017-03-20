@@ -6,6 +6,7 @@ Messenger_INSTALL_PATH = /Library/TypeStatus/Providers
 TWEAK_NAME = TypeStatusPlusMessenger
 TypeStatusPlusMessenger_FILES = Tweak.xm
 TypeStatusPlusMessenger_EXTRA_FRAMEWORKS = TypeStatusPlusProvider
+TypeStatusPlusMessenger_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 include $(THEOS_MAKE_PATH)/tweak.mk

@@ -6,6 +6,7 @@ WhatsApp_INSTALL_PATH = /Library/TypeStatus/Providers
 TWEAK_NAME = TypeStatusPlusWhatsApp
 TypeStatusPlusWhatsApp_FILES = Tweak.xm
 TypeStatusPlusWhatsApp_EXTRA_FRAMEWORKS = TypeStatusPlusProvider
+TypeStatusPlusWhatsApp_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 include $(THEOS_MAKE_PATH)/tweak.mk

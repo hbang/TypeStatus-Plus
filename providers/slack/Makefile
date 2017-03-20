@@ -6,6 +6,7 @@ Slack_INSTALL_PATH = /Library/TypeStatus/Providers
 TWEAK_NAME = TypeStatusPlusSlack
 TypeStatusPlusSlack_FILES = Tweak.xm
 TypeStatusPlusSlack_EXTRA_FRAMEWORKS = TypeStatusPlusProvider
+TypeStatusPlusSlack_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 include $(THEOS_MAKE_PATH)/tweak.mk

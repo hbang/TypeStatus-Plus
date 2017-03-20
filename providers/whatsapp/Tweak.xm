@@ -56,18 +56,12 @@
 	return self;
 }
 
-- (void)dealloc {
-	[self._typeStatusPlus_alreadyNotifiedReceipts release];
-
-	%orig;
-}
-
 %end
 
 NSString *nameFromJID(NSString *jid) {
 	WAChatStorage *storage = [%c(WASharedAppData) chatStorage];
 	WAChatSession *chatSession = [storage newOrExistingChatSessionForJID:jid];
-	WAContactInfo *contactInfo = [[[%c(WAContactInfo) alloc] initWithChatSession:chatSession] autorelease];
+	WAContactInfo *contactInfo = [[%c(WAContactInfo) alloc] initWithChatSession:chatSession];
 	return contactInfo.displayNameShort;
 }
 
@@ -86,7 +80,7 @@ NSString *nameFromJID(NSString *jid) {
 				[messageInfo._typeStatusPlus_alreadyNotifiedReceipts addObject:jid];
 				NSString *name = nameFromJID(jid);
 
-				HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSMessageTypeReadReceipt sender:name iconName:@"TypeStatusPlusWhatsApp"] autorelease];
+				HBTSNotification *notification = [[HBTSNotification alloc] initWithType:HBTSMessageTypeReadReceipt sender:name iconName:@"TypeStatusPlusWhatsApp"];
 				[whatsAppProvider showNotification:notification];
 			}
 		}
@@ -101,7 +95,7 @@ NSString *nameFromJID(NSString *jid) {
 		if (state == 1) {
 			NSString *name = nameFromJID(userInfo[@"JID"]);
 
-			HBTSNotification *notification = [[[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:name iconName:@"TypeStatusPlusWhatsApp"] autorelease];
+			HBTSNotification *notification = [[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:name iconName:@"TypeStatusPlusWhatsApp"];
 			[whatsAppProvider showNotification:notification];
 		} else if (state == 0) {
 			[whatsAppProvider hideNotification];

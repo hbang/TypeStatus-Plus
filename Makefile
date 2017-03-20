@@ -1,4 +1,5 @@
-INSTALL_TARGET_PROCESSES = Messenger Music Skype Slack Snapchat Telegram Twitter WhatsApp
+export TARGET = iphone:10.1:9.0
+INSTALL_TARGET_PROCESSES = Messenger Skype Slack Telegram WhatsApp
 
 include $(THEOS)/makefiles/common.mk
 

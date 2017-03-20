@@ -22,18 +22,8 @@
 
 @end
 
-@interface a:NSObject @end
-@implementation a
--(void)ffff{
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gggg:) name:nil object:nil];return;
-}
--(void)gggg:(NSNotification*)notification{
-	if(notification.name&&![notification.name hasPrefix:@"NS"]&&![notification.name hasPrefix:@"_NS"])HBLogDebug(@"%@!!! %@",notification.name,notification.userInfo?:@"nope");
-}
-@end
-
 %ctor {
-	NSBundle *bundle = [[NSBundle bundleWithPath:@"/Library/TypeStatus/Providers/Slack.bundle"] retain];
+	NSBundle *bundle = [NSBundle bundleWithPath:@"/Library/TypeStatus/Providers/Slack.bundle"];
 
 	[[NSNotificationCenter defaultCenter] addObserverForName:SLKUserTyping object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
 		return;
@@ -54,7 +44,7 @@
 			sender = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"SENDER_IN_CHANNEL", @"Localizable", bundle, @"String used in the status bar for messages sent in a channel. “Typing: kirb in #general”"), user.displayName, channel.displayTitle];
 		}
 
-		HBTSNotification *tsNotification = [[[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:sender iconName:@"TypeStatusPlusSlack"] autorelease];
+		HBTSNotification *tsNotification = [[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:sender iconName:@"TypeStatusPlusSlack"];
 		[slackProvider showNotification:tsNotification];
 	}];
 }
