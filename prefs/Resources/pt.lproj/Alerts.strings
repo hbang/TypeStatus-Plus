@@ -21,6 +21,16 @@
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>Acende a tela quando receber notificações do TypeStatus enquanto o dispositivo está bloqueado. Alertas da Central de Notificações sempre acendem a tela.</string>
+
+	<!-- Header for tap action section. -->
+	<key>TAP_TO_OPEN_ACTION</key>
+	<string>Ao toque...</string>
+
+	<!-- Options shown for the tap action. -->
+	<key>TAP_TO_OPEN_ACTION_OPEN</key>
+	<string>Abrir Aplicativo</string>
+	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
+	<string>Eliminar Notificação</string>
 	
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
