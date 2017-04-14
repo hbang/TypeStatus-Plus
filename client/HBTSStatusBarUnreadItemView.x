@@ -123,7 +123,7 @@ static inline CGFloat getBorderWidth() {
 
 	// only %init this file if it's installed, or UIStatusBarCustomItemView
 	// won't exist and things will crash
-	if (%c(LSStatusBarItem)) {
+	if (%c(UIStatusBarCustomItemView)) {
 		%init;
 	}
 }

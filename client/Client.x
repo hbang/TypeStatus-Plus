@@ -39,6 +39,7 @@
 
 #pragma mark - Unread count in status bar
 
+%group HasLibstatusbar
 %hook UIStatusBarCustomItem
 
 - (Class)viewClass {
@@ -49,6 +50,7 @@
 	return %orig;
 }
 
+%end
 %end
 
 #pragma mark - TypeStatus hooks
@@ -75,4 +77,8 @@
 	}
 
 	%init;
+
+	if (%c(UIStatusBarCustomItem)) {
+		%init(HasLibstatusbar);
+	}
 }
