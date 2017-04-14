@@ -57,8 +57,6 @@ NSInteger getUnreadCount() {
 		badgeCount += MAX(0, badgeNumber.integerValue);
 	}
 
-	HBLogWarn(@"unread count %li", (long)badgeCount);
-
 	// return the final count
 	return badgeCount;
 }
@@ -121,12 +119,13 @@ void (^setUpStatusBarItem)(NSNotification *) = ^(NSNotification *nsNotification)
 	}];
 };
 
-%hook SBApplication
+%hook FBSSystemService
 
-- (void)setBadge:(id)badge {
+- (void)setBadgeValue:(id)value forBundleID:(NSString *)bundleID {
 	%orig;
 
-	if ([preferences.unreadCountApps containsObject:self.bundleIdentifier]) {
+	// if this is an app the user wants to be shown in the status bar, have our item updated
+	if ([preferences.unreadCountApps containsObject:bundleID]) {
 		updateUnreadCountStatusBarItem();
 	}
 }
