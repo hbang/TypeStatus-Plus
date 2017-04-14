@@ -49,6 +49,19 @@
 			<string>/var/mobile/Library/Preferences/ws.hbang.typestatusplus.plist</string>
 			<key>ALSingleEnabledMode</key>
 			<false/>
+			<key>ALSectionDescriptors</key>
+			<array>
+				<dict>
+					<key>cell-class-name</key>
+					<string>ALCheckCell</string>
+					<key>icon-size</key>
+					<integer>29</integer>
+					<key>predicate</key>
+					<string>NOT tags CONTAINS 'hidden'</string>
+					<key>suppress-hidden-apps</key>
+					<true/>
+				</dict>
+			</array>
 		</dict>
 		<dict>
 			<key>cell</key>
