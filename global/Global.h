@@ -3,6 +3,7 @@
 static NSString *const HBTSClientSetStatusBarNotification = @"HBTSClientSetStatusBar";
 static NSString *const HBTSSpringBoardReceivedMessageNotification = @"HBTSSpringBoardReceivedMessageNotification";
 static NSString *const HBTSPlusReceiveRelayNotification = @"HBTSPlusReceiveRelayNotification";
+static NSString *const HBTSPlusUnreadCountChangedNotification = @"HBTSPlusUnreadCountChangedNotification";
 
 #pragma mark - Notification constants
 
@@ -16,7 +17,6 @@ static NSString *const kHBTSPlusServerName = @"ws.hbang.typestatusplus";
 static NSString *const kHBTSPlusServerSetStatusBarNotificationName = @"HBTSPlusServerSetStatusBarNotification";
 static NSString *const kHBTSPlusServerHideStatusBarNotificationName = @"HBTSPlusServerHideStatusBarNotification";
 static NSString *const kHBTSPlusServerStatusBarTappedNotificationName = @"kHBTSPlusServerStatusBarTappedNotification";
-static NSString *const kHBTSPlusServerGetUnreadCountNotificationName = @"kHBTSPlusServerGetUnreadCountNotification";
 static NSString *const kHBTSPlusServerShowBannersNotificationName = @"kHBTSPlusServerShowBannersNotification";
 
 static NSString *const kHBTSPlusShouldShowBannersKey = @"ShouldShowBanners";

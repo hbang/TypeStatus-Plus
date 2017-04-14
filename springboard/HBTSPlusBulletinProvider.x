@@ -35,11 +35,19 @@ static NSString *const kHBTSPlusBulletinRecordIdentifier = @"ws.hbang.typestatus
 	self = [super init];
 
 	if (self) {
+		// construct our data provider identity
 		BBDataProviderIdentity *identity = [BBDataProviderIdentity identityForDataProvider:self];
+
+		// give it our identifier and name
 		identity.sectionIdentifier = kHBTSPlusAppIdentifier;
 		identity.sectionDisplayName = @"TypeStatus";
+
+		// set ourself as only displaying alerts, not sounds or badges
+		identity.defaultSectionInfo.pushSettings = BBSectionInfoPushSettingsAlerts;
+		
 		self.identity = identity;
 
+		// listen for the set status bar notification
 		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(_receivedSetStatusBarNotification:) name:HBTSClientSetStatusBarNotification object:nil];
 	}
 

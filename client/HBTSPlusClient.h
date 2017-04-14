@@ -2,7 +2,8 @@
 
 + (instancetype)sharedInstance;
 
-- (NSInteger)badgeCount;
+@property (nonatomic, readonly) NSInteger badgeCount;
+
 - (BOOL)showBanners;
 
 - (void)statusBarTapped;

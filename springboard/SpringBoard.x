@@ -29,12 +29,39 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 
 - (void)loadAllDataProvidersAndPerformMigration:(BOOL)performMigration {
 	%orig;
+
+	// add our provider to the in-memory store. it’ll be instantiated for us at some point
 	[self _addDataProviderClass:HBTSPlusBulletinProvider.class performMigration:YES];
 }
 
 %end
 
 #pragma mark - Unread Count
+
+NSInteger unreadCount = 0;
+
+NSInteger getUnreadCount() {
+	SBApplicationController *appController = [%c(SBApplicationController) sharedInstance];
+
+	// get the bundle ids the user wants
+	NSArray <NSString *> *apps = preferences.unreadCountApps;
+	NSInteger badgeCount = 0;
+
+	for (NSString *bundleIdentifier in apps) {
+		// get the SBApplication
+		SBApplication *app = [appController applicationWithBundleIdentifier:bundleIdentifier];
+
+		// get the badge count (hopefully an NSNumber) and add it to the count if it’s not zero
+		// (hopefully not negative)
+		NSNumber *badgeNumber = app.badgeNumberOrString;
+		badgeCount += MAX(0, badgeNumber.integerValue);
+	}
+
+	HBLogWarn(@"unread count %li", (long)badgeCount);
+
+	// return the final count
+	return badgeCount;
+}
 
 void updateUnreadCountStatusBarItem() {
 	// bail if we don’t have a status bar item (eg, lsb not installed)
@@ -43,22 +70,28 @@ void updateUnreadCountStatusBarItem() {
 	}
 
 	// grab the count
-	NSDictionary *result = [[HBTSPlusServer sharedInstance] receivedGetUnreadCountMessage:nil];
-	NSNumber *count = result[kHBTSPlusBadgeCountKey];
+	NSInteger newCount = getUnreadCount();
+
+	if (newCount == unreadCount) {
+		return;
+	}
+
+	unreadCount = newCount;
+
+	// post a notification so apps can get the new count
+	[[NSDistributedNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:HBTSPlusUnreadCountChangedNotification object:nil userInfo:@{
+		kHBTSPlusBadgeCountKey: @(unreadCount)
+	}]];
 
 	// force an update
 	[unreadCountStatusBarItem update];
 
 	// show if we’re enabled and have a non-0 value, hide otherwise
 	BOOL enabled = preferences.enabled && preferences.showUnreadCount;
-	unreadCountStatusBarItem.visible = enabled && count.integerValue > 0;
+	unreadCountStatusBarItem.visible = enabled && unreadCount > 0;
 }
 
-%hook SpringBoard
-
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
-	%orig;
-
+void (^setUpStatusBarItem)(NSNotification *) = ^(NSNotification *nsNotification) {
 	// if we have cephei status bar(!) – using %c() for now since it doesn’t have a stable release yet
 	// when it does release, libstatusbar support will probably be removed
 	if (%c(HBStatusBarItem)) {
@@ -86,9 +119,7 @@ void updateUnreadCountStatusBarItem() {
 	[preferences registerPreferenceChangeBlock:^{
 		updateUnreadCountStatusBarItem();
 	}];
-}
-
-%end
+};
 
 %hook SBApplication
 
@@ -108,6 +139,8 @@ void updateUnreadCountStatusBarItem() {
 
 - (void)receivedRelayedNotification:(NSDictionary *)userInfo {
 	%orig;
+
+	// re-post the notification over the distributed center so the messages tweak can see it
 	[[NSDistributedNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:HBTSPlusReceiveRelayNotification object:nil userInfo:userInfo]];
 }
 
@@ -148,14 +181,6 @@ void (^receivedSetStatusBarNotification)(NSNotification *) = ^(NSNotification *n
 	}
 };
 
-#pragma mark - Test notification
-
-void sendTestNotification() {
-	HBTSNotification *notification = [[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:@"Johnny Appleseed" iconName:@"TypeStatus"];
-	notification.sourceBundleID = @"com.apple.MobileSMS";
-	[HBTSPlusAlertController sendNotification:notification];
-}
-
 #pragma mark - Apple weirdness fix
 
 %hook FBSSystemAppProxy
@@ -174,6 +199,14 @@ void sendTestNotification() {
 
 %end
 
+#pragma mark - Test notification
+
+void sendTestNotification() {
+	HBTSNotification *notification = [[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:@"Johnny Appleseed" iconName:@"TypeStatus"];
+	notification.sourceBundleID = @"com.apple.MobileSMS";
+	[HBTSPlusAlertController sendNotification:notification];
+}
+
 #pragma mark - Constructor
 
 %ctor {
@@ -190,7 +223,10 @@ void sendTestNotification() {
 	// register for test notification notification
 	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)sendTestNotification, CFSTR("ws.hbang.typestatusplus/TestNotification"), NULL, kNilOptions);
 
-	// when a set status bar notification is sent by typestatus free
+	// register to set up the status bar item when the UIApp loads
+	[[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:setUpStatusBarItem];
+
+	// register to do stuff when a set status bar notification is sent by typestatus free
 	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:receivedSetStatusBarNotification];
 
 	%init;

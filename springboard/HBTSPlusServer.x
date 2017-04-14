@@ -33,7 +33,6 @@
 		[_distributedCenter registerForMessageName:kHBTSPlusServerSetStatusBarNotificationName target:self selector:@selector(receivedSetStatusBarMessage:withUserInfo:)];
 		[_distributedCenter registerForMessageName:kHBTSPlusServerHideStatusBarNotificationName target:self selector:@selector(receivedHideStatusBarMessage:)];
 		[_distributedCenter registerForMessageName:kHBTSPlusServerStatusBarTappedNotificationName target:[HBTSPlusTapToOpenController sharedInstance] selector:@selector(receivedStatusBarTappedMessage:)];
-		[_distributedCenter registerForMessageName:kHBTSPlusServerGetUnreadCountNotificationName target:self selector:@selector(receivedGetUnreadCountMessage:)];
 		[_distributedCenter registerForMessageName:kHBTSPlusServerShowBannersNotificationName target:self selector:@selector(recievedShowBannersMessage:)];
 	}
 	return self;
@@ -58,25 +57,6 @@
 	[HBTSPlusAlertController hide];
 
 	return nil;
-}
-
-- (NSDictionary *)receivedGetUnreadCountMessage:(NSString *)message {
-	// get the bundle ids the user wants
-	NSArray <NSString *> *apps = [[%c(HBTSPlusPreferences) sharedInstance] unreadCountApps];
-	NSInteger badgeCount = 0;
-
-	for (NSString *bundleIdentifier in apps) {
-		// get the SBApplication
-		SBApplication *app = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:bundleIdentifier];
-
-		// get the badge count (hopefully an NSNumber) and add it to the count if
-		// it’s not zero (hopefully not negative)
-		NSNumber *badgeNumber = app.badgeNumberOrString;
-		badgeCount += MAX(0, badgeNumber.integerValue);
-	}
-
-	// return the badge if we have one, or otherwise an empty string
-	return @{ kHBTSPlusBadgeCountKey: badgeCount > 0 ? @(badgeCount) : @"" };
 }
 
 - (NSDictionary *)recievedShowBannersMessage:(NSString *)message {

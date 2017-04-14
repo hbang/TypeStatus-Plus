@@ -2,6 +2,7 @@
 #import "../springboard/HBTSPlusServer.h"
 #import "../springboard/HBTSPlusTapToOpenController.h"
 #import <AppSupport/CPDistributedMessagingCenter.h>
+#import <Foundation/NSDistributedNotificationCenter.h>
 #import <rocketbootstrap/rocketbootstrap.h>
 
 @implementation HBTSPlusClient {
@@ -26,22 +27,11 @@
 			_distributedCenter = [CPDistributedMessagingCenter centerNamed:kHBTSPlusServerName];
 			rocketbootstrap_distributedmessagingcenter_apply(_distributedCenter);
 		}
+
+		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(_badgeCountChanged:) name:HBTSPlusUnreadCountChangedNotification object:nil];
 	}
 
 	return self;
-}
-
-- (NSInteger)badgeCount {
-	NSDictionary *result;
-
-	if (IN_SPRINGBOARD) {
-		result = [[%c(HBTSPlusServer) sharedInstance] receivedGetUnreadCountMessage:nil];
-	} else {
-		result = [_distributedCenter sendMessageAndReceiveReplyName:kHBTSPlusServerGetUnreadCountNotificationName userInfo:nil];
-	}
-
-	NSNumber *badgeCount = result[kHBTSPlusBadgeCountKey];
-	return badgeCount ? badgeCount.integerValue : 0;
 }
 
 - (BOOL)showBanners {
@@ -63,6 +53,12 @@
 	} else {
 		[_distributedCenter sendMessageName:kHBTSPlusServerStatusBarTappedNotificationName userInfo:nil];
 	}
+}
+
+#pragma mark - Notifications
+
+- (void)_badgeCountChanged:(NSNotification *)notification {
+	_badgeCount = ((NSNumber *)notification.userInfo[kHBTSPlusBadgeCountKey]).integerValue;
 }
 
 @end
