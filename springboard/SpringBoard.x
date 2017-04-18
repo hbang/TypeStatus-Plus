@@ -40,7 +40,7 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 
 NSInteger unreadCount = 0;
 
-NSInteger getUnreadCount() {
+static inline NSInteger getUnreadCount() {
 	SBApplicationController *appController = [%c(SBApplicationController) sharedInstance];
 
 	// get the bundle ids the user wants
