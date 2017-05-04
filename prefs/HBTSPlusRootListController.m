@@ -25,15 +25,17 @@
 	[super viewDidLoad];
 
 	HBAppearanceSettings *appearance = [[HBAppearanceSettings alloc] init];
-	appearance.tintColor = [UIColor colorWithRed:0.094 green:0.412 blue:0.325 alpha:1.00];
-	appearance.navigationBarTintColor = [UIColor colorWithRed:0.055 green:0.055 blue:0.055 alpha:1.00];
-	appearance.invertedNavigationBar = YES;
+	appearance.tintColor = [UIColor colorWithRed:0.094f green:0.412f blue:0.325f alpha:1];
+	appearance.navigationBarTintColor = [UIColor colorWithWhite:0.8f alpha:1];
+	appearance.navigationBarBackgroundColor = [UIColor colorWithWhite:0.055f alpha:1];
+	appearance.navigationBarTitleColor = [UIColor whiteColor];
+	appearance.statusBarTintColor = [UIColor colorWithWhite:1 alpha:0.7f];
 	appearance.translucentNavigationBar = NO;
 	appearance.tableViewCellTextColor = [UIColor whiteColor];
-	appearance.tableViewCellBackgroundColor = [UIColor colorWithRed:0.055 green:0.055 blue:0.055 alpha:1.00];
-	appearance.tableViewCellSeparatorColor = [UIColor colorWithRed:0.120 green:0.120 blue:0.120 alpha:1.00];
-	appearance.tableViewCellSelectionColor = [UIColor colorWithRed:0.149 green:0.149 blue:0.149 alpha:1.00];
-	appearance.tableViewBackgroundColor = [UIColor colorWithRed:0.089 green:0.089 blue:0.089 alpha:1.00];
+	appearance.tableViewCellBackgroundColor = [UIColor colorWithWhite:0.055f alpha:1];
+	appearance.tableViewCellSeparatorColor = [UIColor colorWithWhite:0.12f alpha:1];
+	appearance.tableViewCellSelectionColor = [UIColor colorWithWhite:0.149f alpha:1];
+	appearance.tableViewBackgroundColor = [UIColor colorWithWhite:0.089f alpha:1];
 	self.hb_appearanceSettings = appearance;
 
 	UIImage *headerLogo = [UIImage imageNamed:@"headerlogo" inBundle:self.bundle];
