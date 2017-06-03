@@ -22,6 +22,16 @@
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>Herätä näyttö, kun saat TypeStatus tilapalkki-ilmoituksen kun näyttö on lukittu. Ilmoituskeskuksen hälytykset herättävät näytön aina.</string>
 
+	<!-- Header for tap action section. -->
+	<key>TAP_TO_OPEN_ACTION</key>
+	<string>Näpäytyksen toiminto</string>
+
+	<!-- Options shown for the tap action. -->
+	<key>TAP_TO_OPEN_ACTION_OPEN</key>
+	<string>Avaa sovellus</string>
+	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
+	<string>Hylkää hälytys</string>
+
 	<!-- Buttons shown in the segmented controls for the alert type. -->
 	<key>OFF</key>
 	<string>Pois</string>
