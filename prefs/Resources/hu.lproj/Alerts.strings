@@ -4,42 +4,56 @@
 <dict>
 	<!-- Title. -->
 	<key>ALERTS</key>
-	<string>Bannerek</string>
+	<string>Értesítések</string>
+     
+    <!-- Header for alert type selection. -->
+    <key>ALERT_TYPE</key>
+    <string>Értesítés típusa</string>
+     
+    <!-- Explanation of the alert type setting. -->
+    <key>ALERT_TYPE_EXPLANATION</key>
+    <string>A fenti beállítás csak a TypeStatus Plus értesítéseire vonatkozik.</string>
+     
+    <!-- Switch to wake the screen when the device is locked. -->
+    <key>WAKE_WHEN_LOCKED</key>
+    <string>Alvó módból ébresztés</string>
+     
+    <!-- Explanation of the above setting. -->
+    <key>WAKE_WHEN_LOCKED_EXPLANATION</key>
+    <string>A telefon ébresztése amikor egy TypeStatus Plus értesítés jelenik meg.A normál értesítések mindíg felébresztik a telefont.</string>
 
-	<!-- Header for vibration options. -->
-	<key>VIBRATIONS</key>
-	<string>Rezgesek</string>
-
-	<!-- Header for banner show options. -->
-	<key>SHOW</key>
-	<string>Mutasd...</string>
-
-	<!-- Option to show banners on the lock screen. -->
-	<key>ON_LOCK_SCREEN</key>
-	<string>Zárolt képernyőn</string>
-
-	<!-- Option to show banners on the home screen. -->
-	<key>ON_HOME_SCREEN</key>
-	<string>Főképernyőn</string>
-
-	<!-- Option to show banners in apps. -->
-	<key>IN_APPS</key>
-	<string>Alkalmazásokban</string>
-
-	<!-- Switch to keep all notifications in the notification center. -->
-	<key>KEEP_ALL_BULLETINS</key>
-	<string>Minden figyelmeztetés megtartása</string>
-
-	<!-- Explanation of the keep all notifications switch. -->
-	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
-	<string>A riasztási központban és zárolt képernyőn található összes TypeStatus riasztás megjelenítése, vagy csak a legújabbaké.</string>
-
-	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
-	<key>USE_APP_ICON</key>
-	<string>Az alkalmazás saját ikonjának használata</string>
-
-	<!-- Explanation of the respective app icon switch. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>Bekapcsolva, a banner figyelmeztetés az alkalmazás saját ikonját használja a TypeStatus Plus ikonja helyett.</string>
+    <!-- Header for tap action section. -->
+	<key>TAP_TO_OPEN_ACTION</key>
+	<string>Érintse meg a megnyitáshoz</string>
+   
+	<!-- Options shown for the tap action. -->
+	<key>TAP_TO_OPEN_ACTION_OPEN</key>
+	<string>Alkalmazás megnyitása</string>
+	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
+	<string>Elvetés</string>
+     
+    <!-- Buttons shown in the segmented controls for the alert type. -->
+    <key>OFF</key>
+    <string>Ki</string>
+    <key>ALERT_TYPE_ICON</key>
+    <string>Csak az ikon</string>
+    <key>ALERT_TYPE_OVERLAY</key>
+    <string>Állapotsor</string>
+     
+    <!-- Header for vibration options. -->
+    <key>VIBRATIONS</key>
+    <string>Rezgések</string>
+     
+    <!-- Header for notification center options. -->
+    <key>NOTIFICATION_CENTER</key>
+    <string>Értesítési Központ</string>
+     
+    <!-- Note displayed below the notification center section. -->
+    <key>NOTIFICATION_CENTER_EXPLANATION</key>
+    <string>Az értesítési központ értesítések felülírják a normál TypeStatus értesítéseket</string>
+     
+    <!-- Button to test the alerts. -->
+    <key>TEST_ALERT</key>
+    <string>Értesítés Teszt</string>
 </dict>
 </plist>
