@@ -42,7 +42,19 @@
 		CKTypingView *typingView = [[CKTypingView alloc] init];
 		typingView.alpha = 0.0;
 		typingView.translatesAutoresizingMaskIntoConstraints = NO;
-		typingView.layer.affineTransform = CGAffineTransformMakeScale(0.8, 0.8);
+
+		CGFloat fontSize = [UIFont preferredFontForTextStyle:UIFontTextStyleBody].pointSize;
+		CGFloat scale;
+		
+		if (fontSize < 15) {
+			scale = 0.8f;
+		} else if (fontSize < 16) {
+			scale = 0.9f;
+		} else {
+			scale = 1;
+		}
+
+		typingView.layer.affineTransform = CGAffineTransformMakeScale(scale, scale);
 
 		// on ios 10, you build your own typing view!
 		if (IS_IOS_OR_NEWER(iOS_10_0)) {
@@ -53,7 +65,7 @@
 
 		[self.contentView hb_addCompactConstraints:@[
 			@"typingIndicatorView.left = fromLabel.left - 1",
-			@"typingIndicatorView.top = fromLabel.bottom + 2"
+			@"typingIndicatorView.top = fromLabel.bottom + 3"
 		] metrics:nil views:@{
 			@"typingIndicatorView": typingView,
 			@"fromLabel": fromLabel
