@@ -13,13 +13,13 @@ static inline CGFloat getBorderWidth() {
 
 @interface HBTSStatusBarUnreadItemView ()
 
-@property (nonatomic) BOOL _typeStatusPlus_isVisible;
+@property (nonatomic) BOOL _hb_isVisible;
 
 @end
 
 %subclass HBTSStatusBarUnreadItemView : UIStatusBarCustomItemView
 
-%property (nonatomic, retain) BOOL _typeStatusPlus_isVisible;
+%property (nonatomic, retain) BOOL _hb_isVisible;
 
 - (_UILegibilityImageSet *)contentsImage {
 	// if we’re not enabled, or foregroundStyle isn’t set yet, do nothing
@@ -35,12 +35,12 @@ static inline CGFloat getBorderWidth() {
 
 	// if it’s zero, mark ourself as not visible and do nothing
 	if (badgeCount == 0) {
-		self._typeStatusPlus_isVisible = NO;
+		self._hb_isVisible = NO;
 		return %orig;
 	}
 
 	// mark ourself as visible
-	self._typeStatusPlus_isVisible = YES;
+	self._hb_isVisible = YES;
 
 	// start up a graphics context
 	UIGraphicsBeginImageContextWithOptions(self.intrinsicContentSize, NO, 0);
@@ -94,7 +94,7 @@ static inline CGFloat getBorderWidth() {
 
 - (CGSize)intrinsicContentSize {
 	// if we’re not visible, return zero
-	if (!self._typeStatusPlus_isVisible) {
+	if (!self._hb_isVisible) {
 		return CGSizeZero;
 	}
 

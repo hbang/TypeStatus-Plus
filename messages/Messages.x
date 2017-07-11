@@ -14,16 +14,16 @@
 
 @interface CKConversationListCell ()
 
-@property (nonatomic, retain) CKTypingView *_typeStatusPlus_typingIndicatorView;
+@property (nonatomic, retain) CKTypingView *_hb_typingIndicatorView;
 
-- (BOOL)_typeStatusPlus_isTypingIndicatorVisible;
-- (void)_typeStatusPlus_setTypingIndicatorVisible:(BOOL)visible animated:(BOOL)animated;
+- (BOOL)_hb_isTypingIndicatorVisible;
+- (void)_hb_setTypingIndicatorVisible:(BOOL)visible animated:(BOOL)animated;
 
 @end
 
 %hook CKConversationListCell
 
-%property (nonatomic, retain) CKTypingView *_typeStatusPlus_typingIndicatorView;
+%property (nonatomic, retain) CKTypingView *_hb_typingIndicatorView;
 
 - (void)updateContentsForConversation:(CKConversation *)conversation {
 	%orig;
@@ -37,7 +37,7 @@
 	}
 
 	// set up the indicator view if we haven’t already
-	if (!self._typeStatusPlus_typingIndicatorView) {
+	if (!self._hb_typingIndicatorView) {
 		CKTypingView *typingView = [[CKTypingView alloc] init];
 		typingView.alpha = 0.0;
 		typingView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -70,29 +70,29 @@
 			@"fromLabel": fromLabel
 		}];
 
-		self._typeStatusPlus_typingIndicatorView = typingView;
+		self._hb_typingIndicatorView = typingView;
 	}
 }
 
-%new - (BOOL)_typeStatusPlus_isTypingIndicatorVisible {
-	return self._typeStatusPlus_typingIndicatorView.alpha == 1;
+%new - (BOOL)_hb_isTypingIndicatorVisible {
+	return self._hb_typingIndicatorView.alpha == 1;
 }
 
-%new - (void)_typeStatusPlus_setTypingIndicatorVisible:(BOOL)visible animated:(BOOL)animated {
+%new - (void)_hb_setTypingIndicatorVisible:(BOOL)visible animated:(BOOL)animated {
 	// grab the summary label
 	UILabel *summaryLabel = [self valueForKey:@"_summaryLabel"];
 
 	// if animating, do things in an animation-y way. otherwise just jump to
 	// what we want
 	if (animated) {
-		CKTypingView *typingView = self._typeStatusPlus_typingIndicatorView;
+		CKTypingView *typingView = self._hb_typingIndicatorView;
 		CKTypingIndicatorLayer *layer = [typingView respondsToSelector:@selector(indicatorLayer)] ? typingView.indicatorLayer : typingView.layer;
 
 		if (visible) {
 			// fade out label; fade in indicator
 			[UIView animateWithDuration:0.2 animations:^{
 				summaryLabel.alpha = 0.0;
-				self._typeStatusPlus_typingIndicatorView.alpha = 1.0;
+				self._hb_typingIndicatorView.alpha = 1.0;
 			}];
 
 			// animate it in
@@ -101,7 +101,7 @@
 			// fade out indicator; fade in label
 			[UIView animateWithDuration:0.2 animations:^{
 				summaryLabel.alpha = 1.0;
-				self._typeStatusPlus_typingIndicatorView.alpha = 0.0;
+				self._hb_typingIndicatorView.alpha = 0.0;
 			}];
 
 			// animate it out
@@ -110,7 +110,7 @@
 	} else {
 		// directly change alpha values accordingly
 		summaryLabel.alpha = visible ? 0.0 : 1.0;
-		self._typeStatusPlus_typingIndicatorView.alpha = visible ? 1.0 : 0.0;
+		self._hb_typingIndicatorView.alpha = visible ? 1.0 : 0.0;
 	}
 
 	// regardless of animation, we need to ensure it's pulsing if visible
@@ -123,7 +123,7 @@
 	%orig;
 
 	// reset the typing indicator state for cell recycling
-	[self _typeStatusPlus_setTypingIndicatorVisible:NO animated:NO];
+	[self _hb_setTypingIndicatorVisible:NO animated:NO];
 }
 
 %end
@@ -135,7 +135,7 @@
 
 	if (self) {
 		// register for the notification from the relay
-		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(_typeStatusPlus_receivedNotification:) name:HBTSPlusReceiveRelayNotification object:nil];
+		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(_hb_receivedRelayNotification:) name:HBTSPlusReceiveRelayNotification object:nil];
 	}
 
 	return self;
@@ -152,12 +152,12 @@
 
 	// set the visibility state, which will show it if needed
 	BOOL isTyping = [[HBTSPlusMessagesTypingManager sharedInstance] conversationIsTyping:cell.conversation];
-	[cell _typeStatusPlus_setTypingIndicatorVisible:isTyping animated:NO];
+	[cell _hb_setTypingIndicatorVisible:isTyping animated:NO];
 
 	return cell;
 }
 
-%new - (void)_typeStatusPlus_receivedNotification:(NSNotification *)notification {
+%new - (void)_hb_receivedRelayNotification:(NSNotification *)notification {
 	NSString *senderName = notification.userInfo[kHBTSMessageSenderKey];
 	HBTSMessageType type = (HBTSMessageType)((NSNumber *)notification.userInfo[kHBTSMessageTypeKey]).integerValue;
 
@@ -193,7 +193,7 @@
 			// hopefully it really is a CKConversationListCell
 			if ([cell respondsToSelector:@selector(conversation)]) {
 				// set the indicator visibility accordingly
-				[cell _typeStatusPlus_setTypingIndicatorVisible:[typingManager conversationIsTyping:cell.conversation] animated:YES];
+				[cell _hb_setTypingIndicatorVisible:[typingManager conversationIsTyping:cell.conversation] animated:YES];
 			}
 		}
 	}
