@@ -102,7 +102,6 @@
 
 			// animate it in
 			[layer startGrowAnimation];
-			[layer startPulseAnimation];
 		} else {
 			// fade out indicator; fade in label
 			[UIView animateWithDuration:0.2 animations:^{
@@ -117,6 +116,11 @@
 		// directly change alpha values accordingly
 		summaryLabel.alpha = visible ? 0.0 : 1.0;
 		self._typeStatusPlus_typingIndicatorView.alpha = visible ? 1.0 : 0.0;
+	}
+
+	// regardless of animation, we need to ensure it's pulsing if visible
+	if (visible) {
+		[layer startPulseAnimation];
 	}
 }
 
