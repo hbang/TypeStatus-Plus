@@ -16,8 +16,7 @@
 
 @property (nonatomic, retain) CKTypingView *_typeStatusPlus_typingIndicatorView;
 
-@property (nonatomic, setter=_typeStatusPlus_setTypingIndicatorVisible:) BOOL _typeStatusPlus_typingIndicatorVisible;
-
+- (BOOL)_typeStatusPlus_isTypingIndicatorVisible;
 - (void)_typeStatusPlus_setTypingIndicatorVisible:(BOOL)visible animated:(BOOL)animated;
 
 @end
@@ -75,12 +74,8 @@
 	}
 }
 
-%new - (BOOL)_typeStatusPlus_typingIndicatorVisible {
+%new - (BOOL)_typeStatusPlus_isTypingIndicatorVisible {
 	return self._typeStatusPlus_typingIndicatorView.alpha == 1;
-}
-
-%new - (void)_typeStatusPlus_setTypingIndicatorVisible:(BOOL)visible {
-	[self _typeStatusPlus_setTypingIndicatorVisible:visible animated:YES];
 }
 
 %new - (void)_typeStatusPlus_setTypingIndicatorVisible:(BOOL)visible animated:(BOOL)animated {
@@ -156,14 +151,15 @@
 	}
 
 	// set the visibility state, which will show it if needed
-	cell._typeStatusPlus_typingIndicatorVisible = [[HBTSPlusMessagesTypingManager sharedInstance] conversationIsTyping:cell.conversation];
+	BOOL isTyping = [[HBTSPlusMessagesTypingManager sharedInstance] conversationIsTyping:cell.conversation];
+	[cell _typeStatusPlus_setTypingIndicatorVisible:isTyping animated:NO];
 
 	return cell;
 }
 
 %new - (void)_typeStatusPlus_receivedNotification:(NSNotification *)notification {
 	NSString *senderName = notification.userInfo[kHBTSMessageSenderKey];
-	HBTSMessageType type = (HBTSMessageType)((NSNumber *)notification.userInfo[kHBTSMessageTypeKey]).intValue;
+	HBTSMessageType type = (HBTSMessageType)((NSNumber *)notification.userInfo[kHBTSMessageTypeKey]).integerValue;
 
 	HBTSPlusMessagesTypingManager *typingManager = [HBTSPlusMessagesTypingManager sharedInstance];
 
@@ -197,7 +193,7 @@
 			// hopefully it really is a CKConversationListCell
 			if ([cell respondsToSelector:@selector(conversation)]) {
 				// set the indicator visibility accordingly
-				cell._typeStatusPlus_typingIndicatorVisible = [typingManager conversationIsTyping:cell.conversation];
+				[cell _typeStatusPlus_setTypingIndicatorVisible:[typingManager conversationIsTyping:cell.conversation] animated:YES];
 			}
 		}
 	}

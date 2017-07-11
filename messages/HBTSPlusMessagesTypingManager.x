@@ -4,7 +4,7 @@
 #import <IMCore/IMHandle.h>
 
 @implementation HBTSPlusMessagesTypingManager {
-	NSMutableArray *_conversations;
+	NSMutableSet *_conversations;
 }
 
 + (instancetype)sharedInstance {
@@ -19,7 +19,7 @@
 
 - (instancetype)init {
 	if (self = [super init]) {
-		_conversations = [[NSMutableArray alloc] init];
+		_conversations = [[NSMutableSet alloc] init];
 	}
 	return self;
 }
