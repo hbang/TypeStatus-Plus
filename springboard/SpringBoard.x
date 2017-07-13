@@ -7,8 +7,8 @@
 #import "../api/HBTSNotification.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <BulletinBoard/BBLocalDataProviderStore.h>
-#import <Cephei/HBStatusBarController.h>
-#import <Cephei/HBStatusBarItem.h>
+// #import <Cephei/HBStatusBarController.h>
+// #import <Cephei/HBStatusBarItem.h>
 #import <Foundation/NSDistributedNotificationCenter.h>
 #import <libstatusbar/LSStatusBarItem.h>
 #import <SpringBoard/SBApplication.h>
@@ -92,7 +92,7 @@ void updateUnreadCountStatusBarItem() {
 void (^setUpStatusBarItem)(NSNotification *) = ^(NSNotification *nsNotification) {
 	// if we have cephei status bar(!) – using %c() for now since it doesn’t have a stable release yet
 	// when it does release, libstatusbar support will probably be removed
-	if (%c(HBStatusBarItem)) {
+	/*if (%c(HBStatusBarItem)) {
 		HBStatusBarItem *item = [[%c(HBStatusBarItem) alloc] initWithIdentifier:@"ws.hbang.typestatusplus.unreadcount"];
 		item.customViewClass = @"HBTSStatusBarUnreadItemView";
 
@@ -100,7 +100,7 @@ void (^setUpStatusBarItem)(NSNotification *) = ^(NSNotification *nsNotification)
 
 		// cast it to LSStatusBarItem because we only use apis in common from here
 		unreadCountStatusBarItem = (LSStatusBarItem *)item;
-	} else {
+	} else*/ {
 		// try loading libstatusbar
 		dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
 
