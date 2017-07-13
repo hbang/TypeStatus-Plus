@@ -1,4 +1,5 @@
 #import "../global/Global.h"
+#import "../global/HBTSPlusPreferences.h"
 #import "HBTSPlusMessagesTypingManager.h"
 #import <Cephei/CompactConstraint.h>
 #import <ChatKit/CKConversation.h>
@@ -11,6 +12,8 @@
 #import <IMFoundation/FZMessage.h>
 #import <TypeStatusPlusProvider/HBTSNotification.h>
 #import <version.h>
+
+HBTSPlusPreferences *preferences;
 
 @interface CKConversationListCell ()
 
@@ -79,15 +82,20 @@
 }
 
 %new - (void)_hb_setTypingIndicatorVisible:(BOOL)visible animated:(BOOL)animated {
-	// grab the summary label
+	// if we are disabled, override both values to always be NO
+	if (!preferences.messagesListTypingIndicators) {
+		visible = NO;
+		animated = NO;
+	}
+
+	// grab the views
 	UILabel *summaryLabel = [self valueForKey:@"_summaryLabel"];
+	CKTypingView *typingView = self._hb_typingIndicatorView;
+	CKTypingIndicatorLayer *layer = [typingView respondsToSelector:@selector(indicatorLayer)] ? typingView.indicatorLayer : typingView.layer;
 
 	// if animating, do things in an animation-y way. otherwise just jump to
 	// what we want
 	if (animated) {
-		CKTypingView *typingView = self._hb_typingIndicatorView;
-		CKTypingIndicatorLayer *layer = [typingView respondsToSelector:@selector(indicatorLayer)] ? typingView.indicatorLayer : typingView.layer;
-
 		if (visible) {
 			// fade out label; fade in indicator
 			[UIView animateWithDuration:0.2 animations:^{
@@ -200,3 +208,7 @@
 }
 
 %end
+
+%ctor {
+	preferences = [%c(HBTSPlusPreferences) sharedInstance];
+}

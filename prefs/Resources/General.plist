@@ -35,8 +35,6 @@
 			<string>AppList</string>
 			<key>isController</key>
 			<true/>
-			<key>icon</key>
-			<string>count.png</string>
 			<key>label</key>
 			<string>SELECT_APPS</string>
 			<key>ALAllowsSelection</key>
@@ -53,7 +51,7 @@
 			<array>
 				<dict>
 					<key>cell-class-name</key>
-					<string>ALCheckCell</string>
+					<string>ALSwitchCell</string>
 					<key>icon-size</key>
 					<integer>29</integer>
 					<key>predicate</key>
@@ -82,6 +80,42 @@
 			<string>SHOW_IN_FOREGROUND</string>
 			<key>icon</key>
 			<string>foregroundnc.png</string>
+			<key>PostNotification</key>
+			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>MESSAGES_APP</string>
+			<key>footerText</key>
+			<string>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>ws.hbang.typestatusplus</string>
+			<key>key</key>
+			<string>MessagesShowListTypingIndicators</string>
+			<key>label</key>
+			<string>SHOW_LIST_TYPING_INDICATORS</string>
+			<key>PostNotification</key>
+			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>ws.hbang.typestatusplus</string>
+			<key>key</key>
+			<string>MessagesHighlightFailedMessages</string>
+			<key>label</key>
+			<string>HIGHLIGHT_FAILED_MESSAGES</string>
 			<key>PostNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
 		</dict>

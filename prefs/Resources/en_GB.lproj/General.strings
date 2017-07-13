@@ -25,5 +25,21 @@
 	<!-- Explanation of the show in foreground switch. -->
 	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
 	<string>Display notifications even if the sending app is in the foreground.</string>
+
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>Messages App</string>
+
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>Typing Indicators in Conversation List</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>Highlight Failed Messages</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>Displays messages that fail to send with a red bubble.</string>
 </dict>
 </plist>

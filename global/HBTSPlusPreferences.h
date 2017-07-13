@@ -16,6 +16,7 @@ typedef NS_ENUM(NSUInteger, HBTSTapToOpenMode) {
 @property (nonatomic, readonly) BOOL enabled;
 
 @property (nonatomic, readonly) BOOL showUnreadCount, showWhenInForeground;
+@property (nonatomic, readonly) BOOL messagesListTypingIndicators, messagesHighlightFailed;
 @property (nonatomic, readonly) BOOL keepAllBulletins, useAppIcon;
 @property (nonatomic, readonly) BOOL wakeWhenLocked;
 @property (nonatomic, readonly) BOOL vibrateOnLockScreen, vibrateOnHomeScreen, vibrateInApps;
