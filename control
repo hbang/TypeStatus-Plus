@@ -12,5 +12,5 @@ Icon: file:///Library/PreferenceBundles/TypeStatusPlus.bundle/icon@2x.png
 Depiction: https://cydia.hbang.ws/package/ws.hbang.typestatusplus/
 Support: https://hbang.ws/support/
 Sponsor: thebigboss.org <http://thebigboss.org>
-Tag: purpose::extension, compatible::ios9, compatible::ios10
+Tag: purpose::extension, compatible::ios9, compatible::ios10, cydia::commercial
 dev: hbang
