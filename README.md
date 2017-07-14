@@ -11,6 +11,8 @@ Licensed under the Apache License, version 2.0. Refer to [LICENSE.md](LICENSE.md
 ----
 
 ## Why the hell is this open source?
+Open sourcing definitely doesn’t mean we’re throwing in the towel and TypeStatus Plus is never getting updates again (or only getting bugfix updates so it works only well enough to keep making money). In fact, I feel like it’s a significant benefit that users can see that we’re working on it, and somewhat understand what we’ve been working on from commit messages, rather than just taking our word for it.
+
 I’ve open sourced every tweak I’ve released, even if months or years following the official release. We previously open sourced our paid tweaks [FlagPaint](https://github.com/hbang/FlagPaint-2) and [Chyrsalis](https://github.com/benrosen78/chrysalis). I think it’s important to the jailbreak community that we give back as much or more than we take.
 
 Can people take this code and build TypeStatus Plus for free? Sure (if they can get it to build…). But we get that the type of person who’d do that would probably install it from a pirate repo anyway, and we’d rather they have the real deal than to risk their device to potentially sketchy pirate repos. If you have the money and want to support further development, [please consider buying it](https://typestatus.com/plus). Your money helps us keep the servers running and motivates us to continue doing what we do. Don’t think of just the product — think of the humans behind it.
@@ -73,8 +75,6 @@ I’m happy with basically everything else about the tweak though, and with the 
 TL;DR: iOS backgrounding being so limited sucks. App updates changing everything on us sucks. But hey, the tweak still usually mostly works!
 
 ## The future
-Open sourcing definitely doesn’t mean we’re throwing in the towel and TypeStatus Plus is never getting updates again (or only getting bugfix updates so it works only well enough to keep making money). In fact, I feel like it’s a significant benefit that users can see that we’re working on it, and somewhat understand what we’ve been working on from commit messages, rather than just taking our word for it.
-
 I think most of the SpringBoard code we have could be moved into its own daemon. To be fair, even TypeStatus itself should do this, but I tried that during Plus’s development, and again a few months ago when working on TypeStatus 2.3, and it didn’t work too well. Having our own nice-and-private process means we reduce potential for conflicting tweaks, won’t rudely crash SpringBoard if our code breaks, and has the benefit of it being possible to write it in Swift.
 
 Since we are forcing provider apps to pretty much assume they’re in active use 24/7, this does create more energy usage, thereby reducing battery life. An app could continue playing gifs (and yes it’s pronounced jiff, don’t @ me), download large files, or could just be really inefficiently written as a whole (it’s unfortunate there’s no easily accessible place to put a Battery Menu Of Shame on iOS). I can think of some reasonable ways to sidestep this by pausing the app when it hasn’t been used in some time, or when on a bad network, or when there’s no data service, etc, etc. But there’s not really any easy and not-extremely-specific way to address the issues themselves.
