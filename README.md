@@ -5,6 +5,11 @@ Wow, apparently it’s real and it exists? And this is the code?
 
 See also: [TypeStatus Plus Providers](https://github.com/hbang/TypeStatus-Plus-Providers)
 
+## License
+Licensed under the Apache License, version 2.0. Refer to [LICENSE.md](LICENSE.md).
+
+----
+
 ## Why the hell is this open source?
 I’ve open sourced every tweak I’ve released, even if months or years following the official release. We previously open sourced our paid tweaks [FlagPaint](https://github.com/hbang/FlagPaint-2) and [Chyrsalis](https://github.com/benrosen78/chrysalis). I think it’s important to the jailbreak community that we give back as much or more than we take.
 
