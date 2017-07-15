@@ -13,7 +13,7 @@ Licensed under the Apache License, version 2.0. Refer to [LICENSE.md](LICENSE.md
 ## Why the hell is this open source?
 Open sourcing definitely doesn’t mean we’re throwing in the towel and TypeStatus Plus is never getting updates again (or only getting bugfix updates so it works only well enough to keep making money). In fact, I feel like it’s a significant benefit that users can see that we’re working on it, and somewhat understand what we’ve been working on from commit messages, rather than just taking our word for it.
 
-I’ve open sourced every tweak I’ve released, even if months or years following the official release. We previously open sourced our paid tweaks [FlagPaint](https://github.com/hbang/FlagPaint-2) and [Chyrsalis](https://github.com/benrosen78/chrysalis). I think it’s important to the jailbreak community that we give back as much or more than we take.
+I’ve open sourced every tweak I’ve released, even if months or years following the official release. We previously open sourced our paid tweaks [FlagPaint](https://github.com/hbang/FlagPaint-2) and [Chrysalis](https://github.com/benrosen78/chrysalis). I think it’s important to the jailbreak community that we give back as much or more than we take.
 
 Can people take this code and build TypeStatus Plus for free? Sure (if they can get it to build…). But we get that the type of person who’d do that would probably install it from a pirate repo anyway, and we’d rather they have the real deal than to risk their device to potentially sketchy pirate repos. If you have the money and want to support further development, [please consider buying it](https://typestatus.com/plus). Your money helps us keep the servers running and motivates us to continue doing what we do. Don’t think of just the product — think of the humans behind it.
 
@@ -86,7 +86,7 @@ TypeStatus Plus is like “my baby”, but really, most of the work was done by 
 
 Ethan Arbuckle helped us out with some of the backgrounding logic that saved our asses. What we had in early betas would constantly break in crazy ways, and we probably wouldn’t have been able to effectively fix it even if we spent months on it. Ethan gave us some of his insanely-well-researched code, coming after his awesome backgrounding-related projects such as Mirmir. I owe him my firstborn child and maybe a spare kidney or two.
 
-Veerklempt and Timon Olsthoorn made the tweak look beautiful. Adam I and Timon handled gathering translations and other housekeeping things, and Adam constantly does an amazing job handling the support inbox.
+Veerklempt and Timon Olsthoorn (tmnlsthrn) made the tweak look beautiful. Adam I (iAdam1n) and Timon handled gathering translations and other housekeeping things, and Adam constantly does an amazing job handling the support inbox.
 
 You guys are great. Together we made TypeStatus Plus happen. Thanks for everything.
 
