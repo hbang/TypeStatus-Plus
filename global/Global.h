@@ -4,6 +4,7 @@ static NSString *const HBTSClientSetStatusBarNotification = @"HBTSClientSetStatu
 static NSString *const HBTSSpringBoardReceivedMessageNotification = @"HBTSSpringBoardReceivedMessageNotification";
 static NSString *const HBTSPlusReceiveRelayNotification = @"HBTSPlusReceiveRelayNotification";
 static NSString *const HBTSPlusUnreadCountChangedNotification = @"HBTSPlusUnreadCountChangedNotification";
+static NSString *const HBTSPlusGiveMeTheUnreadCountNotification = @"HBTSPlusGiveMeTheUnreadCountNotification";
 
 #pragma mark - Notification constants
 

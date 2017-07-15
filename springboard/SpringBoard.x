@@ -61,7 +61,7 @@ static inline NSInteger getUnreadCount() {
 	return badgeCount;
 }
 
-void updateUnreadCountStatusBarItem() {
+void updateUnreadCountStatusBarItem(BOOL force) {
 	// bail if we don’t have a status bar item (eg, lsb not installed)
 	if (!unreadCountStatusBarItem) {
 		return;
@@ -70,7 +70,7 @@ void updateUnreadCountStatusBarItem() {
 	// grab the count
 	NSInteger newCount = getUnreadCount();
 
-	if (newCount == unreadCount) {
+	if (newCount == unreadCount && !force) {
 		return;
 	}
 
@@ -115,7 +115,7 @@ void (^setUpStatusBarItem)(NSNotification *) = ^(NSNotification *nsNotification)
 
 	// when preferences update (and right now, ugh bad api design sorry), update the status bar item
 	[preferences registerPreferenceChangeBlock:^{
-		updateUnreadCountStatusBarItem();
+		updateUnreadCountStatusBarItem(YES);
 	}];
 };
 
@@ -126,7 +126,7 @@ void (^setUpStatusBarItem)(NSNotification *) = ^(NSNotification *nsNotification)
 
 	// if this is an app the user wants to be shown in the status bar, have our item updated
 	if ([preferences.unreadCountApps containsObject:bundleID]) {
-		updateUnreadCountStatusBarItem();
+		updateUnreadCountStatusBarItem(NO);
 	}
 }
 
@@ -227,6 +227,11 @@ void sendTestNotification() {
 
 	// register to do stuff when a set status bar notification is sent by typestatus free
 	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSClientSetStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:receivedSetStatusBarNotification];
+
+	// when an app launches, send it the unread count so the initial value can be shown
+	[[NSDistributedNotificationCenter defaultCenter] addObserverForName:HBTSPlusGiveMeTheUnreadCountNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
+		updateUnreadCountStatusBarItem(YES);
+	}];
 
 	%init;
 }

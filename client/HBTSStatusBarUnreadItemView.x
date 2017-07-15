@@ -1,10 +1,11 @@
 #import "HBTSStatusBarUnreadItemView.h"
 #import "HBTSPlusClient.h"
 #import "HBTSPlusPreferences.h"
+#import <Foundation/NSDistributedNotificationCenter.h>
 #import <UIKit/_UILegibilityImageSet.h>
 #import <UIKit/UIStatusBarForegroundStyleAttributes.h>
 
-static CGSize const kHBTSStatusBarUnreadItemViewSize = (CGSize){13.f, 13.f};
+static CGSize const kHBTSStatusBarUnreadItemViewSize = (CGSize){ 13.f, 13.f };
 
 static inline CGFloat getBorderWidth() {
 	CGFloat scale = [UIScreen mainScreen].scale;
@@ -33,14 +34,14 @@ static inline CGFloat getBorderWidth() {
 	// if it’s >99, use a static string because 3+ digits won’t fit
 	NSString *badgeString = badgeCount > 99 ? @":)" : [NSString stringWithFormat:@"%li", (long)badgeCount];
 
-	// if it’s zero, mark ourself as not visible and do nothing
-	if (badgeCount == 0) {
-		self._hb_isVisible = NO;
-		return %orig;
-	}
+	// set ourself as visible as long as our value isn’t 0
+	self._hb_isVisible = badgeCount != 0;
 
-	// mark ourself as visible
-	self._hb_isVisible = YES;
+	// if it’s zero, mark ourself as not visible. if it’s -1, we’re waiting to hear back from
+	// springboard with our badge count. either way, we aren’t returning any image
+	if (badgeCount < 1) {
+		return nil;
+	}
 
 	// start up a graphics context
 	UIGraphicsBeginImageContextWithOptions(self.intrinsicContentSize, NO, 0);
@@ -58,7 +59,7 @@ static inline CGFloat getBorderWidth() {
 
 	// draw the circle
 	CGContextBeginPath(context);
-	CGContextAddEllipseInRect(context, (CGRect){{physicalPixel, physicalPixel}, kHBTSStatusBarUnreadItemViewSize});
+	CGContextAddEllipseInRect(context, (CGRect){{ physicalPixel, physicalPixel }, kHBTSStatusBarUnreadItemViewSize});
 	CGContextDrawPath(context, kCGPathFillStroke);
 
 	// set up our attributes
@@ -121,9 +122,17 @@ static inline CGFloat getBorderWidth() {
 	// load libstatusbar
 	dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
 
-	// only %init this file if it's installed, or UIStatusBarCustomItemView
-	// won't exist and things will crash
+	// only %init this file if lsb is installed, or UIStatusBarCustomItemView won't exist and things
+	// will crash
 	if (%c(UIStatusBarCustomItemView)) {
 		%init;
+
+		// ensure our client class is ready to go first
+		[HBTSPlusClient sharedInstance];
+
+		// when the app finishes launching, ask kindly for the unread count
+		[[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
+			[[NSDistributedNotificationCenter defaultCenter] postNotificationName:HBTSPlusGiveMeTheUnreadCountNotification object:nil];
+		}];
 	}
 }

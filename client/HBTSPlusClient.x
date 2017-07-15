@@ -28,6 +28,8 @@
 			rocketbootstrap_distributedmessagingcenter_apply(_distributedCenter);
 		}
 
+		_badgeCount = -1;
+
 		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(_badgeCountChanged:) name:HBTSPlusUnreadCountChangedNotification object:nil];
 	}
 
