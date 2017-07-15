@@ -58,7 +58,7 @@ static NSString *const kHBTSPlusPreferencesUseAppIconKey = @"UseAppIcon";
 		[_preferences registerBool:&_showWhenInForeground default:NO forKey:kHBTSPlusPreferencesShowInForegroundKey];
 
 		[_preferences registerBool:&_messagesListTypingIndicators default:YES forKey:@"MessagesShowListTypingIndicators"];
-		[_preferences registerBool:&_messagesHighlightFailed default:NO forKey:@"MessagesHighlightFailedMessages"];
+		[_preferences registerBool:&_messagesHighlightFailed default:YES forKey:@"MessagesHighlightFailedMessages"];
 
 		// alerts
 		[_preferences registerInteger:(NSInteger *)&_alertType default:HBTSPlusAlertTypeOverlay forKey:kHBTSPlusPreferencesGlobalAlertTypeKey];
