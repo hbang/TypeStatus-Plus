@@ -147,6 +147,8 @@ void (^setUpStatusBarItem)(NSNotification *) = ^(NSNotification *nsNotification)
 
 #pragma mark - Set status bar notification
 
+NSString *lastNotification = nil;
+
 void (^receivedSetStatusBarNotification)(NSNotification *) = ^(NSNotification *nsNotification) {
 	// not enabled? don’t do anything
 	if (!preferences.enabled) {
@@ -160,6 +162,20 @@ void (^receivedSetStatusBarNotification)(NSNotification *) = ^(NSNotification *n
 	if (type == HBTSMessageTypeTypingEnded) {
 		return;
 	}
+
+	// get the rest of the values
+	NSString *iconName = nsNotification.userInfo[kHBTSMessageIconNameKey];
+	NSString *content = nsNotification.userInfo[kHBTSMessageContentKey];
+
+	// construct a unique-ish key, and ensure it doesn’t match the previous notification’s. we don’t
+	// want to vibrate constantly if the notification is being sent multiple times
+	NSString *key = [NSString stringWithFormat:@"iconName = %@, content = %@", iconName, content];
+
+	if ([lastNotification isEqualToString:key]) {
+		return;
+	}
+
+	lastNotification = key;
 
 	// if the user wants vibration, let’s do that
 	if ([HBTSPlusStateHelper shouldVibrate]) {

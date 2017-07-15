@@ -11,6 +11,8 @@ static NSString *const HBTSPlusGiveMeTheUnreadCountNotification = @"HBTSPlusGive
 static NSString *const kHBTSMessageTypeKey = @"Type";
 static NSString *const kHBTSMessageSenderKey = @"Name";
 static NSString *const kHBTSMessageIsTypingKey = @"IsTyping";
+static NSString *const kHBTSMessageIconNameKey = @"IconName";
+static NSString *const kHBTSMessageContentKey = @"Content";
 
 #pragma mark - Plus notifications
 
