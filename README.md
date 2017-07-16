@@ -5,7 +5,6 @@ These are the default providers included with TypeStatus Plus, supporting:
 
 * Facebook Messenger
 * Music now playing alerts
-* Slack
 * Snapchat
 * Telegram
 * WhatsApp
