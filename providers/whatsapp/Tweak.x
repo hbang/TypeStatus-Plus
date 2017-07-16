@@ -102,3 +102,9 @@ NSString *nameFromJID(NSString *jid) {
 		}
 	}];
 }
+
+%ctor {
+	if ([[NSBundle mainBundle].bundleIdentifier isEqualToString:@"net.whatsapp.WhatsApp"]) {
+		%init;
+	}
+}

@@ -132,3 +132,9 @@ typedef void (^HBTSPlusMessengerProviderHelperCompletionBlock)(NSString *display
 }
 
 %end
+
+%ctor {
+	if ([[NSBundle mainBundle].bundleIdentifier isEqualToString:@"com.facebook.Messenger"]) {
+		%init;
+	}
+}

@@ -3,13 +3,7 @@ include $(THEOS)/makefiles/common.mk
 BUNDLE_NAME = Telegram
 Telegram_INSTALL_PATH = /Library/TypeStatus/Providers
 
-TWEAK_NAME = TypeStatusPlusTelegram
-TypeStatusPlusTelegram_FILES = Tweak.xm
-TypeStatusPlusTelegram_EXTRA_FRAMEWORKS = TypeStatusPlusProvider
-TypeStatusPlusTelegram_CFLAGS = -fobjc-arc
-
 include $(THEOS_MAKE_PATH)/bundle.mk
-include $(THEOS_MAKE_PATH)/tweak.mk
 
 after-Telegram-stage::
 	$(ECHO_NOTHING)mkdir -p $(THEOS_STAGING_DIR)/$(Telegram_INSTALL_PATH)/Telegram.bundle$(ECHO_END)

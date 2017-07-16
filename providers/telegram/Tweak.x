@@ -104,3 +104,9 @@
 }
 
 %end
+
+%ctor {
+	if ([[NSBundle mainBundle].bundleIdentifier isEqualToString:@"ph.telegra.Telegraph"]) {
+		%init;
+	}
+}
