@@ -104,15 +104,25 @@ static NSString *const kHBTSPlusBulletinRecordIdentifier = @"ws.hbang.typestatus
 		UIImage *icon = [appIcon getUnmaskedIconImage:MIIconVariantSmall];
 
 		// override the icon with what we have
-		bulletinRequest.icon = [[BBSectionIcon alloc] init];
-		[bulletinRequest.icon addVariant:[BBSectionIconVariant variantWithFormat:0 imageData:UIImagePNGRepresentation(icon)]];
+		if ([bulletinRequest respondsToSelector:@selector(setIcon:)]) {
+			BBSectionIcon *sectionIcon = [[BBSectionIcon alloc] init];
+			[sectionIcon addVariant:[BBSectionIconVariant variantWithFormat:0 imageData:UIImagePNGRepresentation(icon)]];
+			bulletinRequest.icon = sectionIcon;
+		} else {
+			// TODO: didn't i have something working for ios 9 at some point?
+			// [bulletinRequest.sectionIcon addVariant:[BBSectionIconVariant variantWithFormat:0 imageData:UIImagePNGRepresentation(icon)]];
+			// _currentIcon = icon;
+		}
 	}
 
 	// set all the rest
 	bulletinRequest.message = notification.content;
 	bulletinRequest.date = notification.date;
 	bulletinRequest.lastInterruptDate = [NSDate date];
-	bulletinRequest.turnsOnDisplay = preferences.wakeWhenLocked;
+
+	if ([bulletinRequest respondsToSelector:@selector(setTurnsOnDisplay:)]) {
+		bulletinRequest.turnsOnDisplay = preferences.wakeWhenLocked;
+	}
 
 	// set a callback to open the conversation
 	bulletinRequest.defaultAction = [BBAction actionWithCallblock:^{
@@ -136,4 +146,3 @@ static NSString *const kHBTSPlusBulletinRecordIdentifier = @"ws.hbang.typestatus
 }
 
 @end
-
