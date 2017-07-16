@@ -1,10 +1,12 @@
 #import "HBTSPlusClient.h"
 #import "HBTSPlusPreferences.h"
 #import "HBTSStatusBarUnreadItemView.h"
+#import "../api/HBTSPlusProviderController.h"
 #import "../typestatus-private/HBTSStatusBarForegroundView.h"
 #import <libstatusbar/UIStatusBarCustomItem.h>
 #import <SpringBoard/SBApplication.h>
 #import <SpringBoard/SBApplicationController.h>
+#import <UIKit/UIStatusBar.h>
 
 @interface HBTSStatusBarForegroundView (TapToOpen)
 
@@ -43,6 +45,8 @@
 %hook UIStatusBarCustomItem
 
 - (Class)viewClass {
+	// lsb seems like it's meant to provide a way to customise the class of an item, but it doesn't
+	// seem to work, i guess? so we manually set the item view class by returning it here
 	if ([self.indicatorName isEqualToString:@"TypeStatusPlusUnreadCount"]) {
 		return %c(HBTSStatusBarUnreadItemView);
 	}
@@ -70,14 +74,17 @@
 	dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
 	dlopen("/Library/MobileSubstrate/DynamicLibraries/TypeStatusClient.dylib", RTLD_LAZY);
 
-	NSString *bundleIdentifier = [NSBundle mainBundle].bundleIdentifier;
-
-	if ([bundleIdentifier isEqualToString:@"com.apple.accessibility.AccessibilityUIServer"] || [bundleIdentifier isEqualToString:@"com.apple.SafariViewService"]) {
+	// ensure we don't do anything if typestatus hasn't loaded (intentionally or not)
+	if ([UIStatusBar instancesRespondToSelector:@selector(_typeStatus_foregroundView)]) {
 		return;
 	}
 
 	%init;
 
+	// get the provider controller rolling
+	[HBTSPlusProviderController sharedInstance];
+
+	// if lsb is installed, init the hooks for it
 	if (%c(UIStatusBarCustomItem)) {
 		%init(HasLibstatusbar);
 	}
