@@ -8,12 +8,12 @@ endif
 
 include $(THEOS)/makefiles/common.mk
 
-LIBRARY_NAME = BuiltIn
-BuiltIn_FILES = $(wildcard providers/*/*.m) $(wildcard providers/*/*.x)
-BuiltIn_PRIVATE_FRAMEWORKS = MediaRemote
-BuiltIn_EXTRA_FRAMEWORKS = CydiaSubstrate TypeStatusPlusProvider
-BuiltIn_INSTALL_PATH = /Library/TypeStatus/Providers
-BuiltIn_CFLAGS = -fobjc-arc
+LIBRARY_NAME = TypeStatusPlusBuiltIn
+TypeStatusPlusBuiltIn_FILES = $(wildcard providers/*/*.m) $(wildcard providers/*/*.x)
+TypeStatusPlusBuiltIn_PRIVATE_FRAMEWORKS = MediaRemote
+TypeStatusPlusBuiltIn_EXTRA_FRAMEWORKS = CydiaSubstrate TypeStatusPlusProvider
+TypeStatusPlusBuiltIn_INSTALL_PATH = /Library/TypeStatus/Providers
+TypeStatusPlusBuiltIn_CFLAGS = -fobjc-arc
 
 SUBPROJECTS = $(wildcard providers/*)
 
