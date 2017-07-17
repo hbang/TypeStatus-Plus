@@ -66,6 +66,12 @@ NSString *nameFromJID(NSString *jid) {
 }
 
 %ctor {
+	if (![[NSBundle mainBundle].bundleIdentifier isEqualToString:@"net.whatsapp.WhatsApp"]) {
+		return;
+	}
+
+	%init;
+
 	HBTSPlusProvider *whatsAppProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"net.whatsapp.WhatsApp"];
 
 	[[NSNotificationCenter defaultCenter] addObserverForName:ChatStorageDidUpdateChatSession object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
@@ -101,10 +107,4 @@ NSString *nameFromJID(NSString *jid) {
 			[whatsAppProvider hideNotification];
 		}
 	}];
-}
-
-%ctor {
-	if ([[NSBundle mainBundle].bundleIdentifier isEqualToString:@"net.whatsapp.WhatsApp"]) {
-		%init;
-	}
 }
