@@ -8,10 +8,12 @@
 - (void)_processDeltaReadReceipt:(MNMessagesSyncDeltaReadReceipt *)readReceipt completion:(id)completionBlock {
 	%orig;
 
+	// get the user id. in a one-on-one chat it's otherUserFbId; in a group chat it's actorFbId
 	MNMessagesSyncThreadKey *threadKey = readReceipt.threadKey;
 	long long userId = threadKey.otherUserFbId ?: readReceipt.actorFbId;
 	NSString *userIdString = [NSString stringWithFormat:@"%llu", userId];
 
+	// fetch the name and send our notification off
 	HBTSPlusMessengerNameFetcher *fetcher = [[HBTSPlusMessengerNameFetcher alloc] init];
 	[fetcher userDisplayNameForID:userIdString completion:^(NSString *displayName) {
 		HBTSPlusProvider *messengerProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.facebook.Messenger"];
@@ -38,6 +40,7 @@
 
 		HBTSPlusProvider *messengerProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.facebook.Messenger"];
 
+		// if this is a typing started message, show a notification. otherwise, hide it
 		if (state) {
 			HBTSPlusMessengerNameFetcher *fetcher = [[HBTSPlusMessengerNameFetcher alloc] init];
 			[fetcher userDisplayNameForID:senderID completion:^(NSString *displayName) {

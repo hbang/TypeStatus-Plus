@@ -14,14 +14,16 @@ static NSMutableDictionary *cachedNames;
 		cachedNames = [NSMutableDictionary dictionary];
 	});
 
+	// if we already have the name cached for this user, return straight from there
 	if (cachedNames[userID]) {
 		completion(cachedNames[userID]);
 	}
 
+	// grab a copy of the completion block to use later
 	_completion = [completion copy];
 
+	// use a fetcher to fetch the user object for the user id
 	MNAppDelegate *appDelegate = (MNAppDelegate *)[[UIApplication sharedApplication] delegate];
-
 	FBMUserFetcher *fetcher = [[%c(FBMUserFetcher) alloc] initWithDependencyProvider:[appDelegate valueForKey:@"_providerMap"]];
 	[fetcher configureAndFetchUserWithWithUserId:userID delegate:self];
 }
