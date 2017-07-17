@@ -5,24 +5,31 @@
 
 NSBundle *bundle;
 
-%hook UNRemoteNotificationServer
+@interface UNSNotificationRecord : NSObject
 
-- (void)connection:(id)connection didReceiveIncomingMessage:(APSIncomingMessage *)message {
-	if ([message.topic isEqualToString:@"com.toyopagroup.picaboo"]) {
-		NSString *type = message.userInfo[@"type"];
+@property (nonatomic, copy) NSDictionary *userInfo;
+
+@end
+
+%hook UNSNotificationRepository
+
+- (void)saveNotificationRecord:(UNSNotificationRecord *)record forBundleIdentifier:(NSString *)bundleIdentifier withCompletionHandler:(id)completion {
+	if ([bundleIdentifier isEqualToString:@"com.toyopagroup.picaboo"]) {
+		NSString *type = record.userInfo[@"type"];
 
 		if ([type isEqualToString:@"typing"]) {
 			// typing
-			HBTSNotification *notification = [[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:message.userInfo[@"sender"] iconName:@"TypeStatusPlusSnapchat"];
+			HBTSNotification *notification = [[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:record.userInfo[@"sender"] iconName:@"TypeStatusPlusSnapchat"];
 
 			HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.toyopagroup.picaboo"];
 			[provider showNotification:notification];
 		} else if ([type isEqualToString:@"screenshot"] || [type isEqualToString:@"chat_screenshot"]) {
 			// snap screenshot (ss) or chat screenshot (cs)
-			NSString *sender = message.userInfo[@"sender"];
+			NSString *sender = record.userInfo[@"sender"];
 
+			// TODO: why are we using our own string for something that's already provided to us?!
 			HBTSNotification *notification = [[HBTSNotification alloc] init];
-			notification.content = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"SENDER_TOOK_A_SCREENSHOT", @"Localizable", bundle, @"String used in the status bar for screenshot notifications. “kirb took a screenshot!”"), sender];
+			notification.content = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"SENDER_TOOK_A_SCREENSHOT", @"Localizable", bundle, @""), sender];
 			notification.boldRange = [notification.content rangeOfString:sender];
 			notification.statusBarIconName = @"TypeStatusPlusSnapchat";
 
@@ -42,8 +49,6 @@ NSBundle *bundle;
 	bundle = [NSBundle bundleWithPath:@"/Library/TypeStatus/Providers/Snapchat.bundle"];
 
 	if (IN_SPRINGBOARD) {
-		// UNRemoteNotificationServer in iOS 9, UNSRemoteNotificationServer in iOS 10
-		Class serverClass = %c(UNSRemoteNotificationServer) ?: %c(UNRemoteNotificationServer);
-		%init(_ungrouped, UNRemoteNotificationServer = serverClass);
+		%init;
 	}
 }
