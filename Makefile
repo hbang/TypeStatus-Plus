@@ -1,5 +1,10 @@
 export TARGET = iphone:10.1:9.0
+
 INSTALL_TARGET_PROCESSES = Messenger Skype Slack Telegram WhatsApp
+
+ifeq ($(RESPRING),1)
+INSTALL_TARGET_PROCESSES += SpringBoard
+endif
 
 include $(THEOS)/makefiles/common.mk
 
