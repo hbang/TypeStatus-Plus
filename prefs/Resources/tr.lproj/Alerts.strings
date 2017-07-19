@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>Uyarı Tipi</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Kapalı</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Sadece İkon</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Bildirim Çubuğu</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Yukarıdaki sadece TypeStatus Plus bildirimleri için geçerlidir.</string>
+
+	<!-- Switch to toggle showing alerts in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Ön Planda Göster</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Bildirimi gönderen uygulama ön planda olsa dahi bildirimi göster.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -31,14 +47,6 @@
 	<string>Uygulamayı Aç</string>
 	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
 	<string>Bildirimi Gizle</string>
-
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>Kapalı</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>Sadece İkon</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>Bildirim Çubuğu</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
@@ -63,6 +71,34 @@
 	<!-- Option to show banners in apps. -->
 	<key>IN_APPS</key>
 	<string>Uygulamada</string>
+
+	<!-- Option to use the respective app icon. -->
+	<key>ICON</key>
+	<string>Ikon</string>
+
+	<!-- Option to use the respective app icon. -->
+	<key>APP_ICON</key>
+	<string>Uygulama Ikonu</string>
+
+	<!-- Explanation of the above options. -->
+	<key>ICON_EXPLANATION</key>
+	<string>TypeStatus Plus ikonunu bildirimlerde kullan, veya uygulama ikonunun kendisi olarak</string>
+
+	<!-- Label for the options on keeping notifications in the notification center. -->
+	<key>KEEP_BULLETINS</key>
+	<string>Tut</string>
+
+	<!-- Option to keep only one alert. -->
+	<key>KEEP_BULLETINS_ONE</key>
+	<string>Bir Bildirim</string>
+
+	<!-- Option to keep all alerts (until the respective app is opened). -->
+	<key>KEEP_BULLETINS_ALL</key>
+	<string>Tüm Bildirimler</string>
+
+	<!-- Option to keep all alerts (even if the respective app is opened). -->
+	<key>KEEP_BULLETINS_FOREVER</key>
+	<string>Tüm Bildirimler, Her zaman için</string>
 
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>

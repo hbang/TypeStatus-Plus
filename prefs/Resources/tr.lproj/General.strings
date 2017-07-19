@@ -17,5 +17,21 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>Seçilen uygulamaların okunmamış bildirimlerini durum çubuğunda gösterir.</string>
+
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>Mesaj Uygulaması</string>
+
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>Konuşmalar listesinde "Yazıyor..." görünümü</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>Başarısız mesajları vurgula</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>Başarısız olan mesajları kırmızı baloncukla göster </string>
 </dict>
 </plist>
