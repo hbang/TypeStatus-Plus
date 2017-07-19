@@ -38,6 +38,26 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>footerText</key>
+			<string>SHOW_IN_FOREGROUND_EXPLANATION</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>ws.hbang.typestatusplus</string>
+			<key>key</key>
+			<string>ShowInForeground</string>
+			<key>label</key>
+			<string>SHOW_IN_FOREGROUND</string>
+			<key>PostNotification</key>
+			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
 			<string>WAKE_WHEN_LOCKED_EXPLANATION</string>
 		</dict>
 		<dict>
@@ -203,40 +223,62 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>KEEP_ALL_BULLETINS_EXPLANATION</string>
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSSwitchCell</string>
+			<string>PSLinkListCell</string>
 			<key>default</key>
-			<false/>
+			<integer>1</integer>
 			<key>defaults</key>
 			<string>ws.hbang.typestatusplus</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
 			<key>key</key>
-			<string>KeepAllBulletins</string>
+			<string>UseAppIcon</string>
 			<key>label</key>
-			<string>KEEP_ALL_BULLETINS</string>
+			<string>ICON</string>
+			<key>staticTextMessage</key>
+			<string>ICON_EXPLANATION</string>
+			<key>validTitles</key>
+			<array>
+				<string>TypeStatus Plus</string>
+				<string>APP_ICON</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+			</array>
 			<key>PostNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>USE_APP_ICON_EXPLANATION</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
+			<string>PSLinkListCell</string>
 			<key>default</key>
-			<true/>
+			<integer>2</integer>
 			<key>defaults</key>
 			<string>ws.hbang.typestatusplus</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
 			<key>key</key>
-			<string>UseAppIcon</string>
+			<string>KeepAllBulletins</string>
 			<key>label</key>
-			<string>USE_APP_ICON</string>
+			<string>KEEP_BULLETINS</string>
+			<key>staticTextMessage</key>
+			<string>KEEP_BULLETINS_EXPLANATION</string>
+			<key>validTitles</key>
+			<array>
+				<string>KEEP_BULLETINS_ONE</string>
+				<string>KEEP_BULLETINS_ALL</string>
+				<string>KEEP_BULLETINS_FOREVER</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+			</array>
 			<key>PostNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
 		</dict>

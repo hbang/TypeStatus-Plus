@@ -20,7 +20,15 @@
 
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
-	<string>The above applies only to notifications from TypeStatus Plus providers.</string>
+	<string>Applies only to notifications from TypeStatus Plus providers.</string>
+
+	<!-- Switch to toggle showing alerts in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Show in Foreground</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Display notifications even if the sending app is in the foreground.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -64,21 +72,37 @@
 	<key>IN_APPS</key>
 	<string>In Apps</string>
 
-	<!-- Switch to keep all notifications in the notification center. -->
-	<key>KEEP_ALL_BULLETINS</key>
-	<string>Keep All Notifications</string>
+	<!-- Label for the options on the icon to use in notifications. -->
+	<key>ICON</key>
+	<string>Icon</string>
 
-	<!-- Explanation of the keep all notifications switch. -->
-	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
-	<string>Show all TypeStatus alerts in the Notification Centre and lock screen, or only show the latest.</string>
+	<!-- Option to use the respective app icon. -->
+	<key>APP_ICON</key>
+	<string>App Icon</string>
 
-	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
-	<key>USE_APP_ICON</key>
-	<string>Use Respective App Icon</string>
+	<!-- Explanation of the above options. -->
+	<key>ICON_EXPLANATION</key>
+	<string>Use the TypeStatus Plus icon on notifications, or the icon for the respective app.</string>
 
-	<!-- Explanation of the respective app icon switch. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>When enabled, banner notifications will use the respective app icon instead of the TypeStatus Plus icon.</string>
+	<!-- Label for the options on keeping notifications in the notification center. -->
+	<key>KEEP_BULLETINS</key>
+	<string>Keep</string>
+
+	<!-- Option to keep only one alert. -->
+	<key>KEEP_BULLETINS_ONE</key>
+	<string>One Alert</string>
+
+	<!-- Option to keep all alerts (until the respective app is opened). -->
+	<key>KEEP_BULLETINS_ALL</key>
+	<string>All Alerts</string>
+
+	<!-- Option to keep all alerts (even if the respective app is opened). -->
+	<key>KEEP_BULLETINS_FOREVER</key>
+	<string>All Alerts, Forever</string>
+
+	<!-- Explanation of the above options. -->
+	<key>KEEP_BULLETINS_EXPLANATION</key>
+	<string>Keep only one TypeStatus alert in the Notification Centre, keep all until the respective app is opened, or keep all until you clear them manually.</string>
 
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>
