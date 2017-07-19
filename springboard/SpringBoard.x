@@ -249,5 +249,10 @@ void sendTestNotification() {
 		updateUnreadCountStatusBarItem(YES);
 	}];
 
+	// when an app becomes active, clear its bulletins if needed
+	[[NSNotificationCenter defaultCenter] addObserverForName:@"SBAppDidBecomeForeground" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
+		[[HBTSPlusBulletinProvider sharedInstance] clearBulletinsForBundleIdentifier:((SBApplication *)notification.object).bundleIdentifier];
+	}];
+
 	%init;
 }

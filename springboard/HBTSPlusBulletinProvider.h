@@ -7,6 +7,8 @@
 + (instancetype)sharedInstance;
 
 - (void)showBulletinForNotification:(HBTSNotification *)notification;
-- (void)clearAllBulletins;
+
+- (void)clearBulletinsIfNeeded;
+- (void)clearBulletinsForBundleIdentifier:(NSString *)bundleIdentifier;
 
 @end

@@ -75,7 +75,7 @@ static NSString *const kHBTSPlusPreferencesUseAppIconKey = @"UseAppIcon";
 		[_preferences registerBool:&_showBannersOnHomeScreen default:NO forKey:kHBTSPlusPreferencesShowBannersOnHomeScreenKey];
 		[_preferences registerBool:&_showBannersInApps default:NO forKey:kHBTSPlusPreferencesShowBannersInAppsKey];
 
-		[_preferences registerBool:&_keepAllBulletins default:NO forKey:kHBTSPlusPreferencesKeepAllBulletinsKey];
+		[_preferences registerInteger:(NSInteger *)&_keepBulletinsMode default:NO forKey:kHBTSPlusPreferencesKeepAllBulletinsKey];
 		[_preferences registerBool:&_useAppIcon default:YES forKey:kHBTSPlusPreferencesUseAppIconKey];
 	}
 	return self;

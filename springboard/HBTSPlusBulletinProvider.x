@@ -17,9 +17,11 @@
 #import <version.h>
 
 static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
-static NSString *const kHBTSPlusBulletinRecordIdentifier = @"ws.hbang.typestatusplus.notification";
 
-@implementation HBTSPlusBulletinProvider
+@implementation HBTSPlusBulletinProvider {
+	HBTSPlusPreferences *_preferences;
+	NSMutableSet <BBBulletinRequest *> *_sentBulletins;
+}
 
 + (instancetype)sharedInstance {
 	static HBTSPlusBulletinProvider *sharedInstance = nil;
@@ -35,6 +37,9 @@ static NSString *const kHBTSPlusBulletinRecordIdentifier = @"ws.hbang.typestatus
 	self = [super init];
 
 	if (self) {
+		_preferences = [%c(HBTSPlusPreferences) sharedInstance];
+		_sentBulletins = [NSMutableSet setWithCapacity:1];
+
 		// construct our data provider identity
 		BBDataProviderIdentity *identity = [BBDataProviderIdentity identityForDataProvider:self];
 
@@ -55,23 +60,11 @@ static NSString *const kHBTSPlusBulletinRecordIdentifier = @"ws.hbang.typestatus
 }
 
 - (void)_receivedSetStatusBarNotification:(NSNotification *)nsNotification {
-	HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
-
-	// not enabled? don’t do anything
-	if (!preferences.enabled) {
-		return;
-	}
-
 	HBTSNotification *notification = [[HBTSNotification alloc] initWithDictionary:nsNotification.userInfo];
 
-	// right off the bat, if there’s no title or content, stop right there.
+	// if there’s no title or content, stop right here
 	if (!notification.content || [notification.content isEqualToString:@""]) {
 		return;
-	}
-
-	// if we need to remove previous bulletins, do so now
-	if (!preferences.keepAllBulletins) {
-		[self clearAllBulletins];
 	}
 
 	// if we’re in the right state to show a bulletin, do it
@@ -81,62 +74,90 @@ static NSString *const kHBTSPlusBulletinRecordIdentifier = @"ws.hbang.typestatus
 }
 
 - (void)showBulletinForNotification:(HBTSNotification *)notification {
-	HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
-
 	// construct our bulletin
-	BBBulletinRequest *bulletinRequest = [[BBBulletinRequest alloc] init];
+	BBBulletinRequest *bulletin = [[BBBulletinRequest alloc] init];
 
 	// set the basic stuff
-	bulletinRequest.bulletinID = [NSUUID UUID].UUIDString;
-	bulletinRequest.sectionID = kHBTSPlusAppIdentifier;
-
-	// set the record id based on the keep all bulletins setting
-	bulletinRequest.recordID = preferences.keepAllBulletins ? bulletinRequest.bulletinID : kHBTSPlusBulletinRecordIdentifier;
+	bulletin.sectionID = kHBTSPlusAppIdentifier;
+	bulletin.bulletinID = [NSString stringWithFormat:@"%@-%@", notification.sourceBundleID, [NSUUID UUID].UUIDString];
+	bulletin.recordID = bulletin.bulletinID;
 
 	// set the title to the app display name
 	SBApplication *app = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:notification.sourceBundleID];
-	bulletinRequest.title = app.displayName;
+	bulletin.title = app.displayName;
 
 	// if we’re using the app icon
-	if (preferences.useAppIcon) {
+	if (_preferences.useAppIcon) {
 		// get the icon
 		SBApplicationIcon *appIcon = [[%c(SBApplicationIcon) alloc] initWithApplication:app];
 		UIImage *icon = [appIcon getUnmaskedIconImage:MIIconVariantSmall];
 
 		// override the icon with what we have
-		if ([bulletinRequest respondsToSelector:@selector(setIcon:)]) {
+		if ([bulletin respondsToSelector:@selector(setIcon:)]) {
 			BBSectionIcon *sectionIcon = [[BBSectionIcon alloc] init];
 			[sectionIcon addVariant:[BBSectionIconVariant variantWithFormat:0 imageData:UIImagePNGRepresentation(icon)]];
-			bulletinRequest.icon = sectionIcon;
+			bulletin.icon = sectionIcon;
 		} else {
 			// TODO: didn't i have something working for ios 9 at some point?
-			// [bulletinRequest.sectionIcon addVariant:[BBSectionIconVariant variantWithFormat:0 imageData:UIImagePNGRepresentation(icon)]];
+			// [bulletin.sectionIcon addVariant:[BBSectionIconVariant variantWithFormat:0 imageData:UIImagePNGRepresentation(icon)]];
 			// _currentIcon = icon;
 		}
 	}
 
 	// set all the rest
-	bulletinRequest.message = notification.content;
-	bulletinRequest.date = notification.date;
-	bulletinRequest.lastInterruptDate = [NSDate date];
+	bulletin.message = notification.content;
+	bulletin.date = notification.date;
+	bulletin.lastInterruptDate = [NSDate date];
 
-	if ([bulletinRequest respondsToSelector:@selector(setTurnsOnDisplay:)]) {
-		bulletinRequest.turnsOnDisplay = preferences.wakeWhenLocked;
+	if ([bulletin respondsToSelector:@selector(setTurnsOnDisplay:)]) {
+		bulletin.turnsOnDisplay = _preferences.wakeWhenLocked;
 	}
 
 	// set a callback to open the conversation
-	bulletinRequest.defaultAction = [BBAction actionWithCallblock:^{
+	bulletin.defaultAction = [BBAction actionWithCallblock:^{
 		// let the tap to open controller do its thing
 		[[HBTSPlusTapToOpenController sharedInstance] receivedStatusBarTappedMessage:nil];
 	}];
 
-	BBDataProviderAddBulletin(self, bulletinRequest);
+	// if we need to remove previous bulletins, do so now
+	[self clearBulletinsIfNeeded];
+
+	// send it!
+	BBDataProviderAddBulletin(self, bulletin);
+	[_sentBulletins addObject:bulletin];
 }
 
-- (void)clearAllBulletins {
-	// remove notifications with the unique id we use when the user has the keep all bulletins
-	// preference off. we don't clear others, for now at least
-	BBDataProviderWithdrawBulletinsWithRecordID(self, kHBTSPlusBulletinRecordIdentifier);
+- (void)clearBulletinsIfNeeded {
+	// if the user wants to not keep previous bulletins
+	if (_preferences.keepBulletinsMode == HBTSPlusKeepBulletinsModeOne) {
+		// loop and remove all bulletins we’ve sent
+		for (BBBulletinRequest *bulletin in _sentBulletins) {
+			BBDataProviderWithdrawBulletinsWithRecordID(self, bulletin.recordID);
+		}
+
+		// empty the set
+		[_sentBulletins removeAllObjects];
+	}
+}
+
+- (void)clearBulletinsForBundleIdentifier:(NSString *)bundleIdentifier {
+	// the user has launched an app. if they want its notifications to be removed
+	if (_preferences.keepBulletinsMode == HBTSPlusKeepBulletinsModeAll) {
+		// we’ll need to keep track of the bulletins we remove
+		NSMutableSet *removedBulletins = [NSMutableSet setWithCapacity:1];
+		NSString *prefix = [bundleIdentifier stringByAppendingString:@"-"];
+
+		// loop and remove matching bulletins we’ve sent, adding them to the removed set
+		for (BBBulletinRequest *bulletin in _sentBulletins) {
+			if ([bulletin.recordID hasPrefix:prefix]) {
+				BBDataProviderWithdrawBulletinsWithRecordID(self, bulletin.recordID);
+				[removedBulletins addObject:bulletin];
+			}
+		}
+
+		// remove the removed bulletins from the set
+		[_sentBulletins minusSet:removedBulletins];
+	}
 }
 
 #pragma mark - BBDataProvider

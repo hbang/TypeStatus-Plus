@@ -11,6 +11,12 @@ typedef NS_ENUM(NSUInteger, HBTSTapToOpenMode) {
 	HBTSTapToOpenModeDismiss
 };
 
+typedef NS_ENUM(NSUInteger, HBTSPlusKeepBulletinsMode) {
+	HBTSPlusKeepBulletinsModeOne,
+	HBTSPlusKeepBulletinsModeAll,
+	HBTSPlusKeepBulletinsModeForever
+};
+
 @interface HBTSPlusPreferences : NSObject
 
 @property (nonatomic, readonly) BOOL enabled;
@@ -24,6 +30,7 @@ typedef NS_ENUM(NSUInteger, HBTSTapToOpenMode) {
 
 @property (nonatomic, readonly) HBTSPlusAlertType alertType;
 @property (nonatomic, readonly) HBTSTapToOpenMode tapToOpenMode;
+@property (nonatomic, readonly) HBTSPlusKeepBulletinsMode keepBulletinsMode;
 
 + (instancetype)sharedInstance;
 
