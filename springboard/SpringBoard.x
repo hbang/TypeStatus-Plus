@@ -30,8 +30,8 @@ extern void AudioServicesPlaySystemSoundWithVibration(SystemSoundID inSystemSoun
 - (void)loadAllDataProvidersAndPerformMigration:(BOOL)performMigration {
 	%orig;
 
-	// add our provider to the in-memory store. it’ll be instantiated for us at some point
-	[self _addDataProviderClass:HBTSPlusBulletinProvider.class performMigration:YES];
+	// add our provider to the in-memory store
+	[self addDataProvider:[HBTSPlusBulletinProvider sharedInstance] performMigration:YES];
 }
 
 %end

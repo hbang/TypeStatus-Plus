@@ -79,8 +79,9 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 
 	// set the basic stuff
 	bulletin.sectionID = kHBTSPlusAppIdentifier;
-	bulletin.bulletinID = [NSString stringWithFormat:@"%@-%@", notification.sourceBundleID, [NSUUID UUID].UUIDString];
+	bulletin.bulletinID = [NSUUID UUID].UUIDString;
 	bulletin.recordID = bulletin.bulletinID;
+	bulletin.publisherBulletinID = [NSString stringWithFormat:@"%@-%@", notification.sourceBundleID, [NSUUID UUID].UUIDString];
 
 	// set the title to the app display name
 	SBApplication *app = [[%c(SBApplicationController) sharedInstance] applicationWithBundleIdentifier:notification.sourceBundleID];
@@ -144,12 +145,12 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 	// the user has launched an app. if they want its notifications to be removed
 	if (_preferences.keepBulletinsMode == HBTSPlusKeepBulletinsModeAll) {
 		// we’ll need to keep track of the bulletins we remove
-		NSMutableSet *removedBulletins = [NSMutableSet setWithCapacity:1];
+		NSMutableSet *removedBulletins = [NSMutableSet set];
 		NSString *prefix = [bundleIdentifier stringByAppendingString:@"-"];
 
 		// loop and remove matching bulletins we’ve sent, adding them to the removed set
 		for (BBBulletinRequest *bulletin in _sentBulletins) {
-			if ([bulletin.recordID hasPrefix:prefix]) {
+			if ([bulletin.publisherBulletinID hasPrefix:prefix]) {
 				BBDataProviderWithdrawBulletinsWithRecordID(self, bulletin.recordID);
 				[removedBulletins addObject:bulletin];
 			}
