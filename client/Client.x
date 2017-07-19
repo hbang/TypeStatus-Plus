@@ -75,7 +75,7 @@
 	dlopen("/Library/MobileSubstrate/DynamicLibraries/TypeStatusClient.dylib", RTLD_LAZY);
 
 	// ensure we don't do anything if typestatus hasn't loaded (intentionally or not)
-	if ([UIStatusBar instancesRespondToSelector:@selector(_typeStatus_foregroundView)]) {
+	if (![UIStatusBar instancesRespondToSelector:@selector(_typeStatus_foregroundView)]) {
 		return;
 	}
 
