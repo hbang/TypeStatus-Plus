@@ -6,52 +6,40 @@
 
 @implementation HBTSPlusStateHelper
 
++ (BOOL)_isAtLockScreen {
+	return ((SBLockScreenManager *)[%c(SBLockScreenManager) sharedInstance]).isUILocked;
+}
+
++ (BOOL)_isAtHomeScreen {
+	SpringBoard *app = (SpringBoard *)[UIApplication sharedApplication];
+	return !self._isAtLockScreen && !app._accessibilityFrontMostApplication.bundleIdentifier;
+}
+
 + (BOOL)shouldShowBanner {
 	HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
 
-	SBLockScreenManager *lockScreenManager = [%c(SBLockScreenManager) sharedInstance];
-	BOOL onLockScreen = lockScreenManager.isUILocked;
-
-	SpringBoard *app = (SpringBoard *)[UIApplication sharedApplication];
-	NSString *frontmostAppIdentifier = app._accessibilityFrontMostApplication.bundleIdentifier;
-
-	if (onLockScreen) {
-		// lock screen
+	if (!preferences.enabled) {
+		return NO;
+	} else if (self._isAtLockScreen) {
 		return preferences.showBannersOnLockScreen;
-	} else if (!frontmostAppIdentifier && !onLockScreen) {
-		// home screen
+	} else if (self._isAtHomeScreen) {
 		return preferences.showBannersOnHomeScreen;
-	} else if (frontmostAppIdentifier) {
-		// apps
-		return preferences.showBannersInApps;
 	} else {
-		// ???
-		return YES;
+		return preferences.showBannersInApps;
 	}
 }
 
 + (BOOL)shouldVibrate {
-	// TODO: this is pretty much the same as above with just one thing changed?
 	HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
 
-	SBLockScreenManager *lockScreenManager = [%c(SBLockScreenManager) sharedInstance];
-	BOOL onLockScreen = lockScreenManager.isUILocked;
-
-	SpringBoard *app = (SpringBoard *)[UIApplication sharedApplication];
-	NSString *frontmostAppIdentifier = app._accessibilityFrontMostApplication.bundleIdentifier;
-
-	if (onLockScreen) {
-		// lock screen
+	if (!preferences.enabled) {
+		return NO;
+	} else if (self._isAtLockScreen) {
 		return preferences.vibrateOnLockScreen;
-	} else if (!frontmostAppIdentifier && !onLockScreen) {
-		// home screen
+	} else if (self._isAtHomeScreen) {
 		return preferences.vibrateOnHomeScreen;
-	} else if (frontmostAppIdentifier) {
-		// apps
-		return preferences.vibrateInApps;
 	} else {
-		// ???
-		return YES;
+		return preferences.vibrateInApps;
 	}
 }
 

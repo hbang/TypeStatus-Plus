@@ -51,10 +51,10 @@ BOOL overrideBreadcrumbHax;
 		HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
 
 		switch (preferences.tapToOpenMode) {
-			case HBTSTapToOpenModeNothing:
+			case HBTSPlusTapToOpenModeNothing:
 				break;
 			
-			case HBTSTapToOpenModeOpen:
+			case HBTSPlusTapToOpenModeOpen:
 				// if this is a messages notification
 				if ([_appIdentifier isEqualToString:@"com.apple.MobileSMS"]) {
 					// open the url ourselves
@@ -72,7 +72,7 @@ BOOL overrideBreadcrumbHax;
 
 				break;
 			
-			case HBTSTapToOpenModeDismiss:
+			case HBTSPlusTapToOpenModeDismiss:
 				[HBTSPlusAlertController hide];
 				break;
 		}

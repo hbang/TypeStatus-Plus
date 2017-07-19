@@ -65,7 +65,7 @@ static NSString *const kHBTSPlusPreferencesUseAppIconKey = @"UseAppIcon";
 
 		[_preferences registerBool:&_wakeWhenLocked default:YES forKey:kHBTSPlusPreferencesWakeWhenLockedKey];
 
-		[_preferences registerInteger:(NSInteger *)&_tapToOpenMode default:HBTSTapToOpenModeOpen forKey:kHBTSPlusPreferencesTapToOpenModeKey];
+		[_preferences registerInteger:(NSInteger *)&_tapToOpenMode default:HBTSPlusTapToOpenModeOpen forKey:kHBTSPlusPreferencesTapToOpenModeKey];
 
 		[_preferences registerBool:&_vibrateOnLockScreen default:NO forKey:kHBTSPlusPreferencesVibrateOnLockScreenKey];
 		[_preferences registerBool:&_vibrateOnHomeScreen default:YES forKey:kHBTSPlusPreferencesVibrateOnHomeScreenKey];

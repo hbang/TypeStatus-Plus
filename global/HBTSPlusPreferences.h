@@ -5,10 +5,10 @@ typedef NS_ENUM(NSUInteger, HBTSPlusAlertType) {
 	HBTSPlusAlertTypeOverlay
 };
 
-typedef NS_ENUM(NSUInteger, HBTSTapToOpenMode) {
-	HBTSTapToOpenModeNothing,
-	HBTSTapToOpenModeOpen,
-	HBTSTapToOpenModeDismiss
+typedef NS_ENUM(NSUInteger, HBTSPlusTapToOpenMode) {
+	HBTSPlusTapToOpenModeNothing,
+	HBTSPlusTapToOpenModeOpen,
+	HBTSPlusTapToOpenModeDismiss
 };
 
 typedef NS_ENUM(NSUInteger, HBTSPlusKeepBulletinsMode) {
@@ -29,7 +29,7 @@ typedef NS_ENUM(NSUInteger, HBTSPlusKeepBulletinsMode) {
 @property (nonatomic, readonly) BOOL showBannersOnLockScreen, showBannersOnHomeScreen, showBannersInApps;
 
 @property (nonatomic, readonly) HBTSPlusAlertType alertType;
-@property (nonatomic, readonly) HBTSTapToOpenMode tapToOpenMode;
+@property (nonatomic, readonly) HBTSPlusTapToOpenMode tapToOpenMode;
 @property (nonatomic, readonly) HBTSPlusKeepBulletinsMode keepBulletinsMode;
 
 + (instancetype)sharedInstance;
