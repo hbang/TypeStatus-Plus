@@ -83,6 +83,7 @@
 
 	// get the provider controller rolling
 	[HBTSPlusProviderController sharedInstance];
+	[HBTSPlusClient sharedInstance];
 
 	// if lsb is installed, init the hooks for it
 	if (%c(UIStatusBarCustomItem)) {
