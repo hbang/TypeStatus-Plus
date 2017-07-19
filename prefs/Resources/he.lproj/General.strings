@@ -16,15 +16,6 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>מציג את מספר ההתראות שלא נקראו מהאפליקציה/ות הנבחר/ות בסטטוס בר.
-</string>
-
-	<!-- Switch to toggle show in foreground. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>הצג באפליקציה בשימוש</string>
-
-	<!-- Explanation of the show in foreground switch. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>הצג התראות אפילו אם האפליקציה השולחת בשימוש כרגע (לא ברקע).</string>
+	<string>מציג את מספר ההתראות שלא נקראו מהאפליקציה/ות הנבחר/ות בסטטוס בר.</string>
 </dict>
 </plist>

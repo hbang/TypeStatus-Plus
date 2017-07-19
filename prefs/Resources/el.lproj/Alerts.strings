@@ -64,21 +64,9 @@
 	<key>IN_APPS</key>
 	<string>Μέσα σε εφαρμογές</string>
 
-	<!-- Switch to keep all notifications in the notification center. -->
-	<key>KEEP_ALL_BULLETINS</key>
-	<string>Διατήρηση όλων των ειδοποιήσεων</string>
-
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
 	<string>Προβολή όλων των ειδοποιήσεων του TypeStatus στο κέντρο γνωστοποιήσεων και στην οθόνη κλειδώματος, ή προβολή μόνο των πιο πρόσφατων.</string>
-
-	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
-	<key>USE_APP_ICON</key>
-	<string>Χρήση του σχετικού εικονιδίου της εφαρμογής</string>
-
-	<!-- Explanation of the respective app icon switch. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>Όταν είναι ενργοποιημένο, οι ειδοποιήσεις στιλ μπάνερ θα χρησιμοποιούν το αντίστοιχο εικονίδιο εφαρμογής, αντι του εικονιδίου του TypeStatus Plus.</string>
 	
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>

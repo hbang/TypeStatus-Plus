@@ -17,13 +17,5 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>Zobrazí počet neprečítaných upozornení z vybraných aplikácií v stavovej lište.</string>
-
-	<!-- Switch to toggle show in foreground. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>Zobraziť v popredí</string>
-
-	<!-- Explanation of the show in foreground switch. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>Zobrazí upozornenia aj keď je istá aplikácia otvorená.</string>
 </dict>
 </plist>

@@ -54,21 +54,9 @@
 	<key>IN_APPS</key>
 	<string>I Apps</string>
 
-	<!-- Bytt for å beholde varsler i varsel senter. -->
-	<key>KEEP_ALL_BULLETINS</key>
-	<string>Behold Alle Varsler</string>
-
 	<!-- Forklaring til å beholde alle varsler knappen. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
 	<string>Vis alle TypeStatus varsler i vassal senter og på låst skjerm, eller bare vis siste varsler.</string>
-
-	<!-- Bytt for å bruke respektiv app ikon for banner varsler, istedenfor TypeStatus ikon. -->
-	<key>USE_APP_ICON</key>
-	<string>Bruk Respektiv App Ikon</string>
-
-	<!-- Forklaring for respektiv app ikon bytte. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>Når aktivert, vil banner varsel bruke det respektive app ikonet isteden for TypeStatus Plus ikonet.</string>
 
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>

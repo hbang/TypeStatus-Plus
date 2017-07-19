@@ -64,21 +64,9 @@
 	<key>IN_APPS</key>
 	<string>Uygulamada</string>
 
-	<!-- Switch to keep all notifications in the notification center. -->
-	<key>KEEP_ALL_BULLETINS</key>
-	<string>Tüm Bildirimleri Tut</string>
-
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
 	<string>Bildirim merkezindeki ve kilit ekranındaki TypeStatus uyarılarının tümünü ya da yalnız sonuncuyu göster.</string>
-
-	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
-	<key>USE_APP_ICON</key>
-	<string>Uygulama kendi simgesini kullansın</string>
-
-	<!-- Explanation of the respective app icon switch. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>Etkinleştirildiğinde, TypeStatus Plus simgelerinin yerine uygulamanın kendi simgesi kullanacaktır.</string>
 
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>

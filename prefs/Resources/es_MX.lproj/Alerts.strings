@@ -64,21 +64,10 @@
 	<key>IN_APPS</key>
 	<string>En las apps</string>
 
-	<!-- Switch to keep all notifications in the notification center. -->
-	<key>KEEP_ALL_BULLETINS</key>
-	<string>Mostrar todas</string>
-
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
 	<string>Mostrar todas las alertas de TypeStatus en la pantalla de bloqueo y el centro de notificaciones, o solamente las más recientes.</string>
 
-	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
-	<key>USE_APP_ICON</key>
-	<string>Usar iconas de apps</string>
-
-	<!-- Explanation of the respective app icon switch. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>Una vez activado, las notificaciones de tiras de TypeStatus usarán las iconas de sus aplicaciones respectivas.</string>
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>
 	<string>Alerta de prueba</string>

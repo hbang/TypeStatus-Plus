@@ -17,13 +17,5 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>Wyświetla ilość nieodczytanych powiadomień z wybranej(ych) aplikacji na belce statusu.</string>
-
-	<!-- Switch to toggle show in foreground. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>Wyświetl na początku</string>
-
-	<!-- Explanation of the show in foreground switch. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>Wyświetla powiadomienia podczas działania aplikacji.</string>
 </dict>
 </plist>

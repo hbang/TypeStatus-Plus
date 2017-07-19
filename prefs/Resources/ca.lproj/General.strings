@@ -17,13 +17,5 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>Mostra la quantitat de notificacions no llegides de les apps seleccionades a la barra d’estat.</string>
-
-	<!-- Switch to toggle show in foreground. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>Mostrar en pla principal</string>
-
-	<!-- Explanation of the show in foreground switch. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>Mostra les notificacions fins i tot si l’app que les envia ja està en pla principal.</string>
 </dict>
 </plist>

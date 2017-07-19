@@ -14,6 +14,14 @@
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Le impostazioni qui sopra vengono applicate solo alle notifiche dai fornitori di TypeStatus Plus.</string>
 
+	<!-- Switch to toggle showing alerts in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Mostra in primo piano</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Mostra le notifiche anche se l'app inviante è in primo piano.</string>
+
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
 	<string>Sveglia Quando Bloccato</string>
@@ -63,22 +71,37 @@
 	<!-- Opzione per mostrare banner in applicazioni. -->
 	<key>IN_APPS</key>
 	<string>In applicazioni</string>
+	<!-- Option to use the respective app icon. -->
+	<key>ICON</key>
+	<string>Icona</string>
+
+	<!-- Option to use the respective app icon. -->
+	<key>APP_ICON</key>
+	<string>Icona app</string>
+
+	<!-- Explanation of the above options. -->
+	<key>ICON_EXPLANATION</key>
+	<string>Usa l'icona di TypeStatus Plus nelle notifiche, o l'icona della rispettiva app.</string>
 
 	<!-- Passare a mantenere tutte le notifiche nel centro di notifica. -->
 	<key>KEEP_ALL_BULLETINS</key>
 	<string>Mantenere tutte le notifiche.</string>
 
+	<!-- Option to keep only one alert. -->
+	<key>KEEP_BULLETINS_ONE</key>
+	<string>Un avviso</string>
+
+	<!-- Option to keep all alerts (until the respective app is opened). -->
+	<key>KEEP_BULLETINS_ALL</key>
+	<string>Tutti gli avvisi</string>
+
+	<!-- Option to keep all alerts (even if the respective app is opened). -->
+	<key>KEEP_BULLETINS_FOREVER</key>
+	<string>Tutti gli avvisi, per sempre</string>
+
 	<!-- Spiegazione del mastio passare tutte le notifiche. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
 	<string>Mostra tutti gli avvisi TypeStatus nel centro di notifica e bloccare schermo, o mostrare solo quelli più recenti.</string>
-
-	<!-- Passare a utilizzare l' icona dell'applicazione corrispondente per le notifiche di bandiera , al posto dell'icona TypeStatus plus.. -->
-	<key>USE_APP_ICON</key>
-	<string>Utilizzare rispettivi Icona App</string>
-
-	<!-- Spiegazione del rispettivo interruttore icona dell'applicazione. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>Quando è attivata, le notifiche bandiera utilizzeranno il rispettivo icona dell'applicazione invece che l'icona TypeStatus Più.</string>
 
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>

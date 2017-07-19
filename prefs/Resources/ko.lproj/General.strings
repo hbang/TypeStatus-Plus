@@ -17,13 +17,5 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>선택한 앱의 읽지 않은 알림 갯수를 상태표시줄에 출력합니다.</string>
-
-	<!-- Switch to toggle show in foreground. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>실행중인 앱도 보기</string>
-
-	<!-- Explanation of the show in foreground switch. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>알림을 띄운 앱이 실행중일 때에도 표시합니다.</string>
 </dict>
 </plist>

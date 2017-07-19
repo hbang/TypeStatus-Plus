@@ -17,13 +17,5 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>Hiển thị số thông báo từ "Chọn những ứng dụng" trên thanh trạng thái.</string>
-
-	<!-- Switch to toggle show in foreground. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>Hiện trên phía sau</string>
-
-	<!-- Explanation of the show in foreground switch. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>Hiển thị thông báo ngay cả khi ứng dụng gửi đang ở phía sau.</string>
 </dict>
 </plist>

@@ -17,13 +17,5 @@
 	<!-- Forklaring for antall uleste meldinger varsel. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>Viser antall uleste meldingsvarsler fra valgte app (s) i status bar.</string>
-
-	<!-- Knapp for å bytte til visning i front. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>Vis i front</string>
-
-	<!-- Forklaring for å vise i front bytte. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>Vis varsler selv om sende app´en er i front.</string>
 </dict>
 </plist>

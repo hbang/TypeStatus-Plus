@@ -17,13 +17,5 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>A kijelölt alkalmazások olvasatlan figyelmeztetéseit mutatja az állapot kijelzőn.</string>
-
-	<!-- Switch to toggle show in foreground. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>Előrehoz</string>
-
-	<!-- Explanation of the show in foreground switch. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>Figyelmeztetést küld, akkor is, ha az alkalmazás előre van hozva.</string>
 </dict>
 </plist>

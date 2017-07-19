@@ -64,21 +64,9 @@
 	<key>IN_APPS</key>
 	<string>應用內</string>
 
-	<!-- Switch to keep all notifications in the notification center. -->
-	<key>KEEP_ALL_BULLETINS</key>
-	<string>保留所有通知</string>
-
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
 	<string>在通知中心和鎖屏界面顯示所有的 TypeStatus 提醒，或只顯示最新的。</string>
-
-	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
-	<key>USE_APP_ICON</key>
-	<string>使用應用自帶的圖標</string>
-
-	<!-- Explanation of the respective app icon switch. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>該選項開啟后，顯示橫幅通知時會使用應用自帶的圖標，而不使用 TypeStatus 的圖標。</string>
 
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>

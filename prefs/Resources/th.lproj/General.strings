@@ -17,13 +17,5 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>แสดงจำนวนการแจ้งเตือนที่ยังไม่ได้อ่านจากแอปที่เลือกไว้ในแถบสถานะ</string>
-
-	<!-- Switch to toggle show in foreground. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>แสดงในพื้นหลัง</string>
-
-	<!-- Explanation of the show in foreground switch. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>แสดงการแจ้งเตือนถึงแม้ว่าแอปนั้นกำลังทำงานอยู่เป็นตัวหลัก</string>
 </dict>
 </plist>

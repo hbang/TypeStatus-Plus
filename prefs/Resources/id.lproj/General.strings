@@ -17,13 +17,5 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>Memperlihatkan jumlah notifikasi belum terbaca dari aplikasi yang terpilih di status bar</string>
-
-	<!-- Switch to toggle show in foreground. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>Perlihatkan di latar depan</string>
-
-	<!-- Explanation of the show in foreground switch. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>Memperlihatkan notifikasi biarpun aplikasi yang sedang mengirim di latar depan.</string>
 </dict>
 </plist>

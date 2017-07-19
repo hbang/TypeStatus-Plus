@@ -64,21 +64,9 @@
 	<key>IN_APPS</key>
 	<string>어플 사용중</string>
 
-	<!-- Switch to keep all notifications in the notification center. -->
-	<key>KEEP_ALL_BULLETINS</key>
-	<string>모든 알림 유지</string>
-
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
 	<string>모든 TypeStatus 아림을 알림센터와 잠금화면에 유지하거나, 최신 항목만 보입니다.</string>
-
-	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
-	<key>USE_APP_ICON</key>
-	<string>시스템 아이콘 사용</string>
-
-	<!-- Explanation of the respective app icon switch. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>사용시, 배너 알림이 TypeStatus Plus 아이콘 대신 본래 아이콘을 사용합니다.</string>
 
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>

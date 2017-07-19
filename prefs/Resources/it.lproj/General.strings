@@ -18,12 +18,20 @@
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>Visualizza il numero di non leggere le notifiche dal l'applicazione selezionata nella barra di stato.</string>
 
-	<!-- Passare a commutare spettacolo in primo piano. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>Mostra in primo piano</string>
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>App Messaggi</string>
 
-	<!-- Spiegazione dello spettacolo in interruttore primo piano. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>Visualizza notifiche anche se l'applicazione di invio è in primo piano.</string>
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>Indicatori scrittura nella lista conversazioni</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>Evidenzia messaggi falliti</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>Mostra i messaggi che falliscono l'invio con una bolla rossa.</string>
 </dict>
 </plist>

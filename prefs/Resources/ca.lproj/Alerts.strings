@@ -64,21 +64,9 @@
 	<key>IN_APPS</key>
 	<string>A les apps</string>
 
-	<!-- Switch to keep all notifications in the notification center. -->
-	<key>KEEP_ALL_BULLETINS</key>
-	<string>Mostrar totes les notificacions</string>
-
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
 	<string>Mostrar totes les notificacions de TypeStatus a la pantalla de bloqueig i el centre de notificacions, o només les últimes.</string>
-
-	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
-	<key>USE_APP_ICON</key>
-	<string>Utilitzar icones d’apps</string>
-
-	<!-- Explanation of the respective app icon switch. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>Quan està habilitat, les notificacions de bàner de TypeStatus utilitzaran la icona de l’app corresponent.</string>
 
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>

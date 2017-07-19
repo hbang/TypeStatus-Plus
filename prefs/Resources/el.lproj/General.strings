@@ -17,13 +17,5 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>Εμφανίζει τον αριθμό των μη διαβασμένων ειδοποιήσεων απο συγκεκριμένη(-ες) εφαρμογή(-ες) στη γραμμή κατάστασης.</string>
-
-	<!-- Switch to toggle show in foreground. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>Προβολή στο Προσκήνιο.</string>
-
-	<!-- Explanation of the show in foreground switch. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>Προβολή ειδοποιήσεων ακόμη και αν η εφαρμογή που τις στέλνει είναι στο προσκήνιο.</string>
 </dict>
 </plist>

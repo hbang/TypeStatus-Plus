@@ -17,13 +17,5 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>ステータスバーに選択したアプリ（複数可）からの未読の通知の数を表示します。</string>
-
-	<!-- Switch to toggle show in foreground. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>フォアグラウンドでのショー</string>
-
-	<!-- Explanation of the show in foreground switch. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>送信アプリがフォアグラウンドにある場合でも、通知を表示します。</string>
 </dict>
 </plist>

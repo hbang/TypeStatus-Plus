@@ -17,13 +17,5 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>Näyttää lukemattomien ilmoitusten määrän valituista sovelluksista tilapalkissa.</string>
-
-	<!-- Switch to toggle show in foreground. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>Näytä etualalla</string>
-
-	<!-- Explanation of the show in foreground switch. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>Näytä ilmoitukset vaikka lähettävä sovellus olisi etualalla.</string>
 </dict>
 </plist>

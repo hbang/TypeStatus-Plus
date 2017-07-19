@@ -64,21 +64,9 @@
 	<key>IN_APPS</key>
 	<string>U aplikacijama</string>
 
-	<!-- Switch to keep all notifications in the notification center. -->
-	<key>KEEP_ALL_BULLETINS</key>
-	<string>Zadrži sve obavijesti</string>
-
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
 	<string>Prikaži sve TypeStatus alarme u centru za obavijesti i na zaključanom zaslonu, ili prikaži samo zadnje.</string>
-
-	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
-	<key>USE_APP_ICON</key>
-	<string>Koristi dotičnu ikonu aplikacije</string>
-
-	<!-- Explanation of the respective app icon switch. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>Kada je uključeno, banneri obavijesti će koristiti dotičnu ikonu aplikacije umijesto TypeStatus Plus ikone.</string>
 
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>

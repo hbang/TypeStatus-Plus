@@ -64,21 +64,9 @@
 	<key>IN_APPS</key>
 	<string>I apper</string>
 
-	<!-- Switch to keep all notifications in the notification center. -->
-	<key>KEEP_ALL_BULLETINS</key>
-	<string>Behold alle notifikationer</string>
-
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
 	<string>Vis alle TypeStatus advarsler i notifikationscenter og på låseskærmen, eller vis kun den seneste.</string>
-
-	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
-	<key>USE_APP_ICON</key>
-	<string>Brug respektivt appikon</string>
-
-	<!-- Explanation of the respective app icon switch. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>Når dette er slået til, vil bannernotifikationer bruge det respektive apps ikon i stedet for TypeStatus Plus-ikonet.</string>
 
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>

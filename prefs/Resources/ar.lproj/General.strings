@@ -17,13 +17,5 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>يعرض رقم الإشعارات الغير مقروءة في البرنامج/البرامج المختارة في شريط الحالة.</string>
-
-	<!-- Switch to toggle show in foreground. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>إظهار الإشعارات في البرامج المفتوحة</string>
-
-	<!-- Explanation of the show in foreground switch. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>عرض الإشعارات حتى ولو كان البرنامج مفتوح في المقدمة.</string>
 </dict>
 </plist>

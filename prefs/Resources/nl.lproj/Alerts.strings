@@ -64,21 +64,9 @@
 	<key>IN_APPS</key>
 	<string>In apps</string>
 
-	<!-- Switch to keep all notifications in the notification center. -->
-	<key>KEEP_ALL_BULLETINS</key>
-	<string>Behoud alle meldingen</string>
-
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
 	<string>Toon alle meldingen van TypeStatus in het berichtencentrum en op het toegangsscherm, of toon alleen de laatste.</string>
-
-	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
-	<key>USE_APP_ICON</key>
-	<string>Gebruik bijbehorend icoon</string>
-
-	<!-- Explanation of the respective app icon switch. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>Indien inschakeld, gebruiken stroken het bijbehorende icoon van de app in plaats van het TypeStatus Plus-icoon.</string>
 
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>

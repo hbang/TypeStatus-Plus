@@ -17,13 +17,5 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>Affiche le nombre de notifications non lues à partir de l'application (s ) sélectionné dans la barre d'état .</string>
-
-	<!-- Switch to toggle show in foreground. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>Afficher au premier plan</string>
-
-	<!-- Explanation of the show in foreground switch. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>Afficher les notifications , même si l'application d'envoi est au premier plan.</string>
 </dict>
 </plist>

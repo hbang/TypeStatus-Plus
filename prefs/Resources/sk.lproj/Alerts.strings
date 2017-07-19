@@ -63,21 +63,9 @@
 	<key>IN_APPS</key>
 	<string>V aplikáciách</string>
 
-	<!-- Switch to keep all notifications in the notification center. -->
-	<key>KEEP_ALL_BULLETINS</key>
-	<string>Ponechať všetky upozornenia</string>
-
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
 	<string>Zobraziť všetky TypeStatus upozornenia v centre hlásení a zamknutej plcohe, alebo zobraziť len najnovšie.</string>
-
-	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
-	<key>USE_APP_ICON</key>
-	<string>Použiť ikonu príslušnej aplikácie</string>
-
-	<!-- Explanation of the respective app icon switch. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>Keď je zapnuté, bannerové upozornenia použijú ikonu aplikácie namiesto ikony TypeStatus Plus.</string>
 
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>

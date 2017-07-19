@@ -17,13 +17,5 @@
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
 	<string>Zeigt die Anzahl der ungelesenen Benachrichtigungen der ausgewählten Apps in der Statusleiste.</string>
-
-	<!-- Switch to toggle show in foreground. -->
-	<key>SHOW_IN_FOREGROUND</key>
-	<string>Im Vordergrund anzeigen</string>
-
-	<!-- Explanation of the show in foreground switch. -->
-	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>Zeigt eine Benachrichtigung auch dann an, wenn sich die jeweilige App im Vordergrund befindet.</string>
 </dict>
 </plist>
