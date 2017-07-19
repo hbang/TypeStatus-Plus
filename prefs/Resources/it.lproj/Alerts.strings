@@ -12,7 +12,7 @@
 
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
-	<string>Le impostazioni qui sopra vengono applicate solo alle notifiche dai fornitori di TypeStatus Plus.</string>
+	<string>Si applica solo alle notifiche dai provider di TypeStatus Plus.</string>
 
 	<!-- Switch to toggle showing alerts in foreground. -->
 	<key>SHOW_IN_FOREGROUND</key>
@@ -28,7 +28,7 @@
 
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
-	<string>Accendi lo schermo quando ricevi una notifica di TypeStatus nella barra di stato quando il dispositivo è bloccato. Gli avvisi del Centro Notifiche accendono sempre lo schermo.</string>
+	<string>Accendi lo schermo quando ricevi una notifica di TypeStatus mentre il dispositivo è bloccato.</string>
 
 	<!-- Header for tap action section. -->
 	<key>TAP_TO_OPEN_ACTION</key>
