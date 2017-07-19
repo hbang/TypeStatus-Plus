@@ -27,7 +27,7 @@
 
 @interface WAChatStorage : NSObject
 
-- (WAChatSession *)newOrExistingChatSessionForJID:(NSString *)jid;
+- (WAChatSession *)newOrExistingChatSessionForJID:(NSString *)jid options:(id)options;
 
 @end
 
@@ -37,11 +37,11 @@
 
 @end
 
-@interface WAContactInfo : NSObject
+@interface WAContact : NSObject
 
 - (instancetype)initWithChatSession:(WAChatSession *)chatSession;
 
-- (NSString *)displayNameShort;
+- (NSString *)shortName;
 
 @end
 
@@ -60,9 +60,9 @@
 
 NSString *nameFromJID(NSString *jid) {
 	WAChatStorage *storage = [%c(WASharedAppData) chatStorage];
-	WAChatSession *chatSession = [storage newOrExistingChatSessionForJID:jid];
-	WAContactInfo *contactInfo = [[%c(WAContactInfo) alloc] initWithChatSession:chatSession];
-	return contactInfo.displayNameShort;
+	WAChatSession *chatSession = [storage newOrExistingChatSessionForJID:jid options:nil];
+	WAContact *contact = [[%c(WAContact) alloc] initWithChatSession:chatSession];
+	return contact.shortName;
 }
 
 %ctor {
