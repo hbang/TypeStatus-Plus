@@ -37,19 +37,29 @@
 #pragma mark - Messaging methods
 
 - (void)showNotification:(HBTSNotification *)notification {
+	// don't bother doing anything if this provider is disabled
+	if (!self.isEnabled) {
+		return;
+	}
+
 	// override the section id with the app id if it’s nil
 	if (!notification.sourceBundleID) {
 		notification.sourceBundleID = _appIdentifier;
 	}
 
-	HBLogDebug(@"Posting showNotification message on client side.");
+	HBLogDebug(@"showing notification %@", notification);
 
 	// post the notification
 	[self._messagingCenter sendMessageName:kHBTSPlusServerSetStatusBarNotificationName userInfo:notification.dictionaryRepresentation];
 }
 
 - (void)hideNotification {
-	HBLogDebug(@"Posting hideNotification message on client side.");
+	// don't bother doing anything if this provider is disabled
+	if (!self.isEnabled) {
+		return;
+	}
+
+	HBLogDebug(@"hiding current notification");
 
 	// post the notification
 	[self._messagingCenter sendMessageName:kHBTSPlusServerHideStatusBarNotificationName userInfo:nil];
