@@ -1,10 +1,12 @@
 #import "../api/HBTSPlusProviderController.h"
 #import "../api/HBTSPlusProviderController+Private.h"
 
+HBTSPlusProviderController *controller;
+
 %hook UIApplication
 
-- (void)_deactivateForReason:(int)reason notify:(BOOL)notify {
-	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
+- (void)_deactivateForReason:(NSInteger)reason notify:(BOOL)notify {
+	if ([controller applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
 		notify = NO;
 	}
 
@@ -12,31 +14,23 @@
 }
 
 - (BOOL)_isLaunchedSuspended {
-	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
-		return NO;
-	}
-	return %orig;
+	return [controller applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier] ? NO : %orig;
 }
 
 - (BOOL)isSuspended {
-	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
-		return NO;
-	}
-	return %orig;
+	return [controller applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier] ? NO : %orig;
 }
 
 - (BOOL)isSuspendedUnderLock {
-	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
-		return NO;
-	}
-	return %orig;
+	return [controller applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier] ? NO : %orig;
 }
 
 - (BOOL)isSuspendedEventsOnly {
-	if ([[HBTSPlusProviderController sharedInstance] applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
-		return NO;
-	}
-	return %orig;
+	return [controller applicationWithIdentifierRequiresBackgrounding:[NSBundle mainBundle].bundleIdentifier] ? NO : %orig;
 }
 
 %end
+
+%ctor {
+	controller = [HBTSPlusProviderController sharedInstance];
+}

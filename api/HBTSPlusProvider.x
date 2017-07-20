@@ -7,7 +7,6 @@
 @implementation HBTSPlusProvider
 
 - (CPDistributedMessagingCenter *)_messagingCenter {
-	// only do this once so we don’t have to retrieve it every time
 	static CPDistributedMessagingCenter *distributedCenter = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
@@ -16,6 +15,23 @@
 	});
 
 	return distributedCenter;
+}
+
+#pragma mark - State
+
+- (BOOL)isEnabled {
+	HBTSPlusPreferences *preferences = [%c(HBTSPlusPreferences) sharedInstance];
+
+	if (!preferences.enabled) {
+		// the tweak is globally disabled, so this provider is therefore disabled
+		return NO;
+	} else if (self.preferencesBundle) {
+		// the provider manages its own preferences. return YES
+		return YES;
+	} else {
+		// ask the preferences if we're enabled
+		return [preferences providerIsEnabled:self.appIdentifier];
+	}
 }
 
 #pragma mark - Messaging methods

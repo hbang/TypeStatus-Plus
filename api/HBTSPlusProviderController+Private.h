@@ -4,6 +4,6 @@
 
 - (void)loadProviders;
 
-@property (nonatomic, retain, readonly) NSMutableArray *appsRequiringBackgroundSupport;
+@property (nonatomic, retain, readonly) NSSet *appsRequiringBackgroundSupport;
 
 @end
