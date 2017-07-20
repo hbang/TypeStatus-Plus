@@ -1,8 +1,6 @@
 #import "HBTSNotification.h"
 #import "../typestatus-private/HBTSStatusBarAlertServer.h"
 
-static NSString *const kHBTSMessageIconNameKey = @"IconName";
-static NSString *const kHBTSMessageContentKey = @"Content";
 static NSString *const kHBTSMessageBoldRangeKey = @"BoldRange";
 static NSString *const kHBTSMessageDirectionKey = @"Direction";
 static NSString *const kHBTSMessageSourceKey = @"Source";
