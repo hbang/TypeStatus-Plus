@@ -72,6 +72,10 @@ static NSString *const kHBTSPlusActionURLKey = @"ActionURL";
 	return self;
 }
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"<%@: %p; sourceBundleID = %@; content = %@; statusBarIconName = %@>", self.class, self, _sourceBundleID, _content, _statusBarIconName];
+}
+
 #pragma mark - Serialization
 
 - (NSString *)_contentWithBoldRange:(out NSRange *)boldRange {

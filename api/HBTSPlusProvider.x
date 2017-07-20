@@ -17,6 +17,12 @@
 	return distributedCenter;
 }
 
+#pragma mark - NSObject
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"<%@: %p; name = %@; appIdentifier = %@; prefs = %@ - %@>", self.class, self, _name, _appIdentifier, _preferencesBundle, _preferencesClass];
+}
+
 #pragma mark - State
 
 - (BOOL)isEnabled {
