@@ -119,13 +119,13 @@ void (^setUpStatusBarItem)(NSNotification *) = ^(NSNotification *nsNotification)
 	}];
 };
 
-%hook FBSSystemService
+%hook SBApplication
 
-- (void)setBadgeValue:(id)value forBundleID:(NSString *)bundleID {
+- (void)setBadge:(id)value {
 	%orig;
 
 	// if this is an app the user wants to be shown in the status bar, have our item updated
-	if ([preferences.unreadCountApps containsObject:bundleID]) {
+	if ([preferences.unreadCountApps containsObject:self.bundleIdentifier]) {
 		updateUnreadCountStatusBarItem(NO);
 	}
 }
