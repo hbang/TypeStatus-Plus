@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>Τύπος Ειδοποίησης</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Τίποτα</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Μόνο εικονίδιο</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Γραμμή Κατάστασης</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>το παραπάνω ίσχυει μονο για τις ειδοποιήσεις απο τους παρόχους του TypeStatus Plus.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Προβολή στο Προσκήνιο.</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Προβολή ειδοποιήσεων ακόμη και αν η εφαρμογή που τις στέλνει είναι στο προσκήνιο.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -31,14 +47,6 @@
 	<string>¢íïéãìá åöáñìïãÞò</string>
 	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
 	<string>Áðüññéøç åéäïðïßçóçò</string>
-	
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>Τίποτα</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>Μόνο εικονίδιο</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>Γραμμή Κατάστασης</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

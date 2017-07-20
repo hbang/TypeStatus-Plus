@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>Varsling Type</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Av</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Bare Ikon</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Status Bar</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Ovennevnte gjelder kun for varslinger fra TypeStatus Plus leverandører.</string>
+
+	<!-- Knapp for å bytte til visning i front. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Vis i front</string>
+
+	<!-- Forklaring for å vise i front bytte. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Vis varsler selv om sende app´en er i front.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -21,14 +37,6 @@
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>Våkn skjermen når du mottar en TypeStatus statuslinjen varsling mens enheten er låst. Varslingsenter varsler alltid på vekke skjermen.</string>
-	
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>Av</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>Bare Ikon</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>Status Bar</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

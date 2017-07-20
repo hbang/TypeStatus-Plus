@@ -102,7 +102,7 @@
 
 	<!-- Explanation of the above options. -->
 	<key>KEEP_BULLETINS_EXPLANATION</key>
-	<string>Keep only one TypeStatus alert in the Notification Centre, keep all until the respective app is opened, or keep all until you clear them manually.</string>
+	<string>Keep only one TypeStatus alert in the Notification Center, keep all until the respective app is opened, or keep all until you clear them manually.</string>
 
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>

@@ -16,7 +16,7 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>Seçilen uygulamaların okunmamış bildirimlerini durum çubuğunda gösterir.</string>
+	<string>Seçili uygulamaların okunmamış bildirimlerinin sayılarını bildirim çubuğunda göster</string>
 
 	<!-- Header of the Messages app section. -->
 	<key>MESSAGES_APP</key>

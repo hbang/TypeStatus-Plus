@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>نوع التنبيه</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>مقفل</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>الأيقونة فقط</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>شريط الحالة</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>نوع التنبيه بالأعلى ينطبق فقط للإشعارات من مزودى خدمة TypeStatus Plus</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>إظهار الإشعارات في البرامج المفتوحة</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>عرض الإشعارات حتى ولو كان البرنامج مفتوح في المقدمة.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -31,14 +47,6 @@
 	<string>فتح التطبيق</string>
 	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
 	<string>إخفاء</string>
-	
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>مقفل</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>الأيقونة فقط</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>شريط الحالة</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

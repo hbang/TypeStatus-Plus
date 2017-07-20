@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>ประเภทการแจ้งเตือน</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>ปิด</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>เฉพาะไอคอน</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>แถบสถานะ</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>สำหรับการแจ้งเตือนที่มาจากส่วน TypeStatus Plus เท่านั้น</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>แสดงในพื้นหลัง</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>แสดงการแจ้งเตือนถึงแม้ว่าแอปนั้นกำลังทำงานอยู่เป็นตัวหลัก</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -31,14 +47,6 @@
 	<string>เปิดแอพ</string>
 	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
 	<string>ปิดการแจ้งเตือน</string>
-	
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>ปิด</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>เฉพาะไอคอน</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>แถบสถานะ</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

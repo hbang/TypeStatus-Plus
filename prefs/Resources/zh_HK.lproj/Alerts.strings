@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>通知方式</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>關閉</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>僅圖標</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>狀態欄</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>以上只適用於來自TypeStatus Plus提供者的通知</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>前景運行時顯示</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>App在前景運行時也顯示通知。</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -21,14 +37,6 @@
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>當設備鎖定時收到TypeStatus狀態欄通知時喚醒屏幕。 通知中心通知會喚醒屏幕。</string>
-	
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>關閉</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>僅圖標</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>狀態欄</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

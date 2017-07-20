@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>Những kiểu thông báo</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Tắt</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Chỉ hiện biểu tượng</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Thanh trạng thái</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Những kiểu ở trên chỉ áp dụng cho các thông báo từ nhà cung cấp TypeStatus Plus.</string> 
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Hiện trên phía sau</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Hiển thị thông báo ngay cả khi ứng dụng gửi đang ở phía sau.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -31,14 +47,6 @@
 	<string>Mở ứng dụng</string>
 	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
 	<string>Bỏ thông báo</string>
-	
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>Tắt</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>Chỉ hiện biểu tượng</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>Thanh trạng thái</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

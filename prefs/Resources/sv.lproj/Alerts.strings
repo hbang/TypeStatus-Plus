@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>Typ av notiser</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Av</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Endast ikon</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Statusmeny</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Ovan definierat gäller bara notiser ifrån TypeStatus Plus.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Visa i förgrund</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Visa meddelanden, även om den sändande applikationen är i förgrunden.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -31,14 +47,6 @@
 	<string>Öppna App</string>
 	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
 	<string>Stäng Alert</string>
-	
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>Av</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>Endast ikon</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>Statusmeny</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

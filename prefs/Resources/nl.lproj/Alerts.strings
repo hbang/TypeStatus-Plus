@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>Meldingsstijl</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Uit</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Symbool</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Statusbalk</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Het bovenstaande is alleen van toepassing op meldingen van TypeStatus Plus-providers.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Toon op voorgrond</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Toont meldingen van een app ookal is deze op de voorgrond.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -31,14 +47,6 @@
 	<string>App openen</string>
 	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
 	<string>Negeren</string>
-
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>Uit</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>Symbool</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>Statusbalk</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

@@ -10,6 +10,14 @@
 	<key>ALERT_TYPE</key>
 	<string>Tipo Di Avviso</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Spento</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Solo Icona</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Barra Di Stato</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Si applica solo alle notifiche dai provider di TypeStatus Plus.</string>
@@ -39,14 +47,6 @@
 	<string>Apri app</string>
 	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
 	<string>Chiudi avviso</string>
-	
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>Spento</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>Solo Icona</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>Barra Di Stato</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

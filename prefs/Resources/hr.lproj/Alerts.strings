@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>Vrsta alarma</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Isklj.</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Samo ikonica</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Statusna traka</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Postavke iznad se odnose samo na aplikacije koje podržavaju TypeStatus.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Prikaži ispred</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Prikazuje obavijest iako je aplikacija koja šalje aktivna.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -31,14 +47,6 @@
 	<string>Otvori aplikaciju</string>
 	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
 	<string>Poniti obavijest</string>
-	
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>Isklj.</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>Samo ikonica</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>Statusna traka</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

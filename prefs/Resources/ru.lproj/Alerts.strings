@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>Тип уведомлений</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Выкл</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Только значок</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Статусбар</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Эта настройка влияет только на уведомления от TypeStatus Plus.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+    <key>SHOW_IN_FOREGROUND</key>
+    <string>Показывать в активных</string>
+
+    <!-- Explanation of the show in foreground switch. -->
+    <key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+    <string>Отображать уведомления, даже если приложение, их посылающее, открыто.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -31,14 +47,6 @@
 	<string>Открыть Приложение</string>
 	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
 	<string>Закрыть Окно</string>
-
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>Выкл</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>Только значок</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>Статусбар</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

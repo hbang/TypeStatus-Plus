@@ -20,15 +20,15 @@
 
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
-	<string>Yukarıdaki sadece TypeStatus Plus bildirimleri için geçerlidir.</string>
+	<string>Yalnızca TypeStatus Plus sağlayıcılarından bildirim al</string>
 
-	<!-- Switch to toggle showing alerts in foreground. -->
+	<!-- Switch to toggle show in foreground. -->
 	<key>SHOW_IN_FOREGROUND</key>
 	<string>Ön Planda Göster</string>
 
 	<!-- Explanation of the show in foreground switch. -->
 	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
-	<string>Bildirimi gönderen uygulama ön planda olsa dahi bildirimi göster.</string>
+	<string>Uygulama ön planda bile olsa bildirim gösterilir.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -36,7 +36,7 @@
 
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
-	<string>Ekran kapalıyken bir TypeStatus bildirimi aldığında cihazı uyandır. Bildirim Çubuğu uyarısı her zaman ekranı uyandırır.</string>
+	<string>TypeStatus bildirimi alırken kilitli cihazı uyandır</string>
 
 	<!-- Header for tap action section. -->
 	<key>TAP_TO_OPEN_ACTION</key>

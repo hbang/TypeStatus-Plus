@@ -6,9 +6,25 @@
 	<key>ALERT_TYPE</key>
 	<string>Tip alerta</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Oprit</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Doar icoana</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Bara Status</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Selectia de mai sus se aplica doar notificarilor din providerii TypeStatus Plus.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Arata in fata</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Afiseaza notificarea chiar daca aplicatia este in fata.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -27,14 +43,6 @@
 	<string>Deschide Aplicație</string>
 	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
 	<string>Îndepărtează Alerta</string>
-
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>Oprit</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>Doar icoana</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>Bara Status</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>Type d'alerte</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Désactivée</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Icone seulement</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Barre de statut</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>La fonction précédente ne s'applique que pour les possesseurs de TypeStatus Plus.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Afficher au premier plan</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Afficher les notifications, même si l'application d'envoi est au premier plan.</string>
 
     <!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -31,14 +47,6 @@
 	<string>Ouvrir l'app</string>
 	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
 	<string>Désactiver l'alerte</string>
-
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>Désactivée</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>Icone seulement</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>Barre de statut</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

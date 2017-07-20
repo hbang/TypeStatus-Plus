@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>Hälytyksen tyyppi</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Pois</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Vain ikoni</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Tilapalkki</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Yllä oleva koskee vain ilmoituksia TypeStatus Plus tarjoajilta.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Näytä etualalla</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Näytä ilmoitukset vaikka lähettävä sovellus olisi etualalla.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -31,14 +47,6 @@
 	<string>Avaa sovellus</string>
 	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
 	<string>Hylkää hälytys</string>
-
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>Pois</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>Vain ikoni</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>Tilapalkki</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>알림 유형</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>꺼짐</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>아이콘만</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>상태 표시줄</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>위 사항은 TypeStatus Plus 프로바이더에만 적용됩니다.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>실행중인 앱도 보기</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>알림을 띄운 앱이 실행중일 때에도 표시합니다.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -31,14 +47,6 @@
 	<string>앱 실행</string>
 	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
 	<string>알림 닫기</string>
-	
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>꺼짐</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>아이콘만</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>상태 표시줄</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

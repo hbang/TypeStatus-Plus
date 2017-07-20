@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>अलर्ट के प्रकार</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>बंद</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>केवल आइकॉन</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>स्टेटस बार</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>ऊपर की सेटिंग केवल TypeStatus प्लस से जुड़े सूचनाओं के लिए लागू होती है।</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>अग्रभूमि में दिखाएँ</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>सूचनाएं प्रदर्शित भले ही भेज रहा एप्लिकेशन अग्रभूमि में है।</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -21,14 +37,6 @@
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>जब उपकरण लॉक हो तब भी सूचना आने पर स्क्रीन सक्रिय करे। सूचना केंद्र अलर्ट हमेशा स्क्रीन सक्रीय करती है।</string>
-
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>बंद</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>केवल आइकॉन</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>स्टेटस बार</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

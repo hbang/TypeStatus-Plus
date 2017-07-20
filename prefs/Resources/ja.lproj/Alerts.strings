@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>通知タイプ</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>オフ</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>アイコンのみ</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>ステータスバー</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>この設定はTypeStatus Plusのプロバイダーから通知を変更します。</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>フォアグラウンドでのショー</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>送信アプリがフォアグラウンドにある場合でも、通知を表示します。</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -21,14 +37,6 @@
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>ステータスバーでTypeStatusの通知を受ける時にロックされたデバイスの画面をつけて。通知センターの通知はずっと画面をつけてです。</string>
-	
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>オフ</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>アイコンのみ</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>ステータスバー</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

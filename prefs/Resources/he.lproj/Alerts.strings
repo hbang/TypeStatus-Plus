@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>סוג התראה</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>כבוי</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>אייקון בלבד</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>שורת המצב</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>ההגדרה לעיל חלה רק על התראות המסופקות מ-TypeStatus Plus.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>הצג באפליקציה בשימוש</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>הצג התראות אפילו אם האפליקציה השולחת בשימוש כרגע (לא ברקע).</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -31,14 +47,6 @@
 	<string>פתח אפליקציה</string>
 	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
 	<string>סגור התראה</string>
-
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>כבוי</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>אייקון בלבד</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>שורת המצב</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

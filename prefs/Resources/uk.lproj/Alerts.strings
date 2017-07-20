@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>Тип сповіщення</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Вимкнено</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Лише значок</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Панель статусу</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Налаштування вище стосуються лише сповіщень від провайдерів TypeStatus Plus.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Показувати на передньому плані</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Показувати сповіщення навіть якщо програма на передньому плані.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -21,14 +37,6 @@
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>Розбудити заблокований екран при отриманні TypeStatus сповіщення у панелі статусу коли пристрій заблоковано. Повідомлення Центру Сповіщень завжди будять екран.</string>
-
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>Вимкнено</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>Лише значок</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>Панель статусу</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>

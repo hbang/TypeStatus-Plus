@@ -16,6 +16,22 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>Paparkan jumlah notifikasi yang belum dibaca dari app yang terpilih dalam bar status.</string>
+	<string>Memaparkan nombor notifikasi yang belum dibaca dari app yang terpilih di bar status.</string>
+
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>App Mesej</string>
+
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>Petunjuk Menaip di Senarai Perbualan</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>Serlahkan Mesej Yang Galal</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>Tunjuk mesej yang gagal dihantar dengan bebuih merah.</string>
 </dict>
 </plist>

@@ -10,9 +10,25 @@
 	<key>ALERT_TYPE</key>
 	<string>Typ upozornění</string>
 
+	<!-- Buttons shown in the segmented controls for the alert type. -->
+	<key>OFF</key>
+	<string>Vypnout</string>
+	<key>ALERT_TYPE_ICON</key>
+	<string>Pouze ikona</string>
+	<key>ALERT_TYPE_OVERLAY</key>
+	<string>Notifikační řádek</string>
+
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
 	<string>Výše uvedené nastavení se vztahuje pouze na oznámení od TypeStatus Plus aplikací.</string>
+
+	<!-- Switch to toggle show in foreground. -->
+	<key>SHOW_IN_FOREGROUND</key>
+	<string>Zobrazit v popředí</string>
+
+	<!-- Explanation of the show in foreground switch. -->
+	<key>SHOW_IN_FOREGROUND_EXPLANATION</key>
+	<string>Zobrazit upozornění i pokud je odesílající aplikace v popředí.</string>
 
 	<!-- Switch to wake the screen when the device is locked. -->
 	<key>WAKE_WHEN_LOCKED</key>
@@ -21,14 +37,6 @@
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>Probudit obrazovku při přijetí upozornění TypeStatus v notifikačním panelu když zařízení uzamknuté.</string>
-	
-	<!-- Buttons shown in the segmented controls for the alert type. -->
-	<key>OFF</key>
-	<string>Vypnout</string>
-	<key>ALERT_TYPE_ICON</key>
-	<string>Pouze ikona</string>
-	<key>ALERT_TYPE_OVERLAY</key>
-	<string>Notifikační řádek</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
