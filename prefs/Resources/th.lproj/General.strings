@@ -16,6 +16,22 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>แสดงจำนวนการแจ้งเตือนที่ยังไม่ได้อ่านจากแอปที่เลือกไว้ในแถบสถานะ</string>
+	<string>แสดงจำนวนการแจ้งเตือนที่ยังไม่ได้อ่านจากแอพที่เลือกบนแถบสถานะ</string>
+
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>แอพ Messages</string>
+
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>ตัวบอกสถานะการพิมพ์ในรายการสนทนา</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>เน้นข้อความที่ไม่ถูกส่ง</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>แสดงข้อความที่ไม่ถูกส่งด้วยกล่องสีแดง</string>
 </dict>
 </plist>

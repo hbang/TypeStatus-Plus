@@ -20,7 +20,7 @@
 
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
-	<string>สำหรับการแจ้งเตือนที่มาจากส่วน TypeStatus Plus เท่านั้น</string>
+	<string>ทำงานกับเฉพาะการแจ้งเตือนจาก TypeStatus Plus provider</string>
 
 	<!-- Switch to toggle show in foreground. -->
 	<key>SHOW_IN_FOREGROUND</key>
@@ -36,7 +36,7 @@
 
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
-	<string>เปิดหน้าจอเมื่อได้รับการแจ้งเตือนผ่านแถบสถานะจาก TypeStatus</string>
+	<string>เปิดหน้าจอเมื่อได้รับการแจ้งเตือน TypeStatus ในขณะที่เครื่องล็อคอยู่</string>
 
 	<!-- Header for tap action section. -->
 	<key>TAP_TO_OPEN_ACTION</key>
@@ -71,6 +71,34 @@
 	<!-- Option to show banners in apps. -->
 	<key>IN_APPS</key>
 	<string>ในแอป</string>
+
+	<!-- Option to use the respective app icon. -->
+	<key>ICON</key>
+	<string>ไอคอน</string>
+  
+  	<!-- Option to use the respective app icon. -->
+	<key>APP_ICON</key>
+	<string>ไอคอนแอพ</string>
+
+	<!-- Explanation of the above options. -->
+	<key>ICON_EXPLANATION</key>
+	<string>ใช้ไอคอน TypeStatus Plus สำหรับการแจ้งเตือน หรือไอคอนจากแอพนั้นๆ</string>
+	
+	<!-- Label for the options on keeping notifications in the notification center. -->
+	<key>KEEP_BULLETINS</key>
+	<string>เก็บไว้</string>
+  
+ 	<!-- Option to keep only one alert. -->
+	<key>KEEP_BULLETINS_ONE</key>
+	<string>การแจ้งเตือนเดียว</string>
+
+	<!-- Option to keep all alerts (until the respective app is opened). -->
+	<key>KEEP_BULLETINS_ALL</key>
+	<string>การแจ้งเตือนทั้งหมด</string>
+
+	<!-- Option to keep all alerts (even if the respective app is opened). -->
+	<key>KEEP_BULLETINS_FOREVER</key>
+	<string>การแจ้งเตือนทั้งหมด ตลอดไป</string>
 
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>

@@ -20,7 +20,7 @@
 
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
-	<string>ההגדרה לעיל חלה רק על התראות המסופקות מ-TypeStatus Plus.</string>
+	<string>חל רק על התראות מספקי TypeStatus Plus.</string>
 
 	<!-- Switch to toggle show in foreground. -->
 	<key>SHOW_IN_FOREGROUND</key>
@@ -36,7 +36,7 @@
 
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
-	<string>הער את המסך בקבלת התראת סטטוס בר מTypeStatus כאשר המכשיר נעול. התראות מרכז עדכונים תמיד מעירות את המסך.</string>
+	<string>הער את המסך עם קבלת התראת TypeStatus כשהמכשיר נעול.</string>
 
  	<!-- Header for tap action section. -->
 	<key>TAP_TO_OPEN_ACTION</key>
@@ -72,21 +72,37 @@
 	<key>IN_APPS</key>
 	<string>באפליקציות</string>
 
-	<!-- Switch to keep all notifications in the notification center. -->
-	<key>KEEP_ALL_BULLETINS</key>
-	<string>השאר את כל ההתראות</string>
+	<!-- Option to use the respective app icon. -->
+	<key>ICON</key>
+	<string>אייקון</string>
+  
+  	<!-- Option to use the respective app icon. -->
+	<key>APP_ICON</key>
+	<string>אייקון האפליקציה</string>
+
+	<!-- Explanation of the above options. -->
+	<key>ICON_EXPLANATION</key>
+	<string>השתמש באייקון TypeStatus Plus בהתראות, או באייקון האפליקציה המתאימה.</string>
+
+	<!-- Label for the options on keeping notifications in the notification center. -->
+	<key>KEEP_BULLETINS</key>
+	<string>השאר</string>
+  
+ 	<!-- Option to keep only one alert. -->
+	<key>KEEP_BULLETINS_ONE</key>
+	<string>התראה אחת</string>
+
+	<!-- Option to keep all alerts (until the respective app is opened). -->
+	<key>KEEP_BULLETINS_ALL</key>
+	<string>כל ההתראות</string>
+
+	<!-- Option to keep all alerts (even if the respective app is opened). -->
+	<key>KEEP_BULLETINS_FOREVER</key>
+	<string>כל ההתראות, לנצח</string>
 
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
 	<string>הצג את כל התראות TypeStatus במרכז העדכונים ובמסך הנעילה, או הצג רק את האחרונה.</string>
-
-	<!-- Switch to use the respective app icon for banner notifications, instead of the TypeStatus Plus icon. -->
-	<key>USE_APP_ICON</key>
-	<string>השתמש באייקון האפליקציה המתאימה</string>
-
-	<!-- Explanation of the respective app icon switch. -->
-	<key>USE_APP_ICON_EXPLANATION</key>
-	<string>כאשר דלוק, התראות באנר ישתמשו באייקון של האפליקציה המתאימה במקום באייקון של TypeStatus Plus.</string>
 
 	<!-- Button to test the alerts. -->
 	<key>TEST_ALERT</key>
