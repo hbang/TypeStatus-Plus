@@ -16,6 +16,22 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>Mostra la quantitat de notificacions no llegides de les apps seleccionades a la barra d’estat.</string>
+	<string>Mostra la quantitat de notificacions sense llegir de les apps seleccionades, a la barra destat</string>
+
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>App de Missatges</string>
+
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>Indicadors d'"Escrivint" en la llista de converses</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>Marcar missatges fallats</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>Mostrar els missatges que no s'han pogut enviar en un globus vermell.</string>
 </dict>
 </plist>
