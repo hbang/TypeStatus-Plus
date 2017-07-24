@@ -20,7 +20,7 @@
 
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
-	<string>Het bovenstaande is alleen van toepassing op meldingen van TypeStatus Plus-providers.</string>
+	<string>Alleen voor meldingen van TypeStatus Plus-providers.</string>
 
 	<!-- Switch to toggle show in foreground. -->
 	<key>SHOW_IN_FOREGROUND</key>
@@ -36,7 +36,7 @@
 
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
-	<string>Licht het scherm op waneer er een melding van TypeStatus in de statusbalk binnenkomt. Meldingen van het berichtencentrum lichten altijd het scherm op.</string>
+	<string>Activeer het scherm als er een TypeStatus-melding wordt ontvangen terwijl het apparaat vergrendeld is.</string>
 
  	<!-- Header for tap action section. -->
 	<key>TAP_TO_OPEN_ACTION</key>
@@ -71,6 +71,34 @@
 	<!-- Option to show banners in apps. -->
 	<key>IN_APPS</key>
 	<string>In apps</string>
+
+	<!-- Option to use the respective app icon. -->
+	<key>ICON</key>
+	<string>Icoon</string>
+  
+  	<!-- Option to use the respective app icon. -->
+	<key>APP_ICON</key>
+	<string>Appicoon</string>
+
+	<!-- Explanation of the above options. -->
+	<key>ICON_EXPLANATION</key>
+	<string>Use the TypeStatus Plus icon on notifications, or the icon for the respective app. Geeft meldingen weer met het icoon van TypeStatus Plus, of met dat van de bijbehorende app.</string>
+	
+	<!-- Label for the options on keeping notifications in the notification center. -->
+	<key>KEEP_BULLETINS</key>
+	<string>Behoud</string>
+  
+ 	<!-- Option to keep only one alert. -->
+	<key>KEEP_BULLETINS_ONE</key>
+	<string>Één melding</string>
+
+	<!-- Option to keep all alerts (until the respective app is opened). -->
+	<key>KEEP_BULLETINS_ALL</key>
+	<string>Alle meldingen</string>
+
+	<!-- Option to keep all alerts (even if the respective app is opened). -->
+	<key>KEEP_BULLETINS_FOREVER</key>
+	<string>Alle meldingen, voor altijd.</string>
 
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>

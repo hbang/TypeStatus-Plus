@@ -16,6 +16,22 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>Toont het aantal ongelezen meldingen van de geselecteerde app(s) in de statusbalk.</string>
+	<string>Geeft het aantal ongelezen meldingen van de geselecteerde apps in de statusbalk weer.</string>
+
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>Berichtenapp</string>
+
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>Typindicator in gesprekslijst</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>Mislukte berichten markeren</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>Markeert berichten die niet zijn verzonden met een rode tekstballon.</string>
 </dict>
 </plist>
