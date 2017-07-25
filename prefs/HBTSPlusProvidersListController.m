@@ -1,4 +1,6 @@
 #import "HBTSPlusProvidersListController.h"
+#import "HBTSPlusProviderLinkTableCell.h"
+#import "HBTSPlusProviderSwitchTableCell.h"
 #import "../api/HBTSPlusProviderController.h"
 #import "../api/HBTSPlusProviderController+Private.h"
 #import "../api/HBTSPlusProvider.h"
@@ -35,35 +37,42 @@
 	HBTSPlusProviderController *providerController = [HBTSPlusProviderController sharedInstance];
 	[providerController loadProviders];
 
-	_providers = [providerController.providers copy];
+	// turn the providers set into an array and sort by name
+	_providers = [providerController.providers.allObjects sortedArrayUsingComparator:^ NSComparisonResult (HBTSPlusProvider *item1, HBTSPlusProvider *item2) {
+		return [item1.name compare:item2.name];
+	}];
 
 	NSMutableArray *newSpecifiers = [NSMutableArray array];
 
 	for (HBTSPlusProvider *provider in _providers) {
 		BOOL isLink = provider.preferencesBundle && provider.preferencesClass;
+		BOOL isBackgrounded = [providerController applicationWithIdentifierRequiresBackgrounding:provider.appIdentifier];
 
 		PSSpecifier *specifier = [PSSpecifier preferenceSpecifierNamed:provider.name target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:Nil cell:isLink ? PSLinkCell : PSSwitchCell edit:Nil];
 
 		if (isLink) {
 			specifier.properties = [@{
+				PSCellClassKey: HBTSPlusProviderLinkTableCell.class,
 				PSIDKey: provider.appIdentifier,
 				PSDetailControllerClassKey: provider.preferencesClass,
 				PSLazilyLoadedBundleKey: provider.preferencesBundle.bundlePath,
-				PSIDKey: provider.appIdentifier,
 				PSLazyIconAppID: provider.appIdentifier,
 				PSLazyIconLoading: @YES,
+				HBTSPlusProviderCellIsBackgroundedKey: @(isBackgrounded)
 			} mutableCopy];
 
 			specifier->action = @selector(specifierCellTapped:);
 		} else {
 			specifier.properties = [@{
+				PSCellClassKey: HBTSPlusProviderSwitchTableCell.class,
 				PSIDKey: provider.appIdentifier,
 				PSDefaultValueKey: @YES,
 				PSDefaultsKey: @"ws.hbang.typestatusplus",
 				PSKeyNameKey: provider.appIdentifier,
 				PSValueChangedNotificationKey: @"ws.hbang.typestatusplus/ReloadPrefs",
 				PSLazyIconAppID: provider.appIdentifier,
-				PSLazyIconLoading: @YES
+				PSLazyIconLoading: @YES,
+				HBTSPlusProviderCellIsBackgroundedKey: @(isBackgrounded)
 			} mutableCopy];
 		}
 

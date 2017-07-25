@@ -10,7 +10,7 @@
 	<key>PROVIDERS_EXPLANATION</key>
 	<string>Providers are individual modules for different apps and iOS features. TypeStatus Plus includes some providers, and developers can make their own. If you don’t see your favorite app listed above, try searching for a provider in Cydia.
 
-Some providers require its corresponding app to constantly run in the background, even when the device is sleeping. This may have an effect on battery life.
+Providers denoted with * require its corresponding app to constantly run in the background, even when the device is sleeping. This may have an effect on battery life.
 
 The Music provider supports all apps that display the currently playing media in Control Center and on the lock screen.</string>
 
