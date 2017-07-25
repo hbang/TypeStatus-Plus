@@ -8,6 +8,8 @@
 static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Providers/";
 
 @implementation HBTSPlusProviderController {
+	dispatch_queue_t _queue;
+
 	NSMutableSet <HBTSPlusProvider *> *_providers;
 	NSMutableSet <NSString *> *_appsRequiringBackgroundSupport;
 }
@@ -28,10 +30,14 @@ static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Prov
 	self = [super init];
 
 	if (self) {
+		// we use a serial queue to (a) do our heavy work without blocking the main thread, and
+		// (b) kinda-sorta act as a lock, avoiding potential racing
+		_queue = dispatch_queue_create("ws.hbang.typestatusplus.providercontrollerqueue", DISPATCH_QUEUE_SERIAL);
+
 		_providers = [NSMutableSet set];
 		_appsRequiringBackgroundSupport = [NSMutableSet set];
 
-		[self loadProviders];
+		[self _loadProvidersWithCompletion:nil];
 	}
 	
 	return self;
@@ -39,109 +45,124 @@ static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Prov
 
 #pragma mark - Loading providers
 
-- (void)loadProviders {
+- (void)_loadProvidersWithCompletion:(HBTSPlusLoadProvidersCompletion)completion {
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		HBLogInfo(@"loading providers");
+		dispatch_async(_queue, ^{
+			HBLogInfo(@"loading providers");
 
-		NSURL *providersURL = [NSURL URLWithString:kHBTSPlusProvidersURL].URLByResolvingSymlinksInPath;
+			NSURL *providersURL = [NSURL URLWithString:kHBTSPlusProvidersURL].URLByResolvingSymlinksInPath;
 
-		NSError *error = nil;
-		NSArray <NSURL *> *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:providersURL includingPropertiesForKeys:nil options:kNilOptions error:&error];
+			NSError *error = nil;
+			NSArray <NSURL *> *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:providersURL includingPropertiesForKeys:nil options:kNilOptions error:&error];
 
-		if (error) {
-			HBLogError(@"failed to access handler directory %@: %@", kHBTSPlusProvidersURL, error.localizedDescription);
-			return;
-		}
-
-		// anything other than springboard and preferences can be a provider app
-		BOOL inApp = !IN_SPRINGBOARD && ![[NSBundle mainBundle].bundleIdentifier isEqualToString:@"com.apple.Preferences"];
-
-		for (NSURL *directory in contents) {
-			NSString *baseName = directory.pathComponents.lastObject;
-
-			// skip anything not ending in .bundle
-			if (![baseName hasSuffix:@".bundle"]) {
-				continue;
+			if (error) {
+				HBLogError(@"failed to access handler directory %@: %@", kHBTSPlusProvidersURL, error.localizedDescription);
+				return;
 			}
 
-			HBLogInfo(@"loading provider %@", baseName);
+			// anything other than springboard and preferences can be a provider app
+			BOOL inApp = !IN_SPRINGBOARD && ![[NSBundle mainBundle].bundleIdentifier isEqualToString:@"com.apple.Preferences"];
 
-			NSBundle *bundle = [NSBundle bundleWithURL:directory];
+			for (NSURL *directory in contents) {
+				NSString *baseName = directory.pathComponents.lastObject;
 
-			if (!bundle) {
-				HBLogError(@" --> failed to instantiate the bundle!");
-				continue;
-			}
-
-			id identifier = bundle.infoDictionary[kHBTSApplicationBundleIdentifierKey];
-
-			if (!identifier) {
-				HBLogError(@" --> no app identifier set!");
-				continue;
-			}
-
-			NSArray <NSString *> *identifiers;
-
-			if ([identifier isKindOfClass:NSString.class]) {
-				identifiers = @[ identifier ];
-			} else if ([identifier isKindOfClass:NSArray.class]) {
-				identifiers = identifier;
-			} else {
-				HBLogError(@" --> invalid value provided for %@", kHBTSApplicationBundleIdentifierKey);
-				continue;
-			}
-
-			NSString *appIdentifier;
-
-			if (inApp) {
-				if (![identifiers containsObject:[NSBundle mainBundle].bundleIdentifier]) {
+				// skip anything not ending in .bundle
+				if (![baseName hasSuffix:@".bundle"]) {
 					continue;
 				}
 
-				appIdentifier = [NSBundle mainBundle].bundleIdentifier;
-			} else {
-				NSMutableArray <NSString *> *knownIdentifiers = [NSMutableArray array];
+				HBLogInfo(@"loading provider %@", baseName);
 
-				for (NSString *identifier in identifiers) {
-					LSApplicationProxy *proxy = [LSApplicationProxy applicationProxyForIdentifier:identifier];
+				NSBundle *bundle = [NSBundle bundleWithURL:directory];
 
-					if (proxy.isInstalled) {
-						HBLogDebug(@" --> provider app %@ is installed", identifier);
-						[knownIdentifiers addObject:identifier];
+				if (!bundle) {
+					HBLogError(@" --> failed to instantiate the bundle!");
+					continue;
+				}
+
+				id identifier = bundle.infoDictionary[kHBTSApplicationBundleIdentifierKey];
+
+				if (!identifier) {
+					HBLogError(@" --> no app identifier set!");
+					continue;
+				}
+
+				NSArray <NSString *> *identifiers;
+
+				if ([identifier isKindOfClass:NSString.class]) {
+					identifiers = @[ identifier ];
+				} else if ([identifier isKindOfClass:NSArray.class]) {
+					identifiers = identifier;
+				} else {
+					HBLogError(@" --> invalid value provided for %@", kHBTSApplicationBundleIdentifierKey);
+					continue;
+				}
+
+				NSString *appIdentifier;
+
+				if (inApp) {
+					if (![identifiers containsObject:[NSBundle mainBundle].bundleIdentifier]) {
+						HBLogDebug(@" --> not in the right app. not loading");
+						continue;
 					}
+
+					appIdentifier = [NSBundle mainBundle].bundleIdentifier;
+				} else {
+					NSMutableArray <NSString *> *knownIdentifiers = [NSMutableArray array];
+
+					for (NSString *identifier in identifiers) {
+						LSApplicationProxy *proxy = [LSApplicationProxy applicationProxyForIdentifier:identifier];
+
+						if (proxy.isInstalled) {
+							HBLogDebug(@" --> provider app %@ is installed", identifier);
+							[knownIdentifiers addObject:identifier];
+						}
+					}
+
+					// if the app isn’t installed, don’t bother loading
+					if (knownIdentifiers.count == 0) {
+						HBLogDebug(@" --> no supported apps installed. not loading");
+						continue;
+					}
+
+					appIdentifier = knownIdentifiers[0];
 				}
 
-				// if the app isn’t installed, don’t bother loading
-				if (knownIdentifiers.count == 0) {
-					HBLogDebug(@" --> no supported apps installed. not loading");
+				if (![bundle load]) {
+					HBLogError(@" --> bundle failed to load!");
 					continue;
 				}
 
-				appIdentifier = knownIdentifiers[0];
+				if (!bundle.principalClass) {
+					HBLogError(@" --> no principal class set!");
+					continue;
+				}
+
+				if (((NSNumber *)bundle.infoDictionary[kHBTSKeepApplicationAliveKey]).boolValue) {
+					[_appsRequiringBackgroundSupport addObjectsFromArray:identifiers];
+				}
+
+				HBTSPlusProvider *provider = [[bundle.principalClass alloc] init];
+				provider.appIdentifier = appIdentifier;
+
+				if (!provider) {
+					HBLogError(@" --> failed to initialise provider class %@", identifier);
+					continue;
+				}
+				
+				[_providers addObject:provider];
 			}
-
-			[bundle load];
-
-			if (!bundle.principalClass) {
-				HBLogError(@" --> no principal class set!");
-				continue;
-			}
-
-			if (((NSNumber *)bundle.infoDictionary[kHBTSKeepApplicationAliveKey]).boolValue) {
-				[_appsRequiringBackgroundSupport addObjectsFromArray:identifiers];
-			}
-
-			HBTSPlusProvider *provider = [[bundle.principalClass alloc] init];
-			provider.appIdentifier = appIdentifier;
-			[_providers addObject:provider];
-
-			if (!provider) {
-				HBLogError(@" --> failed to initialise provider class %@", identifier);
-				continue;
-			}
-		}
+		});
 	});
+
+	// if we have a completion, add another block to our queue that will call the completion on the
+	// main thread. bit convoluted i know, but it makes sense considering the queue lock pattern
+	if (completion) {
+		dispatch_async(_queue, ^{
+			dispatch_async(dispatch_get_main_queue(), completion);
+		});
+	}
 }
 
 #pragma mark - Properties

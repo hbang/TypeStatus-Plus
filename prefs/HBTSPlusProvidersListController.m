@@ -7,9 +7,7 @@
 #import <Preferences/PSSpecifier.h>
 #import <Preferences/PSViewController.h>
 
-@implementation HBTSPlusProvidersListController {
-	NSArray *_providers;
-}
+@implementation HBTSPlusProvidersListController
 
 #pragma mark - HBListController
 
@@ -19,72 +17,75 @@
 
 #pragma mark - PSListController
 
-- (void)viewDidLoad {
-	[super viewDidLoad];
+- (NSMutableArray <PSSpecifier *> *)specifiers {
+	NSMutableArray <PSSpecifier *> *specifiers = [super specifiers];
+
 
 	[self _updateHandlers];
-}
 
-- (void)reloadSpecifiers {
-	[super reloadSpecifiers];
-
-	[self _updateHandlers];
+	return specifiers;
 }
 
 #pragma mark - Update state
 
 - (void)_updateHandlers {
 	HBTSPlusProviderController *providerController = [HBTSPlusProviderController sharedInstance];
-	[providerController loadProviders];
+	
+	[providerController _loadProvidersWithCompletion:^{
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+			// turn the providers set into an array and sort by name
+			NSArray <HBTSPlusProvider *> *providers = [providerController.providers.allObjects sortedArrayUsingComparator:^ NSComparisonResult (HBTSPlusProvider *item1, HBTSPlusProvider *item2) {
+				return [item1.name compare:item2.name];
+			}];
 
-	// turn the providers set into an array and sort by name
-	_providers = [providerController.providers.allObjects sortedArrayUsingComparator:^ NSComparisonResult (HBTSPlusProvider *item1, HBTSPlusProvider *item2) {
-		return [item1.name compare:item2.name];
+			NSMutableArray *newSpecifiers = [NSMutableArray array];
+
+			for (HBTSPlusProvider *provider in providers) {
+				BOOL isLink = provider.preferencesBundle && provider.preferencesClass;
+				BOOL isBackgrounded = [providerController applicationWithIdentifierRequiresBackgrounding:provider.appIdentifier];
+
+				PSSpecifier *specifier = [PSSpecifier preferenceSpecifierNamed:provider.name target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:Nil cell:isLink ? PSLinkCell : PSSwitchCell edit:Nil];
+
+				if (isLink) {
+					specifier.properties = [@{
+						PSCellClassKey: HBTSPlusProviderLinkTableCell.class,
+						PSIDKey: provider.appIdentifier,
+						PSDetailControllerClassKey: provider.preferencesClass,
+						PSLazilyLoadedBundleKey: provider.preferencesBundle.bundlePath,
+						PSLazyIconAppID: provider.appIdentifier,
+						PSLazyIconLoading: @YES,
+						HBTSPlusProviderCellIsBackgroundedKey: @(isBackgrounded)
+					} mutableCopy];
+
+					specifier->action = @selector(specifierCellTapped:);
+				} else {
+					specifier.properties = [@{
+						PSCellClassKey: HBTSPlusProviderSwitchTableCell.class,
+						PSIDKey: provider.appIdentifier,
+						PSDefaultValueKey: @YES,
+						PSDefaultsKey: @"ws.hbang.typestatusplus",
+						PSKeyNameKey: provider.appIdentifier,
+						PSValueChangedNotificationKey: @"ws.hbang.typestatusplus/ReloadPrefs",
+						PSLazyIconAppID: provider.appIdentifier,
+						PSLazyIconLoading: @YES,
+						HBTSPlusProviderCellIsBackgroundedKey: @(isBackgrounded)
+					} mutableCopy];
+				}
+
+				[newSpecifiers addObject:specifier];
+			}
+
+			// jump back to the main queue to add our new specifiers
+			dispatch_async(dispatch_get_main_queue(), ^{
+				if (newSpecifiers.count > 0) {
+					[self removeSpecifierID:@"ProvidersNoneInstalledGroupCell"];
+					[self insertContiguousSpecifiers:newSpecifiers afterSpecifierID:@"ProvidersGroupCell" animated:NO];
+				} else {
+					[self removeSpecifierID:@"ProvidersGroupCell"];
+				}
+			});
+		});
 	}];
-
-	NSMutableArray *newSpecifiers = [NSMutableArray array];
-
-	for (HBTSPlusProvider *provider in _providers) {
-		BOOL isLink = provider.preferencesBundle && provider.preferencesClass;
-		BOOL isBackgrounded = [providerController applicationWithIdentifierRequiresBackgrounding:provider.appIdentifier];
-
-		PSSpecifier *specifier = [PSSpecifier preferenceSpecifierNamed:provider.name target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:Nil cell:isLink ? PSLinkCell : PSSwitchCell edit:Nil];
-
-		if (isLink) {
-			specifier.properties = [@{
-				PSCellClassKey: HBTSPlusProviderLinkTableCell.class,
-				PSIDKey: provider.appIdentifier,
-				PSDetailControllerClassKey: provider.preferencesClass,
-				PSLazilyLoadedBundleKey: provider.preferencesBundle.bundlePath,
-				PSLazyIconAppID: provider.appIdentifier,
-				PSLazyIconLoading: @YES,
-				HBTSPlusProviderCellIsBackgroundedKey: @(isBackgrounded)
-			} mutableCopy];
-
-			specifier->action = @selector(specifierCellTapped:);
-		} else {
-			specifier.properties = [@{
-				PSCellClassKey: HBTSPlusProviderSwitchTableCell.class,
-				PSIDKey: provider.appIdentifier,
-				PSDefaultValueKey: @YES,
-				PSDefaultsKey: @"ws.hbang.typestatusplus",
-				PSKeyNameKey: provider.appIdentifier,
-				PSValueChangedNotificationKey: @"ws.hbang.typestatusplus/ReloadPrefs",
-				PSLazyIconAppID: provider.appIdentifier,
-				PSLazyIconLoading: @YES,
-				HBTSPlusProviderCellIsBackgroundedKey: @(isBackgrounded)
-			} mutableCopy];
-		}
-
-		[newSpecifiers addObject:specifier];
-	}
-
-	if (newSpecifiers.count > 0) {
-		[self removeSpecifierID:@"ProvidersNoneInstalledGroupCell"];
-		[self insertContiguousSpecifiers:newSpecifiers afterSpecifierID:@"ProvidersGroupCell" animated:YES];
-	} else {
-		[self removeSpecifierID:@"ProvidersGroupCell"];
-	}
 }
 
 - (void)specifierCellTapped:(PSSpecifier *)specifier {

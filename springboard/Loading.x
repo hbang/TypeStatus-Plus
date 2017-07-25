@@ -33,8 +33,6 @@ void launchApps() {
 }
 
 %ctor {
-	[[HBTSPlusProviderController sharedInstance] loadProviders];
-
 	[[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
 		// wait 10 seconds just to ensure most stuff is out of the way
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(NSEC_PER_SEC * 10)), dispatch_get_main_queue(), ^{

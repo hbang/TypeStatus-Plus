@@ -1,8 +1,10 @@
 #import "HBTSPlusProviderController.h"
 
+typedef void (^HBTSPlusLoadProvidersCompletion)();
+
 @interface HBTSPlusProviderController (Private)
 
-- (void)loadProviders;
+- (void)_loadProvidersWithCompletion:(HBTSPlusLoadProvidersCompletion)completion;
 
 @property (nonatomic, retain, readonly) NSSet *appsRequiringBackgroundSupport;
 
