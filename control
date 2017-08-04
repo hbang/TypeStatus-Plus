@@ -4,7 +4,7 @@ Depends: firmware (>= 9.0), firmware (<< 10.3), mobilesubstrate, ws.hbang.typest
 Recommends: firmware (>= 9.2) | libstatusbar (>= 1:0.9.9.0-1), firmware (<< 9.2) | libmoorecon
 Version: 1.4
 Architecture: iphoneos-arm
-Description: Lots of messaging-related features
+Description: Status bar typing alerts for 3rd-party apps and more!
 Maintainer: HASHBANG Productions <support@hbang.ws>
 Author: HASHBANG Productions <support@hbang.ws>
 Section: Messaging
