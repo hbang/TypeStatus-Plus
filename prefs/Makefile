@@ -1,7 +1,7 @@
 include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = TypeStatusPlus
-TypeStatusPlus_FILES = $(wildcard *.m)
+TypeStatusPlus_FILES = $(wildcard *.m) $(wildcard *.x)
 TypeStatusPlus_INSTALL_PATH = /Library/PreferenceBundles
 TypeStatusPlus_CFLAGS = -I../global -include Global.h -fobjc-arc
 TypeStatusPlus_FRAMEWORKS = UIKit
