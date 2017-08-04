@@ -35,7 +35,7 @@
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 			// turn the providers set into an array and sort by name
 			NSArray <HBTSPlusProvider *> *providers = [providerController.providers.allObjects sortedArrayUsingComparator:^ NSComparisonResult (HBTSPlusProvider *item1, HBTSPlusProvider *item2) {
-				return [item1.name compare:item2.name];
+				return [item1.name caseInsensitiveCompare:item2.name];
 			}];
 
 			NSMutableArray *newSpecifiers = [NSMutableArray array];
