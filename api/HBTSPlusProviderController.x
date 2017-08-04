@@ -1,5 +1,6 @@
 #import "HBTSPlusProviderController.h"
 #import "HBTSPlusProviderController+Private.h"
+#import "HBTSPlusIMessageProvider.h"
 #import "HBTSPlusPreferences.h"
 #import "HBTSPlusProvider.h"
 #import "HBTSPlusProviderController+Private.h"
@@ -37,6 +38,10 @@ static NSString *const kHBTSPlusProvidersURL = @"file:///Library/TypeStatus/Prov
 		_providers = [NSMutableSet set];
 		_appsRequiringBackgroundSupport = [NSMutableSet set];
 
+		// add our hardcoded imessage provider
+		[_providers addObject:[[HBTSPlusIMessageProvider alloc] init]];
+
+		// then load the rest of them
 		[self _loadProvidersWithCompletion:nil];
 	}
 	
