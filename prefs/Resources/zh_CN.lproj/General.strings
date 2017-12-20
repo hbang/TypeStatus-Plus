@@ -16,6 +16,22 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>在通知中心显示被选中应用的未读通知数量。</string>
+	<string>在状态栏中显示所选应用的未读通知数.</string>
+
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>信息应用</string>
+
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>在对话列表中的输入指示</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>高亮显示失败的消息</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>显示无法发送消息的红色气泡.</string>
 </dict>
 </plist>
