@@ -16,6 +16,22 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>선택한 앱의 읽지 않은 알림 갯수를 상태표시줄에 출력합니다.</string>
+	<string>상태 표시줄에 읽지 않은 선택된 앱의 알림의 수를 표시합니다.</string>
+
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>메시지</string>
+
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>대화 목록에 상대의 입력 여부를 표시</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>보내기에 실패한 메시지 강조하기</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>보내기에 실패한 메시지들을 빨간색 방울으로 표시합니다.</string>
 </dict>
 </plist>

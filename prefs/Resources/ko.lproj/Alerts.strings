@@ -20,7 +20,7 @@
 
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
-	<string>위 사항은 TypeStatus Plus 프로바이더에만 적용됩니다.</string>
+	<string>TypeStatus Plus 제공자에게서 온 알림에만 적용됩니다.</string>
 
 	<!-- Switch to toggle show in foreground. -->
 	<key>SHOW_IN_FOREGROUND</key>
@@ -36,7 +36,7 @@
 
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
-	<string>기기 화면이 꺼진 상태에서 TypeStatus 상태표시줄 알림을 받으면 기기 화면을 켭니다. 알림 센터의 알림은 항상 화면을 켭니다.</string>
+	<string>기기가 잠겨 있을 때TypeStatus 알림을 받을 시 화면을 켭니다.</string>
 
 	<!-- Header for tap action section. -->
 	<key>TAP_TO_OPEN_ACTION</key>
@@ -71,6 +71,34 @@
 	<!-- Option to show banners in apps. -->
 	<key>IN_APPS</key>
 	<string>어플 사용중</string>
+
+	<!-- Label for the options on the icon to use in notifications. -->
+	<key>ICON</key>
+	<string>아이콘</string>
+
+	<!-- Option to use the respective app icon. -->
+	<key>APP_ICON</key>
+	<string>앱 아이콘</string>
+
+	<!-- Explanation of the above options. -->
+	<key>ICON_EXPLANATION</key>
+	<string>알림에 TypeStatus Plus의 아이콘 또는 각 앱의 아이콘을 씁니다.</string>
+
+	<!-- Label for the options on keeping notifications in the notification center. -->
+	<key>KEEP_BULLETINS</key>
+	<string>유지하기</string>
+
+	<!-- Option to keep only one alert. -->
+	<key>KEEP_BULLETINS_ONE</key>
+	<string>한 알림</string>
+
+	<!-- Option to keep all alerts (until the respective app is opened). -->
+	<key>KEEP_BULLETINS_ALL</key>
+	<string>모든 알림</string>
+
+	<!-- Option to keep all alerts (even if the respective app is opened). -->
+	<key>KEEP_BULLETINS_FOREVER</key>
+	<string>모든 알림, 항상</string>
 
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
