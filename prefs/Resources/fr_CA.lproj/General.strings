@@ -16,6 +16,22 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>Affiche le nombre de notifications non lues à partir de l'application (s ) sélectionné dans la barre d'état .</string>
+	<string>Affiche le nombre de notifications non-lues depuis les apps selecionnées dans la barre de statut.</string>
+
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>App Messages</string>
+
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>Indicateurs de frappe dans la liste des conversations</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>Mise en évidence des messages non-envoyés</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>Affiche les messages non-envoyés avec une bulle rouge.</string>
 </dict>
 </plist>
