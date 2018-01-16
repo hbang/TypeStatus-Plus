@@ -20,7 +20,7 @@
 
     <!-- Explanation of the alert type setting. -->
     <key>ALERT_TYPE_EXPLANATION</key>
-    <string>Hal di atas hanya berlaku untuk notifikasi dari penyedia TypeStatus Plus.</string>
+    <string>Berlaku hanya pada notofikasi dari penyedia TypeStatus Plus.</string>
 
     <!-- Switch to toggle show in foreground. -->
     <key>SHOW_IN_FOREGROUND</key>
@@ -36,7 +36,7 @@
 
     <!-- Explanation of the above setting. -->
     <key>WAKE_WHEN_LOCKED_EXPLANATION</key>
-    <string>Nyalakan layar saat menerima notifikasi TypeStatus pada status bar meskipun perangkat terkunci. Peringatan pada Pusat Notifikasi akan tetap menyalakan layar.</string>
+    <string>Bangunkan layar ponsel bila menerima notofikasi TypeStatus saat ponsel terkunci.</string>
 
     <key>TAP_TO_OPEN_ACTION</key>
     <string>Tindakan Ketuk</string>
@@ -70,6 +70,34 @@
 	<!-- Option to show banners in apps. -->
 	<key>IN_APPS</key>
 	<string>Dalam Aplikasi</string>
+
+    <!-- Option to use the respective app icon. -->
+    <key>ICON</key>
+    <string>Ikon</string>
+  
+    <!-- Option to use the respective app icon. -->
+    <key>APP_ICON</key>
+    <string>Ikon Applikasi</string>
+
+    <!-- Explanation of the above options. -->
+    <key>ICON_EXPLANATION</key>
+    <string>Memakai ikon TypeStatus Plus pada notifikasi, atau  or pada aplikasi lain yang bersangkutan.</string>
+    
+    <!-- Label for the options on keeping notifications in the notification center. -->
+    <key>KEEP_BULLETINS</key>
+    <string>Simpan</string>
+  
+    <!-- Option to keep only one alert. -->
+    <key>KEEP_BULLETINS_ONE</key>
+    <string>Satu Sinyal</string>
+
+    <!-- Option to keep all alerts (until the respective app is opened). -->
+    <key>KEEP_BULLETINS_ALL</key>
+    <string>Semua Sinyal</string>
+
+    <!-- Option to keep all alerts (even if the respective app is opened). -->
+    <key>KEEP_BULLETINS_FOREVER</key>
+    <string>Semua Sinyal, Senantiasa</string>
 
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
