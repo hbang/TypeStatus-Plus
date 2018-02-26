@@ -1,7 +1,7 @@
 Package: ws.hbang.typestatusplus
 Name: TypeStatus Plus
-Depends: firmware (>= 9.0), firmware (<< 10.3), mobilesubstrate, ws.hbang.typestatus2 (>= 2.2.1), ws.hbang.typestatusplusproviders, com.rpetrich.rocketbootstrap (>= 1.0.5), applist (>= 1.5.9)
-Recommends: firmware (>= 9.2) | libstatusbar (>= 1:0.9.9.0-1), firmware (<< 9.2) | libmoorecon
+Depends: firmware (>= 9.0), firmware (<< 11.0), mobilesubstrate, ws.hbang.typestatus2 (>= 2.4), ws.hbang.typestatusplusproviders, com.rpetrich.rocketbootstrap (>= 1.0.5), applist (>= 1.5.9)
+Recommends: org.thebigboss.libstatus9
 Version: 1.4
 Architecture: iphoneos-arm
 Description: Status bar typing alerts for 3rd-party apps and more!

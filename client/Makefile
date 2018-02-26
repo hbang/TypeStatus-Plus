@@ -3,7 +3,7 @@ include $(THEOS)/makefiles/common.mk
 TWEAK_NAME = TypeStatusPlusClient
 TypeStatusPlusClient_FILES = $(wildcard *.xm) $(wildcard *.x) ../global/HBTSPlusPreferences.x
 TypeStatusPlusClient_PRIVATE_FRAMEWORKS = AppSupport
-TypeStatusPlusClient_EXTRA_FRAMEWORKS = Cephei TypeStatusPlusProvider
+TypeStatusPlusClient_EXTRA_FRAMEWORKS = Cephei TypeStatusProvider
 TypeStatusPlusClient_LIBRARIES = rocketbootstrap
 TypeStatusPlusClient_CFLAGS = -I../global -include ../global/Global.h -fobjc-arc
 

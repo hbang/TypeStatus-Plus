@@ -1,19 +1,13 @@
 #import "HBTSPlusTapToOpenController.h"
-#import "HBTSPlusAlertController.h"
 #import "HBTSPlusPreferences.h"
-#import <Foundation/NSDistributedNotificationCenter.h>
 #import <FrontBoardServices/FBSSystemService.h>
-#import <MobileCoreServices/LSApplicationProxy.h>
-#import <MobileCoreServices/LSApplicationWorkspace.h>
-#import <SpringBoard/SpringBoard.h>
 #import <SpringBoard/SBWorkspaceApplication.h>
 #import <SpringBoard/SBWorkspaceApplicationTransitionContext.h>
+#import "../typestatus-private/HBTSStatusBarAlertServer.h"
 
-BOOL overrideBreadcrumbHax;
+static BOOL overrideBreadcrumbHax;
 
-@implementation HBTSPlusTapToOpenController {
-	NSString *_currentSender;
-}
+@implementation HBTSPlusTapToOpenController
 
 + (instancetype)sharedInstance {
 	static HBTSPlusTapToOpenController *sharedInstance = nil;
@@ -23,25 +17,6 @@ BOOL overrideBreadcrumbHax;
 	});
 
 	return sharedInstance;
-}
-
-- (instancetype)init {
-	if (self = [super init]) {
-		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(newMessageRecieved:) name:HBTSPlusReceiveRelayNotification object:nil];
-	}
-	return self;
-}
-
-- (void)newMessageRecieved:(NSNotification *)notification {
-	_appIdentifier = @"com.apple.MobileSMS";
-
-	NSString *rawSender = notification.userInfo[kHBTSMessageSenderKey];
-
-	if (!rawSender) {
-		return;
-	}
-
-	_currentSender = [[rawSender stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]] copy];
 }
 
 - (NSDictionary *)receivedStatusBarTappedMessage:(NSString *)message {
@@ -55,25 +30,12 @@ BOOL overrideBreadcrumbHax;
 				break;
 			
 			case HBTSPlusTapToOpenModeOpen:
-				// if this is a messages notification
-				if ([_appIdentifier isEqualToString:@"com.apple.MobileSMS"]) {
-					// open the url ourselves
-					[self _openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://open?address=%@", _currentSender ?: @""]] bundleIdentifier:@"com.apple.MobileSMS"];
-
-					// we don’t need this any more
-					_currentSender = nil;
-				} else if (_actionURL) {
-					// if we got a url, open that
-					[self _openURL:_actionURL bundleIdentifier:nil];
-				} else {
-					// or fall back to just opening the app like normal
-					[self _openURL:nil bundleIdentifier:_appIdentifier];
-				}
-
+				// if we got a url, open that, or fall back to just opening the app like normal
+				[self _openURL:_actionURL bundleIdentifier:_appIdentifier];
 				break;
 			
 			case HBTSPlusTapToOpenModeDismiss:
-				[HBTSPlusAlertController hide];
+				[HBTSStatusBarAlertServer hide];
 				break;
 		}
 	});
@@ -82,8 +44,7 @@ BOOL overrideBreadcrumbHax;
 }
 
 - (void)_openURL:(NSURL *)url bundleIdentifier:(NSString *)bundleIdentifier {
-	// get the frontboard system service and then create a port for the message
-	// we’re about to send
+	// get the frontboard system service and then create a port for the message we’re about to send
 	FBSSystemService *systemService = [FBSSystemService sharedService];
 	mach_port_t port = [systemService createClientPort];
 
@@ -105,8 +66,8 @@ BOOL overrideBreadcrumbHax;
 		// get the app we’re about to switch from
 		SBWorkspaceApplication *previousApp = [transitionContext previousApplicationForLayoutRole:SBLayoutRoleMainApp];
 
-		// if there was an app (not the home screen), and it’s not the same as the
-		// one we’re launching, override to enable breadcrumbs
+		// if there was an app (not the home screen), and it’s not the same as the one we’re launching,
+		// override to enable breadcrumbs
 		return previousApp && ![launchedApplication.bundleIdentifier isEqualToString:previousApp.bundleIdentifier];
 	}
 

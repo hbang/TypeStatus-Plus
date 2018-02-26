@@ -34,7 +34,7 @@
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>detail</key>
-			<string>HBTSPlusProvidersListController</string>
+			<string>HBTSProvidersListController</string>
 			<key>icon</key>
 			<string>providers.png</string>
 			<key>label</key>

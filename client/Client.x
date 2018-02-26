@@ -1,18 +1,66 @@
 #import "HBTSPlusClient.h"
 #import "HBTSPlusPreferences.h"
 #import "HBTSStatusBarUnreadItemView.h"
-#import "../api/HBTSPlusProviderController.h"
 #import "../typestatus-private/HBTSStatusBarForegroundView.h"
 #import <libstatusbar/UIStatusBarCustomItem.h>
 #import <SpringBoard/SBApplication.h>
 #import <SpringBoard/SBApplicationController.h>
+#import <TypeStatusProvider/TypeStatusProvider.h>
 #import <UIKit/UIStatusBar.h>
 
-@interface HBTSStatusBarForegroundView (TapToOpen)
+@interface HBTSStatusBarForegroundView ()
 
 @property (nonatomic, retain) UITapGestureRecognizer *tapToOpenConvoRecognizer;
 
 @end
+
+HBTSProviderController *controller;
+
+#pragma mark - Backgrounding
+
+%hook UIApplication
+
+- (void)_deactivateForReason:(NSInteger)reason notify:(BOOL)notify {
+	if ([controller doesApplicationIdentifierRequireBackgrounding:[NSBundle mainBundle].bundleIdentifier]) {
+		notify = NO;
+	}
+
+	%orig;
+}
+
+- (BOOL)_isLaunchedSuspended {
+	return [controller doesApplicationIdentifierRequireBackgrounding:[NSBundle mainBundle].bundleIdentifier] ? NO : %orig;
+}
+
+- (BOOL)isSuspended {
+	return [controller doesApplicationIdentifierRequireBackgrounding:[NSBundle mainBundle].bundleIdentifier] ? NO : %orig;
+}
+
+- (BOOL)isSuspendedUnderLock {
+	return [controller doesApplicationIdentifierRequireBackgrounding:[NSBundle mainBundle].bundleIdentifier] ? NO : %orig;
+}
+
+- (BOOL)isSuspendedEventsOnly {
+	return [controller doesApplicationIdentifierRequireBackgrounding:[NSBundle mainBundle].bundleIdentifier] ? NO : %orig;
+}
+
+%end
+
+#pragma mark - Provider
+
+%hook HBTSProvider
+
+- (BOOL)isEnabled {
+	HBTSPlusPreferences *preferences = [HBTSPlusPreferences sharedInstance];
+
+	if (self.preferencesBundle) {
+		// the provider manages its own preferences. return YES
+		return YES;
+	} else {
+		// ask the preferences if we're enabled
+		return [preferences isProviderEnabled:self.appIdentifier];
+	}
+}
 
 #pragma mark - Tap to open
 
@@ -70,6 +118,8 @@
 
 %end
 
+#pragma mark - Constructor
+
 %ctor {
 	dlopen("/Library/MobileSubstrate/DynamicLibraries/libstatusbar.dylib", RTLD_LAZY);
 	dlopen("/Library/MobileSubstrate/DynamicLibraries/TypeStatusClient.dylib", RTLD_LAZY);
@@ -79,11 +129,11 @@
 		return;
 	}
 
-	%init;
-
-	// get the provider controller rolling
-	[HBTSPlusProviderController sharedInstance];
+	// get the client rolling
 	[HBTSPlusClient sharedInstance];
+	controller = [HBTSProviderController sharedInstance];
+
+	%init;
 
 	// if lsb is installed, init the hooks for it
 	if (%c(UIStatusBarCustomItem)) {

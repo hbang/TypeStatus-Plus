@@ -1,11 +1,8 @@
 #import "HBTSPlusProvidersListController.h"
 #import "HBTSPlusProviderLinkTableCell.h"
 #import "HBTSPlusProviderSwitchTableCell.h"
-#import "../api/HBTSPlusProviderController.h"
-#import "../api/HBTSPlusProviderController+Private.h"
-#import "../api/HBTSPlusProvider.h"
+#import "../typestatus-private/HBTSProviderController+Private.h"
 #import <Preferences/PSSpecifier.h>
-#import <Preferences/PSViewController.h>
 
 @implementation HBTSPlusProvidersListController
 
@@ -29,20 +26,20 @@
 #pragma mark - Update state
 
 - (void)_updateHandlers {
-	HBTSPlusProviderController *providerController = [HBTSPlusProviderController sharedInstance];
+	HBTSProviderController *providerController = [HBTSProviderController sharedInstance];
 	
 	[providerController _loadProvidersWithCompletion:^{
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 			// turn the providers set into an array and sort by name
-			NSArray <HBTSPlusProvider *> *providers = [providerController.providers.allObjects sortedArrayUsingComparator:^ NSComparisonResult (HBTSPlusProvider *item1, HBTSPlusProvider *item2) {
+			NSArray <HBTSProvider *> *providers = [providerController.providers.allObjects sortedArrayUsingComparator:^ NSComparisonResult (HBTSProvider *item1, HBTSProvider *item2) {
 				return [item1.name caseInsensitiveCompare:item2.name];
 			}];
 
 			NSMutableArray *newSpecifiers = [NSMutableArray array];
 
-			for (HBTSPlusProvider *provider in providers) {
+			for (HBTSProvider *provider in providers) {
 				BOOL isLink = provider.preferencesBundle && provider.preferencesClass;
-				BOOL isBackgrounded = [providerController applicationWithIdentifierRequiresBackgrounding:provider.appIdentifier];
+				BOOL isBackgrounded = [providerController doesApplicationIdentifierRequireBackgrounding:provider.appIdentifier];
 
 				PSSpecifier *specifier = [PSSpecifier preferenceSpecifierNamed:provider.name target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:Nil cell:isLink ? PSLinkCell : PSSwitchCell edit:Nil];
 

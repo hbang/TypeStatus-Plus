@@ -13,7 +13,7 @@
 #import <SpringBoard/SBApplication.h>
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBApplicationIcon.h>
-#import "../api/HBTSNotification.h"
+#import <TypeStatusProvider/TypeStatusProvider.h>
 #import <version.h>
 
 static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";

@@ -10,7 +10,7 @@
 #import <ChatKit/CKTypingIndicatorLayer.h>
 #import <Foundation/NSDistributedNotificationCenter.h>
 #import <IMFoundation/FZMessage.h>
-#import <TypeStatusPlusProvider/HBTSNotification.h>
+#import <TypeStatusProvider/TypeStatusProvider.h>
 #import <version.h>
 
 HBTSPlusPreferences *preferences;
@@ -183,6 +183,7 @@ HBTSPlusPreferences *preferences;
 			// add or remove it from the list accordingly
 			switch (type) {
 				case HBTSMessageTypeTyping:
+				case HBTSMessageTypeSendingFile:
 					[typingManager addConversation:conversation];
 					break;
 

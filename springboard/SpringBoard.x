@@ -1,10 +1,8 @@
 #import "HBTSPlusPreferences.h"
-#import "HBTSPlusAlertController.h"
 #import "HBTSPlusBulletinProvider.h"
 #import "HBTSPlusServer.h"
 #import "HBTSPlusStateHelper.h"
 #import "HBTSPlusTapToOpenController.h"
-#import "../api/HBTSNotification.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <BulletinBoard/BBLocalDataProviderStore.h>
 // #import <Cephei/HBStatusBarController.h>
@@ -14,6 +12,7 @@
 #import <SpringBoard/SBApplication.h>
 #import <SpringBoard/SBApplicationController.h>
 #import <SpringBoard/SBLockScreenManager.h>
+#import <TypeStatusProvider/TypeStatusProvider.h>
 #import <UIKit/UIStatusBarItemView.h>
 #import <version.h>
 
@@ -214,14 +213,6 @@ void (^receivedSetStatusBarNotification)(NSNotification *) = ^(NSNotification *n
 
 %end
 
-#pragma mark - Test notification
-
-void sendTestNotification() {
-	HBTSNotification *notification = [[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:@"Johnny Appleseed" iconName:@"TypeStatus"];
-	notification.sourceBundleID = @"com.apple.MobileSMS";
-	[HBTSPlusAlertController sendNotification:notification];
-}
-
 #pragma mark - Constructor
 
 %ctor {
@@ -234,9 +225,6 @@ void sendTestNotification() {
 	[HBTSPlusTapToOpenController sharedInstance];
 
 	preferences = [%c(HBTSPlusPreferences) sharedInstance];
-
-	// register for test notification notification
-	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)sendTestNotification, CFSTR("ws.hbang.typestatusplus/TestNotification"), NULL, kNilOptions);
 
 	// register to set up the status bar item when the UIApp loads
 	[[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:setUpStatusBarItem];

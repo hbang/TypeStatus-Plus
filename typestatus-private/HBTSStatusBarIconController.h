@@ -1,3 +1,5 @@
+#import <TypeStatusProvider/TypeStatusProvider.h>
+
 @interface HBTSStatusBarIconController : NSObject
 
 + (void)showIcon:(NSString *)iconName timeout:(NSTimeInterval)timeout;
