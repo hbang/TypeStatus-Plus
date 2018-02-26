@@ -16,6 +16,22 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>Visar antalet olästa meddelanden från de valda applikationerna i statusfältet.</string>
+	<string>Visar antalet olästa notifikationer från valda appar i statusfältet.</string>
+
+    <!-- Header of the Messages app section. -->
+    <key>MESSAGES_APP</key>
+    <string>Meddelande Appen</string>
+
+    <!-- Switch to toggle showing typing indicators in the conversation list. -->
+    <key>SHOW_LIST_TYPING_INDICATORS</key>
+    <string>"Skriver" Indikatorer i Konversationslistan</string>
+
+    <!-- Switch to toggle highlighting of failed messages. -->
+    <key>HIGHLIGHT_FAILED_MESSAGES</key>
+    <string>Markera Misslyckade Meddelanden</string>
+    
+    <!-- Explanation of the highlight failed messages switch. -->
+    <key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+    <string>Visar meddelanden som misslyckas med en röd bubbla.</string>
 </dict>
 </plist>
