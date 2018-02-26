@@ -1,9 +1,9 @@
-export TARGET = iphone:10.1:9.0
+export TARGET = iphone:11.1:9.0
 
 INSTALL_TARGET_PROCESSES = MobileSMS Preferences
 
 ifneq ($(RESPRING),0)
-INSTALL_TARGET_PROCESSES += SpringBoard
+	INSTALL_TARGET_PROCESSES += SpringBoard
 endif
 
 include $(THEOS)/makefiles/common.mk
@@ -17,4 +17,4 @@ include $(THEOS_MAKE_PATH)/aggregate.mk
 
 after-stage::
 	$(ECHO_NOTHING)mkdir -p $(THEOS_STAGING_DIR)/DEBIAN$(ECHO_END)
-	$(ECHO_NOTHING)cp postinst $(THEOS_STAGING_DIR)/DEBIAN$(ECHO_END)
+	$(ECHO_NOTHING)cp postinst prerm $(THEOS_STAGING_DIR)/DEBIAN$(ECHO_END)
