@@ -81,7 +81,7 @@ static NSString *const kHBTSPlusPreferencesUseAppIconKey = @"UseAppIcon";
 	return self;
 }
 
-- (BOOL)providerIsEnabled:(NSString *)appIdentifier {
+- (BOOL)isProviderEnabled:(NSString *)appIdentifier {
 	// TODO: these keys should be prefixed
 	return _preferences[appIdentifier] ? ((NSNumber *)_preferences[appIdentifier]).boolValue : YES;
 }

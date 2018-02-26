@@ -34,7 +34,7 @@ typedef NS_ENUM(NSUInteger, HBTSPlusKeepBulletinsMode) {
 
 + (instancetype)sharedInstance;
 
-- (BOOL)providerIsEnabled:(NSString *)appIdentifier;
+- (BOOL)isProviderEnabled:(NSString *)appIdentifier;
 
 - (NSArray <NSString *> *)unreadCountApps;
 

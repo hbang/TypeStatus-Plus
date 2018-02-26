@@ -62,6 +62,8 @@ HBTSProviderController *controller;
 	}
 }
 
+%end
+
 #pragma mark - Tap to open
 
 %hook HBTSStatusBarForegroundView
