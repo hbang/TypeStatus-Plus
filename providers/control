@@ -1,0 +1,14 @@
+Package: ws.hbang.typestatusplusproviders
+Name: TypeStatus Plus Providers
+Depends: ws.hbang.typestatusplus
+Version: 1.1
+Architecture: iphoneos-arm
+Description: Support for various messaging apps
+Maintainer: HASHBANG Productions <support@hbang.ws>
+Author: HASHBANG Productions <support@hbang.ws>
+Section: Messaging
+Icon: file:///Library/PreferenceBundles/TypeStatusPlus.bundle/icon@2x.png
+Support: https://hbang.ws/support/
+Sponsor: thebigboss.org <http://thebigboss.org>
+Tag: purpose::extension, compatible::ios9, compatible::ios10
+dev: hbang
