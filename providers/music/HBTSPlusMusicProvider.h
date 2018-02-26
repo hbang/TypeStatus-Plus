@@ -1,5 +1,5 @@
-#import <TypeStatusPlusProvider/HBTSPlusProvider.h>
+#import <TypeStatusProvider/HBTSProvider.h>
 
-@interface HBTSPlusMusicProvider : HBTSPlusProvider
+@interface HBTSPlusMusicProvider : HBTSProvider
 
 @end

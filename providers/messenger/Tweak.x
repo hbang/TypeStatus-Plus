@@ -1,7 +1,7 @@
 #import "HBTSPlusMessengerNameFetcher.h"
 #import "Messenger.h"
-#import <TypeStatusPlusProvider/HBTSPlusProvider.h>
-#import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
+#import <TypeStatusProvider/HBTSProvider.h>
+#import <TypeStatusProvider/HBTSProviderController.h>
 
 %hook FBMSPReadReceiptDeltaHandler
 
@@ -16,7 +16,7 @@
 	// fetch the name and send our notification off
 	HBTSPlusMessengerNameFetcher *fetcher = [[HBTSPlusMessengerNameFetcher alloc] init];
 	[fetcher userDisplayNameForID:userIdString completion:^(NSString *displayName) {
-		HBTSPlusProvider *messengerProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.facebook.Messenger"];
+		HBTSProvider *messengerProvider = [[HBTSProviderController sharedInstance] providerForAppIdentifier:@"com.facebook.Messenger"];
 
 		HBTSNotification *notification = [[HBTSNotification alloc] initWithType:HBTSMessageTypeReadReceipt sender:displayName iconName:@"TypeStatusPlusMessenger"];
 		[messengerProvider showNotification:notification];
@@ -38,7 +38,7 @@
 		NSString *senderID = userInfo[kMessengerSenderFBIDKey];
 		BOOL state = [userInfo[kMessengerStateKey] boolValue];
 
-		HBTSPlusProvider *messengerProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.facebook.Messenger"];
+		HBTSProvider *messengerProvider = [[HBTSProviderController sharedInstance] providerForAppIdentifier:@"com.facebook.Messenger"];
 
 		// if this is a typing started message, show a notification. otherwise, hide it
 		if (state) {

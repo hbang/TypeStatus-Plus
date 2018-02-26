@@ -1,7 +1,7 @@
 #import <ApplePushService/APSIncomingMessage.h>
-#import <TypeStatusPlusProvider/HBTSNotification.h>
-#import <TypeStatusPlusProvider/HBTSPlusProvider.h>
-#import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
+#import <TypeStatusProvider/HBTSNotification.h>
+#import <TypeStatusProvider/HBTSProvider.h>
+#import <TypeStatusProvider/HBTSProviderController.h>
 
 NSBundle *bundle;
 
@@ -21,7 +21,7 @@ NSBundle *bundle;
 			// typing
 			HBTSNotification *notification = [[HBTSNotification alloc] initWithType:HBTSMessageTypeTyping sender:record.userInfo[@"sender"] iconName:@"TypeStatusPlusSnapchat"];
 
-			HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.toyopagroup.picaboo"];
+			HBTSProvider *provider = [[HBTSProviderController sharedInstance] providerForAppIdentifier:@"com.toyopagroup.picaboo"];
 			[provider showNotification:notification];
 		} else if ([type isEqualToString:@"screenshot"] || [type isEqualToString:@"chat_screenshot"]) {
 			// snap screenshot (ss) or chat screenshot (cs)
@@ -33,7 +33,7 @@ NSBundle *bundle;
 			notification.boldRange = [notification.content rangeOfString:sender];
 			notification.statusBarIconName = @"TypeStatusPlusSnapchat";
 
-			HBTSPlusProvider *provider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"com.toyopagroup.picaboo"];
+			HBTSProvider *provider = [[HBTSProviderController sharedInstance] providerForAppIdentifier:@"com.toyopagroup.picaboo"];
 			[provider showNotification:notification];
 		} else {
 			%orig;

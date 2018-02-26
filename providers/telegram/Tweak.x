@@ -1,5 +1,5 @@
-#import <TypeStatusPlusProvider/HBTSPlusProvider.h>
-#import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
+#import <TypeStatusProvider/HBTSProvider.h>
+#import <TypeStatusProvider/HBTSProviderController.h>
 
 @interface TLUpdate : NSObject
 
@@ -60,7 +60,7 @@
 - (id)parseMessage:(NSData *)message {
 	id original = %orig;
 
-	HBTSPlusProvider *telegramProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"ph.telegra.Telegraph"];
+	HBTSProvider *telegramProvider = [[HBTSProviderController sharedInstance] providerForAppIdentifier:@"ph.telegra.Telegraph"];
 
 	if ([original isKindOfClass:%c(TLUpdates$updateShort)]) {
 		TLUpdates$updateShort *updateShort = (TLUpdates$updateShort *)original;

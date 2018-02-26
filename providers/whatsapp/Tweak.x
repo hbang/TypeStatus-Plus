@@ -1,6 +1,6 @@
-#import <TypeStatusPlusProvider/HBTSPlusProvider.h>
-#import <TypeStatusPlusProvider/HBTSPlusProviderController.h>
-#import <TypeStatusPlusProvider/HBTSNotification.h>
+#import <TypeStatusProvider/HBTSProvider.h>
+#import <TypeStatusProvider/HBTSProviderController.h>
+#import <TypeStatusProvider/HBTSNotification.h>
 
 #define XMPPConnectionChatStateDidChange @"XMPPConnectionChatStateDidChange"
 #define ChatStorageDidUpdateChatSession @"ChatStorageDidUpdateChatSession"
@@ -72,7 +72,7 @@ NSString *nameFromJID(NSString *jid) {
 
 	%init;
 
-	HBTSPlusProvider *whatsAppProvider = [[HBTSPlusProviderController sharedInstance] providerWithAppIdentifier:@"net.whatsapp.WhatsApp"];
+	HBTSProvider *whatsAppProvider = [[HBTSProviderController sharedInstance] providerForAppIdentifier:@"net.whatsapp.WhatsApp"];
 
 	[[NSNotificationCenter defaultCenter] addObserverForName:ChatStorageDidUpdateChatSession object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
 		WAChatSession *chatSession = notification.userInfo[@"ChatSession"];

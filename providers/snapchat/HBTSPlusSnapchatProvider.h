@@ -1,5 +1,5 @@
-#import <TypeStatusPlusProvider/HBTSPlusProvider.h>
+#import <TypeStatusProvider/HBTSProvider.h>
 
-@interface HBTSPlusSnapchatProvider : HBTSPlusProvider
+@interface HBTSPlusSnapchatProvider : HBTSProvider
 
 @end
