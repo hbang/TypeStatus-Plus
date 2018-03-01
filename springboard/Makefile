@@ -1,7 +1,7 @@
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = TypeStatusPlus
-TypeStatusPlus_FILES = $(wildcard *.xm) $(wildcard *.x) $(wildcard *.m) ../global/Global.x
+TypeStatusPlus_FILES = $(wildcard *.xm) $(wildcard *.x) $(wildcard *.m)
 TypeStatusPlus_CFLAGS = -I../global -include ../global/Global.h -fobjc-arc -F$(THEOS)/lib/TypeStatusProvider.framework
 TypeStatusPlus_FRAMEWORKS = AudioToolbox
 TypeStatusPlus_PRIVATE_FRAMEWORKS = AppSupport BackBoardServices BulletinBoard FrontBoardServices MobileCoreServices

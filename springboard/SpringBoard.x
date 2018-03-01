@@ -162,13 +162,12 @@ void (^receivedSetStatusBarNotification)(NSNotification *) = ^(NSNotification *n
 		return;
 	}
 
-	// get the rest of the values
-	NSString *iconName = nsNotification.userInfo[kHBTSMessageIconNameKey];
-	NSString *content = nsNotification.userInfo[kHBTSMessageContentKey];
+	// deserialize the notification
+	HBTSNotification *notification = [[HBTSNotification alloc] initWithDictionary:nsNotification.userInfo];
 
 	// construct a unique-ish key, and ensure it doesn’t match the previous notification’s. we don’t
 	// want to vibrate constantly if the notification is being sent multiple times
-	NSString *key = [NSString stringWithFormat:@"iconName = %@, content = %@", iconName, content];
+	NSString *key = [NSString stringWithFormat:@"iconName = %@, content = %@", notification.statusBarIconName, notification.content];
 
 	if ([lastNotification isEqualToString:key]) {
 		return;
