@@ -41,12 +41,7 @@
 		[_preferences registerInteger:(NSInteger *)&_tapToOpenMode default:HBTSPlusTapToOpenModeOpen forKey:@"TapToOpenMode"];
 
 		[_preferences registerBool:&_vibrateOnLockScreen default:NO forKey:@"VibrateOnLockScreen"];
-		[_preferences registerBool:&_vibrateOnHomeScreen default:YES forKey:@"VibrateOnHomeScreen"];
 		[_preferences registerBool:&_vibrateInApps default:YES forKey:@"VibrateInApps"];
-
-		[_preferences registerBool:&_showBannersOnLockScreen default:YES forKey:@"ShowBannersOnLockScreen"];
-		[_preferences registerBool:&_showBannersOnHomeScreen default:NO forKey:@"ShowBannersOnHomeScreen"];
-		[_preferences registerBool:&_showBannersInApps default:NO forKey:@"ShowBannersInApps"];
 
 		[_preferences registerInteger:(NSInteger *)&_keepBulletinsMode default:NO forKey:@"KeepAllBulletins"];
 		[_preferences registerBool:&_useAppIcon default:YES forKey:@"UseAppIcon"];
@@ -70,7 +65,7 @@
 	// loop over all preference keys
 	for (NSString *key in _preferences.dictionaryRepresentation.allKeys) {
 		// if the key has the prefix and is YES, add it to the array
-		if ([key hasPrefix:@"UnreadCountApp-"] && [_preferences boolForKey:key default:NO]) {
+		if ([key hasPrefix:@"UnreadCountApp-"] && [_preferences boolForKey:key]) {
 			[apps addObject:[key substringFromIndex:15]];
 		}
 	}

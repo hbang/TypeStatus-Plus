@@ -11,4 +11,7 @@
 - (void)clearBulletinsIfNeeded;
 - (void)clearBulletinsForBundleIdentifier:(NSString *)bundleIdentifier;
 
+@property (nonatomic, readonly) BOOL showsWhenUnlocked;
+@property (nonatomic, readonly) BOOL showsInLockScreen;
+
 @end

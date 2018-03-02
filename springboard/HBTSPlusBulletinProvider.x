@@ -167,4 +167,13 @@ static NSString *const kHBTSPlusAppIdentifier = @"ws.hbang.typestatusplus.app";
 	return @[ [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO] ];
 }
 
+- (void)noteSectionInfoDidChange:(BBSectionInfo *)sectionInfo {
+	[super noteSectionInfoDidChange:sectionInfo];
+
+	BOOL notificationsEnabled = sectionInfo.allowsNotifications;
+
+	_showsWhenUnlocked = notificationsEnabled && sectionInfo.alertType != BBSectionInfoAlertTypeNone;
+	_showsInLockScreen = notificationsEnabled && sectionInfo.showsInLockScreen;
+}
+
 @end
