@@ -1,5 +1,4 @@
-#import "../global/Global.h"
-#import "../global/HBTSPlusPreferences.h"
+#import "HBTSPlusPreferences.h"
 #import "HBTSPlusMessagesTypingManager.h"
 #import <Cephei/CompactConstraint.h>
 #import <ChatKit/CKConversation.h>
@@ -33,8 +32,7 @@ HBTSPlusPreferences *preferences;
 
 	UILabel *fromLabel = [self valueForKey:@"_fromLabel"];
 
-	// if the from label isn’t in the view hierarchy (cell not set up yet), do
-	// nothing
+	// if the from label isn’t in the view hierarchy (cell not set up yet), do nothing
 	if (!fromLabel.superview) {
 		return;
 	}
@@ -45,13 +43,16 @@ HBTSPlusPreferences *preferences;
 		typingView.alpha = 0.0;
 		typingView.translatesAutoresizingMaskIntoConstraints = NO;
 
+		// determine the scale of the indicator based on the dynamic type font size
 		CGFloat fontSize = [UIFont preferredFontForTextStyle:UIFontTextStyleBody].pointSize;
 		CGFloat scale;
 		
 		if (fontSize < 15) {
-			scale = 0.8f;
+			scale = 0.775f;
 		} else if (fontSize < 16) {
-			scale = 0.9f;
+			scale = 0.875f;
+		} else if (fontSize < 17) {
+			scale = 0.925f;
 		} else {
 			scale = 1;
 		}
@@ -60,7 +61,8 @@ HBTSPlusPreferences *preferences;
 
 		// on ios 10, you build your own typing view!
 		if (IS_IOS_OR_NEWER(iOS_10_0)) {
-			typingView.indicatorLayer = [CKTypingIndicatorLayer layer];
+			Class indicatorLayerClass = %c(IMTypingIndicatorLayer) ?: %c(CKTypingIndicatorLayer);
+			typingView.indicatorLayer = [indicatorLayerClass layer];
 		}
 		
 		[self.contentView addSubview:typingView];
@@ -93,35 +95,27 @@ HBTSPlusPreferences *preferences;
 	CKTypingView *typingView = self._hb_typingIndicatorView;
 	CKTypingIndicatorLayer *layer = [typingView respondsToSelector:@selector(indicatorLayer)] ? typingView.indicatorLayer : typingView.layer;
 
-	// if animating, do things in an animation-y way. otherwise just jump to
-	// what we want
-	if (animated) {
-		if (visible) {
-			// fade out label; fade in indicator
-			[UIView animateWithDuration:0.2 animations:^{
-				summaryLabel.alpha = 0.0;
-				self._hb_typingIndicatorView.alpha = 1.0;
-			}];
+	void (^animationBlock)() = ^{
+		summaryLabel.alpha = visible ? 0 : 1;
+		self._hb_typingIndicatorView.alpha = visible ? 1 : 0;
+	};
 
-			// animate it in
+	// if animating, do things in an animation-y way. otherwise just jump to what we want
+	if (animated) {
+		[UIView animateWithDuration:0.2 animations:animationBlock];
+
+		// animate a grow or shrink based on the direction we’re moving to
+		if (visible) {
 			[layer startGrowAnimation];
 		} else {
-			// fade out indicator; fade in label
-			[UIView animateWithDuration:0.2 animations:^{
-				summaryLabel.alpha = 1.0;
-				self._hb_typingIndicatorView.alpha = 0.0;
-			}];
-
-			// animate it out
 			[layer startShrinkAnimation];
 		}
 	} else {
-		// directly change alpha values accordingly
-		summaryLabel.alpha = visible ? 0.0 : 1.0;
-		self._hb_typingIndicatorView.alpha = visible ? 1.0 : 0.0;
+		// call the animation block directly without animating
+		animationBlock();
 	}
 
-	// regardless of animation, we need to ensure it's pulsing if visible
+	// regardless of animation, we need to ensure it’s pulsing if visible
 	if (visible) {
 		[layer startPulseAnimation];
 	}
@@ -152,8 +146,8 @@ HBTSPlusPreferences *preferences;
 - (CKConversationListCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	CKConversationListCell *cell = %orig;
 
-	// sometimes the cell won’t be a conversation cell??? ok i guess we can check
-	// for that and bail out if needed
+	// sometimes the cell won’t be a conversation cell??? ok i guess we can check for that and bail
+	// out if needed
 	if (![cell respondsToSelector:@selector(conversation)]) {
 		return cell;
 	}
