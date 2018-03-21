@@ -1,0 +1,18 @@
+Package: ws.hbang.typestatusplus
+Name: TypeStatus Plus
+Depends: firmware (>= 9.0), firmware (<< 11.3), mobilesubstrate, ws.hbang.typestatus2 (>= 2.4~beta1), com.rpetrich.rocketbootstrap (>= 1.0.5), applist (>= 1.5.9)
+Recommends: org.thebigboss.libstatus9
+Conflicts: ws.hbang.typestatusplusproviders
+Replaces: ws.hbang.typestatusplusproviders
+Version: 1.5
+Architecture: iphoneos-arm
+Description: Status bar typing alerts for 3rd-party apps and more!
+Maintainer: HASHBANG Productions <support@hbang.ws>
+Author: HASHBANG Productions <support@hbang.ws>
+Section: Messaging
+Icon: file:///Library/PreferenceBundles/TypeStatusPlus.bundle/icon@2x.png
+Depiction: https://cydia.hbang.ws/package/ws.hbang.typestatusplus/
+Support: https://hbang.ws/support/
+Sponsor: thebigboss.org <http://thebigboss.org>
+Tag: purpose::extension, compatible::ios9, compatible::ios10, compatible::ios11, cydia::commercial
+dev: hbang

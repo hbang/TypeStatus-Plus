@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>ws.hbang.typestatusplusmessengerprovider</string>
+	<key>CFBundleExecutable</key>
+	<string>Messenger</string>
+	<key>CFBundleName</key>
+	<string>Messenger</string>
+	<key>HBTSApplicationBundleIdentifier</key>
+	<string>com.facebook.Messenger</string>
+	<key>HBTSKeepApplicationAlive</key>
+	<true/>
+	<key>NSPrincipalClass</key>
+	<string>HBTSPlusMessengerProvider</string>
+</dict>
+</plist>

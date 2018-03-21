@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>ws.hbang.typestatusplussnapchatprovider</string>
+	<key>CFBundleExecutable</key>
+	<string>Snapchat</string>
+	<key>CFBundleName</key>
+	<string>Snapchat</string>
+	<key>HBTSApplicationBundleIdentifier</key>
+	<string>com.toyopagroup.picaboo</string>
+	<key>HBTSKeepApplicationAlive</key>
+	<false/>
+	<key>NSPrincipalClass</key>
+	<string>HBTSPlusSnapchatProvider</string>
+</dict>
+</plist>
