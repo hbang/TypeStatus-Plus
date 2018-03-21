@@ -1,12 +1,13 @@
 include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = TypeStatusPlus
-TypeStatusPlus_FILES = $(wildcard *.m) $(wildcard *.x)
+
+TypeStatusPlus_FILES = $(wildcard *.[xm])
 TypeStatusPlus_INSTALL_PATH = /Library/PreferenceBundles
 TypeStatusPlus_CFLAGS = -I../global -include Global.h -fobjc-arc
 TypeStatusPlus_FRAMEWORKS = UIKit
-TypeStatusPlus_PRIVATE_FRAMEWORKS = Preferences
-TypeStatusPlus_EXTRA_FRAMEWORKS = Cephei CepheiPrefs TechSupport TypeStatusProvider
+TypeStatusPlus_PRIVATE_FRAMEWORKS = BulletinBoard Preferences
+TypeStatusPlus_EXTRA_FRAMEWORKS = Cephei CepheiPrefs CydiaSubstrate TechSupport TypeStatusProvider
 TypeStatusPlus_LIBRARIES = applist
 
 include $(THEOS_MAKE_PATH)/bundle.mk

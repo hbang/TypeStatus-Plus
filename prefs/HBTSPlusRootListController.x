@@ -1,6 +1,8 @@
 #include "HBTSPlusRootListController.h"
+#import <BulletinBoard/BBSettingsGateway.h>
 #import <CepheiPrefs/HBAppearanceSettings.h>
 #import <CepheiPrefs/HBSupportController.h>
+#import <Preferences/PSSpecifier.h>
 #import <UIKit/UIImage+Private.h>
 
 @implementation HBTSPlusRootListController
@@ -40,15 +42,31 @@
 
 	UIImage *headerLogo = [UIImage imageNamed:@"headerlogo" inBundle:self.bundle];
 	self.navigationItem.titleView = [[UIImageView alloc] initWithImage:headerLogo];
-	self.navigationItem.titleView.alpha = 0.0;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-	if (self.navigationItem.titleView.alpha == 0) {
-		[UIView animateWithDuration:0.5 delay:0.5 options:kNilOptions animations:^{
-			self.navigationItem.titleView.alpha = 1;
-		} completion:nil];
+- (NSMutableArray <PSSpecifier *> *)specifiers {
+	NSMutableArray <PSSpecifier *> *specifiers = [super specifiers];
+
+	for (PSSpecifier *specifier in specifiers) {
+		if ([specifier.identifier isEqualToString:@"AlertsCell"]) {
+			if (!specifier.properties[@"BBSECTION_INFO_KEY"]) {
+				[[NSBundle bundleWithPath:@"/System/Library/PreferenceBundles/NotificationsSettings.bundle"] load];
+				specifier.detailControllerClass = %c(BulletinBoardAppDetailController);
+
+				BBSettingsGateway *gateway = [[BBSettingsGateway alloc] init];
+
+				[gateway getSectionInfoForSectionID:@"ws.hbang.typestatusplus.app" withCompletion:^(BBSectionInfo *sectionInfo) {
+					if (sectionInfo) {
+						specifier.properties[@"BBSECTION_INFO_KEY"] = sectionInfo;
+					}
+				}];
+			}
+
+			break;
+		}
 	}
+
+	return specifiers;
 }
 
 #pragma mark - Callbacks

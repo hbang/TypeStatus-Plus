@@ -1,6 +1,7 @@
 #import "HBTSPlusProvidersListController.h"
 #import "HBTSPlusProviderLinkTableCell.h"
 #import "HBTSPlusProviderSwitchTableCell.h"
+#import "HBTSProvider+TypeStatusPlusAdditions.h"
 #import "../typestatus-private/HBTSProviderController+Private.h"
 #import <Preferences/PSSpecifier.h>
 
@@ -16,10 +17,7 @@
 
 - (NSMutableArray <PSSpecifier *> *)specifiers {
 	NSMutableArray <PSSpecifier *> *specifiers = [super specifiers];
-
-
 	[self _updateHandlers];
-
 	return specifiers;
 }
 
@@ -31,7 +29,7 @@
 	[providerController _loadProvidersWithCompletion:^{
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 			// turn the providers set into an array and sort by name
-			NSArray <HBTSProvider *> *providers = [providerController.providers.allObjects sortedArrayUsingComparator:^ NSComparisonResult (HBTSProvider *item1, HBTSProvider *item2) {
+			NSArray <HBTSProvider *> *providers = [providerController.providers.allObjects sortedArrayUsingComparator:^NSComparisonResult (HBTSProvider *item1, HBTSProvider *item2) {
 				return [item1.name caseInsensitiveCompare:item2.name];
 			}];
 

@@ -120,7 +120,7 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
-			<false />
+			<false/>
 			<key>defaults</key>
 			<string>ws.hbang.typestatusplus</string>
 			<key>key</key>
@@ -138,7 +138,7 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
-			<true />
+			<true/>
 			<key>defaults</key>
 			<string>ws.hbang.typestatusplus</string>
 			<key>key</key>
@@ -153,14 +153,8 @@
 			</array>
 		</dict>
 		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
 			<key>id</key>
-			<string>NotificationsGroup</string>
-			<key>label</key>
-			<string>NOTIFICATION_CENTER</string>
-			<key>footerText</key>
-			<string>NOTIFICATION_CENTER_EXPLANATION</string>
+			<string>InsertBulletinBoardSpecifiers</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -219,20 +213,6 @@
 			</array>
 			<key>PostNotification</key>
 			<string>ws.hbang.typestatusplus/ReloadPrefs</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>testAlert</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>cellClass</key>
-			<string>HBTintedTableCell</string>
-			<key>label</key>
-			<string>TEST_ALERT</string>
 		</dict>
 	</array>
 	<key>title</key>

@@ -57,8 +57,12 @@
 		<dict>
 			<key>cell</key>
 			<string>PSLinkCell</string>
-			<key>detail</key>
-			<string>HBTSPlusAlertsListController</string>
+			<key>isController</key>
+			<true/>
+			<key>fromTypeStatus</key>
+			<true/>
+			<key>id</key>
+			<string>AlertsCell</string>
 			<key>icon</key>
 			<string>notif.png</string>
 			<key>label</key>
