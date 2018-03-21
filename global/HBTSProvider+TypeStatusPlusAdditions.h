@@ -1,0 +1,1 @@
+../client/HBTSProvider+TypeStatusPlusAdditions.h

@@ -21,6 +21,10 @@
 	return self;
 }
 
+- (NSString *)name {
+	return @"Music";
+}
+
 - (void)mediaInfoDidChange:(NSNotification *)notification {
 	MRMediaRemoteGetNowPlayingInfo(dispatch_get_main_queue(), ^(CFDictionaryRef result) {
 		NSDictionary *dictionary = (__bridge NSDictionary *)result;

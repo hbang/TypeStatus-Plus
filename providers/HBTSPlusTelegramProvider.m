@@ -2,4 +2,8 @@
 
 @implementation HBTSPlusTelegramProvider
 
+- (NSString *)name {
+	return @"Telegram";
+}
+
 @end

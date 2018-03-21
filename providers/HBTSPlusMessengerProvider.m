@@ -2,4 +2,8 @@
 
 @implementation HBTSPlusMessengerProvider
 
+- (NSString *)name {
+	return @"Messenger";
+}
+
 @end
