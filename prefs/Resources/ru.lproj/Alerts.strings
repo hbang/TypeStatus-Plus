@@ -20,7 +20,7 @@
 
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
-	<string>Эта настройка влияет только на уведомления от TypeStatus Plus.</string>
+	<string>Применимо только к уведомлениям от приложений, совместимых с TypeStatus Plus.</string>
 
 	<!-- Switch to toggle show in foreground. -->
     <key>SHOW_IN_FOREGROUND</key>
@@ -36,7 +36,7 @@
 
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
-	<string>Зажигать экран устройства при получении уведомления TypeStatus в статусбар. Уведомления из Центра Уведомлений всегда зажигают экран.</string>
+	<string>Включать экран, когда приходит уведомление от TypeStatus.</string>
 
 	<!-- Header for tap action section. -->
 	<key>TAP_TO_OPEN_ACTION</key>
@@ -71,6 +71,34 @@
 	<!-- Option to show banners in apps. -->
 	<key>IN_APPS</key>
 	<string>В программах</string>
+
+	<!-- Option to use the respective app icon. -->
+	<key>ICON</key>
+	<string>Иконка</string>
+
+	<!-- Option to use the respective app icon. -->
+	<key>APP_ICON</key>
+	<string>Иконка Приложения</string>
+
+	<!-- Explanation of the above options. -->
+	<key>ICON_EXPLANATION</key>
+	<string>Использовать иконку TypeStatus Plus в уведомлениях, или же использовать иконку приложения.</string>
+
+	<!-- Label for the options on keeping notifications in the notification center. -->
+	<key>KEEP_BULLETINS</key>
+	<string>Оставить</string>
+
+	<!-- Option to keep only one alert. -->
+	<key>KEEP_BULLETINS_ONE</key>
+	<string>Одно Уведомление</string>
+
+	<!-- Option to keep all alerts (until the respective app is opened). -->
+	<key>KEEP_BULLETINS_ALL</key>
+	<string>Все Уведомления</string>
+
+	<!-- Option to keep all alerts (even if the respective app is opened). -->
+	<key>KEEP_BULLETINS_FOREVER</key>
+	<string>Все Уведомления, навсегда</string>
 
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
