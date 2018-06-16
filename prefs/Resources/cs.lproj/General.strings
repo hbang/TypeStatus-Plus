@@ -16,6 +16,22 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>Zobrazí počet nepřečtených upozornění u vybraných aplikací ve Status Baru.</string>
+	<string>Zobrazí počet nepřečtených upozornění od vybraných aplikací ve stavovém řádku.</string>
+
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>Zprávy</string>
+
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>Ukazatel psaní v seznamu konverzací</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>zvýraznit zprávy, které selhaly</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>Zobrazí zprávy, které selhaly, s červenou bublinou.</string>
 </dict>
 </plist>

@@ -20,7 +20,7 @@
 
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
-	<string>Výše uvedené nastavení se vztahuje pouze na oznámení od TypeStatus Plus aplikací.</string>
+	<string>Platí jen pro upozornění od poskytovatelů TypeStatus Plus.</string>
 
 	<!-- Switch to toggle show in foreground. -->
 	<key>SHOW_IN_FOREGROUND</key>
@@ -36,7 +36,17 @@
 
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
-	<string>Probudit obrazovku při přijetí upozornění TypeStatus v notifikačním panelu když zařízení uzamknuté.</string>
+	<string>Rozsvítit obrazovku po přijetí upozornění od TypeStatus, pokud je zařízení uzamčeno.</string>
+
+	<!-- Header for tap action section. -->
+	<key>TAP_TO_OPEN_ACTION</key>
+	<string>Akce po klepnutí</string>
+
+	<!-- Options shown for the tap action. -->
+	<key>TAP_TO_OPEN_ACTION_OPEN</key>
+	<string>Otevřít aplikaci</string>
+	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
+	<string>Zrušit upozornění</string>
 
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
@@ -61,6 +71,34 @@
 	<!-- Option to show banners in apps. -->
 	<key>IN_APPS</key>
 	<string>V aplikacích</string>
+
+	<!-- Option to use the respective app icon. -->
+	<key>ICON</key>
+	<string>Ikona</string>
+  
+  	<!-- Option to use the respective app icon. -->
+	<key>APP_ICON</key>
+	<string>Ikona aplikace</string>
+
+	<!-- Explanation of the above options. -->
+	<key>ICON_EXPLANATION</key>
+	<string>Use the TypeStatus Plus icon on notifications, or the icon for the respective app.</string>
+	
+	<!-- Label for the options on keeping notifications in the notification center. -->
+	<key>KEEP_BULLETINS</key>
+	<string>Ponechat</string>
+  
+ 	<!-- Option to keep only one alert. -->
+	<key>KEEP_BULLETINS_ONE</key>
+	<string>Jedno Upozornění</string>
+
+	<!-- Option to keep all alerts (until the respective app is opened). -->
+	<key>KEEP_BULLETINS_ALL</key>
+	<string>Všechna Upozornění</string>
+
+	<!-- Option to keep all alerts (even if the respective app is opened). -->
+	<key>KEEP_BULLETINS_FOREVER</key>
+	<string>Všechna Upozornění, Navždy</string>
 
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
