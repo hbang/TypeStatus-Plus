@@ -16,6 +16,22 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>Zeigt die Anzahl der ungelesenen Benachrichtigungen der ausgewählten Apps in der Statusleiste.</string>
+	<string>Zeigt die Anzahl der ungelesenen Benachrichtigungen ausgewählter Apps in der Statusleiste.</string>
+
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>Nachrichten App</string>
+
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>Eingabeanzeige in der Nachrichtenliste</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>Fehlgeschlagene Nachrichten markieren</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>Wenn eine Nachricht nicht gesendet werden konnte, wird eine rote Blase angezeigt.</string>
 </dict>
 </plist>

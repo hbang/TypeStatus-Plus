@@ -20,7 +20,7 @@
 
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
-	<string>Das oben beschriebene betrifft nur TypeStatus Plus Anbieter.</string>
+	<string>Gilt nur für Nachrichten von TypeStatus Plus -Anbietern.</string>
 
 	<!-- Switch to toggle show in foreground. -->
 	<key>SHOW_IN_FOREGROUND</key>
@@ -36,7 +36,7 @@
 
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
-	<string>Aufwachen wenn eine TypeStatus Statusleisten Benachrichtigung ankommt, während das Gerät gesperrt ist. Normale Mitteilungen wecken den Bildschirm immer auf.</string>
+	<string>Bildschirm bei einer TypeStatus-Benachrichtigung aufwecken.</string>
 
 	<!-- Header for tap action section. -->
 	<key>TAP_TO_OPEN_ACTION</key>
@@ -71,6 +71,34 @@
 	<!-- Option to show banners in apps. -->
 	<key>IN_APPS</key>
 	<string>in Apps</string>
+
+	<!-- Option to use the respective app icon. -->
+	<key>ICON</key>
+	<string>TypeStatus Plus Icon</string>
+  
+  	<!-- Option to use the respective app icon. -->
+	<key>APP_ICON</key>
+	<string>App Icon</string>
+
+	<!-- Explanation of the above options. -->
+	<key>ICON_EXPLANATION</key>
+	<string>Das TypeStatus Plus -Symbol bei Benachrichtigungen anzeigen, oder das Icon der entsprechenden App verwenden.</string>
+	
+	<!-- Label for the options on keeping notifications in the notification center. -->
+	<key>KEEP_BULLETINS</key>
+	<string>Benachrichtigungen behalten</string>
+  
+ 	<!-- Option to keep only one alert. -->
+	<key>KEEP_BULLETINS_ONE</key>
+	<string>Eine</string>
+
+	<!-- Option to keep all alerts (until the respective app is opened). -->
+	<key>KEEP_BULLETINS_ALL</key>
+	<string>Alle (bis zum Öffnen der App)</string>
+
+	<!-- Option to keep all alerts (even if the respective app is opened). -->
+	<key>KEEP_BULLETINS_FOREVER</key>
+	<string>Alle</string>
 
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
