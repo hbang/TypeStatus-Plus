@@ -38,6 +38,16 @@
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
 	<string>ステータスバーでTypeStatusの通知を受ける時にロックされたデバイスの画面をつけて。通知センターの通知はずっと画面をつけてです。</string>
 
+	<!-- Header for tap action section. -->
+	<key>TAP_TO_OPEN_ACTION</key>
+	<string>タップアクション</string>
+
+	<!-- Options shown for the tap action. -->
+	<key>TAP_TO_OPEN_ACTION_OPEN</key>
+	<string>他のアプリで開く</string>
+	<key>TAP_TO_OPEN_ACTION_DISMISS</key>
+	<string>警告を引っ込める</string>
+	
 	<!-- Header for vibration options. -->
 	<key>VIBRATIONS</key>
 	<string>バイブレーション</string>
