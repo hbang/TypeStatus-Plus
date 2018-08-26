@@ -16,6 +16,22 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>Hiển thị số thông báo từ "Chọn những ứng dụng" trên thanh trạng thái.</string>
+	<string>Hiển thị số lượng thông báo chưa đọc từ app đã chọn trên thanh trạng thái.</string>
+
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>App tin nhắn</string>
+
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>Chỉ thị đang gõ trong danh sách trò chuyện.</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>Đánh dấu tin nhắn thấ bại</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>Displays messages that fail to send with a red bubble.Hiển thị tin nhắn mà không thể gửi bằng bong bóng đỏ</string>
 </dict>
 </plist>
