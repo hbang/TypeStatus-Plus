@@ -16,6 +16,22 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>ステータスバーに選択したアプリ（複数可）からの未読の通知の数を表示します。</string>
+	<string>ステータスバーに選択したアプリからの未読通知の数を表示します。</string>
+
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>メッセージアプリ</string>
+
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>会話リストに入力インジケータ</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>失敗したメッセージをハイライト</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>赤い吹き出しで送信に失敗したメッセージを表示します。</string>
 </dict>
 </plist>
