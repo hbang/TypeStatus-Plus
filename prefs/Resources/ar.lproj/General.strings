@@ -16,6 +16,22 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>يعرض رقم الإشعارات الغير مقروءة في البرنامج/البرامج المختارة في شريط الحالة.</string>
+	<string>عرض عدد الإشعارات غير المقروءة من التطبيقات المحددة في البار العلوي.</string>
+
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>تطبيق الرسائل</string>
+
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>مؤشرات الكتابة في قائمة المحادثة</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>تمييز الرسائل التي فشل إرسالها</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>عرض الرسائل التي فشل إرسالها مع فقاعة حمراء.</string>
 </dict>
 </plist>

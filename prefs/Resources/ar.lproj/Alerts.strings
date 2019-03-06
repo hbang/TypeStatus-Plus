@@ -20,7 +20,7 @@
 
 	<!-- Explanation of the alert type setting. -->
 	<key>ALERT_TYPE_EXPLANATION</key>
-	<string>نوع التنبيه بالأعلى ينطبق فقط للإشعارات من مزودى خدمة TypeStatus Plus</string>
+	<string>ينطبق فقط على الإشعارات التي تكون من موفري TypeStatus Plus</string>
 
 	<!-- Switch to toggle show in foreground. -->
 	<key>SHOW_IN_FOREGROUND</key>
@@ -36,7 +36,7 @@
 
 	<!-- Explanation of the above setting. -->
 	<key>WAKE_WHEN_LOCKED_EXPLANATION</key>
-	<string>تنبية الشاشة فى حالة إستقبال شريط إشعار TypeStatus و الهاتف مقفل. تنبيهات مركز الإشعارات تقوم دومًا تنبية الشاشة.</string>
+	<string>إيقاظ الجهاز عند تلقي إشعار TypeStatus أثناء قفل الشاشة.</string>
 
  	<!-- Header for tap action section. -->
 	<key>TAP_TO_OPEN_ACTION</key>
@@ -71,6 +71,34 @@
 	<!-- Option to show banners in apps. -->
 	<key>IN_APPS</key>
 	<string>في البرامج</string>
+
+	<!-- Option to use the respective app icon. -->
+	<key>ICON</key>
+	<string>أيقونة</string>
+
+	<!-- Option to use the respective app icon. -->
+	<key>APP_ICON</key>
+	<string>أيقونة التطبيق</string>
+
+	<!-- Explanation of the above options. -->
+	<key>ICON_EXPLANATION</key>
+	<string>استخدام أيقونة TypesStatus Plus على الإشعارات، أو أيقونة التطبيق المقصود.</string>
+
+	<!-- Label for the options on keeping notifications in the notification center. -->
+	<key>KEEP_BULLETINS</key>
+	<string>إبقاء</string>
+
+	<!-- Option to keep only one alert. -->
+	<key>KEEP_BULLETINS_ONE</key>
+	<string>تنبيه واحد</string>
+
+	<!-- Option to keep all alerts (until the respective app is opened). -->
+	<key>KEEP_BULLETINS_ALL</key>
+	<string>كل التنبيهات</string>
+
+	<!-- Option to keep all alerts (even if the respective app is opened). -->
+	<key>KEEP_BULLETINS_FOREVER</key>
+	<string>كل التنبيهات، للأبد</string>
 
 	<!-- Explanation of the keep all notifications switch. -->
 	<key>KEEP_ALL_BULLETINS_EXPLANATION</key>
