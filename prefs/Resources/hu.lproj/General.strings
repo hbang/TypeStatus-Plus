@@ -16,6 +16,22 @@
 
 	<!-- Explanation of the unread notifications count button. -->
 	<key>UNREAD_COUNT_EXPLANATION</key>
-	<string>A kijelölt alkalmazások olvasatlan figyelmeztetéseit mutatja az állapot kijelzőn.</string>
+	<string>Megmutatja a kiválasztott alkalmazás olvasatlan értesítéseit az állapotsoron.</string>
+
+	<!-- Header of the Messages app section. -->
+	<key>MESSAGES_APP</key>
+	<string>Üzenetek alkalmazás</string>
+
+	<!-- Switch to toggle showing typing indicators in the conversation list. -->
+	<key>SHOW_LIST_TYPING_INDICATORS</key>
+	<string>Gépelésjelzés az üzenetlistában</string>
+
+	<!-- Switch to toggle highlighting of failed messages. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES</key>
+	<string>Sikertelen üzenetek kiemelése</string>
+
+	<!-- Explanation of the highlight failed messages switch. -->
+	<key>HIGHLIGHT_FAILED_MESSAGES_EXPLANATION</key>
+	<string>Piros szövegbuborékba helyezi azokat az üzeneteket, amelyeket nem sikerült elküldeni.</string>
 </dict>
 </plist>
